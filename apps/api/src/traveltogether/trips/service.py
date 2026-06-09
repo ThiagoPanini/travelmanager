@@ -43,9 +43,7 @@ def get_trip_membership(
 ) -> Membership | None:
     """Retorna a Membership do usuário na Viagem, ou None se não for membro."""
     return session.exec(
-        select(Membership)
-        .where(Membership.trip_id == trip_id)
-        .where(Membership.user_id == user_id)
+        select(Membership).where(Membership.trip_id == trip_id).where(Membership.user_id == user_id)
     ).first()
 
 

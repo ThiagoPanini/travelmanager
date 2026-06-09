@@ -47,9 +47,7 @@ def bob_fixture(session: Session) -> User:
     return user
 
 
-def test_list_user_trips_returns_only_own_trips(
-    session: Session, alice: User, bob: User
-) -> None:
+def test_list_user_trips_returns_only_own_trips(session: Session, alice: User, bob: User) -> None:
     create_trip(session, alice.id, "Alice Trip", "", "São Paulo")
     create_trip(session, bob.id, "Bob Trip", "", "Rio de Janeiro")
 
@@ -67,9 +65,7 @@ def test_list_user_trips_returns_empty_for_user_with_no_trips(
     assert list_user_trips(session, alice.id) == []
 
 
-def test_create_trip_returns_trip_with_organizer_membership(
-    session: Session, alice: User
-) -> None:
+def test_create_trip_returns_trip_with_organizer_membership(session: Session, alice: User) -> None:
     trip, membership = create_trip(
         session,
         creator_id=alice.id,
@@ -92,9 +88,7 @@ def test_get_trip_membership_returns_none_for_non_member(
     assert get_trip_membership(session, trip.id, bob.id) is None
 
 
-def test_get_trip_membership_returns_membership_for_member(
-    session: Session, alice: User
-) -> None:
+def test_get_trip_membership_returns_membership_for_member(session: Session, alice: User) -> None:
     trip, original_membership = create_trip(session, alice.id, "Alice Trip", "", "SP")
     membership = get_trip_membership(session, trip.id, alice.id)
     assert membership is not None

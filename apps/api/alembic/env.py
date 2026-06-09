@@ -11,9 +11,10 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 # Importa todos os modelos para registrar a metadata do SQLModel
+from sqlmodel import SQLModel  # noqa: E402
+
 import traveltogether.identity.models  # noqa: F401, E402
 import traveltogether.trips.models  # noqa: F401, E402
-from sqlmodel import SQLModel  # noqa: E402
 
 target_metadata = SQLModel.metadata
 

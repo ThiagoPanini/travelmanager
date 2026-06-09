@@ -63,9 +63,7 @@ def test_post_trips_returns_401_without_token(client: TestClient) -> None:
     assert response.status_code == 401
 
 
-def test_get_trips_returns_user_trips(
-    client: TestClient, monkeypatch: pytest.MonkeyPatch
-) -> None:
+def test_get_trips_returns_user_trips(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
     headers = _auth_headers(ALICE_EMAIL, monkeypatch)
     payload_a = {"name": "Trip A", "description": "", "origin": "SP"}
     payload_b = {"name": "Trip B", "description": "", "origin": "RJ"}
@@ -90,9 +88,7 @@ def test_get_trips_returns_empty_list_for_new_user(
     assert response.json() == []
 
 
-def test_get_trip_detail_returns_trip(
-    client: TestClient, monkeypatch: pytest.MonkeyPatch
-) -> None:
+def test_get_trip_detail_returns_trip(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
     headers = _auth_headers(ALICE_EMAIL, monkeypatch)
     create_resp = client.post(
         "/trips", json={"name": "NYC", "description": "", "origin": "SP"}, headers=headers
@@ -114,7 +110,8 @@ def test_get_trip_detail_returns_403_for_non_member(
     bob_headers = _auth_headers(BOB_EMAIL, monkeypatch)
 
     create_resp = client.post(
-        "/trips", json={"name": "Alice's Trip", "description": "", "origin": "SP"},
+        "/trips",
+        json={"name": "Alice's Trip", "description": "", "origin": "SP"},
         headers=alice_headers,
     )
     trip_id = create_resp.json()["trip"]["id"]
@@ -145,7 +142,8 @@ def test_patch_trip_returns_403_for_non_member(
     bob_headers = _auth_headers(BOB_EMAIL, monkeypatch)
 
     create_resp = client.post(
-        "/trips", json={"name": "Alice Trip", "description": "", "origin": "SP"},
+        "/trips",
+        json={"name": "Alice Trip", "description": "", "origin": "SP"},
         headers=alice_headers,
     )
     trip_id = create_resp.json()["trip"]["id"]

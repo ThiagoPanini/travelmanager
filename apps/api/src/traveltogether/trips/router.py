@@ -41,9 +41,7 @@ def _get_trip_or_404(session: Session, trip_id: uuid.UUID) -> Trip:
     return trip
 
 
-def _require_membership(
-    session: Session, trip_id: uuid.UUID, user_id: uuid.UUID
-) -> Membership:
+def _require_membership(session: Session, trip_id: uuid.UUID, user_id: uuid.UUID) -> Membership:
     membership = get_trip_membership(session, trip_id, user_id)
     if membership is None:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="not a member")
