@@ -66,9 +66,7 @@ def test_add_member_creates_membership_when_user_exists(
     assert result.membership.role == MembershipRole.member
 
 
-def test_add_member_creates_pending_when_user_does_not_exist(
-    session: Session, alice: User
-) -> None:
+def test_add_member_creates_pending_when_user_does_not_exist(session: Session, alice: User) -> None:
     trip, _ = create_trip(session, alice.id, "Trip", "", "SP")
 
     result = add_member_by_email(session, trip.id, "unknown@example.com")
@@ -79,9 +77,7 @@ def test_add_member_creates_pending_when_user_does_not_exist(
     assert result.pending_membership.email == "unknown@example.com"
 
 
-def test_add_member_raises_if_already_member(
-    session: Session, alice: User, bob: User
-) -> None:
+def test_add_member_raises_if_already_member(session: Session, alice: User, bob: User) -> None:
     trip, _ = create_trip(session, alice.id, "Trip", "", "SP")
     add_member_by_email(session, trip.id, bob.email)
 
@@ -92,9 +88,7 @@ def test_add_member_raises_if_already_member(
 # ── resolve_pending_memberships ─────────────────────────────────────────────
 
 
-def test_resolve_pending_converts_pending_to_membership(
-    session: Session, alice: User
-) -> None:
+def test_resolve_pending_converts_pending_to_membership(session: Session, alice: User) -> None:
     trip, _ = create_trip(session, alice.id, "Trip", "", "SP")
     add_member_by_email(session, trip.id, "new@example.com")
 
@@ -110,9 +104,7 @@ def test_resolve_pending_converts_pending_to_membership(
     assert resolved[0].trip_id == trip.id
 
 
-def test_resolve_pending_returns_empty_when_no_pending(
-    session: Session, alice: User
-) -> None:
+def test_resolve_pending_returns_empty_when_no_pending(session: Session, alice: User) -> None:
     resolved = resolve_pending_memberships(session, alice)
     assert resolved == []
 

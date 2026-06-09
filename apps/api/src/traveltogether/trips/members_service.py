@@ -84,9 +84,7 @@ def resolve_pending_memberships(session: Session, user: User) -> list[Membership
 
     created: list[Membership] = []
     for pending in pending_rows:
-        membership = Membership(
-            trip_id=pending.trip_id, user_id=user.id, role=pending.role
-        )
+        membership = Membership(trip_id=pending.trip_id, user_id=user.id, role=pending.role)
         session.add(membership)
         session.delete(pending)
         created.append(membership)

@@ -109,9 +109,7 @@ def test_add_member_returns_403_for_non_organizer(
 # ── GET /trips/{id}/members ──────────────────────────────────────────────────
 
 
-def test_list_members_returns_members(
-    client: TestClient, monkeypatch: pytest.MonkeyPatch
-) -> None:
+def test_list_members_returns_members(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
     alice_h = _headers(ALICE_EMAIL, monkeypatch)
     bob_h = _headers(BOB_EMAIL, monkeypatch)
     client.get("/identity/me", headers=bob_h)
@@ -131,9 +129,7 @@ def test_list_members_returns_members(
 # ── PATCH /trips/{id}/members/{membership_id} ────────────────────────────────
 
 
-def test_promote_member_to_organizer(
-    client: TestClient, monkeypatch: pytest.MonkeyPatch
-) -> None:
+def test_promote_member_to_organizer(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
     alice_h = _headers(ALICE_EMAIL, monkeypatch)
     bob_h = _headers(BOB_EMAIL, monkeypatch)
     client.get("/identity/me", headers=bob_h)
@@ -172,9 +168,7 @@ def test_demote_last_organizer_returns_409(
 # ── DELETE /trips/{id}/members/{membership_id} ───────────────────────────────
 
 
-def test_remove_member_returns_204(
-    client: TestClient, monkeypatch: pytest.MonkeyPatch
-) -> None:
+def test_remove_member_returns_204(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
     alice_h = _headers(ALICE_EMAIL, monkeypatch)
     bob_h = _headers(BOB_EMAIL, monkeypatch)
     client.get("/identity/me", headers=bob_h)
