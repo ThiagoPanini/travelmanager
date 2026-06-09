@@ -44,7 +44,7 @@ def _auth_headers(email: str, monkeypatch: pytest.MonkeyPatch) -> dict[str, str]
     return {"Authorization": f"Bearer {token}"}
 
 
-def _create_trip(client: TestClient, headers: dict[str, str]) -> dict:
+def _create_trip(client: TestClient, headers: dict[str, str]) -> dict[str, object]:
     res = client.post(
         "/trips",
         json={"name": "Road Trip", "description": "", "origin": "São Paulo"},

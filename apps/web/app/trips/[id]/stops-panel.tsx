@@ -1,9 +1,9 @@
 "use client";
 
+import type { MembershipRole, StopPublic } from "@traveltogether/types";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import type { MembershipRole, StopPublic } from "@traveltogether/types";
 import { createStop, deleteStop, reorderStops, updateStop } from "@/lib/api/trips";
 
 interface Props {
@@ -101,7 +101,6 @@ export default function StopsPanel({ tripId, initialStops, role, accessToken }: 
                     onChange={(e) => setEditCity(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && handleSaveEdit(stop.id)}
                     className="stop-edit-input"
-                    autoFocus
                   />
                   <button
                     type="button"

@@ -37,7 +37,7 @@ def trip_fixture(session: Session) -> Trip:
 
     from traveltogether.trips.service import create_trip
 
-    user = User(id=uuid.uuid4(), email="a@a.com", name="A")
+    user = User(id=uuid.uuid4(), email="a@a.com")
     session.add(user)
     session.commit()
     trip, _ = create_trip(session, user.id, "Road Trip", "", "São Paulo")

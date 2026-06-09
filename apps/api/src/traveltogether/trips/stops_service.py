@@ -3,13 +3,15 @@
 import uuid
 from datetime import datetime
 
-from sqlmodel import Session, func, select
+from sqlmodel import Session, col, func, select
 
 from traveltogether.trips.models import Stop
 
 
 def list_stops(session: Session, trip_id: uuid.UUID) -> list[Stop]:
-    return list(session.exec(select(Stop).where(Stop.trip_id == trip_id).order_by(Stop.order)))
+    return list(
+        session.exec(select(Stop).where(col(Stop.trip_id) == trip_id).order_by(col(Stop.order)))
+    )
 
 
 def delete_stop(session: Session, stop: Stop) -> None:
@@ -51,7 +53,9 @@ def create_stop(
     arrival_date: datetime | None = None,
     departure_date: datetime | None = None,
 ) -> Stop:
-    current_count = session.exec(select(func.count(Stop.id)).where(Stop.trip_id == trip_id)).one()
+    current_count = session.exec(
+        select(func.count()).select_from(Stop).where(col(Stop.trip_id) == trip_id)
+    ).one()
     stop = Stop(
         trip_id=trip_id,
         city=city,
