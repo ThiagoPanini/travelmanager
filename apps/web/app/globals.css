@@ -459,7 +459,10 @@ input {
   color: var(--text-muted);
   cursor: pointer;
   font-size: 0.8rem;
-  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  transition:
+    border-color 0.15s,
+    color 0.15s,
+    background 0.15s;
 }
 
 .sort-btn:hover {
@@ -474,7 +477,9 @@ input {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sort-btn { transition: none; }
+  .sort-btn {
+    transition: none;
+  }
 }
 
 .ticket-list {

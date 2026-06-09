@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
-
-import { sortFares } from "./compare-fares";
 import type { FareRow } from "./compare-fares";
+import { sortFares } from "./compare-fares";
 
 const base: Omit<FareRow, "id" | "value" | "upvote_count" | "is_chosen"> = {
   leg_id: "leg-1",
