@@ -1,0 +1,145 @@
+"""Modelos do boundary trips."""
+
+import uuid
+from datetime import UTC, datetime
+from enum import StrEnum
+from typing import ClassVar
+
+from sqlmodel import Field, SQLModel
+
+
+class MembershipRole(StrEnum):
+    organizer = "organizer"
+    member = "member"
+
+
+class Trip(SQLModel, table=True):  # type: ignore[call-arg]
+    __tablename__: ClassVar[str] = "trips"  # pyright: ignore[reportIncompatibleVariableOverride]
+
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    name: str
+    description: str = ""
+    origin: str
+    created_by: uuid.UUID = Field(foreign_key="users.id")
+    created_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
+
+
+class Membership(SQLModel, table=True):  # type: ignore[call-arg]
+    __tablename__: ClassVar[str] = "memberships"  # pyright: ignore[reportIncompatibleVariableOverride]
+
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    trip_id: uuid.UUID = Field(foreign_key="trips.id")
+    user_id: uuid.UUID = Field(foreign_key="users.id")
+    role: MembershipRole = MembershipRole.member
+    joined_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
+
+
+class TripPublic(SQLModel):
+    id: uuid.UUID
+    name: str
+    description: str
+    origin: str
+    created_by: uuid.UUID
+    created_at: datetime
+
+
+class MembershipPublic(SQLModel):
+    id: uuid.UUID
+    trip_id: uuid.UUID
+    user_id: uuid.UUID
+    role: MembershipRole
+    joined_at: datetime
+
+
+class PendingMembership(SQLModel, table=True):  # type: ignore[call-arg]
+    __tablename__: ClassVar[str] = "pending_memberships"  # pyright: ignore[reportIncompatibleVariableOverride]
+
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    trip_id: uuid.UUID = Field(foreign_key="trips.id")
+    email: str = Field(index=True)
+    role: MembershipRole = MembershipRole.member
+    invited_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
+
+
+class PendingMembershipPublic(SQLModel):
+    id: uuid.UUID
+    trip_id: uuid.UUID
+    email: str
+    role: MembershipRole
+    invited_at: datetime
+
+
+class Stop(SQLModel, table=True):  # type: ignore[call-arg]
+    __tablename__: ClassVar[str] = "stops"  # pyright: ignore[reportIncompatibleVariableOverride]
+
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    trip_id: uuid.UUID = Field(foreign_key="trips.id")
+    city: str
+    arrival_date: datetime | None = None
+    departure_date: datetime | None = None
+    order: int
+
+
+class StopPublic(SQLModel):
+    id: uuid.UUID
+    trip_id: uuid.UUID
+    city: str
+    arrival_date: datetime | None
+    departure_date: datetime | None
+    order: int
+
+
+class StopCreate(SQLModel):
+    city: str
+    arrival_date: datetime | None = None
+    departure_date: datetime | None = None
+
+
+class StopUpdate(SQLModel):
+    city: str | None = None
+    arrival_date: datetime | None = None
+    departure_date: datetime | None = None
+
+
+class Leg(SQLModel, table=True):  # type: ignore[call-arg]
+    __tablename__: ClassVar[str] = "legs"  # pyright: ignore[reportIncompatibleVariableOverride]
+
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    trip_id: uuid.UUID = Field(foreign_key="trips.id")
+    origin_stop_id: uuid.UUID | None = Field(default=None, foreign_key="stops.id")
+    destination_stop_id: uuid.UUID | None = Field(default=None, foreign_key="stops.id")
+    target_date: datetime | None = None
+    order: int
+
+
+class LegPublic(SQLModel):
+    id: uuid.UUID
+    trip_id: uuid.UUID
+    origin_stop_id: uuid.UUID | None
+    destination_stop_id: uuid.UUID | None
+    target_date: datetime | None
+    order: int
+
+
+class LegCreate(SQLModel):
+    origin_stop_id: uuid.UUID | None = None
+    destination_stop_id: uuid.UUID | None = None
+    target_date: datetime | None = None
+
+
+class LegUpdate(SQLModel):
+    origin_stop_id: uuid.UUID | None = None
+    destination_stop_id: uuid.UUID | None = None
+    target_date: datetime | None = None
+
+
+class TripCreate(SQLModel):
+    name: str
+    description: str = ""
+    origin: str
+
+
+class TripUpdate(SQLModel):
+    name: str | None = None
+    description: str | None = None
+    origin: str | None = None
