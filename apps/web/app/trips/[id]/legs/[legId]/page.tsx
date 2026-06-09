@@ -34,12 +34,7 @@ export default async function LegFaresPage({ params }: Props) {
         </div>
       </header>
 
-      <FaresPanel
-        legId={legId}
-        initialFares={fares}
-        role={membership.role}
-        accessToken={session.apiAccessToken}
-      />
+      <FaresPanel legId={legId} initialFares={fares} role={membership.role} />
     </main>
   );
 }

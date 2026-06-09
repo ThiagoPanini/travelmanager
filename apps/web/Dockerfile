@@ -2,17 +2,22 @@
 # Contexto de build = raiz do monorepo.
 
 FROM node:24-alpine AS base
+RUN apk add --no-cache git
 RUN npm install -g pnpm@11.1.0
 WORKDIR /app
 
 FROM base AS deps
 ENV PNPM_CONFIG_STRICT_DEP_BUILDS=false
-COPY apps/web/package.json ./
-RUN pnpm install --no-frozen-lockfile
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY apps/web/package.json ./apps/web/package.json
+COPY packages/types/package.json ./packages/types/package.json
+RUN pnpm install --frozen-lockfile --filter @traveltogether/web... --ignore-scripts
 
 FROM base AS build
 COPY --from=deps /app/node_modules ./node_modules
-COPY apps/web ./
+COPY --from=deps /app/apps/web/node_modules ./apps/web/node_modules
+COPY . .
+WORKDIR /app/apps/web
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN pnpm build
 
@@ -25,9 +30,9 @@ ENV NODE_ENV=production \
 # curl exigido pelo healthcheck do Coolify.
 RUN apk add --no-cache curl
 RUN addgroup -g 1001 -S nodejs && adduser -S nextjs -u 1001
-COPY --from=build /app/public ./public
-COPY --from=build --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=build --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=build /app/apps/web/public ./apps/web/public
+COPY --from=build --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
+COPY --from=build --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
 USER nextjs
 EXPOSE 3000
-CMD ["node", "server.js"]
+CMD ["node", "apps/web/server.js"]

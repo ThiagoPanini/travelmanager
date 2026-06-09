@@ -10,7 +10,7 @@ export default async function NewTripPage() {
 
   return (
     <main className="auth-shell">
-      <NewTripForm accessToken={session.apiAccessToken} />
+      <NewTripForm />
     </main>
   );
 }

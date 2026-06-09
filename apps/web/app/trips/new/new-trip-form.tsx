@@ -3,15 +3,11 @@
 import { useRouter } from "next/navigation";
 import { type FormEvent, useState } from "react";
 
-import { createTrip } from "@/lib/api/trips";
+import { createTripAction } from "./actions";
 
 type FormState = "idle" | "submitting" | "error";
 
-interface Props {
-  accessToken: string;
-}
-
-export function NewTripForm({ accessToken }: Props) {
+export function NewTripForm() {
   const router = useRouter();
   const [state, setState] = useState<FormState>("idle");
   const [name, setName] = useState("");
@@ -22,7 +18,7 @@ export function NewTripForm({ accessToken }: Props) {
     event.preventDefault();
     setState("submitting");
 
-    const result = await createTrip(accessToken, { name, description, origin });
+    const result = await createTripAction({ name, description, origin });
     if (result) {
       router.push(`/trips/${result.trip.id}`);
       router.refresh();

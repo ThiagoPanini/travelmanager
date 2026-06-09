@@ -4,16 +4,20 @@ import type { MembershipRole, StopPublic } from "@traveltogether/types";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { createStop, deleteStop, reorderStops, updateStop } from "@/lib/api/trips";
+import {
+  createStopAction,
+  deleteStopAction,
+  reorderStopsAction,
+  updateStopAction,
+} from "./actions";
 
 interface Props {
   tripId: string;
   initialStops: StopPublic[];
   role: MembershipRole;
-  accessToken: string;
 }
 
-export default function StopsPanel({ tripId, initialStops, role, accessToken }: Props) {
+export default function StopsPanel({ tripId, initialStops, role }: Props) {
   const router = useRouter();
   const [stops, setStops] = useState<StopPublic[]>(initialStops);
   const [newCity, setNewCity] = useState("");
@@ -26,7 +30,7 @@ export default function StopsPanel({ tripId, initialStops, role, accessToken }: 
     e.preventDefault();
     if (!newCity.trim()) return;
     setLoading(true);
-    const stop = await createStop(accessToken, tripId, { city: newCity.trim() });
+    const stop = await createStopAction(tripId, { city: newCity.trim() });
     if (stop) {
       setStops((prev) => [...prev, stop]);
       setNewCity("");
@@ -37,7 +41,7 @@ export default function StopsPanel({ tripId, initialStops, role, accessToken }: 
 
   async function handleDelete(stopId: string) {
     setLoading(true);
-    await deleteStop(accessToken, tripId, stopId);
+    await deleteStopAction(tripId, stopId);
     setStops((prev) => prev.filter((s) => s.id !== stopId));
     setLoading(false);
     router.refresh();
@@ -51,7 +55,7 @@ export default function StopsPanel({ tripId, initialStops, role, accessToken }: 
   async function handleSaveEdit(stopId: string) {
     if (!editCity.trim()) return;
     setLoading(true);
-    const updated = await updateStop(accessToken, tripId, stopId, { city: editCity.trim() });
+    const updated = await updateStopAction(tripId, stopId, { city: editCity.trim() });
     if (updated) {
       setStops((prev) => prev.map((s) => (s.id === stopId ? updated : s)));
     }
@@ -65,8 +69,7 @@ export default function StopsPanel({ tripId, initialStops, role, accessToken }: 
     const reordered = [...stops];
     [reordered[index - 1], reordered[index]] = [reordered[index], reordered[index - 1]];
     setStops(reordered);
-    await reorderStops(
-      accessToken,
+    await reorderStopsAction(
       tripId,
       reordered.map((s) => s.id),
     );
@@ -78,8 +81,7 @@ export default function StopsPanel({ tripId, initialStops, role, accessToken }: 
     const reordered = [...stops];
     [reordered[index], reordered[index + 1]] = [reordered[index + 1], reordered[index]];
     setStops(reordered);
-    await reorderStops(
-      accessToken,
+    await reorderStopsAction(
       tripId,
       reordered.map((s) => s.id),
     );

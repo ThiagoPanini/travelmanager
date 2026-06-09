@@ -4,13 +4,12 @@ import type { FareQuotePublic, MembershipRole } from "@traveltogether/types";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { createFare, deleteFare } from "@/lib/api/fares";
+import { createFareAction, deleteFareAction } from "./actions";
 
 interface Props {
   legId: string;
   initialFares: FareQuotePublic[];
   role: MembershipRole;
-  accessToken: string;
 }
 
 const EMPTY_FORM = {
@@ -27,7 +26,7 @@ const EMPTY_FORM = {
   notes: "",
 };
 
-export default function FaresPanel({ legId, initialFares, role, accessToken }: Props) {
+export default function FaresPanel({ legId, initialFares, role }: Props) {
   const router = useRouter();
   const [fares, setFares] = useState<FareQuotePublic[]>(initialFares);
   const [form, setForm] = useState(EMPTY_FORM);
@@ -42,7 +41,7 @@ export default function FaresPanel({ legId, initialFares, role, accessToken }: P
   async function handleAdd(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
-    const fare = await createFare(accessToken, legId, {
+    const fare = await createFareAction(legId, {
       value: form.value,
       currency: form.currency,
       flight_date: `${form.flight_date}T00:00:00`,
@@ -66,7 +65,7 @@ export default function FaresPanel({ legId, initialFares, role, accessToken }: P
 
   async function handleDelete(fareId: string) {
     setLoading(true);
-    await deleteFare(accessToken, legId, fareId);
+    await deleteFareAction(legId, fareId);
     setFares((prev) => prev.filter((f) => f.id !== fareId));
     setLoading(false);
     router.refresh();
