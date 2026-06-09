@@ -36,7 +36,6 @@ export default async function TripMembersPage({ params }: Props) {
       </header>
 
       <MembersPanel
-        accessToken={session.apiAccessToken}
         tripId={id}
         members={members.members}
         pending={members.pending}

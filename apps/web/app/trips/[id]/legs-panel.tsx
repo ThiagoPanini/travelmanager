@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { createLeg, deleteLeg } from "@/lib/api/trips";
+import { createLegAction, deleteLegAction } from "./actions";
 
 interface Props {
   tripId: string;
@@ -13,7 +13,6 @@ interface Props {
   initialLegs: LegPublic[];
   stops: StopPublic[];
   role: MembershipRole;
-  accessToken: string;
 }
 
 function stopLabel(stopId: string | null, stops: StopPublic[], origin: string): string {
@@ -21,14 +20,7 @@ function stopLabel(stopId: string | null, stops: StopPublic[], origin: string): 
   return stops.find((s) => s.id === stopId)?.city ?? stopId;
 }
 
-export default function LegsPanel({
-  tripId,
-  origin,
-  initialLegs,
-  stops,
-  role,
-  accessToken,
-}: Props) {
+export default function LegsPanel({ tripId, origin, initialLegs, stops, role }: Props) {
   const router = useRouter();
   const [legs, setLegs] = useState<LegPublic[]>(initialLegs);
   const [originId, setOriginId] = useState<string>("");
@@ -39,7 +31,7 @@ export default function LegsPanel({
   async function handleAdd(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
-    const leg = await createLeg(accessToken, tripId, {
+    const leg = await createLegAction(tripId, {
       origin_stop_id: originId === "" ? null : originId,
       destination_stop_id: destId === "" ? null : destId,
     });
@@ -54,7 +46,7 @@ export default function LegsPanel({
 
   async function handleDelete(legId: string) {
     setLoading(true);
-    await deleteLeg(accessToken, tripId, legId);
+    await deleteLegAction(tripId, legId);
     setLegs((prev) => prev.filter((l) => l.id !== legId));
     setLoading(false);
     router.refresh();

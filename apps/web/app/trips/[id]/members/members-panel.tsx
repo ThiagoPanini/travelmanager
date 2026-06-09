@@ -4,17 +4,16 @@ import type { MemberWithUser, PendingMembershipPublic } from "@traveltogether/ty
 import { useRouter } from "next/navigation";
 import { type FormEvent, useState } from "react";
 
-import { addMember, removeMember, updateMemberRole } from "@/lib/api/trips";
+import { addMemberAction, removeMemberAction, updateMemberRoleAction } from "./actions";
 
 interface Props {
-  accessToken: string;
   tripId: string;
   members: MemberWithUser[];
   pending: PendingMembershipPublic[];
   isOrganizer: boolean;
 }
 
-export function MembersPanel({ accessToken, tripId, members, pending, isOrganizer }: Props) {
+export function MembersPanel({ tripId, members, pending, isOrganizer }: Props) {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [addState, setAddState] = useState<"idle" | "submitting" | "error" | "ok">("idle");
@@ -23,7 +22,7 @@ export function MembersPanel({ accessToken, tripId, members, pending, isOrganize
   async function onAddMember(e: FormEvent) {
     e.preventDefault();
     setAddState("submitting");
-    const result = await addMember(accessToken, tripId, email);
+    const result = await addMemberAction(tripId, email);
     if (result) {
       setEmail("");
       setAddState("ok");
@@ -38,17 +37,17 @@ export function MembersPanel({ accessToken, tripId, members, pending, isOrganize
   }
 
   async function onPromote(membershipId: string) {
-    await updateMemberRole(accessToken, tripId, membershipId, "organizer");
+    await updateMemberRoleAction(tripId, membershipId, "organizer");
     router.refresh();
   }
 
   async function onDemote(membershipId: string) {
-    await updateMemberRole(accessToken, tripId, membershipId, "member");
+    await updateMemberRoleAction(tripId, membershipId, "member");
     router.refresh();
   }
 
   async function onRemove(membershipId: string) {
-    await removeMember(accessToken, tripId, membershipId);
+    await removeMemberAction(tripId, membershipId);
     router.refresh();
   }
 

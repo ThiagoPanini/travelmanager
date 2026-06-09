@@ -47,7 +47,6 @@ export default async function TripDetailPage({ params }: Props) {
           tripId={id}
           initialStops={stops}
           role={membership.role}
-          accessToken={session.apiAccessToken}
         />
       </section>
 
@@ -59,7 +58,6 @@ export default async function TripDetailPage({ params }: Props) {
           initialLegs={legs}
           stops={stops}
           role={membership.role}
-          accessToken={session.apiAccessToken}
         />
       </section>
 
