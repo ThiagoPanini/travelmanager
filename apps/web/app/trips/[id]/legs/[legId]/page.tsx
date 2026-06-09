@@ -34,11 +34,7 @@ export default async function LegFaresPage({ params }: Props) {
         </div>
       </header>
 
-      <FaresPanel
-        legId={legId}
-        initialFares={fares}
-        role={membership.role}
-      />
+      <FaresPanel legId={legId} initialFares={fares} role={membership.role} />
     </main>
   );
 }

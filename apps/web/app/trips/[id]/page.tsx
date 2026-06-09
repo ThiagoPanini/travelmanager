@@ -43,11 +43,7 @@ export default async function TripDetailPage({ params }: Props) {
 
       <section className="trip-detail-section">
         <h2>Paradas</h2>
-        <StopsPanel
-          tripId={id}
-          initialStops={stops}
-          role={membership.role}
-        />
+        <StopsPanel tripId={id} initialStops={stops} role={membership.role} />
       </section>
 
       <section className="trip-detail-section">

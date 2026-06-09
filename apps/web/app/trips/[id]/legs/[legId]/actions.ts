@@ -1,10 +1,9 @@
 "use server";
 
+import type { FareQuoteCreate } from "@traveltogether/types";
 import { redirect } from "next/navigation";
-
 import { getAuthSession } from "@/auth";
 import { createFare, deleteFare } from "@/lib/api/fares";
-import type { FareQuoteCreate } from "@traveltogether/types";
 
 export async function createFareAction(legId: string, data: FareQuoteCreate) {
   const session = await getAuthSession();

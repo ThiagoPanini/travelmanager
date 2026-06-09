@@ -1,10 +1,9 @@
 "use server";
 
+import type { MembershipRole } from "@traveltogether/types";
 import { redirect } from "next/navigation";
-
 import { getAuthSession } from "@/auth";
 import { addMember, removeMember, updateMemberRole } from "@/lib/api/trips";
-import type { MembershipRole } from "@traveltogether/types";
 
 export async function addMemberAction(tripId: string, email: string) {
   const session = await getAuthSession();

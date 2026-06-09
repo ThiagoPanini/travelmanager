@@ -69,7 +69,10 @@ export default function StopsPanel({ tripId, initialStops, role }: Props) {
     const reordered = [...stops];
     [reordered[index - 1], reordered[index]] = [reordered[index], reordered[index - 1]];
     setStops(reordered);
-    await reorderStopsAction(tripId, reordered.map((s) => s.id));
+    await reorderStopsAction(
+      tripId,
+      reordered.map((s) => s.id),
+    );
     router.refresh();
   }
 
@@ -78,7 +81,10 @@ export default function StopsPanel({ tripId, initialStops, role }: Props) {
     const reordered = [...stops];
     [reordered[index], reordered[index + 1]] = [reordered[index + 1], reordered[index]];
     setStops(reordered);
-    await reorderStopsAction(tripId, reordered.map((s) => s.id));
+    await reorderStopsAction(
+      tripId,
+      reordered.map((s) => s.id),
+    );
     router.refresh();
   }
 
