@@ -1,0 +1,14 @@
+# Architecture Decision Records — traveltogether
+
+Decisões arquiteturais relevantes (difíceis de reverter, surpreendentes sem contexto, resultado de trade-off real). Numeração sequencial. Formato inspirado no epistemix.
+
+| # | Decisão | Status |
+|---|---|---|
+| [0001](0001-stack-e-arquitetura-espelha-epistemix.md) | Stack e arquitetura: espelhar o epistemix (monorepo Next.js + FastAPI + Postgres, hexagonal pragmática) | Accepted |
+| [0002](0002-infra-panini-vps.md) | Infra: deploy no panini-vps (Coolify + Cloudflare), Postgres dedicado, CI com portão | Accepted |
+| [0003](0003-modelo-de-acesso-mvp.md) | Modelo de acesso do MVP: gate por e-mail sem verificação + allowlist em env var | Accepted |
+| [0004](0004-modelo-de-itinerario-e-ancoragem-da-pesquisa.md) | Modelo de itinerário (Parada/Trajeto) e ancoragem da Pesquisa de Passagem | Accepted |
+| [0005](0005-substrato-de-planejamento-github-issues.md) | Substrato de planejamento: GitHub Issues (Matt Pocock), divergindo do epistemix | Accepted |
+| [0006](0006-autonomia-de-ops-afk-total.md) | Autonomia de ops: AFK total nas bordas 🔴 (DNS + secrets), com rotação pós-setup | Accepted |
+
+> A linguagem de domínio vive em [docs/CONTEXT.md](../CONTEXT.md). A direção visual provisória vive em [DESIGN.md](../../DESIGN.md).
