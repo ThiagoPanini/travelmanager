@@ -12,8 +12,8 @@ Uma `Viagem` pode ter múltiplos trechos (ex.: SP → 5 dias em NY → 2 dias em
 ## Decisão
 
 - A `Viagem` carrega a **`Origem`** (casa) como campo próprio.
-- O itinerário é um caminho: **`Parada` = nó** (cidade + datas de estadia), **`Trajeto` = aresta** (salto conceitual cidade→cidade). `Trajeto.origem` e `Trajeto.destino` referenciam uma `Parada` da mesma Viagem **ou** `null` (= `Origem`), de modo que o primeiro trajeto sai de casa e o último volta, sem caso especial.
-- **Granularidade:** `Trajeto` é cidade→cidade (unidade de comparação); o **aeroporto exato** (JFK vs EWR), companhia, valor etc. vivem na `Pesquisa de Passagem`.
+- O itinerário é um caminho: **`Parada` = nó** (cidade + datas de estadia), **`Trajeto` = aresta** (salto conceitual cidade→cidade). `Trajeto.origem` e `Trajeto.destino` referenciam uma `Parada` da mesma Viagem **ou** `null` (= `Origem`), de modo que o primeiro trajeto sai de casa e o último volta, sem caso especial. Os `Trajeto`s são derivados automaticamente da sequência ordenada de `Parada`s.
+- **Granularidade:** `Trajeto` é cidade→cidade (unidade de comparação); `Origem` e `Parada`s têm um `Aeroporto de Referência` para leitura visual da rota, enquanto o **aeroporto efetivamente pesquisado** (JFK vs EWR), companhia, valor etc. vive na `Pesquisa de Passagem`.
 - A `Pesquisa de Passagem` ancora em **exatamente um** `Trajeto` (FK única).
 - **`Parada` é persistida já no MVP** (mesmo sem `Roteiro`), para ancorar a estadia e reservar o lugar do `Roteiro`.
 
@@ -25,7 +25,7 @@ Uma `Viagem` pode ter múltiplos trechos (ex.: SP → 5 dias em NY → 2 dias em
 ## Consequências / Evolução
 
 - **Ida-e-volta / multi-trecho:** o modelo nó/aresta **já** representa ida e volta como dois `Trajeto`s. Quando uma tarifa precisar cobrir vários `Trajeto`s (passagem ida-e-volta), a `Pesquisa` passa de FK única para uma **tabela de ligação `pesquisa_trajeto`** — migração **aditiva** (cada Pesquisa vira grupo-de-um), sem retrabalho em `Trajeto`/`Parada`/`Viagem`. Disparar quando viagens de trajeto único com ida-e-volta virarem prioridade.
-- **Ciclo de vida:** apagar uma `Parada` que ancora um `Trajeto` com `Pesquisa`s exige confirmação/bloqueio (regra de domínio).
+- **Ciclo de vida:** apagar ou reordenar uma `Parada` que afetaria um `Trajeto` com `Pesquisa`s é bloqueado no MVP.
 
 ## Opções rejeitadas
 

@@ -6,23 +6,44 @@ from functools import lru_cache
 from typing import Literal
 
 import sqlalchemy
+from fastapi import HTTPException, status
 from sqlalchemy import text
+from sqlalchemy.exc import ArgumentError
 from sqlmodel import Session, SQLModel, create_engine
+
+
+class DatabaseConfigurationError(RuntimeError):
+    """Erro seguro para configuração inválida de banco."""
 
 
 def get_database_url() -> str:
     """Retorna a URL de banco configurada no ambiente."""
-    return os.getenv("DATABASE_URL", "")
+    return os.getenv("DATABASE_URL", "").strip()
 
 
 @lru_cache(maxsize=1)
 def get_engine() -> sqlalchemy.Engine:
-    return create_engine(get_database_url())
+    url = get_database_url()
+    if not url:
+        raise DatabaseConfigurationError("DATABASE_URL is not configured")
+
+    try:
+        return create_engine(url)
+    except ArgumentError as exc:
+        raise DatabaseConfigurationError("DATABASE_URL is not a valid SQLAlchemy URL") from exc
 
 
 def get_session() -> Iterator[Session]:
     """Sessão SQLModel para handlers HTTP."""
-    with Session(get_engine()) as session:
+    try:
+        engine = get_engine()
+    except DatabaseConfigurationError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=str(exc),
+        ) from exc
+
+    with Session(engine) as session:
         yield session
 
 

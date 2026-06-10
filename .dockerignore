@@ -1,0 +1,11 @@
+.git
+.claude/worktrees
+.local
+.next
+node_modules
+coverage
+dist
+build
+playwright-report
+test-results
+*.log
