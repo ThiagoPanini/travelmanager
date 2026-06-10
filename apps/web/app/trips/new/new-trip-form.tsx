@@ -28,56 +28,62 @@ export function NewTripForm() {
   }
 
   return (
-    <form className="login-panel" onSubmit={onSubmit} style={{ width: "min(100%, 28rem)" }}>
-      <div className="login-heading">
-        <p>traveltogether</p>
-        <h1>Nova Viagem</h1>
+    <form className="bp" onSubmit={onSubmit}>
+      <div className="bp-head">
+        <span>Check-in</span>
+        <span className="flight">Nova Viagem</span>
       </div>
 
-      <label className="login-field">
-        <span>Nome da Viagem</span>
-        <input
-          name="name"
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Ex.: NYC + Miami 2026"
-          required
-          type="text"
-          value={name}
-        />
-      </label>
+      <div className="form-card">
+        <label className="field">
+          <span>Nome da viagem</span>
+          <input
+            name="name"
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Eurotrip da Galera"
+            required
+            type="text"
+            value={name}
+          />
+        </label>
 
-      <label className="login-field">
-        <span>Origem (sua cidade/casa)</span>
-        <input
-          name="origin"
-          onChange={(e) => setOrigin(e.target.value)}
-          placeholder="Ex.: São Paulo"
-          required
-          type="text"
-          value={origin}
-        />
-      </label>
+        <label className="field">
+          <span>Origem — cidade de partida</span>
+          <input
+            name="origin"
+            onChange={(e) => setOrigin(e.target.value)}
+            placeholder="São Paulo (GRU)"
+            required
+            type="text"
+            value={origin}
+          />
+        </label>
 
-      <label className="login-field">
-        <span>Descrição (opcional)</span>
-        <input
-          name="description"
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder="Uma frase sobre a viagem"
-          type="text"
-          value={description}
-        />
-      </label>
+        <label className="field">
+          <span>Descrição (opcional)</span>
+          <textarea
+            name="description"
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Uma frase pra dar o tom da viagem"
+            value={description}
+          />
+        </label>
 
-      <button className="primary-button" disabled={state === "submitting"} type="submit">
-        {state === "submitting" ? "Criando..." : "Criar Viagem"}
-      </button>
+        <button
+          className="primary-button"
+          disabled={state === "submitting"}
+          style={{ width: "100%" }}
+          type="submit"
+        >
+          {state === "submitting" ? "Emitindo…" : "Emitir cartão de embarque"}
+        </button>
 
-      {state === "error" && (
-        <p className="login-message" role="status">
-          Não foi possível criar a viagem.
-        </p>
-      )}
+        {state === "error" && (
+          <p className="login-message" role="status">
+            Não foi possível criar a viagem.
+          </p>
+        )}
+      </div>
     </form>
   );
 }

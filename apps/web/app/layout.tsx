@@ -11,12 +11,14 @@ const inter = Inter({
   display: "swap",
   subsets: ["latin"],
   variable: "--font-inter",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const jetBrainsMono = JetBrains_Mono({
   display: "swap",
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
+  weight: ["400", "500", "600", "700"],
 });
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

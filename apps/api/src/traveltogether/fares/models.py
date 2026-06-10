@@ -26,6 +26,7 @@ class FareQuote(SQLModel, table=True):  # type: ignore[call-arg]
     airline: str
     link: str = ""
     notes: str = ""
+    is_chosen: bool = False
 
 
 class FareQuotePublic(SQLModel):
@@ -44,6 +45,16 @@ class FareQuotePublic(SQLModel):
     airline: str
     link: str
     notes: str
+    is_chosen: bool
+
+
+class Upvote(SQLModel, table=True):  # type: ignore[call-arg]
+    __tablename__: ClassVar[str] = "upvotes"  # pyright: ignore[reportIncompatibleVariableOverride]
+
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    fare_quote_id: uuid.UUID = Field(foreign_key="fare_quotes.id")
+    user_id: uuid.UUID = Field(foreign_key="users.id")
+    created_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
 
 
 class FareQuoteCreate(SQLModel):

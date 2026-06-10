@@ -14,7 +14,10 @@ import {
 
 // --- Stops ---
 
-export async function createStopAction(tripId: string, data: { city: string }) {
+export async function createStopAction(
+  tripId: string,
+  data: { city: string; arrival_date?: string | null; departure_date?: string | null },
+) {
   const session = await getAuthSession();
   if (!session?.apiAccessToken) redirect("/login");
   return createStop(session.apiAccessToken, tripId, data);

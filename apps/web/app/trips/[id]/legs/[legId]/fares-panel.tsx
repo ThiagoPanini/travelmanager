@@ -1,15 +1,25 @@
 "use client";
 
-import type { FareQuotePublic, MembershipRole } from "@traveltogether/types";
+import type { FareQuotePublic, MembershipRole, UpvoteResponse } from "@traveltogether/types";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
-import { createFareAction, deleteFareAction } from "./actions";
+import {
+  chooseFareAction,
+  createFareAction,
+  deleteFareAction,
+  getUpvoteAction,
+  toggleUpvoteAction,
+} from "./actions";
 
 interface Props {
   legId: string;
   initialFares: FareQuotePublic[];
   role: MembershipRole;
+  fromCode: string;
+  toCode: string;
+  fromCity: string;
+  toCity: string;
 }
 
 const EMPTY_FORM = {
@@ -26,13 +36,112 @@ const EMPTY_FORM = {
   notes: "",
 };
 
-export default function FaresPanel({ legId, initialFares, role }: Props) {
+function moneyValue(fare: FareQuotePublic): number {
+  const raw = String(fare.value).trim();
+  const normalized =
+    raw.includes(",") && raw.includes(".")
+      ? raw.replace(/\./g, "").replace(",", ".")
+      : raw.replace(",", ".");
+  const parsed = Number.parseFloat(normalized);
+  return Number.isFinite(parsed) ? parsed : Number.POSITIVE_INFINITY;
+}
+
+function formatMoney(fare: FareQuotePublic): string {
+  const numeric = moneyValue(fare);
+  if (!Number.isFinite(numeric)) return `${fare.currency} ${fare.value}`;
+  return new Intl.NumberFormat("pt-BR", {
+    currency: fare.currency || "BRL",
+    style: "currency",
+  }).format(numeric);
+}
+
+function formatDate(value: string): string {
+  return new Date(value).toLocaleDateString("pt-BR", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+}
+
+function formatDuration(minutes: number): string {
+  const hours = Math.floor(minutes / 60);
+  const mins = minutes % 60;
+  return mins ? `${hours}h${String(mins).padStart(2, "0")}` : `${hours}h`;
+}
+
+export default function FaresPanel({
+  legId,
+  initialFares,
+  role,
+  fromCode,
+  toCode,
+  fromCity,
+  toCity,
+}: Props) {
   const router = useRouter();
   const [fares, setFares] = useState<FareQuotePublic[]>(initialFares);
   const [form, setForm] = useState(EMPTY_FORM);
   const [loading, setLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  const [view, setView] = useState<"tickets" | "compare">("tickets");
+  const [upvotes, setUpvotes] = useState<Record<string, UpvoteResponse>>({});
+
   const isOrganizer = role === "organizer";
+
+  useEffect(() => {
+    async function loadUpvotes() {
+      const results = await Promise.all(initialFares.map((f) => getUpvoteAction(f.id)));
+      const map: Record<string, UpvoteResponse> = {};
+      initialFares.forEach((f, i) => {
+        const r = results[i];
+        if (r) map[f.id] = r;
+      });
+      setUpvotes(map);
+    }
+    void loadUpvotes();
+  }, [initialFares]);
+
+  async function handleUpvote(fareId: string) {
+    const result = await toggleUpvoteAction(fareId);
+    if (result) setUpvotes((prev) => ({ ...prev, [fareId]: result }));
+  }
+
+  async function handleChoose(fareId: string) {
+    setLoading(true);
+    const updated = await chooseFareAction(legId, fareId);
+    if (updated) {
+      setFares((prev) =>
+        prev.map((f) => ({ ...f, is_chosen: f.id === fareId ? !f.is_chosen : false })),
+      );
+    }
+    setLoading(false);
+  }
+
+  const voteFor = (fareId: string): UpvoteResponse => upvotes[fareId] ?? { count: 0, voted: false };
+
+  const cheapestId = useMemo(
+    () =>
+      fares.reduce<FareQuotePublic | null>(
+        (cheapest, fare) =>
+          !cheapest || moneyValue(fare) < moneyValue(cheapest) ? fare : cheapest,
+        null,
+      )?.id ?? null,
+    [fares],
+  );
+
+  const orderedFares = useMemo(
+    () =>
+      [...fares].sort((a, b) => {
+        const chosenDelta = (b.is_chosen ? 1 : 0) - (a.is_chosen ? 1 : 0);
+        return chosenDelta || moneyValue(a) - moneyValue(b);
+      }),
+    [fares],
+  );
+
+  const sortedFares = useMemo(
+    () => [...fares].sort((a, b) => moneyValue(a) - moneyValue(b)),
+    [fares],
+  );
 
   function setField(key: keyof typeof EMPTY_FORM, value: string | boolean) {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -73,148 +182,318 @@ export default function FaresPanel({ legId, initialFares, role }: Props) {
 
   return (
     <div className="fares-panel">
+      <div className="fare-head">
+        <div>
+          <p className="eyebrow">pesquisa de passagem · trajeto</p>
+          <div className="fare-route-big">
+            {fromCode}
+            <span className="ar">✈</span>
+            {toCode}
+          </div>
+          <p className="fare-route-city">
+            {fromCity} para {toCity}
+          </p>
+        </div>
+        {fares.length > 0 && (
+          <div className="cmp-toggle">
+            <button
+              className={view === "tickets" ? "on" : ""}
+              onClick={() => setView("tickets")}
+              type="button"
+            >
+              Bilhetes
+            </button>
+            <button
+              className={view === "compare" ? "on" : ""}
+              onClick={() => setView("compare")}
+              type="button"
+            >
+              Comparar
+            </button>
+          </div>
+        )}
+      </div>
+
       {fares.length === 0 ? (
-        <p className="trips-empty">Nenhuma pesquisa registrada.</p>
-      ) : (
-        <ul className="fares-list">
-          {fares.map((fare) => (
-            <li key={fare.id} className="fare-item">
-              <div className="fare-header">
-                <strong>{fare.airline}</strong>
-                <span className="fare-value">
-                  {fare.currency} {fare.value}
-                </span>
-              </div>
-              <div className="fare-details">
-                <span>
-                  {fare.origin_airport} → {fare.destination_airport}
-                </span>
-                <span>{new Date(fare.flight_date).toLocaleDateString("pt-BR")}</span>
-                <span>{fare.duration_minutes}min</span>
-                <span>{fare.stops} escala(s)</span>
-                {fare.checked_baggage && <span>Despacho incluso</span>}
-              </div>
-              {fare.notes && <p className="fare-notes">{fare.notes}</p>}
-              {isOrganizer && (
-                <button
-                  type="button"
-                  onClick={() => handleDelete(fare.id)}
-                  disabled={loading}
-                  className="danger-button"
-                >
-                  Remover
-                </button>
-              )}
-            </li>
-          ))}
+        <p className="empty">
+          Nenhuma pesquisa registrada para este trajeto.
+          {isOrganizer ? " Bora achar a primeira?" : ""}
+        </p>
+      ) : view === "tickets" ? (
+        <ul className="ticket-list">
+          {orderedFares.map((fare) => {
+            const cheapest = fare.id === cheapestId;
+            const chosen = fare.is_chosen;
+            const vote = voteFor(fare.id);
+            return (
+              <li key={fare.id} className={chosen ? "bp ticket chosen" : "bp ticket"}>
+                <div className="ticket-main">
+                  <div className="tk-head">
+                    <strong className="tk-airline">
+                      {fare.airline}
+                      {chosen && <span className="tk-chosen">★ escolhida</span>}
+                      {cheapest && !chosen && <span className="tk-cheapest">menor preço</span>}
+                    </strong>
+                    <button
+                      className={vote.voted ? "upvote on" : "upvote"}
+                      onClick={() => handleUpvote(fare.id)}
+                      type="button"
+                    >
+                      ↑ {vote.count}
+                    </button>
+                  </div>
+                  <div className="tk-body">
+                    <div className="tk-field">
+                      <div className="k">rota</div>
+                      <div className="v">
+                        {fare.origin_airport} → {fare.destination_airport}
+                      </div>
+                    </div>
+                    <div className="tk-field">
+                      <div className="k">data</div>
+                      <div className="v">{formatDate(fare.flight_date)}</div>
+                    </div>
+                    <div className="tk-field">
+                      <div className="k">duração</div>
+                      <div className="v">{formatDuration(fare.duration_minutes)}</div>
+                    </div>
+                    <div className="tk-field">
+                      <div className="k">escalas</div>
+                      <div className="v">{fare.stops === 0 ? "direto" : fare.stops}</div>
+                    </div>
+                    <div className="tk-field">
+                      <div className="k">bagagem</div>
+                      <div className="v">{fare.checked_baggage ? "incluída" : "—"}</div>
+                    </div>
+                  </div>
+                  {fare.notes && <p className="tk-notes">{fare.notes}</p>}
+                  <div className="ticket-actions">
+                    {isOrganizer && (
+                      <button
+                        className="secondary-button btn-sm"
+                        onClick={() => handleChoose(fare.id)}
+                        type="button"
+                        disabled={loading}
+                      >
+                        {chosen ? "Desmarcar escolhida" : "Marcar como escolhida"}
+                      </button>
+                    )}
+                    {fare.link && (
+                      <a
+                        className="secondary-button btn-sm"
+                        href={fare.link}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        Abrir link
+                      </a>
+                    )}
+                    {isOrganizer && (
+                      <button
+                        className="danger-button btn-sm"
+                        disabled={loading}
+                        onClick={() => handleDelete(fare.id)}
+                        type="button"
+                      >
+                        Remover
+                      </button>
+                    )}
+                  </div>
+                </div>
+                <div className="perf-v" />
+                <div className="tk-stub">
+                  <span className="currency">{fare.currency}</span>
+                  <span className="price">{formatMoney(fare).replace(/^R\$\s?/, "")}</span>
+                  <span className="by">
+                    {new Date(fare.created_at).toLocaleDateString("pt-BR")}
+                  </span>
+                </div>
+              </li>
+            );
+          })}
         </ul>
+      ) : (
+        <div className="cmp-table">
+          <table className="cmp">
+            <thead>
+              <tr>
+                <th>Companhia</th>
+                <th>Preço</th>
+                <th>Rota</th>
+                <th>Data</th>
+                <th>Duração</th>
+                <th>Escalas</th>
+                <th>Bagagem</th>
+                <th>Votos</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sortedFares.map((fare) => {
+                const chosen = fare.is_chosen;
+                return (
+                  <tr key={fare.id} className={chosen ? "chosen" : ""}>
+                    <td className="airline">
+                      {chosen && <span style={{ color: "var(--gold)" }}>★ </span>}
+                      {fare.airline}
+                    </td>
+                    <td className={fare.id === cheapestId ? "price best" : "price"}>
+                      {formatMoney(fare)}
+                    </td>
+                    <td>
+                      {fare.origin_airport} → {fare.destination_airport}
+                    </td>
+                    <td>{formatDate(fare.flight_date)}</td>
+                    <td>{formatDuration(fare.duration_minutes)}</td>
+                    <td>{fare.stops === 0 ? "direto" : fare.stops}</td>
+                    <td>{fare.checked_baggage ? "sim" : "—"}</td>
+                    <td>↑ {voteFor(fare.id).count}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       )}
 
       {isOrganizer && (
         <>
           {!showForm && (
-            <button type="button" onClick={() => setShowForm(true)} className="primary-button">
-              Registrar Pesquisa
+            <button className="secondary-button" onClick={() => setShowForm(true)} type="button">
+              + Registrar pesquisa
             </button>
           )}
           {showForm && (
-            <form onSubmit={handleAdd} className="fare-add-form">
-              <div className="form-row">
-                <input
-                  value={form.airline}
-                  onChange={(e) => setField("airline", e.target.value)}
-                  placeholder="Companhia"
-                  required
-                  className="fare-input"
-                />
-                <input
-                  value={form.value}
-                  onChange={(e) => setField("value", e.target.value)}
-                  placeholder="Valor (ex: 1500.00)"
-                  required
-                  className="fare-input"
-                />
-                <input
-                  value={form.currency}
-                  onChange={(e) => setField("currency", e.target.value)}
-                  placeholder="Moeda"
-                  required
-                  className="fare-input fare-input-sm"
-                />
+            <form className="bp fare-form-ticket" onSubmit={handleAdd}>
+              <div className="bp-head">
+                <span>Nova Pesquisa</span>
+                <span className="flight">Fare quote</span>
               </div>
-              <div className="form-row">
-                <input
-                  value={form.origin_airport}
-                  onChange={(e) => setField("origin_airport", e.target.value)}
-                  placeholder="Aeroporto origem (ex: GRU)"
-                  required
-                  className="fare-input fare-input-sm"
-                />
-                <input
-                  value={form.destination_airport}
-                  onChange={(e) => setField("destination_airport", e.target.value)}
-                  placeholder="Aeroporto destino (ex: EZE)"
-                  required
-                  className="fare-input fare-input-sm"
-                />
-              </div>
-              <div className="form-row">
-                <input
-                  type="date"
-                  value={form.flight_date}
-                  onChange={(e) => setField("flight_date", e.target.value)}
-                  required
-                  className="fare-input"
-                />
-                <input
-                  value={form.duration_minutes}
-                  onChange={(e) => setField("duration_minutes", e.target.value)}
-                  placeholder="Duração (min)"
-                  required
-                  className="fare-input fare-input-sm"
-                />
-                <input
-                  value={form.stops}
-                  onChange={(e) => setField("stops", e.target.value)}
-                  placeholder="Escalas"
-                  className="fare-input fare-input-sm"
-                />
-              </div>
-              <div className="form-row">
-                <label className="fare-checkbox">
+              <div className="form-card">
+                <div className="form-row">
+                  <label className="field">
+                    <span>Companhia</span>
+                    <input
+                      className="fare-input"
+                      onChange={(e) => setField("airline", e.target.value)}
+                      placeholder="TAP Air Portugal"
+                      required
+                      value={form.airline}
+                    />
+                  </label>
+                  <label className="field">
+                    <span>Valor</span>
+                    <input
+                      className="fare-input"
+                      onChange={(e) => setField("value", e.target.value)}
+                      placeholder="3420.00"
+                      required
+                      value={form.value}
+                    />
+                  </label>
+                  <label className="field">
+                    <span>Moeda</span>
+                    <input
+                      className="fare-input fare-input-sm"
+                      onChange={(e) => setField("currency", e.target.value)}
+                      placeholder="BRL"
+                      required
+                      value={form.currency}
+                    />
+                  </label>
+                </div>
+                <div className="form-row">
+                  <label className="field">
+                    <span>Aeroporto origem</span>
+                    <input
+                      className="fare-input fare-input-sm"
+                      onChange={(e) => setField("origin_airport", e.target.value)}
+                      placeholder="GRU"
+                      required
+                      value={form.origin_airport}
+                    />
+                  </label>
+                  <label className="field">
+                    <span>Aeroporto destino</span>
+                    <input
+                      className="fare-input fare-input-sm"
+                      onChange={(e) => setField("destination_airport", e.target.value)}
+                      placeholder="LIS"
+                      required
+                      value={form.destination_airport}
+                    />
+                  </label>
+                </div>
+                <div className="form-row">
+                  <label className="field">
+                    <span>Data da passagem</span>
+                    <input
+                      className="fare-input"
+                      onChange={(e) => setField("flight_date", e.target.value)}
+                      required
+                      type="date"
+                      value={form.flight_date}
+                    />
+                  </label>
+                  <label className="field">
+                    <span>Duração (min)</span>
+                    <input
+                      className="fare-input fare-input-sm"
+                      onChange={(e) => setField("duration_minutes", e.target.value)}
+                      placeholder="635"
+                      required
+                      value={form.duration_minutes}
+                    />
+                  </label>
+                  <label className="field">
+                    <span>Escalas</span>
+                    <input
+                      className="fare-input fare-input-sm"
+                      onChange={(e) => setField("stops", e.target.value)}
+                      placeholder="0"
+                      value={form.stops}
+                    />
+                  </label>
+                </div>
+                <div className="form-row">
+                  <label className="fare-checkbox">
+                    <input
+                      checked={form.checked_baggage}
+                      onChange={(e) => setField("checked_baggage", e.target.checked)}
+                      type="checkbox"
+                    />
+                    Bagagem despachada
+                  </label>
+                </div>
+                <label className="field">
+                  <span>Link</span>
                   <input
-                    type="checkbox"
-                    checked={form.checked_baggage}
-                    onChange={(e) => setField("checked_baggage", e.target.checked)}
+                    className="fare-input"
+                    onChange={(e) => setField("link", e.target.value)}
+                    placeholder="Link (opcional)"
+                    value={form.link}
                   />
-                  Bagagem despachada
                 </label>
-              </div>
-              <div className="form-row">
-                <input
-                  value={form.link}
-                  onChange={(e) => setField("link", e.target.value)}
-                  placeholder="Link (opcional)"
-                  className="fare-input"
-                />
-              </div>
-              <textarea
-                value={form.notes}
-                onChange={(e) => setField("notes", e.target.value)}
-                placeholder="Observações"
-                className="fare-input"
-              />
-              <div className="form-actions">
-                <button type="submit" disabled={loading} className="primary-button">
-                  Salvar
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setShowForm(false)}
-                  className="secondary-button"
-                >
-                  Cancelar
-                </button>
+                <label className="field">
+                  <span>Observações</span>
+                  <textarea
+                    className="fare-input"
+                    onChange={(e) => setField("notes", e.target.value)}
+                    placeholder="Voo direto, noturno…"
+                    value={form.notes}
+                  />
+                </label>
+                <div className="form-actions">
+                  <button className="primary-button" disabled={loading} type="submit">
+                    Salvar
+                  </button>
+                  <button
+                    className="secondary-button"
+                    onClick={() => setShowForm(false)}
+                    type="button"
+                  >
+                    Cancelar
+                  </button>
+                </div>
               </div>
             </form>
           )}

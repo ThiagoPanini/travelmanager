@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
+import { AppTopbar } from "@/app/app-topbar";
 import { getAuthSession } from "@/auth";
 import { getTrip, getTripMembers } from "@/lib/api/trips";
 
@@ -25,22 +27,29 @@ export default async function TripMembersPage({ params }: Props) {
   const isOrganizer = membership.role === "organizer";
 
   return (
-    <main className="trips-shell">
-      <header className="trips-header">
-        <div>
-          <p className="eyebrow">
-            <a href={`/trips/${id}`}>← {trip.name}</a>
-          </p>
-          <h1>Membros</h1>
-        </div>
-      </header>
+    <div className="app-shell">
+      <AppTopbar active="trips" />
+      <main className="trips-shell">
+        <Link className="crumb" href={`/trips/${id}`}>
+          ← {trip.name}
+        </Link>
+        <header className="trips-header">
+          <div>
+            <p className="eyebrow">manifesto de passageiros</p>
+            <h1>Tripulação</h1>
+            <p className="sub">
+              Organizadores editam tudo; membros leem e dão upvote nas passagens.
+            </p>
+          </div>
+        </header>
 
-      <MembersPanel
-        tripId={id}
-        members={members.members}
-        pending={members.pending}
-        isOrganizer={isOrganizer}
-      />
-    </main>
+        <MembersPanel
+          tripId={id}
+          members={members.members}
+          pending={members.pending}
+          isOrganizer={isOrganizer}
+        />
+      </main>
+    </div>
   );
 }

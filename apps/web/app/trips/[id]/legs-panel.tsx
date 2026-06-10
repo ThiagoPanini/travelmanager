@@ -13,6 +13,7 @@ interface Props {
   initialLegs: LegPublic[];
   stops: StopPublic[];
   role: MembershipRole;
+  fareCounts: Record<string, number>;
 }
 
 function stopLabel(stopId: string | null, stops: StopPublic[], origin: string): string {
@@ -20,7 +21,15 @@ function stopLabel(stopId: string | null, stops: StopPublic[], origin: string): 
   return stops.find((s) => s.id === stopId)?.city ?? stopId;
 }
 
-export default function LegsPanel({ tripId, origin, initialLegs, stops, role }: Props) {
+function displayCode(value: string): string {
+  const match = value.match(/\(([A-Za-z]{3})\)/);
+  if (match) return match[1].toUpperCase();
+  const normalized = value.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const letters = normalized.replace(/[^A-Za-z]/g, "").toUpperCase();
+  return (letters.slice(0, 3) || "LEG").padEnd(3, "X");
+}
+
+export default function LegsPanel({ tripId, origin, initialLegs, stops, role, fareCounts }: Props) {
   const router = useRouter();
   const [legs, setLegs] = useState<LegPublic[]>(initialLegs);
   const [originId, setOriginId] = useState<string>("");
@@ -63,30 +72,48 @@ export default function LegsPanel({ tripId, origin, initialLegs, stops, role }: 
         <p className="trips-empty">Nenhum trajeto adicionado.</p>
       ) : (
         <ol className="legs-list">
-          {legs.map((leg) => (
-            <li key={leg.id} className="leg-item">
-              <span className="leg-route">
-                <span className="leg-origin">{stopLabel(leg.origin_stop_id, stops, origin)}</span>
-                <span className="leg-arrow"> → </span>
-                <span className="leg-dest">
-                  {stopLabel(leg.destination_stop_id, stops, origin)}
-                </span>
-              </span>
-              <Link href={`/trips/${tripId}/legs/${leg.id}`} className="secondary-button">
-                Passagens
-              </Link>
-              {isOrganizer && (
-                <button
-                  type="button"
-                  onClick={() => handleDelete(leg.id)}
-                  disabled={loading}
-                  className="danger-button"
-                >
-                  Remover
-                </button>
-              )}
-            </li>
-          ))}
+          {legs.map((leg) => {
+            const originLabel = stopLabel(leg.origin_stop_id, stops, origin);
+            const destLabel = stopLabel(leg.destination_stop_id, stops, origin);
+            const count = fareCounts[leg.id] ?? 0;
+            return (
+              <li key={leg.id} className="leg-item">
+                <Link href={`/trips/${tripId}/legs/${leg.id}`} className="leg-item-link">
+                  <span className="ticket-ic" aria-hidden="true">
+                    🎫
+                  </span>
+                  <span className="leg-main">
+                    <span className="leg-route">
+                      {displayCode(originLabel)}
+                      <span className="leg-arrow">→</span>
+                      {displayCode(destLabel)}
+                    </span>
+                    <span className="leg-cities">
+                      {originLabel} → {destLabel}
+                    </span>
+                  </span>
+                  <span className="leg-spacer" />
+                  {count === 0 ? (
+                    <span className="lr-empty">sem passagens →</span>
+                  ) : (
+                    <span className="lr-count">
+                      {count} {count === 1 ? "pesquisa" : "pesquisas"} →
+                    </span>
+                  )}
+                </Link>
+                {isOrganizer && (
+                  <button
+                    type="button"
+                    onClick={() => handleDelete(leg.id)}
+                    disabled={loading}
+                    className="danger-button btn-sm"
+                  >
+                    Remover
+                  </button>
+                )}
+              </li>
+            );
+          })}
         </ol>
       )}
 

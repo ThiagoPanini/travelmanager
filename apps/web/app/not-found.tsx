@@ -1,18 +1,15 @@
+import Link from "next/link";
+
 export default function NotFound() {
   return (
-    <main
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100dvh",
-        flexDirection: "column",
-        gap: "0.5rem",
-      }}
-    >
-      <p style={{ fontFamily: "var(--font-mono)", color: "var(--text-faint)", margin: 0 }}>
-        404 — página não encontrada
-      </p>
+    <main className="not-found">
+      <div>
+        <div className="not-found-stamp">GATE CLOSED</div>
+        <p className="not-found-route">erro 404 · embarque encerrado pra esta rota</p>
+        <Link className="primary-button" href="/">
+          Voltar ao portão
+        </Link>
+      </div>
     </main>
   );
 }
