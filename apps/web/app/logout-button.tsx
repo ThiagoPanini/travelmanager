@@ -2,14 +2,15 @@
 
 import { signOut } from "next-auth/react";
 
-export function LogoutButton() {
+export function LogoutButton({ initials }: { initials: string }) {
   return (
     <button
-      className="secondary-button"
-      onClick={() => signOut({ callbackUrl: "/login" })}
+      className="avatar"
+      onClick={() => signOut({ callbackUrl: "/" })}
+      title="Sair"
       type="button"
     >
-      Sair
+      {initials}
     </button>
   );
 }

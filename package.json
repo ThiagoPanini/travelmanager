@@ -7,6 +7,7 @@
   },
   "scripts": {
     "prepare": "lefthook install",
+    "dev:api": "cd apps/api && uv run uvicorn --env-file .env.local traveltogether.main:app --reload",
     "dev:web": "pnpm --filter @traveltogether/web dev",
     "build:web": "pnpm --filter @traveltogether/web build",
     "typecheck:web": "pnpm --filter @traveltogether/web typecheck",

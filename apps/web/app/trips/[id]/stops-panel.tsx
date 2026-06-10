@@ -17,23 +17,67 @@ interface Props {
   role: MembershipRole;
 }
 
+function displayCode(value: string): string {
+  const normalized = value.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const letters = normalized.replace(/[^A-Za-z]/g, "").toUpperCase();
+  return (letters.slice(0, 3) || "PAR").padEnd(3, "X");
+}
+
+function coverTone(value: string, index: number): number {
+  return ([...value].reduce((sum, char) => sum + char.charCodeAt(0), index) + index) % 5;
+}
+
+function formatDate(value: string | null): string | null {
+  if (!value) return null;
+  return new Date(`${value}T00:00:00`).toLocaleDateString("pt-BR", {
+    day: "2-digit",
+    month: "short",
+  });
+}
+
+function nightsBetween(arrival: string | null, departure: string | null): number | null {
+  if (!arrival || !departure) return null;
+  const ms =
+    new Date(`${departure}T00:00:00`).getTime() - new Date(`${arrival}T00:00:00`).getTime();
+  const nights = Math.round(ms / 86_400_000);
+  return nights > 0 ? nights : null;
+}
+
 export default function StopsPanel({ tripId, initialStops, role }: Props) {
   const router = useRouter();
   const [stops, setStops] = useState<StopPublic[]>(initialStops);
   const [newCity, setNewCity] = useState("");
+  const [newArrivalDate, setNewArrivalDate] = useState("");
+  const [newDepartureDate, setNewDepartureDate] = useState("");
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editCity, setEditCity] = useState("");
+  const [editArrivalDate, setEditArrivalDate] = useState("");
+  const [editDepartureDate, setEditDepartureDate] = useState("");
   const [loading, setLoading] = useState(false);
   const isOrganizer = role === "organizer";
+
+  function nullableDate(value: string): string | null {
+    return value.trim() ? value : null;
+  }
+
+  function inputDate(value: string | null): string {
+    return value ? value.slice(0, 10) : "";
+  }
 
   async function handleAdd(e: React.FormEvent) {
     e.preventDefault();
     if (!newCity.trim()) return;
     setLoading(true);
-    const stop = await createStopAction(tripId, { city: newCity.trim() });
+    const stop = await createStopAction(tripId, {
+      city: newCity.trim(),
+      arrival_date: nullableDate(newArrivalDate),
+      departure_date: nullableDate(newDepartureDate),
+    });
     if (stop) {
       setStops((prev) => [...prev, stop]);
       setNewCity("");
+      setNewArrivalDate("");
+      setNewDepartureDate("");
     }
     setLoading(false);
     router.refresh();
@@ -50,12 +94,18 @@ export default function StopsPanel({ tripId, initialStops, role }: Props) {
   async function handleEdit(stop: StopPublic) {
     setEditingId(stop.id);
     setEditCity(stop.city);
+    setEditArrivalDate(inputDate(stop.arrival_date));
+    setEditDepartureDate(inputDate(stop.departure_date));
   }
 
   async function handleSaveEdit(stopId: string) {
     if (!editCity.trim()) return;
     setLoading(true);
-    const updated = await updateStopAction(tripId, stopId, { city: editCity.trim() });
+    const updated = await updateStopAction(tripId, stopId, {
+      city: editCity.trim(),
+      arrival_date: nullableDate(editArrivalDate),
+      departure_date: nullableDate(editDepartureDate),
+    });
     if (updated) {
       setStops((prev) => prev.map((s) => (s.id === stopId ? updated : s)));
     }
@@ -95,42 +145,83 @@ export default function StopsPanel({ tripId, initialStops, role }: Props) {
       ) : (
         <ol className="stops-list">
           {stops.map((stop, index) => (
-            <li key={stop.id} className="stop-item">
+            <li key={stop.id} className="bp stop-bp">
               {editingId === stop.id ? (
-                <span className="stop-edit-row">
-                  <input
-                    value={editCity}
-                    onChange={(e) => setEditCity(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && handleSaveEdit(stop.id)}
-                    className="stop-edit-input"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => handleSaveEdit(stop.id)}
-                    disabled={loading}
-                    className="primary-button"
-                  >
-                    Salvar
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setEditingId(null)}
-                    className="secondary-button"
-                  >
-                    Cancelar
-                  </button>
-                </span>
+                <div className="stop-edit-row">
+                  <label className="field">
+                    <span>Cidade da Parada</span>
+                    <input
+                      value={editCity}
+                      onChange={(e) => setEditCity(e.target.value)}
+                      onKeyDown={(e) => e.key === "Enter" && handleSaveEdit(stop.id)}
+                      className="stop-edit-input"
+                    />
+                  </label>
+                  <div className="form-row">
+                    <label className="field">
+                      <span>Chegada</span>
+                      <input
+                        type="date"
+                        value={editArrivalDate}
+                        onChange={(e) => setEditArrivalDate(e.target.value)}
+                        className="stop-edit-input"
+                      />
+                    </label>
+                    <label className="field">
+                      <span>Saída</span>
+                      <input
+                        type="date"
+                        value={editDepartureDate}
+                        onChange={(e) => setEditDepartureDate(e.target.value)}
+                        className="stop-edit-input"
+                      />
+                    </label>
+                  </div>
+                  <div className="form-actions">
+                    <button
+                      type="button"
+                      onClick={() => handleSaveEdit(stop.id)}
+                      disabled={loading}
+                      className="primary-button"
+                    >
+                      Salvar
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setEditingId(null)}
+                      className="secondary-button"
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                </div>
               ) : (
-                <span className="stop-row">
-                  <span className="stop-order">{stop.order}.</span>
-                  <span className="stop-city">{stop.city}</span>
-                  {stop.arrival_date && (
-                    <span className="stop-date">
-                      {new Date(stop.arrival_date).toLocaleDateString("pt-BR")}
-                    </span>
-                  )}
+                <>
+                  <div className="cover" data-tone={coverTone(stop.city, index)}>
+                    <span className="cover-skyline" />
+                    <span className="cover-note">foto · parada</span>
+                    <span className="cover-caption">{stop.city}</span>
+                  </div>
+                  <div className="stop-body">
+                    <div className="stop-city">
+                      {stop.city}
+                      <span className="stop-code">{displayCode(stop.city)}</span>
+                    </div>
+                    <div className="stop-date">
+                      {formatDate(stop.arrival_date) ?? "Data a definir"}
+                      {stop.departure_date ? ` – ${formatDate(stop.departure_date)}` : ""}
+                      {nightsBetween(stop.arrival_date, stop.departure_date)
+                        ? ` · ${nightsBetween(stop.arrival_date, stop.departure_date)} noites`
+                        : ""}
+                    </div>
+                  </div>
+                  <div className="perf" />
+                  <div className="stop-stub">
+                    <span>Parada {stop.order}</span>
+                    <span className="roteiro-preview">+ roteiro</span>
+                  </div>
                   {isOrganizer && (
-                    <span className="stop-actions">
+                    <div className="stop-actions">
                       <button
                         type="button"
                         onClick={() => handleMoveUp(index)}
@@ -164,9 +255,9 @@ export default function StopsPanel({ tripId, initialStops, role }: Props) {
                       >
                         Remover
                       </button>
-                    </span>
+                    </div>
                   )}
-                </span>
+                </>
               )}
             </li>
           ))}
@@ -175,13 +266,36 @@ export default function StopsPanel({ tripId, initialStops, role }: Props) {
 
       {isOrganizer && (
         <form onSubmit={handleAdd} className="stop-add-form">
-          <input
-            value={newCity}
-            onChange={(e) => setNewCity(e.target.value)}
-            placeholder="Cidade da parada"
-            className="stop-edit-input"
-            required
-          />
+          <label className="field">
+            <span>Cidade da Parada</span>
+            <input
+              value={newCity}
+              onChange={(e) => setNewCity(e.target.value)}
+              placeholder="Lisboa"
+              className="stop-edit-input"
+              required
+            />
+          </label>
+          <div className="form-row">
+            <label className="field">
+              <span>Chegada</span>
+              <input
+                type="date"
+                value={newArrivalDate}
+                onChange={(e) => setNewArrivalDate(e.target.value)}
+                className="stop-edit-input"
+              />
+            </label>
+            <label className="field">
+              <span>Saída</span>
+              <input
+                type="date"
+                value={newDepartureDate}
+                onChange={(e) => setNewDepartureDate(e.target.value)}
+                className="stop-edit-input"
+              />
+            </label>
+          </div>
           <button type="submit" disabled={loading} className="primary-button">
             Adicionar Parada
           </button>

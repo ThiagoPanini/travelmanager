@@ -13,6 +13,11 @@ interface Props {
   isOrganizer: boolean;
 }
 
+function initials(email: string): string {
+  const [name = "tt", domain = ""] = email.split("@");
+  return `${name[0] ?? "t"}${domain[0] ?? name[1] ?? "t"}`.toUpperCase();
+}
+
 export function MembersPanel({ tripId, members, pending, isOrganizer }: Props) {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -54,10 +59,11 @@ export function MembersPanel({ tripId, members, pending, isOrganizer }: Props) {
   return (
     <div className="members-panel">
       <section className="members-section">
-        <h2>Ativos</h2>
+        <h2>A bordo · {members.length}</h2>
         <ul className="members-list">
           {members.map(({ membership, email: memberEmail }) => (
             <li key={membership.id} className="member-row">
+              <span className="member-avatar">{initials(memberEmail)}</span>
               <span className="member-email">{memberEmail}</span>
               <span className="trip-card-role" data-role={membership.role}>
                 {membership.role === "organizer" ? "Organizador" : "Membro"}
@@ -97,10 +103,11 @@ export function MembersPanel({ tripId, members, pending, isOrganizer }: Props) {
 
       {pending.length > 0 && (
         <section className="members-section">
-          <h2>Pendentes</h2>
+          <h2>Lista de espera · {pending.length}</h2>
           <ul className="members-list">
             {pending.map((p) => (
               <li key={p.id} className="member-row">
+                <span className="member-avatar">?</span>
                 <span className="member-email">{p.email}</span>
                 <span className="trip-card-role" data-role="pending">
                   Pendente

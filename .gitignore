@@ -1,6 +1,7 @@
 **prompts
 **tmp
 **raw
+*.claude/design
 
 # Local infra/secrets scratch — NUNCA commitar (contém IP de origem da VPS, notas de bootstrap).
 # Caderno do panini-vps vive aqui para edição fácil; o repo é público, então jamais versionar.
@@ -74,6 +75,7 @@ desktop.ini
 
 # Claude Code — local overrides (personal, not for the repo)
 .claude/settings.local.json
+.claude/worktrees/
 
 # MCP — configs reais são locais; templates sem segredo ficam versionados.
 .mcp.json

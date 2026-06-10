@@ -14,7 +14,7 @@ docker-compose up postgres -d
 
 # Rodar api e web em paralelo
 pnpm dev:web &
-cd apps/api && uv run uvicorn traveltogether.main:app --reload
+pnpm dev:api
 ```
 
 Ou subir tudo com Docker:
