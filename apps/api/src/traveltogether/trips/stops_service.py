@@ -5,7 +5,30 @@ from datetime import datetime
 
 from sqlmodel import Session, col, func, select
 
-from traveltogether.trips.models import Stop
+from traveltogether.trips.models import Stop, Trip
+
+
+class StopDateError(ValueError):
+    """Datas de Parada inválidas (fora do Período ou saída anterior a chegada)."""
+
+
+def _validate_stop_dates(
+    trip: Trip,
+    arrival_date: datetime | None,
+    departure_date: datetime | None,
+) -> None:
+    if arrival_date and departure_date and departure_date < arrival_date:
+        raise StopDateError("departure_date não pode ser anterior a arrival_date")
+
+    if trip.start_date and arrival_date:
+        arrival_naive = arrival_date.replace(tzinfo=None)
+        if arrival_naive.date() < trip.start_date:
+            raise StopDateError("arrival_date fora do Período da Viagem")
+
+    if trip.end_date and departure_date:
+        departure_naive = departure_date.replace(tzinfo=None)
+        if departure_naive.date() > trip.end_date:
+            raise StopDateError("departure_date fora do Período da Viagem")
 
 
 def list_stops(session: Session, trip_id: uuid.UUID) -> list[Stop]:
@@ -31,11 +54,20 @@ def update_stop(
     session: Session,
     stop: Stop,
     city: str | None = None,
+    airport_code: str | None = None,
     arrival_date: datetime | None = None,
     departure_date: datetime | None = None,
 ) -> Stop:
+    trip = session.get(Trip, stop.trip_id)
+    new_arrival = arrival_date if arrival_date is not None else stop.arrival_date
+    new_departure = departure_date if departure_date is not None else stop.departure_date
+    if trip:
+        _validate_stop_dates(trip, new_arrival, new_departure)
+
     if city is not None:
         stop.city = city
+    if airport_code is not None:
+        stop.airport_code = airport_code.upper()
     if arrival_date is not None:
         stop.arrival_date = arrival_date
     if departure_date is not None:
@@ -52,13 +84,20 @@ def create_stop(
     city: str,
     arrival_date: datetime | None = None,
     departure_date: datetime | None = None,
+    *,
+    airport_code: str | None = None,
 ) -> Stop:
+    trip = session.get(Trip, trip_id)
+    if trip:
+        _validate_stop_dates(trip, arrival_date, departure_date)
+
     current_count = session.exec(
         select(func.count()).select_from(Stop).where(col(Stop.trip_id) == trip_id)
     ).one()
     stop = Stop(
         trip_id=trip_id,
         city=city,
+        airport_code=airport_code.upper() if airport_code else None,
         arrival_date=arrival_date,
         departure_date=departure_date,
         order=current_count + 1,

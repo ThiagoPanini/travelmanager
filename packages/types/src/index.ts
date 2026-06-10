@@ -55,6 +55,7 @@ export interface StopPublic {
   id: string;
   trip_id: string;
   city: string;
+  airport_code: string | null;
   arrival_date: string | null;
   departure_date: string | null;
   order: number;
@@ -62,12 +63,14 @@ export interface StopPublic {
 
 export interface StopCreate {
   city: string;
+  airport_code?: string | null;
   arrival_date?: string | null;
   departure_date?: string | null;
 }
 
 export interface StopUpdate {
   city?: string | null;
+  airport_code?: string | null;
   arrival_date?: string | null;
   departure_date?: string | null;
 }
