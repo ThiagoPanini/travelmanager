@@ -52,6 +52,7 @@ from traveltogether.trips.service import (
     update_trip,
 )
 from traveltogether.trips.stops_service import (
+    StopDateError,
     create_stop,
     delete_stop,
     list_stops,
@@ -345,7 +346,19 @@ def post_stop(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="only organizers can manage stops",
         )
-    stop = create_stop(session, trip_id, body.city, body.arrival_date, body.departure_date)
+    try:
+        stop = create_stop(
+            session,
+            trip_id,
+            body.city,
+            body.arrival_date,
+            body.departure_date,
+            airport_code=body.airport_code,
+        )
+    except StopDateError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=str(exc)
+        ) from exc
     return StopPublic.model_validate(stop)
 
 
@@ -394,7 +407,19 @@ def patch_stop(
             detail="only organizers can edit stops",
         )
     stop = _get_stop_or_404(session, trip_id, stop_id)
-    updated = update_stop(session, stop, body.city, body.arrival_date, body.departure_date)
+    try:
+        updated = update_stop(
+            session,
+            stop,
+            body.city,
+            airport_code=body.airport_code,
+            arrival_date=body.arrival_date,
+            departure_date=body.departure_date,
+        )
+    except StopDateError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=str(exc)
+        ) from exc
     return StopPublic.model_validate(updated)
 
 

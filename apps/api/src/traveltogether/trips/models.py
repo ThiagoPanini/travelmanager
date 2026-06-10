@@ -81,6 +81,7 @@ class Stop(SQLModel, table=True):  # type: ignore[call-arg]
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
     trip_id: uuid.UUID = Field(foreign_key="trips.id")
     city: str
+    airport_code: str | None = None
     arrival_date: datetime | None = None
     departure_date: datetime | None = None
     order: int
@@ -90,6 +91,7 @@ class StopPublic(SQLModel):
     id: uuid.UUID
     trip_id: uuid.UUID
     city: str
+    airport_code: str | None
     arrival_date: datetime | None
     departure_date: datetime | None
     order: int
@@ -97,12 +99,14 @@ class StopPublic(SQLModel):
 
 class StopCreate(SQLModel):
     city: str
+    airport_code: str | None = None
     arrival_date: datetime | None = None
     departure_date: datetime | None = None
 
 
 class StopUpdate(SQLModel):
     city: str | None = None
+    airport_code: str | None = None
     arrival_date: datetime | None = None
     departure_date: datetime | None = None
 
