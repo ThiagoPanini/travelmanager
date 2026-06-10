@@ -1,10 +1,16 @@
 "use client";
 
-import type { FareQuotePublic, MembershipRole } from "@traveltogether/types";
+import type { FareQuotePublic, MembershipRole, UpvoteResponse } from "@traveltogether/types";
 import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
-import { createFareAction, deleteFareAction } from "./actions";
+import {
+  chooseFareAction,
+  createFareAction,
+  deleteFareAction,
+  getUpvoteAction,
+  toggleUpvoteAction,
+} from "./actions";
 
 interface Props {
   legId: string;
@@ -14,11 +20,6 @@ interface Props {
   toCode: string;
   fromCity: string;
   toCity: string;
-}
-
-interface Vote {
-  count: number;
-  voted: boolean;
 }
 
 const EMPTY_FORM = {
@@ -83,32 +84,40 @@ export default function FaresPanel({
   const [loading, setLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [view, setView] = useState<"tickets" | "compare">("tickets");
-
-  // Upvote e "escolhida" só vivem na sessão: o backend ainda não persiste
-  // esses sinais do domínio (Vote / chosen).
-  const [votes, setVotes] = useState<Record<string, Vote>>({});
-  const [chosenId, setChosenId] = useState<string | null>(null);
+  const [upvotes, setUpvotes] = useState<Record<string, UpvoteResponse>>({});
 
   const isOrganizer = role === "organizer";
 
-  const voteFor = (fareId: string): Vote => votes[fareId] ?? { count: 0, voted: false };
+  useEffect(() => {
+    async function loadUpvotes() {
+      const results = await Promise.all(initialFares.map((f) => getUpvoteAction(f.id)));
+      const map: Record<string, UpvoteResponse> = {};
+      initialFares.forEach((f, i) => {
+        const r = results[i];
+        if (r) map[f.id] = r;
+      });
+      setUpvotes(map);
+    }
+    void loadUpvotes();
+  }, [initialFares]);
 
-  function toggleVote(fareId: string) {
-    setVotes((prev) => {
-      const current = prev[fareId] ?? { count: 0, voted: false };
-      return {
-        ...prev,
-        [fareId]: {
-          voted: !current.voted,
-          count: current.count + (current.voted ? -1 : 1),
-        },
-      };
-    });
+  async function handleUpvote(fareId: string) {
+    const result = await toggleUpvoteAction(fareId);
+    if (result) setUpvotes((prev) => ({ ...prev, [fareId]: result }));
   }
 
-  function toggleChosen(fareId: string) {
-    setChosenId((prev) => (prev === fareId ? null : fareId));
+  async function handleChoose(fareId: string) {
+    setLoading(true);
+    const updated = await chooseFareAction(legId, fareId);
+    if (updated) {
+      setFares((prev) =>
+        prev.map((f) => ({ ...f, is_chosen: f.id === fareId ? !f.is_chosen : false })),
+      );
+    }
+    setLoading(false);
   }
+
+  const voteFor = (fareId: string): UpvoteResponse => upvotes[fareId] ?? { count: 0, voted: false };
 
   const cheapestId = useMemo(
     () =>
@@ -123,10 +132,10 @@ export default function FaresPanel({
   const orderedFares = useMemo(
     () =>
       [...fares].sort((a, b) => {
-        const chosenDelta = (b.id === chosenId ? 1 : 0) - (a.id === chosenId ? 1 : 0);
+        const chosenDelta = (b.is_chosen ? 1 : 0) - (a.is_chosen ? 1 : 0);
         return chosenDelta || moneyValue(a) - moneyValue(b);
       }),
-    [fares, chosenId],
+    [fares],
   );
 
   const sortedFares = useMemo(
@@ -167,7 +176,6 @@ export default function FaresPanel({
     setLoading(true);
     await deleteFareAction(legId, fareId);
     setFares((prev) => prev.filter((f) => f.id !== fareId));
-    if (chosenId === fareId) setChosenId(null);
     setLoading(false);
     router.refresh();
   }
@@ -215,7 +223,7 @@ export default function FaresPanel({
         <ul className="ticket-list">
           {orderedFares.map((fare) => {
             const cheapest = fare.id === cheapestId;
-            const chosen = fare.id === chosenId;
+            const chosen = fare.is_chosen;
             const vote = voteFor(fare.id);
             return (
               <li key={fare.id} className={chosen ? "bp ticket chosen" : "bp ticket"}>
@@ -228,7 +236,7 @@ export default function FaresPanel({
                     </strong>
                     <button
                       className={vote.voted ? "upvote on" : "upvote"}
-                      onClick={() => toggleVote(fare.id)}
+                      onClick={() => handleUpvote(fare.id)}
                       type="button"
                     >
                       ↑ {vote.count}
@@ -263,8 +271,9 @@ export default function FaresPanel({
                     {isOrganizer && (
                       <button
                         className="secondary-button btn-sm"
-                        onClick={() => toggleChosen(fare.id)}
+                        onClick={() => handleChoose(fare.id)}
                         type="button"
+                        disabled={loading}
                       >
                         {chosen ? "Desmarcar escolhida" : "Marcar como escolhida"}
                       </button>
@@ -320,7 +329,7 @@ export default function FaresPanel({
             </thead>
             <tbody>
               {sortedFares.map((fare) => {
-                const chosen = fare.id === chosenId;
+                const chosen = fare.is_chosen;
                 return (
                   <tr key={fare.id} className={chosen ? "chosen" : ""}>
                     <td className="airline">

@@ -4,8 +4,10 @@ import uuid
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, Response, status
+from pydantic import BaseModel
 from sqlmodel import Session
 
+from traveltogether.fares.chosen_service import mark_chosen
 from traveltogether.fares.models import (
     FareQuote,
     FareQuoteCreate,
@@ -18,6 +20,11 @@ from traveltogether.fares.service import (
     list_fare_quotes,
     update_fare_quote,
 )
+from traveltogether.fares.upvotes_service import (
+    get_upvote_count,
+    toggle_upvote,
+    user_has_upvoted,
+)
 from traveltogether.identity.deps import get_current_user
 from traveltogether.identity.models import User
 from traveltogether.platform.db import get_session
@@ -25,6 +32,7 @@ from traveltogether.trips.models import Leg
 from traveltogether.trips.service import get_trip_membership
 
 router = APIRouter(prefix="/legs", tags=["fares"])
+upvote_router = APIRouter(prefix="/fares", tags=["fares"])
 
 
 def _get_leg_or_404(session: Session, leg_id: uuid.UUID) -> Leg:
@@ -38,6 +46,12 @@ def _require_trip_membership(session: Session, leg: Leg, user_id: uuid.UUID) -> 
     membership = get_trip_membership(session, leg.trip_id, user_id)
     if membership is None:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="not a member")
+
+
+def _require_organizer(session: Session, leg: Leg, user_id: uuid.UUID) -> None:
+    membership = get_trip_membership(session, leg.trip_id, user_id)
+    if membership is None or membership.role != "organizer":
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="organizer required")
 
 
 def _get_fare_or_404(session: Session, leg_id: uuid.UUID, fare_id: uuid.UUID) -> FareQuote:
@@ -131,3 +145,66 @@ def delete_fare(
     fare = _get_fare_or_404(session, leg_id, fare_id)
     delete_fare_quote(session, fare)
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+@router.post("/{leg_id}/fares/{fare_id}/choose", response_model=FareQuotePublic)
+def post_choose(
+    leg_id: uuid.UUID,
+    fare_id: uuid.UUID,
+    current_user: Annotated[User, Depends(get_current_user)],
+    session: Annotated[Session, Depends(get_session)],
+) -> FareQuotePublic:
+    leg = _get_leg_or_404(session, leg_id)
+    _require_organizer(session, leg, current_user.id)
+    _get_fare_or_404(session, leg_id, fare_id)
+    updated = mark_chosen(session, leg_id, fare_id)
+    return FareQuotePublic.model_validate(updated)
+
+
+# ── upvotes ───────────────────────────────────────────────────────────────────
+
+
+class UpvoteResponse(BaseModel):
+    count: int
+    voted: bool
+
+
+def _get_fare_by_id_or_404(session: Session, fare_id: uuid.UUID) -> FareQuote:
+    fare = session.get(FareQuote, fare_id)
+    if fare is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="fare not found")
+    return fare
+
+
+def _require_fare_membership(session: Session, fare: FareQuote, user_id: uuid.UUID) -> None:
+    leg = session.get(Leg, fare.leg_id)
+    if leg is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="leg not found")
+    membership = get_trip_membership(session, leg.trip_id, user_id)
+    if membership is None:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="not a member")
+
+
+@upvote_router.post("/{fare_id}/upvote", response_model=UpvoteResponse)
+def post_upvote(
+    fare_id: uuid.UUID,
+    current_user: Annotated[User, Depends(get_current_user)],
+    session: Annotated[Session, Depends(get_session)],
+) -> UpvoteResponse:
+    fare = _get_fare_by_id_or_404(session, fare_id)
+    _require_fare_membership(session, fare, current_user.id)
+    count, voted = toggle_upvote(session, fare_id, current_user.id)
+    return UpvoteResponse(count=count, voted=voted)
+
+
+@upvote_router.get("/{fare_id}/upvote", response_model=UpvoteResponse)
+def get_upvote(
+    fare_id: uuid.UUID,
+    current_user: Annotated[User, Depends(get_current_user)],
+    session: Annotated[Session, Depends(get_session)],
+) -> UpvoteResponse:
+    fare = _get_fare_by_id_or_404(session, fare_id)
+    _require_fare_membership(session, fare, current_user.id)
+    count = get_upvote_count(session, fare_id)
+    voted = user_has_upvoted(session, fare_id, current_user.id)
+    return UpvoteResponse(count=count, voted=voted)

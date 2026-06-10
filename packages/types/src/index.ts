@@ -110,6 +110,7 @@ export interface FareQuotePublic {
   airline: string;
   link: string;
   notes: string;
+  is_chosen: boolean;
 }
 
 export interface FareQuoteCreate {
@@ -138,4 +139,9 @@ export interface FareQuoteUpdate {
   airline?: string | null;
   link?: string | null;
   notes?: string | null;
+}
+
+export interface UpvoteResponse {
+  count: number;
+  voted: boolean;
 }

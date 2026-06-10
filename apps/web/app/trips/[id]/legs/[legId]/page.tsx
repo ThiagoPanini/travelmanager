@@ -55,6 +55,16 @@ export default async function LegFaresPage({ params }: Props) {
         <Link className="crumb" href={`/trips/${id}`}>
           ← {trip.name}
         </Link>
+        <header className="trips-header">
+          <div>
+            <h1>Pesquisas de Passagem</h1>
+          </div>
+          {fares.length > 0 && (
+            <Link href={`/trips/${id}/legs/${legId}/compare`} className="secondary-button">
+              Comparar
+            </Link>
+          )}
+        </header>
 
         <FaresPanel
           legId={legId}
