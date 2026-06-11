@@ -1,17 +1,16 @@
-import Link from "next/link";
+import type { StopPublic } from "@traveltogether/types";
 import { notFound, redirect } from "next/navigation";
-
 import { AppTopbar } from "@/app/app-topbar";
 import { getAuthSession } from "@/auth";
+import { Breadcrumbs } from "@/components/atlas";
 import { getFares } from "@/lib/api/fares";
 import { getLegs, getStops, getTrip } from "@/lib/api/trips";
+import { displayCode } from "@/lib/trips/journey";
 import FaresPanel from "./fares-panel";
 
 interface Props {
   params: Promise<{ id: string; legId: string }>;
 }
-
-import type { StopPublic } from "@traveltogether/types";
 
 function stopData(
   stopId: string | null,
@@ -20,20 +19,11 @@ function stopData(
   originAirportCode: string | null,
 ): { city: string; code: string } {
   if (stopId === null) {
-    const code = originAirportCode ?? derivedCode(origin);
-    return { city: origin, code };
+    return { city: origin, code: originAirportCode ?? displayCode(origin) };
   }
   const stop = stops.find((s) => s.id === stopId);
   if (!stop) return { city: "Parada", code: "PAR" };
-  return { city: stop.city, code: stop.airport_code ?? derivedCode(stop.city) };
-}
-
-function derivedCode(value: string): string {
-  const match = value.match(/\(([A-Za-z]{3})\)/);
-  if (match) return match[1].toUpperCase();
-  const normalized = value.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-  const letters = normalized.replace(/[^A-Za-z]/g, "").toUpperCase();
-  return (letters.slice(0, 3) || "AIR").padEnd(3, "X");
+  return { city: stop.city, code: stop.airport_code ?? displayCode(stop.city) };
 }
 
 export default async function LegFaresPage({ params }: Props) {
@@ -59,21 +49,25 @@ export default async function LegFaresPage({ params }: Props) {
   return (
     <div className="app-shell">
       <AppTopbar active="trips" />
-      <main className="trips-shell">
-        <Link className="crumb" href={`/trips/${id}`}>
-          ← {trip.name}
-        </Link>
-
-        <FaresPanel
-          legId={legId}
-          tripId={id}
-          initialFares={fares}
-          role={membership.role}
-          fromCode={from.code}
-          toCode={to.code}
-          fromCity={from.city}
-          toCity={to.city}
-        />
+      <main className="page fadeup">
+        <div className="shell">
+          <Breadcrumbs
+            items={[
+              { label: "Viagens", href: "/trips" },
+              { label: trip.name, href: `/trips/${id}` },
+              { label: `Trajeto ${from.code} → ${to.code}` },
+            ]}
+          />
+          <FaresPanel
+            legId={legId}
+            initialFares={fares}
+            role={membership.role}
+            fromCode={from.code}
+            toCode={to.code}
+            fromCity={from.city}
+            toCity={to.city}
+          />
+        </div>
       </main>
     </div>
   );

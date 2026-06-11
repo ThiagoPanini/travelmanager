@@ -1,8 +1,10 @@
 import Link from "next/link";
 
 import { getAuthSession } from "@/auth";
+import { Icon } from "@/components/atlas";
 
 import { LogoutButton } from "./logout-button";
+import { UtcClock } from "./utc-clock";
 
 interface Props {
   active?: "trips";
@@ -19,15 +21,26 @@ export async function AppTopbar({ active }: Props) {
 
   return (
     <header className="topbar">
-      <Link className="wordmark" href="/trips">
-        <span className="wordmark-ticket">TT</span>
-        <span>traveltogether</span>
-      </Link>
-      <span className="nav-spacer" />
-      <Link className={active === "trips" ? "nav-link on" : "nav-link"} href="/trips">
-        VIAGENS
-      </Link>
-      <LogoutButton initials={avatarInitials(session?.user?.email)} />
+      <div className="shell topbar-in">
+        <Link className="brand" href="/trips">
+          <span className="brand-mark">
+            <Icon name="plane" size={14} />
+          </span>
+          travel<em>together</em>
+        </Link>
+        <nav className="topnav">
+          <Link className={active === "trips" ? "active" : ""} href="/trips">
+            Viagens
+          </Link>
+        </nav>
+        <div className="topbar-right">
+          <UtcClock />
+          <span className="avatar" title={session?.user?.email ?? undefined}>
+            {avatarInitials(session?.user?.email)}
+          </span>
+          <LogoutButton />
+        </div>
+      </div>
     </header>
   );
 }

@@ -4,21 +4,29 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { getAuthSession } from "@/auth";
-import {
-  createStop,
-  deleteStop,
-  reorderStops,
-  updateStop,
-  uploadStopCoverImage,
-  uploadTripCoverImage,
-} from "@/lib/api/trips";
+import { createStop, deleteStop, reorderStops, updateStop, updateTrip } from "@/lib/api/trips";
 
-export async function updateTripCoverImageAction(tripId: string, data: FormData) {
+// --- Trip ---
+
+export async function updateTripAction(
+  tripId: string,
+  data: Partial<{
+    name: string;
+    description: string;
+    origin: string;
+    airport_code: string | null;
+    start_date: string | null;
+    end_date: string | null;
+  }>,
+) {
   const session = await getAuthSession();
   if (!session?.apiAccessToken) redirect("/login");
-  await uploadTripCoverImage(session.apiAccessToken, tripId, data);
-  revalidatePath("/trips");
-  revalidatePath(`/trips/${tripId}`);
+  const updated = await updateTrip(session.apiAccessToken, tripId, data);
+  if (updated) {
+    revalidatePath("/trips");
+    revalidatePath(`/trips/${tripId}`);
+  }
+  return updated;
 }
 
 // --- Stops ---
@@ -56,14 +64,6 @@ export async function updateStopAction(
   const session = await getAuthSession();
   if (!session?.apiAccessToken) redirect("/login");
   return updateStop(session.apiAccessToken, tripId, stopId, data);
-}
-
-export async function updateStopCoverImageAction(tripId: string, stopId: string, data: FormData) {
-  const session = await getAuthSession();
-  if (!session?.apiAccessToken) redirect("/login");
-  const result = await uploadStopCoverImage(session.apiAccessToken, tripId, stopId, data);
-  revalidatePath(`/trips/${tripId}`);
-  return result;
 }
 
 export async function reorderStopsAction(tripId: string, stopIds: string[]) {

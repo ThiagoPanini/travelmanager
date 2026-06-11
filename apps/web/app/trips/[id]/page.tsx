@@ -3,40 +3,15 @@ import { notFound, redirect } from "next/navigation";
 
 import { AppTopbar } from "@/app/app-topbar";
 import { getAuthSession } from "@/auth";
+import { Breadcrumbs, CoverGraphic, Icon, RouteLine, type RoutePoint } from "@/components/atlas";
 import { getFares } from "@/lib/api/fares";
 import { getLegs, getStops, getTrip, getTripMembers } from "@/lib/api/trips";
-import { updateTripCoverImageAction } from "./actions";
+import { formatDayMonth as fmtDay, formatDateRange } from "@/lib/format/date";
+import { buildJourneySegments, displayCode } from "@/lib/trips/journey";
 import TripSequenceView from "./trip-sequence-view";
 
 interface Props {
   params: Promise<{ id: string }>;
-}
-
-function displayCode(value: string): string {
-  const match = value.match(/\(([A-Za-z]{3})\)/);
-  if (match) return match[1].toUpperCase();
-  const normalized = value.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-  const letters = normalized.replace(/[^A-Za-z]/g, "").toUpperCase();
-  return (letters.slice(0, 3) || "TT").padEnd(3, "X");
-}
-
-function initials(email: string): string {
-  return email.slice(0, 2).toUpperCase();
-}
-
-function formatDateRange(startDate: string | null, endDate: string | null): string {
-  if (!startDate && !endDate) return "Datas a definir";
-  const format = (value: string) =>
-    new Date(`${value}T00:00:00`).toLocaleDateString("pt-BR", {
-      day: "2-digit",
-      month: "short",
-    });
-  if (startDate && endDate) return `${format(startDate)} - ${format(endDate)}`;
-  return format(startDate ?? endDate ?? "");
-}
-
-function coverTone(value: string): number {
-  return [...value].reduce((sum, char) => sum + char.charCodeAt(0), 0) % 5;
 }
 
 export default async function TripDetailPage({ params }: Props) {
@@ -53,156 +28,171 @@ export default async function TripDetailPage({ params }: Props) {
   if (!data) notFound();
 
   const accessToken = session.apiAccessToken;
-  const fareCountEntries = await Promise.all(
-    legs.map(async (leg) => [leg.id, (await getFares(accessToken, leg.id)).length] as const),
+
+  function moneyValue(raw: string): number {
+    const normalized =
+      raw.includes(",") && raw.includes(".")
+        ? raw.replace(/\./g, "").replace(",", ".")
+        : raw.replace(",", ".");
+    const parsed = Number.parseFloat(normalized);
+    return Number.isFinite(parsed) ? parsed : Number.POSITIVE_INFINITY;
+  }
+
+  const legFareEntries = await Promise.all(
+    legs.map(async (leg) => {
+      const fares = await getFares(accessToken, leg.id);
+      const chosen = fares.some((f) => f.is_chosen);
+      const best = fares.reduce<{ value: string; currency: string } | null>(
+        (acc, f) => (!acc || moneyValue(f.value) < moneyValue(acc.value) ? f : acc),
+        null,
+      );
+      return [leg.id, { count: fares.length, chosen, best }] as const;
+    }),
   );
-  const fareCounts = Object.fromEntries(fareCountEntries);
+  const legInfo = Object.fromEntries(legFareEntries);
+  const fareCounts = Object.fromEntries(legFareEntries.map(([id, info]) => [id, info.count]));
+
+  function fmtMoney(value: string, currency: string): string {
+    const numeric = moneyValue(value);
+    if (!Number.isFinite(numeric)) return `${currency} ${value}`;
+    return new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: currency || "BRL",
+    }).format(numeric);
+  }
 
   const { trip, membership } = data;
-  const yearSuffix = String(new Date(trip.created_at).getFullYear()).slice(2);
-  const route = [
-    { code: displayCode(trip.origin), key: "origin-out" },
-    ...stops.map((stop) => ({ code: displayCode(stop.city), key: stop.id })),
-    { code: displayCode(trip.origin), key: "origin-back" },
-  ];
   const activeMembers = members?.members ?? [];
   const pendingMembers = members?.pending ?? [];
+  const originCode = trip.airport_code ?? displayCode(trip.origin);
+
+  // route line (Origem → Paradas → Origem)
+  const segments = buildJourneySegments(trip.origin, stops, legs, fareCounts);
+  const legSegments = segments.flatMap((s) => (s.kind === "leg" ? [s] : []));
+  const points: RoutePoint[] = [
+    { code: originCode, city: trip.origin, dates: fmtDay(trip.start_date), muted: true },
+    ...stops.map((stop) => ({
+      code: stop.airport_code ?? displayCode(stop.city),
+      city: stop.city,
+      dates:
+        fmtDay(stop.arrival_date) && fmtDay(stop.departure_date)
+          ? `${fmtDay(stop.arrival_date)} – ${fmtDay(stop.departure_date)}`
+          : (fmtDay(stop.arrival_date) ?? fmtDay(stop.departure_date)),
+    })),
+    { code: originCode, city: trip.origin, dates: fmtDay(trip.end_date), muted: true },
+  ];
+  const edges = legSegments.map((leg) => {
+    const info = leg.legId ? legInfo[leg.legId] : undefined;
+    const meta = info?.chosen
+      ? "✓ escolhida"
+      : leg.fareCount
+        ? `${leg.fareCount} pesquisa${leg.fareCount > 1 ? "s" : ""}`
+        : "sem pesquisas";
+    return {
+      href: leg.legId ? `/trips/${id}/legs/${leg.legId}` : undefined,
+      meta,
+      price: info?.best ? fmtMoney(info.best.value, info.best.currency) : undefined,
+    };
+  });
 
   return (
     <div className="app-shell">
       <AppTopbar active="trips" />
-      <main className="trips-shell">
-        <Link className="crumb" href="/trips">
-          ← Viagens
-        </Link>
-        <header className="trips-header">
-          <div>
-            <p className="eyebrow">cartão de embarque · viagem</p>
-            <h1>
-              {trip.name}{" "}
-              <span
-                style={{
-                  color: "var(--text-faint)",
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "1.1rem",
-                  fontWeight: 400,
-                }}
-              >
-                &apos;{yearSuffix}
-              </span>
-            </h1>
+      <main className="page fadeup">
+        <div className="shell">
+          <Breadcrumbs items={[{ label: "Viagens", href: "/trips" }, { label: trip.name }]} />
+
+          {/* header */}
+          <div className="card" style={{ overflow: "hidden", marginBottom: 28 }}>
+            <CoverGraphic
+              seedText={trip.id}
+              codeLabel={
+                stops.map((s) => s.airport_code ?? displayCode(s.city)).join(" · ") || originCode
+              }
+              height={150}
+            />
+            <div style={{ padding: "24px 28px" }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 18, flexWrap: "wrap" }}>
+                <div style={{ flex: "1 1 320px" }}>
+                  <h1 className="display" style={{ fontSize: 34, marginBottom: 6 }}>
+                    {trip.name}
+                  </h1>
+                  {trip.description && (
+                    <p className="soft" style={{ fontSize: 14.5, maxWidth: 560 }}>
+                      {trip.description}
+                    </p>
+                  )}
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 10,
+                    alignItems: "flex-end",
+                  }}
+                >
+                  <span
+                    className="mono-num"
+                    style={{
+                      fontSize: 13,
+                      color: "var(--ink-soft)",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 6,
+                    }}
+                  >
+                    <Icon name="calendar" size={13} />{" "}
+                    {formatDateRange(trip.start_date, trip.end_date)}
+                  </span>
+                  <Link
+                    className="link-btn"
+                    href={`/trips/${id}/members`}
+                    style={{ fontSize: 13.5 }}
+                  >
+                    {activeMembers.length} pessoa{activeMembers.length !== 1 ? "s" : ""} na viagem
+                    {pendingMembers.length ? ` · ${pendingMembers.length} pendente(s)` : ""} →
+                  </Link>
+                  {membership.role === "organizer" && (
+                    <Link className="btn tiny ghost" href={`/trips/${id}/edit`}>
+                      <Icon name="edit" size={13} /> Editar viagem
+                    </Link>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="trip-header-actions">
-            <span className="trip-card-role" data-role={membership.role}>
-              {membership.role === "organizer" ? "Organizador" : "Membro"}
-            </span>
-            {membership.role === "organizer" && (
-              <form
-                action={updateTripCoverImageAction.bind(null, id)}
-                className="cover-upload-form"
-                encType="multipart/form-data"
-              >
-                <input
-                  aria-label="Foto de capa"
-                  className="cover-upload-input"
-                  name="file"
-                  type="file"
-                  accept="image/png,image/jpeg,image/webp"
-                  required
-                />
-                <button className="secondary-button btn-sm" type="submit">
-                  Editar foto
-                </button>
-              </form>
+
+          {/* itinerary route */}
+          <div className="section-head">
+            <span className="kicker">itinerário</span>
+            <h2>Origem → Paradas → Origem</h2>
+            <span className="spacer" />
+            {stops.length > 0 && (
+              <span className="mono" style={{ fontSize: 10, color: "var(--muted)" }}>
+                clique num trajeto para ver passagens
+              </span>
             )}
           </div>
-        </header>
 
-        <section className="bp hero-bp" aria-label="Itinerário da viagem">
-          <div className="trip-hero-cover cover" data-tone={coverTone(trip.name)}>
-            {trip.cover_image_url && (
-              // biome-ignore lint/performance/noImgElement: R2/CDN URL is environment-owned and served directly.
-              <img
-                alt={`Foto de capa de ${trip.name}`}
-                className="cover-img"
-                src={trip.cover_image_url}
-              />
-            )}
-            <span className="cover-skyline" />
-            <span className="cover-note">{formatDateRange(trip.start_date, trip.end_date)}</span>
-            <span className="cover-caption">{trip.name}</span>
-          </div>
-          <div className="bp-head">
-            <span>Itinerário</span>
-            <span className="flight">{new Date(trip.created_at).getFullYear()}</span>
-          </div>
-          <div className="hero-flightstrip">
-            {route.map((item, index) => (
-              <span className="hero-seg" key={item.key}>
-                <span className={index === 0 || index === route.length - 1 ? "iata home" : "iata"}>
-                  {item.code}
-                </span>
-                {index < route.length - 1 && <span className="arrow">✈</span>}
-              </span>
-            ))}
-          </div>
-          <div className="perf" />
-          <div className="hero-info">
-            <div>
-              <div className="k">origem</div>
-              <div className="v">{trip.origin}</div>
+          {stops.length ? (
+            <div className="card" style={{ padding: "22px 26px 16px", marginBottom: 36 }}>
+              <RouteLine points={points} edges={edges} />
             </div>
-            <div>
-              <div className="k">paradas</div>
-              <div className="v">{stops.length}</div>
+          ) : (
+            <div className="empty" style={{ marginBottom: 36 }}>
+              <Icon name="pin" size={22} />
+              <div style={{ fontWeight: 600, color: "var(--ink-soft)" }}>
+                Essa viagem ainda não tem paradas.
+              </div>
+              <div style={{ fontSize: 13.5, maxWidth: 380 }}>
+                Adicione a primeira cidade para o itinerário (e os trajetos) ganharem forma.
+              </div>
             </div>
-            <div>
-              <div className="k">trajetos</div>
-              <div className="v">{legs.length}</div>
-            </div>
-            <div>
-              <div className="k">passageiros</div>
-              <div className="v">{activeMembers.length}</div>
-            </div>
-          </div>
-        </section>
+          )}
 
-        {trip.description && <p className="trip-detail-desc">{trip.description}</p>}
-
-        <section className="trip-detail-section">
-          <h2>Roteiro da Viagem</h2>
-          <TripSequenceView
-            tripId={id}
-            origin={trip.origin}
-            initialStops={stops}
-            initialLegs={legs}
-            fareCounts={fareCounts}
-            role={membership.role}
-          />
-        </section>
-
-        <section className="trip-detail-section">
-          <h2>Tripulação</h2>
-          <div className="member-row">
-            {activeMembers.slice(0, 5).map(({ membership: member, email }, index) => (
-              <span
-                className="member-avatar"
-                key={member.id}
-                style={{ marginLeft: index ? "-0.55rem" : 0 }}
-                title={email}
-              >
-                {initials(email)}
-              </span>
-            ))}
-            <span className="member-email">
-              {activeMembers.length} a bordo
-              {pendingMembers.length ? ` · ${pendingMembers.length} pendente(s)` : ""}
-            </span>
-            <Link className="secondary-button btn-sm" href={`/trips/${id}/members`}>
-              Gerenciar tripulação
-            </Link>
-          </div>
-        </section>
+          {/* stops management */}
+          <TripSequenceView tripId={id} initialStops={stops} role={membership.role} />
+        </div>
       </main>
     </div>
   );

@@ -4,6 +4,7 @@ import type { MemberWithUser, PendingMembershipPublic } from "@traveltogether/ty
 import { useRouter } from "next/navigation";
 import { type FormEvent, useState } from "react";
 
+import { Icon } from "@/components/atlas";
 import { addMemberAction, removeMemberAction, updateMemberRoleAction } from "./actions";
 
 interface Props {
@@ -24,6 +25,8 @@ export function MembersPanel({ tripId, members, pending, isOrganizer }: Props) {
   const [addState, setAddState] = useState<"idle" | "submitting" | "error" | "ok">("idle");
   const [addMsg, setAddMsg] = useState("");
 
+  const organizerCount = members.filter((m) => m.membership.role === "organizer").length;
+
   async function onAddMember(e: FormEvent) {
     e.preventDefault();
     setAddState("submitting");
@@ -37,17 +40,16 @@ export function MembersPanel({ tripId, members, pending, isOrganizer }: Props) {
       router.refresh();
     } else {
       setAddState("error");
-      setAddMsg("Não foi possível adicionar o membro.");
+      setAddMsg("Não foi possível adicionar a pessoa.");
     }
   }
 
-  async function onPromote(membershipId: string) {
-    await updateMemberRoleAction(tripId, membershipId, "organizer");
-    router.refresh();
-  }
-
-  async function onDemote(membershipId: string) {
-    await updateMemberRoleAction(tripId, membershipId, "member");
+  async function onToggleRole(membershipId: string, role: "organizer" | "member") {
+    await updateMemberRoleAction(
+      tripId,
+      membershipId,
+      role === "organizer" ? "member" : "organizer",
+    );
     router.refresh();
   }
 
@@ -57,89 +59,137 @@ export function MembersPanel({ tripId, members, pending, isOrganizer }: Props) {
   }
 
   return (
-    <div className="members-panel">
-      <section className="members-section">
-        <h2>A bordo · {members.length}</h2>
-        <ul className="members-list">
-          {members.map(({ membership, email: memberEmail }) => (
-            <li key={membership.id} className="member-row">
-              <span className="member-avatar">{initials(memberEmail)}</span>
-              <span className="member-email">{memberEmail}</span>
-              <span className="trip-card-role" data-role={membership.role}>
-                {membership.role === "organizer" ? "Organizador" : "Membro"}
-              </span>
-              {isOrganizer && (
-                <span className="member-actions">
-                  {membership.role === "member" ? (
-                    <button
-                      className="secondary-button member-btn"
-                      onClick={() => onPromote(membership.id)}
-                      type="button"
-                    >
-                      Promover
-                    </button>
-                  ) : (
-                    <button
-                      className="secondary-button member-btn"
-                      onClick={() => onDemote(membership.id)}
-                      type="button"
-                    >
-                      Rebaixar
-                    </button>
-                  )}
-                  <button
-                    className="secondary-button member-btn danger"
-                    onClick={() => onRemove(membership.id)}
-                    type="button"
-                  >
-                    Remover
-                  </button>
+    <div>
+      <div className="card" style={{ marginBottom: 22 }}>
+        <div className="board">
+          {members.map(({ membership, email: memberEmail }) => {
+            const lastOrganizer = membership.role === "organizer" && organizerCount === 1;
+            return (
+              <div
+                key={membership.id}
+                className="board-row"
+                style={{ gridTemplateColumns: "auto 1fr auto auto" }}
+              >
+                <span
+                  className="avatar"
+                  style={
+                    membership.role === "organizer"
+                      ? {}
+                      : { background: "var(--chip-bg)", color: "var(--ink-soft)" }
+                  }
+                >
+                  {initials(memberEmail)}
                 </span>
-              )}
-            </li>
-          ))}
-        </ul>
-      </section>
+                <div>
+                  <div className="mono-num" style={{ fontSize: 13, color: "var(--ink)" }}>
+                    {memberEmail}
+                  </div>
+                </div>
+                <span className={`chip ${membership.role === "organizer" ? "green" : "outline"}`}>
+                  {membership.role === "organizer" ? "organizador" : "membro"}
+                </span>
+                {isOrganizer ? (
+                  <div style={{ display: "flex", gap: 6 }}>
+                    <button
+                      className="btn tiny ghost"
+                      disabled={lastOrganizer}
+                      onClick={() => onToggleRole(membership.id, membership.role)}
+                      title={lastOrganizer ? "Toda viagem precisa de ao menos um organizador" : ""}
+                      type="button"
+                    >
+                      {membership.role === "organizer" ? "Rebaixar" : "Promover"}
+                    </button>
+                    <button
+                      className="icon-btn"
+                      disabled={lastOrganizer}
+                      onClick={() => onRemove(membership.id)}
+                      title={
+                        lastOrganizer
+                          ? "Não é possível remover o último organizador"
+                          : "Remover da viagem"
+                      }
+                      type="button"
+                    >
+                      <Icon name="trash" size={14} />
+                    </button>
+                  </div>
+                ) : (
+                  <span />
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
 
       {pending.length > 0 && (
-        <section className="members-section">
-          <h2>Lista de espera · {pending.length}</h2>
-          <ul className="members-list">
+        <div className="card" style={{ marginBottom: 22 }}>
+          <div className="board">
             {pending.map((p) => (
-              <li key={p.id} className="member-row">
-                <span className="member-avatar">?</span>
-                <span className="member-email">{p.email}</span>
-                <span className="trip-card-role" data-role="pending">
-                  Pendente
+              <div
+                key={p.id}
+                className="board-row"
+                style={{ gridTemplateColumns: "auto 1fr auto" }}
+              >
+                <span
+                  className="avatar"
+                  style={{ background: "var(--chip-bg)", color: "var(--ink-soft)" }}
+                >
+                  ?
                 </span>
-              </li>
+                <div className="mono-num" style={{ fontSize: 13 }}>
+                  {p.email}
+                </div>
+                <span className="chip outline">pendente</span>
+              </div>
             ))}
-          </ul>
-        </section>
+          </div>
+        </div>
       )}
 
       {isOrganizer && (
-        <section className="members-section">
-          <h2>Convidar por e-mail</h2>
-          <form className="members-invite-form" onSubmit={onAddMember}>
-            <input
-              className="members-invite-input"
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="email@exemplo.com"
-              required
-              type="email"
-              value={email}
-            />
-            <button className="primary-button" disabled={addState === "submitting"} type="submit">
-              {addState === "submitting" ? "Adicionando..." : "Adicionar"}
+        <form
+          className="card flat"
+          onSubmit={onAddMember}
+          style={{ border: "1.5px dashed var(--line)", padding: "20px 22px" }}
+        >
+          <div
+            style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 12, alignItems: "end" }}
+          >
+            <label className="field">
+              <span>Adicionar pessoa por e-mail</span>
+              <input
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="amigo@exemplo.com"
+                required
+                type="email"
+                value={email}
+              />
+            </label>
+            <button
+              className="btn accent small"
+              disabled={addState === "submitting" || !email.includes("@")}
+              type="submit"
+              style={{ height: 41 }}
+            >
+              <Icon name="plus" size={13} />{" "}
+              {addState === "submitting" ? "Convidando…" : "Convidar"}
             </button>
-          </form>
+          </div>
+          <p className="hint" style={{ marginTop: 10 }}>
+            No MVP, a pessoa precisa estar na allowlist da plataforma. Novos entram como membros
+            (leitura + upvote).
+          </p>
           {addMsg && (
-            <p className={addState === "error" ? "login-message" : "members-ok-msg"} role="status">
+            <p
+              className="hint"
+              role="status"
+              style={{ marginTop: 8, color: addState === "error" ? "var(--danger)" : "var(--ok)" }}
+            >
               {addMsg}
             </p>
           )}
-        </section>
+        </form>
       )}
     </div>
   );

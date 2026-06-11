@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -7,24 +6,19 @@ export const metadata: Metadata = {
   description: "Hub de organização de viagens em grupo.",
 };
 
-const inter = Inter({
-  display: "swap",
-  subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["400", "500", "600", "700", "800"],
-});
-
-const jetBrainsMono = JetBrains_Mono({
-  display: "swap",
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
-  weight: ["400", "500", "600", "700"],
-});
-
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR">
-      <body className={`${inter.variable} ${jetBrainsMono.variable}`}>{children}</body>
+    <html lang="pt-BR" data-dir="atlas">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Mesmas fontes/eixos do protótipo Atlas: Archivo (wdth) + IBM Plex Mono */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }
