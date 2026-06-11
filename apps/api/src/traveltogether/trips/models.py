@@ -167,3 +167,47 @@ class TripUpdate(SQLModel):
     airport_code: str | None = None
     start_date: date | None = None
     end_date: date | None = None
+
+
+class ItineraryItem(SQLModel, table=True):  # type: ignore[call-arg]
+    __tablename__: ClassVar[str] = "itinerary_items"  # pyright: ignore[reportIncompatibleVariableOverride]
+
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    stop_id: uuid.UUID = Field(foreign_key="stops.id")
+    title: str
+    notes: str = ""
+    link: str = ""
+    day: date | None = None
+    time: str | None = None
+    order: int
+
+
+class ItineraryItemPublic(SQLModel):
+    id: uuid.UUID
+    stop_id: uuid.UUID
+    title: str
+    notes: str
+    link: str
+    day: date | None
+    time: str | None
+    order: int
+
+
+class ItineraryItemCreate(SQLModel):
+    title: str
+    notes: str = ""
+    link: str = ""
+    day: date | None = None
+    time: str | None = None
+
+
+class ItineraryItemUpdate(SQLModel):
+    title: str | None = None
+    notes: str | None = None
+    link: str | None = None
+    day: date | None = None
+    time: str | None = None
+
+
+class ReorderItineraryItemsRequest(SQLModel):
+    item_ids: list[uuid.UUID]

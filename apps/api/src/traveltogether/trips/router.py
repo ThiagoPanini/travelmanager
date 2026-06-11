@@ -16,6 +16,13 @@ from traveltogether.trips.cover_images import (
     update_stop_cover_image,
     update_trip_cover_image,
 )
+from traveltogether.trips.itinerary_service import (
+    create_itinerary_item,
+    delete_itinerary_item,
+    list_itinerary_items,
+    reorder_itinerary_items,
+    update_itinerary_item,
+)
 from traveltogether.trips.legs_service import (
     LegHasFareError,
     create_leg,
@@ -33,6 +40,10 @@ from traveltogether.trips.members_service import (
     remove_member_from_trip,
 )
 from traveltogether.trips.models import (
+    ItineraryItem,
+    ItineraryItemCreate,
+    ItineraryItemPublic,
+    ItineraryItemUpdate,
     Leg,
     LegCreate,
     LegPublic,
@@ -41,6 +52,7 @@ from traveltogether.trips.models import (
     MembershipPublic,
     MembershipRole,
     PendingMembershipPublic,
+    ReorderItineraryItemsRequest,
     Stop,
     StopCreate,
     StopPublic,
@@ -637,3 +649,133 @@ def delete_leg_route(
     leg = _get_leg_or_404(session, trip_id, leg_id)
     delete_leg(session, leg)
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+# --- Itinerary (Roteiro) ---
+
+
+def _get_itinerary_item_or_404(
+    session: Session, stop_id: uuid.UUID, item_id: uuid.UUID
+) -> ItineraryItem:
+    item = session.get(ItineraryItem, item_id)
+    if item is None or item.stop_id != stop_id:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="itinerary item not found"
+        )
+    return item
+
+
+@router.get(
+    "/{trip_id}/stops/{stop_id}/itinerary",
+    response_model=list[ItineraryItemPublic],
+)
+def get_itinerary(
+    trip_id: uuid.UUID,
+    stop_id: uuid.UUID,
+    current_user: Annotated[User, Depends(get_current_user)],
+    session: Annotated[Session, Depends(get_session)],
+) -> list[ItineraryItemPublic]:
+    _get_trip_or_404(session, trip_id)
+    _require_membership(session, trip_id, current_user.id)
+    _get_stop_or_404(session, trip_id, stop_id)
+    return [ItineraryItemPublic.model_validate(i) for i in list_itinerary_items(session, stop_id)]
+
+
+@router.post(
+    "/{trip_id}/stops/{stop_id}/itinerary",
+    status_code=status.HTTP_201_CREATED,
+    response_model=ItineraryItemPublic,
+)
+def post_itinerary_item(
+    trip_id: uuid.UUID,
+    stop_id: uuid.UUID,
+    body: ItineraryItemCreate,
+    current_user: Annotated[User, Depends(get_current_user)],
+    session: Annotated[Session, Depends(get_session)],
+) -> ItineraryItemPublic:
+    _get_trip_or_404(session, trip_id)
+    membership = _require_membership(session, trip_id, current_user.id)
+    if membership.role != MembershipRole.organizer:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="only organizers can add itinerary items",
+        )
+    _get_stop_or_404(session, trip_id, stop_id)
+    item = create_itinerary_item(
+        session, stop_id, body.title, body.notes, body.link, body.day, body.time
+    )
+    return ItineraryItemPublic.model_validate(item)
+
+
+@router.patch(
+    "/{trip_id}/stops/{stop_id}/itinerary/{item_id}",
+    response_model=ItineraryItemPublic,
+)
+def patch_itinerary_item(
+    trip_id: uuid.UUID,
+    stop_id: uuid.UUID,
+    item_id: uuid.UUID,
+    body: ItineraryItemUpdate,
+    current_user: Annotated[User, Depends(get_current_user)],
+    session: Annotated[Session, Depends(get_session)],
+) -> ItineraryItemPublic:
+    _get_trip_or_404(session, trip_id)
+    membership = _require_membership(session, trip_id, current_user.id)
+    if membership.role != MembershipRole.organizer:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="only organizers can edit itinerary items",
+        )
+    _get_stop_or_404(session, trip_id, stop_id)
+    item = _get_itinerary_item_or_404(session, stop_id, item_id)
+    updated = update_itinerary_item(
+        session, item, body.title, body.notes, body.link, body.day, body.time
+    )
+    return ItineraryItemPublic.model_validate(updated)
+
+
+@router.delete(
+    "/{trip_id}/stops/{stop_id}/itinerary/{item_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+)
+def delete_itinerary_item_route(
+    trip_id: uuid.UUID,
+    stop_id: uuid.UUID,
+    item_id: uuid.UUID,
+    current_user: Annotated[User, Depends(get_current_user)],
+    session: Annotated[Session, Depends(get_session)],
+) -> Response:
+    _get_trip_or_404(session, trip_id)
+    membership = _require_membership(session, trip_id, current_user.id)
+    if membership.role != MembershipRole.organizer:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="only organizers can delete itinerary items",
+        )
+    _get_stop_or_404(session, trip_id, stop_id)
+    item = _get_itinerary_item_or_404(session, stop_id, item_id)
+    delete_itinerary_item(session, item)
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+@router.post(
+    "/{trip_id}/stops/{stop_id}/itinerary/reorder",
+    response_model=list[ItineraryItemPublic],
+)
+def post_itinerary_reorder(
+    trip_id: uuid.UUID,
+    stop_id: uuid.UUID,
+    body: ReorderItineraryItemsRequest,
+    current_user: Annotated[User, Depends(get_current_user)],
+    session: Annotated[Session, Depends(get_session)],
+) -> list[ItineraryItemPublic]:
+    _get_trip_or_404(session, trip_id)
+    membership = _require_membership(session, trip_id, current_user.id)
+    if membership.role != MembershipRole.organizer:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="only organizers can reorder itinerary items",
+        )
+    _get_stop_or_404(session, trip_id, stop_id)
+    reorder_itinerary_items(session, stop_id, body.item_ids)
+    return [ItineraryItemPublic.model_validate(i) for i in list_itinerary_items(session, stop_id)]
