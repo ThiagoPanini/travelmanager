@@ -1,13 +1,17 @@
 "use client";
 
-import type { ItineraryItemPublic, MembershipRole } from "@traveltogether/types";
+import type {
+  ItineraryItemCreate,
+  ItineraryItemPublic,
+  MembershipRole,
+} from "@traveltogether/types";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import { Icon } from "@/components/atlas";
 import {
   createItineraryItemAction,
   deleteItineraryItemAction,
-  reorderItineraryItemsAction,
   updateItineraryItemAction,
 } from "./actions";
 
@@ -16,52 +20,142 @@ interface Props {
   stopId: string;
   initialItems: ItineraryItemPublic[];
   role: MembershipRole;
+  arrivalDate: string | null;
+  departureDate: string | null;
 }
 
-function formatDay(value: string | null): string | null {
-  if (!value) return null;
-  return new Date(`${value}T00:00:00`).toLocaleDateString("pt-BR", {
+function addDays(iso: string, n: number): string {
+  const [y, m, d] = iso.slice(0, 10).split("-").map(Number);
+  const date = new Date(y, m - 1, d + n);
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+}
+
+function nightsBetween(arrival: string, departure: string): number {
+  const a = new Date(`${arrival.slice(0, 10)}T00:00:00`).getTime();
+  const b = new Date(`${departure.slice(0, 10)}T00:00:00`).getTime();
+  return Math.max(0, Math.round((b - a) / 86_400_000));
+}
+
+function fmtDate(iso: string): string {
+  return new Date(`${iso.slice(0, 10)}T00:00:00`).toLocaleDateString("pt-BR", {
+    weekday: "short",
     day: "2-digit",
     month: "short",
   });
 }
 
-export default function ItineraryPanel({ tripId, stopId, initialItems, role }: Props) {
+function AddItemForm({
+  onAdd,
+  onCancel,
+}: {
+  onAdd: (item: { title: string; time: string; notes: string; link: string }) => void;
+  onCancel: () => void;
+}) {
+  const [title, setTitle] = useState("");
+  const [time, setTime] = useState("");
+  const [notes, setNotes] = useState("");
+  const [link, setLink] = useState("");
+  return (
+    <div style={{ padding: "16px 20px", background: "var(--surface-2)" }}>
+      <div className="form-grid" style={{ gap: 12 }}>
+        <div className="form-row" style={{ gridTemplateColumns: "110px 1fr" }}>
+          <label className="field">
+            <span>Horário</span>
+            <input
+              lang="pt-BR"
+              onChange={(e) => setTime(e.target.value)}
+              type="time"
+              value={time}
+            />
+          </label>
+          <label className="field">
+            <span>O que fazer</span>
+            <input
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Bate-volta a Sintra"
+              value={title}
+            />
+          </label>
+        </div>
+        <div className="form-row cols-2">
+          <label className="field">
+            <span>Notas (opcional)</span>
+            <input
+              onChange={(e) => setNotes(e.target.value)}
+              placeholder="Comprar ingresso antes…"
+              value={notes}
+            />
+          </label>
+          <label className="field">
+            <span>Link (opcional)</span>
+            <input onChange={(e) => setLink(e.target.value)} placeholder="https://…" value={link} />
+          </label>
+        </div>
+      </div>
+      <div className="form-actions" style={{ marginTop: 14 }}>
+        <button className="btn tiny ghost" onClick={onCancel} type="button">
+          Cancelar
+        </button>
+        <button
+          className="btn tiny accent"
+          disabled={!title.trim()}
+          onClick={() =>
+            onAdd({ title: title.trim(), time, notes: notes.trim(), link: link.trim() })
+          }
+          type="button"
+        >
+          Adicionar
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default function ItineraryPanel({
+  tripId,
+  stopId,
+  initialItems,
+  role,
+  arrivalDate,
+  departureDate,
+}: Props) {
   const router = useRouter();
   const [items, setItems] = useState<ItineraryItemPublic[]>(initialItems);
   const [loading, setLoading] = useState(false);
+  const [addingDay, setAddingDay] = useState<string | null>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editTitle, setEditTitle] = useState("");
   const [editNotes, setEditNotes] = useState("");
   const [editLink, setEditLink] = useState("");
-  const [editDay, setEditDay] = useState("");
   const [editTime, setEditTime] = useState("");
-  const [newTitle, setNewTitle] = useState("");
-  const [newNotes, setNewNotes] = useState("");
-  const [newLink, setNewLink] = useState("");
-  const [newDay, setNewDay] = useState("");
-  const [newTime, setNewTime] = useState("");
   const isOrganizer = role === "organizer";
 
-  async function handleAdd(e: React.FormEvent) {
-    e.preventDefault();
-    if (!newTitle.trim()) return;
+  const hasWindow = Boolean(arrivalDate && departureDate);
+  const dayCount = hasWindow
+    ? nightsBetween(arrivalDate as string, departureDate as string) + 1
+    : 0;
+
+  const days = hasWindow
+    ? Array.from({ length: dayCount }, (_, i) => {
+        const date = addDays(arrivalDate as string, i);
+        return {
+          n: i + 1,
+          date,
+          items: items
+            .filter((it) => it.day?.slice(0, 10) === date)
+            .sort((a, b) => (a.time || "99").localeCompare(b.time || "99")),
+        };
+      })
+    : [];
+
+  const dayDates = new Set(days.map((d) => d.date));
+  const unscheduled = items.filter((it) => !it.day || !dayDates.has(it.day.slice(0, 10)));
+
+  async function handleAdd(payload: ItineraryItemCreate) {
     setLoading(true);
-    const item = await createItineraryItemAction(tripId, stopId, {
-      title: newTitle.trim(),
-      notes: newNotes.trim() || undefined,
-      link: newLink.trim() || undefined,
-      day: newDay || null,
-      time: newTime || null,
-    });
-    if (item) {
-      setItems((prev) => [...prev, item]);
-      setNewTitle("");
-      setNewNotes("");
-      setNewLink("");
-      setNewDay("");
-      setNewTime("");
-    }
+    const item = await createItineraryItemAction(tripId, stopId, payload);
+    if (item) setItems((prev) => [...prev, item]);
+    setAddingDay(null);
     setLoading(false);
     router.refresh();
   }
@@ -71,7 +165,6 @@ export default function ItineraryPanel({ tripId, stopId, initialItems, role }: P
     setEditTitle(item.title);
     setEditNotes(item.notes);
     setEditLink(item.link);
-    setEditDay(item.day ?? "");
     setEditTime(item.time ?? "");
   }
 
@@ -82,7 +175,6 @@ export default function ItineraryPanel({ tripId, stopId, initialItems, role }: P
       title: editTitle.trim(),
       notes: editNotes.trim(),
       link: editLink.trim(),
-      day: editDay || null,
       time: editTime || null,
     });
     if (updated) setItems((prev) => prev.map((i) => (i.id === itemId ? updated : i)));
@@ -99,234 +191,234 @@ export default function ItineraryPanel({ tripId, stopId, initialItems, role }: P
     router.refresh();
   }
 
-  async function handleMoveUp(index: number) {
-    if (index === 0) return;
-    const reordered = [...items];
-    [reordered[index - 1], reordered[index]] = [reordered[index], reordered[index - 1]];
-    setItems(reordered);
-    await reorderItineraryItemsAction(
-      tripId,
-      stopId,
-      reordered.map((i) => i.id),
+  const itemRow = (item: ItineraryItemPublic) => {
+    if (editingId === item.id) {
+      return (
+        <div key={item.id} style={{ padding: "16px 20px", background: "var(--surface-2)" }}>
+          <div className="form-grid" style={{ gap: 12 }}>
+            <div className="form-row" style={{ gridTemplateColumns: "110px 1fr" }}>
+              <label className="field">
+                <span>Horário</span>
+                <input
+                  lang="pt-BR"
+                  onChange={(e) => setEditTime(e.target.value)}
+                  type="time"
+                  value={editTime}
+                />
+              </label>
+              <label className="field">
+                <span>O que fazer</span>
+                <input
+                  onChange={(e) => setEditTitle(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleSaveEdit(item.id)}
+                  value={editTitle}
+                />
+              </label>
+            </div>
+            <div className="form-row cols-2">
+              <label className="field">
+                <span>Notas</span>
+                <input onChange={(e) => setEditNotes(e.target.value)} value={editNotes} />
+              </label>
+              <label className="field">
+                <span>Link</span>
+                <input
+                  onChange={(e) => setEditLink(e.target.value)}
+                  placeholder="https://…"
+                  value={editLink}
+                />
+              </label>
+            </div>
+          </div>
+          <div className="form-actions" style={{ marginTop: 14 }}>
+            <button className="btn tiny ghost" onClick={() => setEditingId(null)} type="button">
+              Cancelar
+            </button>
+            <button
+              className="btn tiny accent"
+              disabled={loading}
+              onClick={() => handleSaveEdit(item.id)}
+              type="button"
+            >
+              Salvar
+            </button>
+          </div>
+        </div>
+      );
+    }
+    return (
+      <div
+        key={item.id}
+        className="board-row"
+        style={{ gridTemplateColumns: "64px 1fr auto", padding: "13px 20px" }}
+      >
+        <span
+          className="mono-num"
+          style={{
+            fontSize: 13,
+            color: item.time ? "var(--accent)" : "var(--muted)",
+            fontWeight: 600,
+          }}
+        >
+          {item.time || "—"}
+        </span>
+        <div>
+          <div style={{ fontWeight: 600, fontSize: 15 }}>
+            {item.title}
+            {item.link && (
+              <a
+                className="link-btn"
+                href={item.link}
+                rel="noreferrer"
+                style={{ fontSize: 12, marginLeft: 10, fontWeight: 500 }}
+                target="_blank"
+              >
+                link ↗
+              </a>
+            )}
+          </div>
+          {item.notes && (
+            <div className="soft" style={{ fontSize: 13.5, marginTop: 2, textWrap: "pretty" }}>
+              {item.notes}
+            </div>
+          )}
+        </div>
+        {isOrganizer && (
+          <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+            <button className="btn tiny ghost" onClick={() => startEdit(item)} type="button">
+              Editar
+            </button>
+            <button
+              className="icon-btn"
+              disabled={loading}
+              onClick={() => handleDelete(item.id)}
+              title="Excluir item"
+              type="button"
+            >
+              <Icon name="trash" size={13} />
+            </button>
+          </div>
+        )}
+      </div>
     );
-    router.refresh();
-  }
+  };
 
-  async function handleMoveDown(index: number) {
-    if (index === items.length - 1) return;
-    const reordered = [...items];
-    [reordered[index], reordered[index + 1]] = [reordered[index + 1], reordered[index]];
-    setItems(reordered);
-    await reorderItineraryItemsAction(
-      tripId,
-      stopId,
-      reordered.map((i) => i.id),
+  // Sem janela de datas: lista simples (todos os itens), com adição sem dia.
+  if (!hasWindow) {
+    return (
+      <div>
+        <div className="section-head">
+          <span className="kicker">roteiro</span>
+          <h2>
+            {items.length ? `${items.length} item${items.length !== 1 ? "s" : ""}` : "Vazio ainda"}
+          </h2>
+          <span className="spacer" />
+          {isOrganizer && (
+            <button
+              className="btn small ghost"
+              onClick={() => setAddingDay(addingDay ? null : "none")}
+              type="button"
+            >
+              <Icon name="plus" size={13} /> Adicionar item
+            </button>
+          )}
+        </div>
+        <div className="card flat" style={{ border: "1px solid var(--line)" }}>
+          {items.length === 0 && addingDay !== "none" && (
+            <div style={{ padding: "16px 20px", fontSize: 13, color: "var(--muted)" }}>
+              Defina as datas da parada para organizar o roteiro por dia. Por enquanto, itens ficam
+              sem dia.
+            </div>
+          )}
+          {items.map(itemRow)}
+          {addingDay === "none" && (
+            <AddItemForm
+              onAdd={(it) =>
+                handleAdd({
+                  title: it.title,
+                  time: it.time || null,
+                  notes: it.notes,
+                  link: it.link,
+                })
+              }
+              onCancel={() => setAddingDay(null)}
+            />
+          )}
+        </div>
+      </div>
     );
-    router.refresh();
   }
 
   return (
-    <div className="itinerary-panel">
-      {items.length === 0 && !isOrganizer && (
-        <p className="trips-empty">Nenhum item no roteiro ainda.</p>
-      )}
+    <div>
+      <div style={{ display: "grid", gap: 14 }}>
+        {days.map((day) => {
+          const open = addingDay === day.date;
+          return (
+            <div key={day.date} className="card flat" style={{ border: "1px solid var(--line)" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 14,
+                  padding: "14px 20px",
+                  borderBottom: day.items.length || open ? "1px solid var(--line-soft)" : "none",
+                }}
+              >
+                <span className="mono" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                  dia {String(day.n).padStart(2, "0")}
+                </span>
+                <span className="mono-num" style={{ fontSize: 12.5, color: "var(--ink-soft)" }}>
+                  {fmtDate(day.date)}
+                </span>
+                <span className="spacer" style={{ flex: 1 }} />
+                {isOrganizer && (
+                  <button
+                    className="btn tiny ghost"
+                    onClick={() => setAddingDay(open ? null : day.date)}
+                    type="button"
+                  >
+                    <Icon name="plus" size={12} /> Item
+                  </button>
+                )}
+              </div>
 
-      {items.length === 0 && isOrganizer && (
-        <p className="trips-empty">Roteiro vazio. Adicione o primeiro item abaixo.</p>
-      )}
+              {day.items.map(itemRow)}
 
-      {items.length > 0 && (
-        <ol className="itinerary-list">
-          {items.map((item, index) => (
-            <li key={item.id} className="itinerary-item">
-              {editingId === item.id ? (
-                <div className="itinerary-edit-form">
-                  <label className="field">
-                    <span>Título</span>
-                    <input
-                      value={editTitle}
-                      onChange={(e) => setEditTitle(e.target.value)}
-                      onKeyDown={(e) => e.key === "Enter" && handleSaveEdit(item.id)}
-                      className="stop-edit-input"
-                      required
-                    />
-                  </label>
-                  <label className="field">
-                    <span>Observações</span>
-                    <input
-                      value={editNotes}
-                      onChange={(e) => setEditNotes(e.target.value)}
-                      className="stop-edit-input"
-                      placeholder="Reservar com antecedência…"
-                    />
-                  </label>
-                  <label className="field">
-                    <span>Link</span>
-                    <input
-                      value={editLink}
-                      onChange={(e) => setEditLink(e.target.value)}
-                      className="stop-edit-input"
-                      placeholder="https://…"
-                    />
-                  </label>
-                  <div className="form-row">
-                    <label className="field">
-                      <span>Dia</span>
-                      <input
-                        type="date"
-                        value={editDay}
-                        onChange={(e) => setEditDay(e.target.value)}
-                        className="stop-edit-input"
-                      />
-                    </label>
-                    <label className="field">
-                      <span>Horário</span>
-                      <input
-                        type="time"
-                        value={editTime}
-                        onChange={(e) => setEditTime(e.target.value)}
-                        className="stop-edit-input"
-                      />
-                    </label>
-                  </div>
-                  <div className="form-actions">
-                    <button
-                      type="button"
-                      onClick={() => handleSaveEdit(item.id)}
-                      disabled={loading}
-                      className="primary-button"
-                    >
-                      Salvar
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setEditingId(null)}
-                      className="secondary-button"
-                    >
-                      Cancelar
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <div className="itinerary-item-body">
-                  <div className="itinerary-item-main">
-                    <span className="itinerary-item-title">{item.title}</span>
-                    {(item.day || item.time) && (
-                      <span className="itinerary-item-when">
-                        {formatDay(item.day)}
-                        {item.time ? ` · ${item.time}` : ""}
-                      </span>
-                    )}
-                    {item.notes && <span className="itinerary-item-notes">{item.notes}</span>}
-                    {item.link && (
-                      <a
-                        href={item.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="itinerary-item-link"
-                      >
-                        {item.link}
-                      </a>
-                    )}
-                  </div>
-                  {isOrganizer && (
-                    <div className="stop-actions">
-                      <button
-                        type="button"
-                        onClick={() => handleMoveUp(index)}
-                        disabled={index === 0 || loading}
-                        className="icon-button"
-                        title="Mover para cima"
-                      >
-                        ↑
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => handleMoveDown(index)}
-                        disabled={index === items.length - 1 || loading}
-                        className="icon-button"
-                        title="Mover para baixo"
-                      >
-                        ↓
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => startEdit(item)}
-                        className="secondary-button"
-                      >
-                        Editar
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => handleDelete(item.id)}
-                        disabled={loading}
-                        className="danger-button"
-                      >
-                        Remover
-                      </button>
-                    </div>
-                  )}
+              {day.items.length === 0 && !open && (
+                <div style={{ padding: "12px 20px", fontSize: 13, color: "var(--muted)" }}>
+                  Dia livre por enquanto.
                 </div>
               )}
-            </li>
-          ))}
-        </ol>
-      )}
 
-      {isOrganizer && (
-        <form onSubmit={handleAdd} className="stop-add-form">
-          <label className="field">
-            <span>Título</span>
-            <input
-              value={newTitle}
-              onChange={(e) => setNewTitle(e.target.value)}
-              placeholder="Visitar Castelo de São Jorge"
-              className="stop-edit-input"
-              required
-            />
-          </label>
-          <label className="field">
-            <span>Observações</span>
-            <input
-              value={newNotes}
-              onChange={(e) => setNewNotes(e.target.value)}
-              className="stop-edit-input"
-              placeholder="Opcional"
-            />
-          </label>
-          <label className="field">
-            <span>Link</span>
-            <input
-              value={newLink}
-              onChange={(e) => setNewLink(e.target.value)}
-              className="stop-edit-input"
-              placeholder="https://…"
-            />
-          </label>
-          <div className="form-row">
-            <label className="field">
-              <span>Dia</span>
-              <input
-                type="date"
-                value={newDay}
-                onChange={(e) => setNewDay(e.target.value)}
-                className="stop-edit-input"
-              />
-            </label>
-            <label className="field">
-              <span>Horário</span>
-              <input
-                type="time"
-                value={newTime}
-                onChange={(e) => setNewTime(e.target.value)}
-                className="stop-edit-input"
-              />
-            </label>
+              {open && (
+                <AddItemForm
+                  onAdd={(it) =>
+                    handleAdd({
+                      title: it.title,
+                      time: it.time || null,
+                      notes: it.notes,
+                      link: it.link,
+                      day: day.date,
+                    })
+                  }
+                  onCancel={() => setAddingDay(null)}
+                />
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {unscheduled.length > 0 && (
+        <div style={{ marginTop: 22 }}>
+          <div className="section-head">
+            <span className="kicker">sem dia definido</span>
           </div>
-          <button type="submit" disabled={loading} className="primary-button">
-            Adicionar ao Roteiro
-          </button>
-        </form>
+          <div className="card flat" style={{ border: "1px solid var(--line)" }}>
+            {unscheduled.map(itemRow)}
+          </div>
+        </div>
       )}
     </div>
   );

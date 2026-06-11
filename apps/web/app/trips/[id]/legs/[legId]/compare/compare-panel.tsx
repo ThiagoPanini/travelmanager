@@ -2,6 +2,8 @@
 
 import type { MembershipRole } from "@traveltogether/types";
 import { useState } from "react";
+
+import { Code, Icon } from "@/components/atlas";
 import type { FareRow, SortKey } from "@/lib/compare-fares";
 import { sortFares } from "@/lib/compare-fares";
 
@@ -18,8 +20,11 @@ function formatDuration(minutes: number): string {
 }
 
 function formatDate(iso: string): string {
-  const d = new Date(iso);
-  return d.toLocaleDateString("pt-BR", { day: "2-digit", month: "short" }).toUpperCase();
+  return new Date(iso).toLocaleDateString("pt-BR", {
+    weekday: "short",
+    day: "2-digit",
+    month: "short",
+  });
 }
 
 export default function ComparePanel({ initialRows }: Props) {
@@ -27,63 +32,93 @@ export default function ComparePanel({ initialRows }: Props) {
   const rows = sortFares(initialRows, sortKey);
 
   if (rows.length === 0) {
-    return <p className="trips-empty">Nenhuma pesquisa registrada para este trajeto.</p>;
+    return (
+      <div className="empty">
+        <Icon name="plane" size={22} />
+        <div style={{ fontWeight: 600, color: "var(--ink-soft)" }}>
+          Nenhuma pesquisa registrada para este trajeto.
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="compare-panel">
-      <div className="compare-sort-bar">
-        <span className="compare-sort-label">Ordenar por</span>
+    <div>
+      <div className="section-head">
+        <span className="kicker">comparação</span>
+        <span className="spacer" />
+        <span className="mono" style={{ fontSize: 10, color: "var(--muted)", marginRight: 6 }}>
+          ordenar por
+        </span>
         <button
-          type="button"
+          className={`btn tiny ${sortKey === "price" ? "accent" : "ghost"}`}
           onClick={() => setSortKey("price")}
-          className={sortKey === "price" ? "sort-btn active" : "sort-btn"}
+          type="button"
         >
           Preço
         </button>
         <button
-          type="button"
+          className={`btn tiny ${sortKey === "upvotes" ? "accent" : "ghost"}`}
           onClick={() => setSortKey("upvotes")}
-          className={sortKey === "upvotes" ? "sort-btn active" : "sort-btn"}
+          type="button"
         >
           Upvotes
         </button>
       </div>
 
-      <ul className="ticket-list">
-        {rows.map((row) => (
-          <li key={row.id} className={row.is_chosen ? "ticket-row ticket-chosen" : "ticket-row"}>
-            {row.is_chosen && <span className="ticket-chosen-badge">★ Escolhida</span>}
-
-            <div className="ticket-route">
-              <span className="ticket-code">{row.origin_airport}</span>
-              <span className="ticket-arrow">→</span>
-              <span className="ticket-code">{row.destination_airport}</span>
-            </div>
-
-            <div className="ticket-meta">
-              <span className="ticket-airline">{row.airline}</span>
-              <span className="ticket-date">{formatDate(row.flight_date)}</span>
-            </div>
-
-            <div className="ticket-details">
-              <span className="ticket-detail">{formatDuration(row.duration_minutes)}</span>
-              <span className="ticket-detail">
-                {row.stops === 0 ? "Direto" : `${row.stops} escala${row.stops > 1 ? "s" : ""}`}
+      <div className="card">
+        <div className="board">
+          {rows.map((row) => (
+            <div
+              key={row.id}
+              className="board-row"
+              style={{
+                gridTemplateColumns: "auto 1fr auto auto",
+                background: row.is_chosen
+                  ? "color-mix(in oklab, var(--accent) 7%, transparent)"
+                  : undefined,
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <Code code={row.origin_airport} size="sm" />
+                <span style={{ color: "var(--muted)" }}>→</span>
+                <Code code={row.destination_airport} size="sm" />
+              </div>
+              <div>
+                <div
+                  style={{
+                    fontWeight: 650,
+                    fontSize: 15,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                  }}
+                >
+                  {row.airline}
+                  {row.is_chosen && <span className="stamp">escolhida</span>}
+                </div>
+                <div
+                  className="mono-num"
+                  style={{ fontSize: 11.5, color: "var(--muted)", marginTop: 3 }}
+                >
+                  {formatDate(row.flight_date)} · {formatDuration(row.duration_minutes)} ·{" "}
+                  {row.stops === 0 ? "direto" : `${row.stops} escala${row.stops > 1 ? "s" : ""}`}
+                  {row.checked_baggage ? " · c/ bagagem" : ""}
+                </div>
+              </div>
+              <div
+                className="mono-num"
+                style={{ fontWeight: 700, fontSize: 18, whiteSpace: "nowrap" }}
+              >
+                {row.currency} {row.value}
+              </div>
+              <span className="upvote">
+                <Icon name="up" size={12} /> {row.upvote_count}
               </span>
-              {row.checked_baggage && <span className="ticket-detail">Bagagem</span>}
             </div>
-
-            <div className="ticket-right">
-              <span className="ticket-price">
-                <span className="ticket-currency">{row.currency}</span>
-                <span className="ticket-amount">{row.value}</span>
-              </span>
-              <span className="ticket-upvotes">↑ {row.upvote_count}</span>
-            </div>
-          </li>
-        ))}
-      </ul>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

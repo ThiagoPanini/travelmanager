@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
 import { AppTopbar } from "@/app/app-topbar";
 import { getAuthSession } from "@/auth";
+import { Breadcrumbs } from "@/components/atlas";
 import { getTrip, getTripMembers } from "@/lib/api/trips";
 
 import { MembersPanel } from "./members-panel";
@@ -29,26 +29,33 @@ export default async function TripMembersPage({ params }: Props) {
   return (
     <div className="app-shell">
       <AppTopbar active="trips" />
-      <main className="trips-shell">
-        <Link className="crumb" href={`/trips/${id}`}>
-          ← {trip.name}
-        </Link>
-        <header className="trips-header">
-          <div>
-            <p className="eyebrow">manifesto de passageiros</p>
-            <h1>Tripulação</h1>
-            <p className="sub">
-              Organizadores editam tudo; membros leem e dão upvote nas passagens.
-            </p>
+      <main className="page fadeup">
+        <div className="shell" style={{ maxWidth: 820 }}>
+          <Breadcrumbs
+            items={[
+              { label: "Viagens", href: "/trips" },
+              { label: trip.name, href: `/trips/${id}` },
+              { label: "Pessoas" },
+            ]}
+          />
+          <div className="section-head" style={{ marginBottom: 24 }}>
+            <div>
+              <div className="kicker" style={{ marginBottom: 8 }}>
+                quem vai junto
+              </div>
+              <h1 className="display" style={{ fontSize: 34 }}>
+                Pessoas da viagem
+              </h1>
+            </div>
           </div>
-        </header>
 
-        <MembersPanel
-          tripId={id}
-          members={members.members}
-          pending={members.pending}
-          isOrganizer={isOrganizer}
-        />
+          <MembersPanel
+            tripId={id}
+            members={members.members}
+            pending={members.pending}
+            isOrganizer={isOrganizer}
+          />
+        </div>
       </main>
     </div>
   );

@@ -1,7 +1,8 @@
-import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
+import { AppTopbar } from "@/app/app-topbar";
 import { getAuthSession } from "@/auth";
+import { Breadcrumbs } from "@/components/atlas";
 import { getFares, getUpvote } from "@/lib/api/fares";
 import { getTrip } from "@/lib/api/trips";
 import type { FareRow } from "@/lib/compare-fares";
@@ -25,26 +26,28 @@ export default async function ComparePage({ params }: Props) {
   const token = session.apiAccessToken;
   const upvotes = await Promise.all(fares.map((f) => getUpvote(token, f.id)));
 
-  const rows: FareRow[] = fares.map((f, i) => ({
-    ...f,
-    upvote_count: upvotes[i]?.count ?? 0,
-  }));
-
+  const rows: FareRow[] = fares.map((f, i) => ({ ...f, upvote_count: upvotes[i]?.count ?? 0 }));
   const { trip, membership } = data;
 
   return (
-    <main className="trips-shell">
-      <header className="trips-header">
-        <div>
-          <p className="eyebrow">
-            <Link href={`/trips/${id}/legs/${legId}`}>← Passagens</Link>
-          </p>
-          <h1>Comparar Pesquisas</h1>
-          <p className="trips-empty">{trip.name}</p>
+    <div className="app-shell">
+      <AppTopbar active="trips" />
+      <main className="page fadeup">
+        <div className="shell">
+          <Breadcrumbs
+            items={[
+              { label: "Viagens", href: "/trips" },
+              { label: trip.name, href: `/trips/${id}` },
+              { label: "Passagens", href: `/trips/${id}/legs/${legId}` },
+              { label: "Comparação" },
+            ]}
+          />
+          <h1 className="display" style={{ fontSize: 30, marginBottom: 18 }}>
+            Comparar pesquisas
+          </h1>
+          <ComparePanel legId={legId} initialRows={rows} role={membership.role} />
         </div>
-      </header>
-
-      <ComparePanel legId={legId} initialRows={rows} role={membership.role} />
-    </main>
+      </main>
+    </div>
   );
 }

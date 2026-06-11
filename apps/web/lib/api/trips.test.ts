@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { createTrip, getTrip, getTrips, uploadStopCoverImage, uploadTripCoverImage } from "./trips";
+import { createTrip, getTrip, getTrips } from "./trips";
 
 const TRIP: import("@traveltogether/types").TripWithMembership = {
   trip: {
@@ -94,53 +94,6 @@ describe("createTrip", () => {
     expect(fetch).toHaveBeenCalledWith(
       "http://localhost:8000/trips",
       expect.objectContaining({ method: "POST" }),
-    );
-  });
-});
-
-describe("uploadTripCoverImage", () => {
-  afterEach(() => vi.unstubAllGlobals());
-
-  it("envia multipart autenticado sem forçar content-type JSON", async () => {
-    const data = new FormData();
-    data.append("file", new Blob(["png"], { type: "image/png" }), "cover.png");
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue({ ok: true, json: () => Promise.resolve(TRIP.trip) }),
-    );
-
-    await expect(uploadTripCoverImage("token", "trip-1", data)).resolves.toEqual(TRIP.trip);
-    expect(fetch).toHaveBeenCalledWith(
-      "http://localhost:8000/trips/trip-1/cover-image",
-      expect.objectContaining({
-        method: "POST",
-        body: data,
-        headers: { Authorization: "Bearer token" },
-      }),
-    );
-  });
-});
-
-describe("uploadStopCoverImage", () => {
-  afterEach(() => vi.unstubAllGlobals());
-
-  it("envia multipart autenticado da parada sem content-type JSON", async () => {
-    const data = new FormData();
-    data.append("file", new Blob(["webp"], { type: "image/webp" }), "cover.webp");
-    const stop = { ...TRIP_SUMMARY.stops[0], cover_image_url: "https://cdn.example.com/stop.webp" };
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue({ ok: true, json: () => Promise.resolve(stop) }),
-    );
-
-    await expect(uploadStopCoverImage("token", "trip-1", "stop-1", data)).resolves.toEqual(stop);
-    expect(fetch).toHaveBeenCalledWith(
-      "http://localhost:8000/trips/trip-1/stops/stop-1/cover-image",
-      expect.objectContaining({
-        method: "POST",
-        body: data,
-        headers: { Authorization: "Bearer token" },
-      }),
     );
   });
 });

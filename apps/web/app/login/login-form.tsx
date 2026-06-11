@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { type FormEvent, useState } from "react";
@@ -39,46 +40,55 @@ export function LoginForm() {
   }
 
   return (
-    <form className="auth-bp bp" onSubmit={onSubmit}>
-      <div className="bp-head">
-        <span>Boarding pass</span>
-        <span className="flight">TT · beta</span>
-      </div>
-      <div className="auth-body">
-        <div className="auth-brand">
-          <span className="wordmark-ticket">TT</span>
-          traveltogether
+    <div style={{ width: "min(420px, 92vw)" }}>
+      <form className="card" onSubmit={onSubmit} style={{ padding: "36px 34px" }}>
+        <div className="kicker" style={{ marginBottom: 14 }}>
+          embarque
         </div>
-        <div className="login-heading">
-          <p>Acesso privado</p>
-          <h1>Entrar no traveltogether</h1>
-        </div>
-        <p className="sub">Use o e-mail autorizado para acessar o beta fechado.</p>
-        <label className="login-field">
-          <span>E-mail autorizado</span>
-          <input
-            autoComplete="email"
-            name="email"
-            onChange={(event) => setEmail(event.target.value)}
-            placeholder="voce@example.com"
-            required
-            type="email"
-            value={email}
-          />
-        </label>
-        <button
-          className="primary-button"
-          disabled={state === "submitting"}
-          style={{ width: "100%" }}
-          type="submit"
-        >
-          {state === "submitting" ? "Entrando…" : "Entrar"}
-        </button>
-        <p className={isAccessDenied ? "login-message is-denied" : "login-message"} role="status">
-          {message}
+        <h1 className="display" style={{ fontSize: 30, marginBottom: 8 }}>
+          Identifique-se
+        </h1>
+        <p className="soft" style={{ fontSize: 14.5, marginBottom: 26 }}>
+          Acesso privado: use o e-mail autorizado para entrar no beta fechado. Sem senha.
         </p>
-        <p className="hint">Sem convite? Peça para um organizador te adicionar.</p>
+        <div className="form-grid">
+          <label className="field">
+            <span>E-mail autorizado</span>
+            <input
+              autoComplete="email"
+              name="email"
+              onChange={(event) => setEmail(event.target.value)}
+              placeholder="voce@exemplo.com"
+              required
+              type="email"
+              value={email}
+            />
+            <span className="hint">No MVP, somente e-mails na allowlist conseguem entrar.</span>
+          </label>
+          <button
+            className="btn accent"
+            disabled={state === "submitting"}
+            style={{ justifyContent: "center" }}
+            type="submit"
+          >
+            {state === "submitting" ? "Entrando…" : "Receber acesso"}
+          </button>
+        </div>
+        {message && (
+          <p
+            className="hint"
+            role="status"
+            style={{ marginTop: 16, color: isAccessDenied ? "var(--danger)" : "var(--muted)" }}
+          >
+            {message}
+          </p>
+        )}
+      </form>
+      <div style={{ textAlign: "center", marginTop: 18 }}>
+        <Link className="link-btn" href="/" style={{ fontSize: 13 }}>
+          ← Voltar à página inicial
+        </Link>
       </div>
-    </form>
+    </div>
   );
 }

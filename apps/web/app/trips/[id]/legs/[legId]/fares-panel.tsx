@@ -1,10 +1,9 @@
 "use client";
 
 import type { FareQuotePublic, MembershipRole, UpvoteResponse } from "@traveltogether/types";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 
+import { Code, Icon } from "@/components/atlas";
 import {
   chooseFareAction,
   createFareAction,
@@ -14,7 +13,6 @@ import {
 
 interface Props {
   legId: string;
-  tripId: string;
   initialFares: FareQuotePublic[];
   role: MembershipRole;
   fromCode: string;
@@ -58,9 +56,9 @@ function formatMoney(fare: FareQuotePublic): string {
 
 function formatDate(value: string): string {
   return new Date(value).toLocaleDateString("pt-BR", {
+    weekday: "short",
     day: "2-digit",
     month: "short",
-    year: "numeric",
   });
 }
 
@@ -72,7 +70,6 @@ function formatDuration(minutes: number): string {
 
 export default function FaresPanel({
   legId,
-  tripId,
   initialFares,
   role,
   fromCode,
@@ -80,7 +77,6 @@ export default function FaresPanel({
   fromCity,
   toCity,
 }: Props) {
-  const router = useRouter();
   const [fares, setFares] = useState<FareQuotePublic[]>(initialFares);
   const [form, setForm] = useState(EMPTY_FORM);
   const [loading, setLoading] = useState(false);
@@ -126,9 +122,11 @@ export default function FaresPanel({
     () =>
       [...fares].sort((a, b) => {
         const chosenDelta = (b.is_chosen ? 1 : 0) - (a.is_chosen ? 1 : 0);
-        return chosenDelta || moneyValue(a) - moneyValue(b);
+        if (chosenDelta) return chosenDelta;
+        const countFor = (id: string) => upvotes[id]?.count ?? 0;
+        return countFor(b.id) - countFor(a.id);
       }),
-    [fares],
+    [fares, upvotes],
   );
 
   const sortedFares = useMemo(
@@ -150,19 +148,22 @@ export default function FaresPanel({
       duration_minutes: Number(form.duration_minutes),
       stops: Number(form.stops),
       checked_baggage: form.checked_baggage,
-      origin_airport: form.origin_airport,
-      destination_airport: form.destination_airport,
+      origin_airport: form.origin_airport.toUpperCase(),
+      destination_airport: form.destination_airport.toUpperCase(),
       airline: form.airline,
       link: form.link,
       notes: form.notes,
     });
     if (fare) {
       setFares((prev) => [...prev, fare]);
+      setUpvotes((prev) => ({
+        ...prev,
+        [fare.id]: { count: fare.upvote_count, voted: fare.user_voted },
+      }));
       setForm(EMPTY_FORM);
       setShowForm(false);
     }
     setLoading(false);
-    router.refresh();
   }
 
   async function handleDelete(fareId: string) {
@@ -170,332 +171,462 @@ export default function FaresPanel({
     await deleteFareAction(legId, fareId);
     setFares((prev) => prev.filter((f) => f.id !== fareId));
     setLoading(false);
-    router.refresh();
   }
 
+  const minPrice = Math.min(...fares.map(moneyValue));
+  const minDur = Math.min(...fares.map((f) => f.duration_minutes));
+  const compareRows: {
+    label: string;
+    render: (f: FareQuotePublic) => React.ReactNode;
+    best?: (f: FareQuotePublic) => boolean;
+  }[] = [
+    {
+      label: "Preço",
+      render: (f) => (
+        <strong className="mono-num" style={{ fontSize: 16 }}>
+          {formatMoney(f)}
+        </strong>
+      ),
+      best: (f) => moneyValue(f) === minPrice,
+    },
+    { label: "Data do voo", render: (f) => formatDate(f.flight_date) },
+    {
+      label: "Duração",
+      render: (f) => formatDuration(f.duration_minutes),
+      best: (f) => f.duration_minutes === minDur,
+    },
+    {
+      label: "Escalas",
+      render: (f) => (f.stops === 0 ? "Direto" : `${f.stops} escala${f.stops > 1 ? "s" : ""}`),
+      best: (f) => f.stops === 0,
+    },
+    {
+      label: "Bagagem",
+      render: (f) => (f.checked_baggage ? "Inclusa" : "Não inclusa"),
+      best: (f) => f.checked_baggage,
+    },
+    {
+      label: "Aeroportos",
+      render: (f) => (
+        <span className="mono-num">
+          {f.origin_airport} → {f.destination_airport}
+        </span>
+      ),
+    },
+    { label: "Upvotes", render: (f) => <span className="mono-num">▲ {voteFor(f.id).count}</span> },
+  ];
+
   return (
-    <div className="fares-panel">
-      <div className="fare-head">
-        <div>
-          <p className="eyebrow">pesquisa de passagem · trajeto</p>
-          <div className="fare-route-big">
-            {fromCode}
-            <span className="ar">✈</span>
-            {toCode}
+    <div>
+      {/* leg header */}
+      <div className="card" style={{ padding: "22px 26px", marginBottom: 26 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+            <Code code={fromCode} size="lg" />
+            <span style={{ color: "var(--accent)" }}>
+              <Icon name="arrowRight" size={22} />
+            </span>
+            <Code code={toCode} size="lg" />
           </div>
-          <p className="fare-route-city">
-            {fromCity} para {toCity}
-          </p>
+          <div>
+            <div style={{ fontWeight: 700, fontSize: 17 }}>
+              {fromCity} → {toCity}
+            </div>
+            <div className="mono-num" style={{ fontSize: 12.5, color: "var(--muted)" }}>
+              pesquisa de passagem · trajeto
+            </div>
+          </div>
+          <span className="spacer" style={{ flex: 1 }} />
+          <div style={{ display: "flex", gap: 10 }}>
+            {fares.length >= 2 && (
+              <button
+                className="btn ghost small"
+                onClick={() => setView((v) => (v === "tickets" ? "compare" : "tickets"))}
+                type="button"
+              >
+                {view === "tickets" ? "Comparar lado a lado" : "Ver lista"}
+              </button>
+            )}
+            {isOrganizer && (
+              <button
+                className="btn accent small"
+                onClick={() => setShowForm((v) => !v)}
+                type="button"
+              >
+                <Icon name="plus" size={13} /> Registrar pesquisa
+              </button>
+            )}
+          </div>
         </div>
-        {fares.length > 0 && (
-          <div className="cmp-toggle">
-            <button
-              className={view === "tickets" ? "on" : ""}
-              onClick={() => setView("tickets")}
-              type="button"
-            >
-              Bilhetes
+      </div>
+
+      {showForm && isOrganizer && (
+        <form
+          className="card flat"
+          onSubmit={handleAdd}
+          style={{ border: "1.5px dashed var(--line)", padding: "20px 22px", marginBottom: 22 }}
+        >
+          <div className="kicker" style={{ marginBottom: 16 }}>
+            nova pesquisa de passagem
+          </div>
+          <div className="form-grid">
+            <div className="form-row cols-3">
+              <label className="field">
+                <span>Companhia</span>
+                <input
+                  onChange={(e) => setField("airline", e.target.value)}
+                  placeholder="TAP Air Portugal"
+                  required
+                  value={form.airline}
+                />
+              </label>
+              <label className="field">
+                <span>Valor</span>
+                <input
+                  onChange={(e) => setField("value", e.target.value)}
+                  placeholder="4280"
+                  required
+                  value={form.value}
+                />
+              </label>
+              <label className="field">
+                <span>Moeda</span>
+                <select
+                  onChange={(e) => setField("currency", e.target.value)}
+                  value={form.currency}
+                >
+                  {["BRL", "EUR", "USD", "GBP", "ARS", "JPY"].map((c) => (
+                    <option key={c}>{c}</option>
+                  ))}
+                </select>
+              </label>
+            </div>
+            <div className="form-row cols-4">
+              <label className="field">
+                <span>Data do voo</span>
+                <input
+                  onChange={(e) => setField("flight_date", e.target.value)}
+                  required
+                  type="date"
+                  value={form.flight_date}
+                />
+              </label>
+              <label className="field">
+                <span>Duração (min)</span>
+                <input
+                  onChange={(e) => setField("duration_minutes", e.target.value)}
+                  placeholder="635"
+                  required
+                  value={form.duration_minutes}
+                />
+              </label>
+              <label className="field">
+                <span>Escalas</span>
+                <select onChange={(e) => setField("stops", e.target.value)} value={form.stops}>
+                  <option value="0">Direto</option>
+                  <option value="1">1 escala</option>
+                  <option value="2">2 escalas</option>
+                  <option value="3">3+</option>
+                </select>
+              </label>
+              <label className="field">
+                <span>Bagagem</span>
+                <select
+                  onChange={(e) => setField("checked_baggage", e.target.value === "1")}
+                  value={form.checked_baggage ? "1" : "0"}
+                >
+                  <option value="0">Não inclusa</option>
+                  <option value="1">Inclusa</option>
+                </select>
+              </label>
+            </div>
+            <div className="form-row cols-2">
+              <label className="field">
+                <span>Aeroportos pesquisados</span>
+                <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                  <input
+                    maxLength={3}
+                    onChange={(e) => setField("origin_airport", e.target.value)}
+                    placeholder="GRU"
+                    required
+                    style={{
+                      textTransform: "uppercase",
+                      fontFamily: "var(--font-mono)",
+                      width: 80,
+                    }}
+                    value={form.origin_airport}
+                  />
+                  <Icon name="arrowRight" size={13} />
+                  <input
+                    maxLength={3}
+                    onChange={(e) => setField("destination_airport", e.target.value)}
+                    placeholder="LIS"
+                    required
+                    style={{
+                      textTransform: "uppercase",
+                      fontFamily: "var(--font-mono)",
+                      width: 80,
+                    }}
+                    value={form.destination_airport}
+                  />
+                </div>
+              </label>
+              <label className="field">
+                <span>Link (opcional)</span>
+                <input
+                  onChange={(e) => setField("link", e.target.value)}
+                  placeholder="https://…"
+                  value={form.link}
+                />
+              </label>
+            </div>
+            <label className="field">
+              <span>Observações (opcional)</span>
+              <input
+                onChange={(e) => setField("notes", e.target.value)}
+                placeholder="Conexão curta em MAD, preço por pessoa…"
+                value={form.notes}
+              />
+            </label>
+          </div>
+          <div className="form-actions" style={{ marginTop: 18 }}>
+            <button className="btn small ghost" onClick={() => setShowForm(false)} type="button">
+              Cancelar
             </button>
-            <button
-              className={view === "compare" ? "on" : ""}
-              onClick={() => setView("compare")}
-              type="button"
-            >
-              Comparar
+            <button className="btn small accent" disabled={loading} type="submit">
+              Registrar pesquisa
             </button>
           </div>
+        </form>
+      )}
+
+      <div className="section-head">
+        <span className="kicker">pesquisas de passagem</span>
+        <h2>
+          {fares.length
+            ? `${fares.length} registrada${fares.length > 1 ? "s" : ""}`
+            : "Nenhuma ainda"}
+        </h2>
+        <span className="spacer" />
+        {fares.length > 0 && view === "tickets" && (
+          <span className="mono" style={{ fontSize: 10, color: "var(--muted)" }}>
+            ordenado por escolhida · upvotes
+          </span>
+        )}
+        {fares.length > 0 && view === "compare" && (
+          <span className="mono" style={{ fontSize: 10, color: "var(--muted)" }}>
+            sem conversão de câmbio — comparação visual
+          </span>
         )}
       </div>
 
       {fares.length === 0 ? (
-        <div className="fares-empty">
-          <p className="empty">
-            Nenhuma pesquisa registrada para este trajeto.
-            {isOrganizer ? " Adicione a primeira pesquisa abaixo." : ""}
-          </p>
-          <Link href={`/trips/${tripId}`} className="secondary-button btn-sm">
-            ← Voltar à Viagem
-          </Link>
+        <div className="empty">
+          <Icon name="plane" size={22} />
+          <div style={{ fontWeight: 600, color: "var(--ink-soft)" }}>
+            Nenhuma pesquisa neste trajeto.
+          </div>
+          <div style={{ fontSize: 13.5, maxWidth: 420 }}>
+            Encontrou um voo bom em qualquer buscador? Registre aqui para o grupo comparar — preço,
+            duração, escalas e bagagem.
+          </div>
+          {isOrganizer && (
+            <button className="btn small accent" onClick={() => setShowForm(true)} type="button">
+              <Icon name="plus" size={13} /> Registrar a primeira
+            </button>
+          )}
         </div>
       ) : view === "tickets" ? (
-        <ul className="ticket-list">
-          {orderedFares.map((fare) => {
-            const cheapest = fare.id === cheapestId;
-            const chosen = fare.is_chosen;
-            const vote = voteFor(fare.id);
-            return (
-              <li key={fare.id} className={chosen ? "bp ticket chosen" : "bp ticket"}>
-                <div className="ticket-main">
-                  <div className="tk-head">
-                    <strong className="tk-airline">
-                      {fare.airline}
-                      {chosen && <span className="tk-chosen">★ escolhida</span>}
-                      {cheapest && !chosen && <span className="tk-cheapest">menor preço</span>}
-                    </strong>
-                    <button
-                      className={vote.voted ? "upvote on" : "upvote"}
-                      onClick={() => handleUpvote(fare.id)}
-                      type="button"
+        <div className="card">
+          <div className="board">
+            {orderedFares.map((fare) => {
+              const cheapest = fare.id === cheapestId;
+              const chosen = fare.is_chosen;
+              const vote = voteFor(fare.id);
+              return (
+                <div
+                  key={fare.id}
+                  className="board-row"
+                  style={{
+                    gridTemplateColumns:
+                      "minmax(150px, 1.3fr) minmax(110px, 1fr) minmax(150px, 1.3fr) auto auto auto",
+                    background: chosen
+                      ? "color-mix(in oklab, var(--accent) 7%, transparent)"
+                      : undefined,
+                  }}
+                >
+                  <div>
+                    <div
+                      style={{
+                        fontWeight: 650,
+                        fontSize: 15,
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 10,
+                        flexWrap: "wrap",
+                      }}
                     >
-                      ↑ {vote.count}
-                    </button>
+                      {fare.airline}
+                      {chosen && <span className="stamp">escolhida</span>}
+                      {!chosen && cheapest && <span className="chip outline">menor preço</span>}
+                    </div>
+                    <div
+                      className="mono-num"
+                      style={{ fontSize: 11.5, color: "var(--muted)", marginTop: 3 }}
+                    >
+                      {formatDate(fare.flight_date)} · {fare.origin_airport} →{" "}
+                      {fare.destination_airport}
+                    </div>
                   </div>
-                  <div className="tk-body">
-                    <div className="tk-field">
-                      <div className="k">rota</div>
-                      <div className="v">
-                        {fare.origin_airport} → {fare.destination_airport}
+                  <div
+                    className="mono-num"
+                    style={{
+                      fontSize: 12.5,
+                      color: "var(--ink-soft)",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 3,
+                    }}
+                  >
+                    <span style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
+                      <Icon name="clock" size={11} /> {formatDuration(fare.duration_minutes)}
+                    </span>
+                    <span>
+                      {fare.stops === 0
+                        ? "direto"
+                        : `${fare.stops} escala${fare.stops > 1 ? "s" : ""}`}{" "}
+                      · {fare.checked_baggage ? "c/ bagagem" : "s/ bagagem"}
+                    </span>
+                  </div>
+                  <div style={{ fontSize: 13, color: "var(--ink-soft)", overflow: "hidden" }}>
+                    {fare.notes && (
+                      <div
+                        style={{
+                          display: "-webkit-box",
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                          textWrap: "pretty",
+                        }}
+                      >
+                        {fare.notes}
                       </div>
-                    </div>
-                    <div className="tk-field">
-                      <div className="k">data</div>
-                      <div className="v">{formatDate(fare.flight_date)}</div>
-                    </div>
-                    <div className="tk-field">
-                      <div className="k">duração</div>
-                      <div className="v">{formatDuration(fare.duration_minutes)}</div>
-                    </div>
-                    <div className="tk-field">
-                      <div className="k">escalas</div>
-                      <div className="v">{fare.stops === 0 ? "direto" : fare.stops}</div>
-                    </div>
-                    <div className="tk-field">
-                      <div className="k">bagagem</div>
-                      <div className="v">{fare.checked_baggage ? "incluída" : "—"}</div>
+                    )}
+                    <div
+                      className="mono"
+                      style={{ fontSize: 9.5, color: "var(--muted)", marginTop: 4 }}
+                    >
+                      registrada em {new Date(fare.created_at).toLocaleDateString("pt-BR")}
+                      {fare.link && (
+                        <>
+                          {" · "}
+                          <a
+                            href={fare.link}
+                            rel="noreferrer"
+                            style={{ color: "var(--accent)" }}
+                            target="_blank"
+                          >
+                            link ↗
+                          </a>
+                        </>
+                      )}
                     </div>
                   </div>
-                  {fare.notes && <p className="tk-notes">{fare.notes}</p>}
-                  <div className="ticket-actions">
+                  <div
+                    className="mono-num"
+                    style={{
+                      fontWeight: 700,
+                      fontSize: 19,
+                      textAlign: "right",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {formatMoney(fare)}
+                  </div>
+                  <button
+                    className={`upvote ${vote.voted ? "on" : ""}`}
+                    onClick={() => handleUpvote(fare.id)}
+                    type="button"
+                  >
+                    <Icon name="up" size={12} /> {vote.count}
+                  </button>
+                  <div style={{ display: "flex", gap: 4 }}>
                     {isOrganizer && (
                       <button
-                        className="secondary-button btn-sm"
+                        className="btn tiny ghost"
+                        disabled={loading}
                         onClick={() => handleChoose(fare.id)}
                         type="button"
-                        disabled={loading}
                       >
-                        {chosen ? "Desmarcar escolhida" : "Marcar como escolhida"}
+                        {chosen ? "Desmarcar" : "Escolher"}
                       </button>
-                    )}
-                    {fare.link && (
-                      <a
-                        className="secondary-button btn-sm"
-                        href={fare.link}
-                        rel="noreferrer"
-                        target="_blank"
-                      >
-                        Abrir link
-                      </a>
                     )}
                     {isOrganizer && (
                       <button
-                        className="danger-button btn-sm"
+                        className="icon-btn"
                         disabled={loading}
                         onClick={() => handleDelete(fare.id)}
+                        title="Excluir pesquisa"
                         type="button"
                       >
-                        Remover
+                        <Icon name="trash" size={13} />
                       </button>
                     )}
                   </div>
                 </div>
-                <div className="perf-v" />
-                <div className="tk-stub">
-                  <span className="currency">{fare.currency}</span>
-                  <span className="price">{formatMoney(fare).replace(/^R\$\s?/, "")}</span>
-                  <span className="by">
-                    {new Date(fare.created_at).toLocaleDateString("pt-BR")}
-                  </span>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+              );
+            })}
+          </div>
+        </div>
       ) : (
-        <div className="cmp-table">
-          <table className="cmp">
+        <div className="card" style={{ overflowX: "auto" }}>
+          <table className="compare-table">
             <thead>
               <tr>
-                <th>Companhia</th>
-                <th>Preço</th>
-                <th>Rota</th>
-                <th>Data</th>
-                <th>Duração</th>
-                <th>Escalas</th>
-                <th>Bagagem</th>
-                <th>Votos</th>
+                <th style={{ width: 150 }} />
+                {sortedFares.map((f) => (
+                  <th key={f.id} className={f.is_chosen ? "col-chosen" : undefined}>
+                    <div style={{ fontWeight: 700, fontSize: 15 }}>{f.airline}</div>
+                    {f.is_chosen ? (
+                      <span className="stamp" style={{ marginTop: 8 }}>
+                        escolhida
+                      </span>
+                    ) : (
+                      isOrganizer && (
+                        <button
+                          className="btn tiny ghost"
+                          onClick={() => handleChoose(f.id)}
+                          style={{ marginTop: 8 }}
+                          type="button"
+                        >
+                          Escolher esta
+                        </button>
+                      )
+                    )}
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody>
-              {sortedFares.map((fare) => {
-                const chosen = fare.is_chosen;
-                return (
-                  <tr key={fare.id} className={chosen ? "chosen" : ""}>
-                    <td className="airline">
-                      {chosen && <span style={{ color: "var(--gold)" }}>★ </span>}
-                      {fare.airline}
-                    </td>
-                    <td className={fare.id === cheapestId ? "price best" : "price"}>
-                      {formatMoney(fare)}
-                    </td>
-                    <td>
-                      {fare.origin_airport} → {fare.destination_airport}
-                    </td>
-                    <td>{formatDate(fare.flight_date)}</td>
-                    <td>{formatDuration(fare.duration_minutes)}</td>
-                    <td>{fare.stops === 0 ? "direto" : fare.stops}</td>
-                    <td>{fare.checked_baggage ? "sim" : "—"}</td>
-                    <td>↑ {voteFor(fare.id).count}</td>
-                  </tr>
-                );
-              })}
+              {compareRows.map((row) => (
+                <tr key={row.label}>
+                  <td className="row-label">{row.label}</td>
+                  {sortedFares.map((f) => {
+                    const isBest = row.best?.(f);
+                    return (
+                      <td
+                        key={f.id}
+                        className={`${f.is_chosen ? "col-chosen" : ""} ${isBest ? "is-best" : ""}`.trim()}
+                      >
+                        {row.render(f)} {isBest && <span title="Melhor neste critério">●</span>}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
-      )}
-
-      {isOrganizer && (
-        <>
-          {!showForm && (
-            <button className="secondary-button" onClick={() => setShowForm(true)} type="button">
-              + Registrar pesquisa
-            </button>
-          )}
-          {showForm && (
-            <form className="bp fare-form-ticket" onSubmit={handleAdd}>
-              <div className="bp-head">
-                <span>Nova Pesquisa</span>
-                <span className="flight">Fare quote</span>
-              </div>
-              <div className="form-card">
-                <div className="form-row">
-                  <label className="field">
-                    <span>Companhia</span>
-                    <input
-                      className="fare-input"
-                      onChange={(e) => setField("airline", e.target.value)}
-                      placeholder="TAP Air Portugal"
-                      required
-                      value={form.airline}
-                    />
-                  </label>
-                  <label className="field">
-                    <span>Valor</span>
-                    <input
-                      className="fare-input"
-                      onChange={(e) => setField("value", e.target.value)}
-                      placeholder="3420.00"
-                      required
-                      value={form.value}
-                    />
-                  </label>
-                  <label className="field">
-                    <span>Moeda</span>
-                    <input
-                      className="fare-input fare-input-sm"
-                      onChange={(e) => setField("currency", e.target.value)}
-                      placeholder="BRL"
-                      required
-                      value={form.currency}
-                    />
-                  </label>
-                </div>
-                <div className="form-row">
-                  <label className="field">
-                    <span>Aeroporto origem</span>
-                    <input
-                      className="fare-input fare-input-sm"
-                      onChange={(e) => setField("origin_airport", e.target.value)}
-                      placeholder="GRU"
-                      required
-                      value={form.origin_airport}
-                    />
-                  </label>
-                  <label className="field">
-                    <span>Aeroporto destino</span>
-                    <input
-                      className="fare-input fare-input-sm"
-                      onChange={(e) => setField("destination_airport", e.target.value)}
-                      placeholder="LIS"
-                      required
-                      value={form.destination_airport}
-                    />
-                  </label>
-                </div>
-                <div className="form-row">
-                  <label className="field">
-                    <span>Data da passagem</span>
-                    <input
-                      className="fare-input"
-                      onChange={(e) => setField("flight_date", e.target.value)}
-                      required
-                      type="date"
-                      value={form.flight_date}
-                    />
-                  </label>
-                  <label className="field">
-                    <span>Duração (min)</span>
-                    <input
-                      className="fare-input fare-input-sm"
-                      onChange={(e) => setField("duration_minutes", e.target.value)}
-                      placeholder="635"
-                      required
-                      value={form.duration_minutes}
-                    />
-                  </label>
-                  <label className="field">
-                    <span>Escalas</span>
-                    <input
-                      className="fare-input fare-input-sm"
-                      onChange={(e) => setField("stops", e.target.value)}
-                      placeholder="0"
-                      value={form.stops}
-                    />
-                  </label>
-                </div>
-                <div className="form-row">
-                  <label className="fare-checkbox">
-                    <input
-                      checked={form.checked_baggage}
-                      onChange={(e) => setField("checked_baggage", e.target.checked)}
-                      type="checkbox"
-                    />
-                    Bagagem despachada
-                  </label>
-                </div>
-                <label className="field">
-                  <span>Link</span>
-                  <input
-                    className="fare-input"
-                    onChange={(e) => setField("link", e.target.value)}
-                    placeholder="Link (opcional)"
-                    value={form.link}
-                  />
-                </label>
-                <label className="field">
-                  <span>Observações</span>
-                  <textarea
-                    className="fare-input"
-                    onChange={(e) => setField("notes", e.target.value)}
-                    placeholder="Voo direto, noturno…"
-                    value={form.notes}
-                  />
-                </label>
-                <div className="form-actions">
-                  <button className="primary-button" disabled={loading} type="submit">
-                    Salvar
-                  </button>
-                  <button
-                    className="secondary-button"
-                    onClick={() => setShowForm(false)}
-                    type="button"
-                  >
-                    Cancelar
-                  </button>
-                </div>
-              </div>
-            </form>
-          )}
-        </>
       )}
     </div>
   );

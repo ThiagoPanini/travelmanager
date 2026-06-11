@@ -14,7 +14,10 @@ export default async function LoginPage() {
   }
 
   return (
-    <main className="auth-shell">
+    <main
+      className="auth-shell"
+      style={{ display: "grid", placeItems: "center", minHeight: "100vh", padding: "40px 18px" }}
+    >
       <LoginForm />
     </main>
   );
