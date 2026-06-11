@@ -109,6 +109,37 @@ export interface LegUpdate {
   target_date?: string | null;
 }
 
+export interface ItineraryItemPublic {
+  id: string;
+  stop_id: string;
+  title: string;
+  notes: string;
+  link: string;
+  day: string | null;
+  time: string | null;
+  order: number;
+}
+
+export interface ItineraryItemCreate {
+  title: string;
+  notes?: string;
+  link?: string;
+  day?: string | null;
+  time?: string | null;
+}
+
+export interface ItineraryItemUpdate {
+  title?: string | null;
+  notes?: string | null;
+  link?: string | null;
+  day?: string | null;
+  time?: string | null;
+}
+
+export interface ReorderItineraryItemsRequest {
+  item_ids: string[];
+}
+
 export interface FareQuotePublic {
   id: string;
   leg_id: string;

@@ -310,7 +310,12 @@ export default function TripSequenceView({
                     <div className="perf" />
                     <div className="stop-stub">
                       <span>Parada {stop.order}</span>
-                      <span className="roteiro-preview">+ roteiro</span>
+                      <Link
+                        href={`/trips/${tripId}/stops/${stop.id}/itinerary`}
+                        className="roteiro-preview"
+                      >
+                        + roteiro
+                      </Link>
                     </div>
                     {isOrganizer && (
                       <div className="stop-actions">

@@ -1,5 +1,8 @@
 import type {
   AddMemberResponse,
+  ItineraryItemCreate,
+  ItineraryItemPublic,
+  ItineraryItemUpdate,
   LegPublic,
   MembershipRole,
   MembersListResponse,
@@ -343,5 +346,111 @@ export async function deleteLeg(
     return response.status === 204;
   } catch {
     return false;
+  }
+}
+
+// --- Itinerary ---
+
+export async function getItineraryItems(
+  accessToken: string,
+  tripId: string,
+  stopId: string,
+): Promise<ItineraryItemPublic[]> {
+  try {
+    const response = await fetch(
+      `${apiUrl()}/trips/${tripId}/stops/${stopId}/itinerary`,
+      { cache: "no-store", headers: authHeaders(accessToken) },
+    );
+    if (!response.ok) return [];
+    return (await response.json()) as ItineraryItemPublic[];
+  } catch {
+    return [];
+  }
+}
+
+export async function createItineraryItem(
+  accessToken: string,
+  tripId: string,
+  stopId: string,
+  data: ItineraryItemCreate,
+): Promise<ItineraryItemPublic | null> {
+  try {
+    const response = await fetch(
+      `${apiUrl()}/trips/${tripId}/stops/${stopId}/itinerary`,
+      {
+        method: "POST",
+        cache: "no-store",
+        headers: authHeaders(accessToken),
+        body: JSON.stringify(data),
+      },
+    );
+    if (!response.ok) return null;
+    return (await response.json()) as ItineraryItemPublic;
+  } catch {
+    return null;
+  }
+}
+
+export async function updateItineraryItem(
+  accessToken: string,
+  tripId: string,
+  stopId: string,
+  itemId: string,
+  data: ItineraryItemUpdate,
+): Promise<ItineraryItemPublic | null> {
+  try {
+    const response = await fetch(
+      `${apiUrl()}/trips/${tripId}/stops/${stopId}/itinerary/${itemId}`,
+      {
+        method: "PATCH",
+        cache: "no-store",
+        headers: authHeaders(accessToken),
+        body: JSON.stringify(data),
+      },
+    );
+    if (!response.ok) return null;
+    return (await response.json()) as ItineraryItemPublic;
+  } catch {
+    return null;
+  }
+}
+
+export async function deleteItineraryItem(
+  accessToken: string,
+  tripId: string,
+  stopId: string,
+  itemId: string,
+): Promise<boolean> {
+  try {
+    const response = await fetch(
+      `${apiUrl()}/trips/${tripId}/stops/${stopId}/itinerary/${itemId}`,
+      { method: "DELETE", cache: "no-store", headers: authHeaders(accessToken) },
+    );
+    return response.status === 204;
+  } catch {
+    return false;
+  }
+}
+
+export async function reorderItineraryItems(
+  accessToken: string,
+  tripId: string,
+  stopId: string,
+  itemIds: string[],
+): Promise<ItineraryItemPublic[]> {
+  try {
+    const response = await fetch(
+      `${apiUrl()}/trips/${tripId}/stops/${stopId}/itinerary/reorder`,
+      {
+        method: "POST",
+        cache: "no-store",
+        headers: authHeaders(accessToken),
+        body: JSON.stringify({ item_ids: itemIds }),
+      },
+    );
+    if (!response.ok) return [];
+    return (await response.json()) as ItineraryItemPublic[];
+  } catch {
+    return [];
   }
 }
