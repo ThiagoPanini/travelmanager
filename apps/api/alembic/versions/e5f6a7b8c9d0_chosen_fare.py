@@ -9,6 +9,7 @@ Create Date: 2026-06-09
 from collections.abc import Sequence
 
 import sqlalchemy as sa
+from sqlalchemy import inspect
 
 from alembic import op
 
@@ -18,11 +19,17 @@ branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 
 
+def _column_exists(table_name: str, column_name: str) -> bool:
+    columns = inspect(op.get_bind()).get_columns(table_name)
+    return any(column["name"] == column_name for column in columns)
+
+
 def upgrade() -> None:
-    op.add_column(
-        "fare_quotes",
-        sa.Column("is_chosen", sa.Boolean(), nullable=False, server_default="0"),
-    )
+    if not _column_exists("fare_quotes", "is_chosen"):
+        op.add_column(
+            "fare_quotes",
+            sa.Column("is_chosen", sa.Boolean(), nullable=False, server_default="0"),
+        )
 
 
 def downgrade() -> None:
