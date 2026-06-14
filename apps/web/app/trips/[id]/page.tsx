@@ -8,10 +8,11 @@ import CommentThread from "@/components/comment-thread";
 import { getCurrentUser } from "@/lib/api/current-user";
 import { getFares } from "@/lib/api/fares";
 import { getTasks } from "@/lib/api/tasks";
-import { getLegs, getStops, getTrip, getTripMembers } from "@/lib/api/trips";
+import { getItineraryItems, getLegs, getStops, getTrip, getTripMembers } from "@/lib/api/trips";
 import { computeBudget } from "@/lib/dashboard/budget";
 import { formatDayMonth as fmtDay, formatDateRange } from "@/lib/format/date";
 import { buildJourneySegments, displayCode } from "@/lib/trips/journey";
+import { buildSchedule } from "@/lib/trips/schedule";
 import TaskBoard from "./task-board";
 import TripSequenceView from "./trip-sequence-view";
 
@@ -69,12 +70,21 @@ export default async function TripDetailPage({ params }: Props) {
     }).format(numeric);
   }
 
+  const itemsByStop = Object.fromEntries(
+    await Promise.all(
+      stops.map(
+        async (stop) => [stop.id, await getItineraryItems(accessToken, id, stop.id)] as const,
+      ),
+    ),
+  );
+
   const { trip, membership } = data;
   const activeMembers = members?.members ?? [];
   const chosenFaresByLeg = Object.fromEntries(
     legFareEntries.map(([id, info]) => [id, info.chosenFare]),
   );
   const budget = computeBudget(legs, chosenFaresByLeg, activeMembers.length);
+  const scheduleBlocks = buildSchedule(trip.origin, stops, legs, itemsByStop);
   const pendingMembers = members?.pending ?? [];
   const originCode = trip.airport_code ?? displayCode(trip.origin);
 
@@ -311,6 +321,183 @@ export default async function TripDetailPage({ params }: Props) {
                     </span>
                   </div>
                 )}
+              </div>
+            </>
+          )}
+
+          {/* cronograma unificado (#63) */}
+          {scheduleBlocks.length > 0 && (
+            <>
+              <div className="section-head" style={{ marginTop: 36 }}>
+                <span className="kicker">cronograma</span>
+                <h2>O que acontece quando</h2>
+              </div>
+              <div
+                className="card flat"
+                style={{ padding: "22px 26px", marginBottom: 36, position: "relative" }}
+              >
+                <div
+                  style={{
+                    position: "absolute",
+                    left: 38,
+                    top: 28,
+                    bottom: 28,
+                    width: 1,
+                    background: "var(--border)",
+                  }}
+                  aria-hidden="true"
+                />
+                <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+                  {scheduleBlocks.map((block, idx) => {
+                    if (block.kind === "leg") {
+                      return (
+                        <div
+                          key={block.legId ?? `leg-${idx}`}
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 16,
+                            paddingLeft: 58,
+                            paddingTop: 10,
+                            paddingBottom: 10,
+                          }}
+                        >
+                          <span
+                            style={{
+                              position: "absolute",
+                              left: 28,
+                              width: 20,
+                              height: 20,
+                              borderRadius: "50%",
+                              background: "var(--accent)",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              flexShrink: 0,
+                            }}
+                          >
+                            <Icon name="plane" size={11} />
+                          </span>
+                          <span
+                            className="mono"
+                            style={{ fontSize: 12, color: "var(--ink-soft)", fontWeight: 600 }}
+                          >
+                            {block.fromCity} → {block.toCity}
+                          </span>
+                          {block.date && (
+                            <span
+                              className="mono-num"
+                              style={{ fontSize: 11, color: "var(--muted)" }}
+                            >
+                              {fmtDay(block.date)}
+                            </span>
+                          )}
+                        </div>
+                      );
+                    }
+
+                    // stay block
+                    return (
+                      <div
+                        key={`stay-${block.stop.id}`}
+                        style={{ paddingLeft: 58, paddingTop: 8, paddingBottom: 8 }}
+                      >
+                        <div
+                          style={{
+                            position: "absolute",
+                            left: 24,
+                            width: 28,
+                            height: 28,
+                            borderRadius: "50%",
+                            background: "var(--surface-raised)",
+                            border: "2px solid var(--border)",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <Icon name="pin" size={13} />
+                        </div>
+                        <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 4 }}>
+                          {block.stop.city}
+                          {block.stop.airport_code && (
+                            <span
+                              className="mono"
+                              style={{
+                                fontSize: 11,
+                                color: "var(--muted)",
+                                marginLeft: 8,
+                                fontWeight: 400,
+                              }}
+                            >
+                              {block.stop.airport_code}
+                            </span>
+                          )}
+                        </div>
+                        {(block.stop.arrival_date || block.stop.departure_date) && (
+                          <div
+                            className="mono-num"
+                            style={{ fontSize: 11, color: "var(--muted)", marginBottom: 10 }}
+                          >
+                            {fmtDay(block.stop.arrival_date)} – {fmtDay(block.stop.departure_date)}
+                          </div>
+                        )}
+                        {block.scheduledItems.length > 0 && (
+                          <div
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: 6,
+                              marginBottom: 6,
+                            }}
+                          >
+                            {block.scheduledItems.map((item) => (
+                              <div
+                                key={item.id}
+                                style={{ display: "flex", alignItems: "baseline", gap: 10 }}
+                              >
+                                <span
+                                  className="mono-num"
+                                  style={{ fontSize: 11, color: "var(--muted)", minWidth: 80 }}
+                                >
+                                  {item.day ? fmtDay(item.day) : ""}
+                                  {item.time ? ` ${item.time}` : ""}
+                                </span>
+                                <span style={{ fontSize: 13.5 }}>{item.title}</span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        {block.unscheduledItems.length > 0 && (
+                          <div style={{ marginTop: 4 }}>
+                            <span
+                              className="mono"
+                              style={{
+                                fontSize: 10,
+                                color: "var(--muted)",
+                                display: "block",
+                                marginBottom: 4,
+                              }}
+                            >
+                              sem data definida
+                            </span>
+                            <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                              {block.unscheduledItems.map((item) => (
+                                <span
+                                  key={item.id}
+                                  className="chip outline"
+                                  style={{ fontSize: 12 }}
+                                >
+                                  {item.title}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </>
           )}
