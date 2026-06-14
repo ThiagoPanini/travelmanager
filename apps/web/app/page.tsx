@@ -155,7 +155,7 @@ export default function Home() {
           >
             <hr className="hairline" style={{ flex: 1 }} />
             <span className="mono" style={{ fontSize: 10 }}>
-              mvp · acesso por allowlist
+              beta fechado · acesso por convite
             </span>
             <hr className="hairline" style={{ flex: 1 }} />
           </div>

@@ -1,4 +1,4 @@
-"""Funções de autenticação: JWT e verificação de allowlist."""
+"""Funções de autenticação: JWT."""
 
 import os
 from datetime import UTC, datetime
@@ -54,15 +54,3 @@ def verify_token(token: str, *, secret: str | None = None) -> TokenClaims | None
         )
     except jwt.PyJWTError:
         return None
-
-
-def parse_allowlist(raw: str) -> set[str]:
-    """Converte env var CSV em set de e-mails (lowercase, sem espaços)."""
-    if not raw.strip():
-        return set()
-    return {e.strip().lower() for e in raw.split(",") if e.strip()}
-
-
-def is_allowlisted(email: str, allowlist: set[str]) -> bool:
-    """Verifica se o e-mail está na allowlist (case-insensitive)."""
-    return email.lower() in allowlist
