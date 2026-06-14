@@ -166,8 +166,8 @@ export function MembersPanel({ tripId, members, pending, isOrganizer }: Props) {
             </button>
           </div>
           <p className="hint" style={{ marginTop: 10 }}>
-            No MVP, a pessoa precisa estar na allowlist da plataforma. Novos entram como membros
-            (leitura + upvote).
+            Digite o e-mail de quem você quer convidar. Novos membros entram com acesso de leitura e
+            upvote.
           </p>
           {addMsg && (
             <p
