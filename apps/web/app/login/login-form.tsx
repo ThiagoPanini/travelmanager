@@ -5,26 +5,21 @@ import { useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 
-type LoginState = "idle" | "submitting" | "error";
+import { OtpForm } from "./otp-form";
+
+type Tab = "otp" | "google";
 
 export function LoginForm() {
   const searchParams = useSearchParams();
-  const [state, setState] = useState<LoginState>("idle");
+  const [tab, setTab] = useState<Tab>("otp");
 
   const errorParam = searchParams.get("error");
-  const message =
+  const globalError =
     errorParam === "OAuthAccountNotLinked"
       ? "Este e-mail já foi cadastrado por outro método."
       : errorParam
         ? "Não foi possível entrar agora."
-        : state === "error"
-          ? "Não foi possível entrar agora."
-          : null;
-
-  async function onGoogleSignIn() {
-    setState("submitting");
-    await signIn("google", { callbackUrl: "/trips" });
-  }
+        : null;
 
   return (
     <div style={{ width: "min(420px, 92vw)" }}>
@@ -32,27 +27,48 @@ export function LoginForm() {
         <div className="kicker" style={{ marginBottom: 14 }}>
           embarque
         </div>
-        <h1 className="display" style={{ fontSize: 30, marginBottom: 8 }}>
+        <h1 className="display" style={{ fontSize: 30, marginBottom: 24 }}>
           Identifique-se
         </h1>
-        <p className="soft" style={{ fontSize: 14.5, marginBottom: 26 }}>
-          Entre com sua conta Google para acessar o traveltogether.
-        </p>
-        <div className="form-grid">
+
+        <div style={{ display: "flex", gap: 8, marginBottom: 24 }}>
           <button
-            className="btn accent"
-            disabled={state === "submitting"}
-            onClick={onGoogleSignIn}
-            style={{ justifyContent: "center", gap: 8 }}
+            className={tab === "otp" ? "btn accent" : "btn"}
+            onClick={() => setTab("otp")}
+            style={{ flex: 1, justifyContent: "center", fontSize: 13 }}
             type="button"
           >
-            <GoogleIcon />
-            {state === "submitting" ? "Entrando…" : "Continuar com Google"}
+            E-mail com código
+          </button>
+          <button
+            className={tab === "google" ? "btn accent" : "btn"}
+            onClick={() => setTab("google")}
+            style={{ flex: 1, justifyContent: "center", fontSize: 13 }}
+            type="button"
+          >
+            Google
           </button>
         </div>
-        {message && (
-          <p className="hint" role="status" style={{ marginTop: 16, color: "var(--danger)" }}>
-            {message}
+
+        {tab === "otp" && <OtpForm />}
+
+        {tab === "google" && (
+          <div className="form-grid">
+            <button
+              className="btn accent"
+              onClick={() => signIn("google", { callbackUrl: "/trips" })}
+              style={{ justifyContent: "center", gap: 8 }}
+              type="button"
+            >
+              <GoogleIcon />
+              Continuar com Google
+            </button>
+          </div>
+        )}
+
+        {globalError && (
+          <p className="hint" role="alert" style={{ marginTop: 16, color: "var(--danger)" }}>
+            {globalError}
           </p>
         )}
       </div>

@@ -1,7 +1,24 @@
 import { getServerSession, type NextAuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 
 import { createApiAccessToken } from "@/lib/identity/api-token";
+
+async function verifyOtpWithApi(email: string, code: string): Promise<boolean> {
+  const apiUrl = process.env.TRAVELTOGETHER_API_URL ?? "http://localhost:8000";
+  try {
+    const res = await fetch(`${apiUrl}/identity/otp/verify`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, code }),
+    });
+    if (!res.ok) return false;
+    const data = (await res.json()) as { valid: boolean };
+    return data.valid === true;
+  } catch {
+    return false;
+  }
+}
 
 export const authOptions: NextAuthOptions = {
   pages: {
@@ -13,6 +30,23 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
   },
   providers: [
+    CredentialsProvider({
+      id: "otp",
+      name: "E-mail com código",
+      credentials: {
+        email: { label: "E-mail", type: "email" },
+        code: { label: "Código", type: "text" },
+      },
+      async authorize(credentials) {
+        const email =
+          typeof credentials?.email === "string" ? credentials.email.trim().toLowerCase() : "";
+        const code = typeof credentials?.code === "string" ? credentials.code.trim() : "";
+        if (!email || !code) return null;
+        const valid = await verifyOtpWithApi(email, code);
+        if (!valid) return null;
+        return { id: email, email };
+      },
+    }),
     ...(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET
       ? [
           GoogleProvider({
