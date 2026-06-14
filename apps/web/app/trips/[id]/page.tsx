@@ -3,7 +3,7 @@ import { notFound, redirect } from "next/navigation";
 
 import { AppTopbar } from "@/app/app-topbar";
 import { getAuthSession } from "@/auth";
-import { Breadcrumbs, CoverGraphic, Icon, RouteLine, type RoutePoint } from "@/components/atlas";
+import { Breadcrumbs, CoverGraphic, Icon, type RoutePoint } from "@/components/atlas";
 import CommentThread from "@/components/comment-thread";
 import { getCurrentUser } from "@/lib/api/current-user";
 import { getFares } from "@/lib/api/fares";
@@ -12,7 +12,9 @@ import { getItineraryItems, getLegs, getStops, getTrip, getTripMembers } from "@
 import { computeBudget } from "@/lib/dashboard/budget";
 import { formatDayMonth as fmtDay, formatDateRange } from "@/lib/format/date";
 import { buildJourneySegments, displayCode } from "@/lib/trips/journey";
+import { buildMapData } from "@/lib/trips/map";
 import { buildSchedule } from "@/lib/trips/schedule";
+import RouteMapToggle from "./route-map-toggle";
 import TaskBoard from "./task-board";
 import TripSequenceView from "./trip-sequence-view";
 
@@ -85,6 +87,7 @@ export default async function TripDetailPage({ params }: Props) {
   );
   const budget = computeBudget(legs, chosenFaresByLeg, activeMembers.length);
   const scheduleBlocks = buildSchedule(trip.origin, stops, legs, itemsByStop);
+  const mapData = buildMapData(trip, stops, legs);
   const pendingMembers = members?.pending ?? [];
   const originCode = trip.airport_code ?? displayCode(trip.origin);
 
@@ -198,7 +201,7 @@ export default async function TripDetailPage({ params }: Props) {
 
           {stops.length ? (
             <div className="card" style={{ padding: "22px 26px 16px", marginBottom: 36 }}>
-              <RouteLine points={points} edges={edges} />
+              <RouteMapToggle points={points} edges={edges} mapData={mapData} />
             </div>
           ) : (
             <div className="empty" style={{ marginBottom: 36 }}>
