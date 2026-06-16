@@ -1018,3 +1018,208 @@ fieldset.card legend {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================================
+   AppShell — sidebar (desktop) + header e tabbar (mobile)
+   Portado do protótipo Atlas. Ver lib/nav/items.ts.
+   ============================================================ */
+.app {
+  display: flex;
+  align-items: flex-start;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+.sidebar {
+  width: 250px;
+  flex: none;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+  padding: 18px 14px 16px;
+  z-index: 30;
+}
+.sidebar .brand {
+  padding: 6px 10px 0;
+  margin-bottom: 18px;
+}
+.side-cta {
+  margin: 0 6px 14px;
+}
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.side-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-size: 14.5px;
+  font-weight: 500;
+  padding: 9px 12px;
+  border-radius: var(--radius);
+  width: 100%;
+  position: relative;
+}
+.side-link:hover {
+  background: var(--chip-bg);
+  color: var(--ink);
+}
+.side-link.active {
+  background: var(--green);
+  color: var(--green-ink);
+}
+.side-link .ico {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 18px;
+}
+.side-link .count {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  background: var(--chip-bg);
+  color: var(--ink-soft);
+  min-width: 19px;
+  height: 19px;
+  padding: 0 5px;
+  border-radius: 99px;
+  display: grid;
+  place-items: center;
+}
+.side-link.active .count {
+  background: rgba(255, 255, 255, 0.22);
+  color: var(--green-ink);
+}
+.side-link .count.accent {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.side-spacer {
+  flex: 1;
+}
+.side-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--line-soft);
+  background: var(--surface-2);
+}
+.side-user:hover {
+  border-color: var(--line);
+}
+.side-user .nm {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.side-user .em {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.app-main {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* foco visível (acento laranja) e contraste — a11y */
+.side-link:focus-visible,
+.side-user:focus-visible,
+.tabbar a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* header e tabbar mobile escondidos no desktop */
+.mtop,
+.tabbar {
+  display: none;
+}
+.mtop-dot {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+@media (max-width: 1000px) {
+  .sidebar {
+    display: none;
+  }
+  .mtop {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    height: 56px;
+    padding: 0 16px;
+    background: color-mix(in oklab, var(--bg) 90%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .tabbar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    background: color-mix(in oklab, var(--surface) 96%, transparent);
+    backdrop-filter: blur(14px);
+    border-top: 1px solid var(--line);
+    padding: 6px 6px calc(6px + env(safe-area-inset-bottom));
+  }
+  .tabbar a {
+    flex: 1;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 4px 2px;
+    position: relative;
+  }
+  .tabbar a.active {
+    color: var(--accent);
+  }
+  .tabbar .dot {
+    position: absolute;
+    top: 2px;
+    right: 50%;
+    margin-right: -16px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .app-main {
+    padding-bottom: 70px;
+  }
+}
