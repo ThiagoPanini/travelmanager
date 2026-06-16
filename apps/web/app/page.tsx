@@ -1,14 +1,15 @@
 import Link from "next/link";
 
 import { Icon } from "@/components/atlas";
+import { DemoLauncher } from "@/components/demo-launcher";
 import { HomePreview } from "@/components/home-preview";
 import { PublicTopBar } from "@/components/public-top-bar";
 import { CTA_BAND, FOOTER_NOTE, HERO, HOME_FEATURES, SECTION_FEATS } from "@/lib/home/content";
 
 // Home pública (#136), à paridade do protótipo (HomeScreen): hero, 6 feature
 // cards, HomePreview, banda de CTA e copy de acesso aberto (ADR-0013). Toda a
-// copy mora em lib/home/content (testada). Componente server: o gancho do
-// botão "Ver exemplo" (DemoOverlay) chega em #137 — aqui ele é inerte.
+// copy mora em lib/home/content (testada). Componente server: cada "Ver
+// exemplo" é um DemoLauncher cliente que abre o Painel de exemplo (#137).
 export default function Home() {
   return (
     <div className="public-home">
@@ -38,10 +39,7 @@ export default function Home() {
                 <Link className="btn accent" href="/login">
                   {HERO.primaryCta} <Icon name="arrowRight" size={15} />
                 </Link>
-                {/* #137: este botão abre o DemoOverlay; por ora é inerte. */}
-                <button className="btn ghost" type="button">
-                  <Icon name="eye" size={15} /> {HERO.demoCta}
-                </button>
+                <DemoLauncher className="btn ghost" label={HERO.demoCta} />
               </div>
               <div className="mono" style={{ fontSize: 10, color: "var(--muted)", marginTop: 18 }}>
                 {HERO.finePrint}
@@ -102,10 +100,7 @@ export default function Home() {
               <Link className="btn accent" href="/login">
                 {CTA_BAND.primaryCta} <Icon name="arrowRight" size={15} />
               </Link>
-              {/* #137: idem ao hero — abre o DemoOverlay. */}
-              <button className="btn ghost" type="button">
-                <Icon name="eye" size={15} /> {CTA_BAND.demoCta}
-              </button>
+              <DemoLauncher className="btn ghost" label={CTA_BAND.demoCta} />
             </div>
           </div>
 
