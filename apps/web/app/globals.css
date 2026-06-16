@@ -1253,3 +1253,33 @@ fieldset.card legend {
     padding-bottom: 70px;
   }
 }
+
+/* ---------- navegação por abas do detalhe de Viagem (#101) ---------- */
+.trip-tabnav {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+}
+.trip-tabnav a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  margin-bottom: -1px;
+}
+.trip-tabnav a:hover {
+  color: var(--ink);
+}
+.trip-tabnav a.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.trip-tabnav a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
