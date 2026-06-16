@@ -57,7 +57,10 @@ export const authOptions: NextAuthOptions = {
       : []),
   ],
   callbacks: {
-    async jwt({ token, user, profile }) {
+    async jwt({ token, user, profile, account }) {
+      if (account?.provider) {
+        token.provider = account.provider;
+      }
       if (user?.email) {
         token.email = user.email;
         token.sub = user.email;
@@ -80,6 +83,7 @@ export const authOptions: NextAuthOptions = {
       };
       session.apiAccessToken =
         typeof token.apiAccessToken === "string" ? token.apiAccessToken : undefined;
+      session.provider = typeof token.provider === "string" ? token.provider : undefined;
       return session;
     },
   },

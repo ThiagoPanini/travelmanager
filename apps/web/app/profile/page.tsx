@@ -4,7 +4,10 @@ import { AppTopbar } from "@/app/app-topbar";
 import { getAuthSession } from "@/auth";
 import { Breadcrumbs } from "@/components/atlas";
 import { getCurrentUser } from "@/lib/api/current-user";
+import { getNotificationPrefs } from "@/lib/api/notifications";
 
+import { ConnectedLogins } from "./connected-logins";
+import { NotificationPrefsPanel } from "./notification-prefs-panel";
 import { ProfileForm } from "./profile-form";
 
 export default async function ProfilePage() {
@@ -13,6 +16,8 @@ export default async function ProfilePage() {
 
   const user = await getCurrentUser(session.apiAccessToken);
   if (!user) redirect("/login");
+
+  const prefs = await getNotificationPrefs(session.apiAccessToken);
 
   return (
     <div className="app-shell">
@@ -29,7 +34,11 @@ export default async function ProfilePage() {
             Seu nome e avatar aparecem para o grupo no lugar do e-mail — no board de Membros e na
             autoria de cada Pesquisa de Passagem.
           </p>
-          <ProfileForm user={user} />
+          <div style={{ display: "grid", gap: 22 }}>
+            <ProfileForm user={user} />
+            {prefs && <NotificationPrefsPanel prefs={prefs} />}
+            <ConnectedLogins provider={session.provider} />
+          </div>
         </div>
       </main>
     </div>
