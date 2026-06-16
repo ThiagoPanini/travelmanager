@@ -4,12 +4,14 @@ import { notFound, redirect } from "next/navigation";
 import { AppTopbar } from "@/app/app-topbar";
 import { getAuthSession } from "@/auth";
 import { Breadcrumbs, CoverGraphic, Icon, type RoutePoint } from "@/components/atlas";
+import BudgetEditor from "@/components/budget-editor";
 import MuralThread from "@/components/mural-thread";
+import { getBudget, getExtras, getLodgings } from "@/lib/api/budget";
 import { getCurrentUser } from "@/lib/api/current-user";
 import { getFares } from "@/lib/api/fares";
 import { getTasks } from "@/lib/api/tasks";
 import { getItineraryItems, getLegs, getStops, getTrip, getTripMembers } from "@/lib/api/trips";
-import { computeBudget } from "@/lib/dashboard/budget";
+import { buildBudgetSections } from "@/lib/budget/sections";
 import { formatDayMonth as fmtDay, formatDateRange } from "@/lib/format/date";
 import { buildJourneySegments, displayCode } from "@/lib/trips/journey";
 import { buildMapData } from "@/lib/trips/map";
@@ -178,116 +180,140 @@ export default async function TripDetail({ id, activeTab }: Props) {
     );
   }
 
-  function renderBudget() {
+  async function renderBudget() {
     const chosenFaresByLeg = Object.fromEntries(
       legFareEntries.map(([legId, info]) => [legId, info.chosenFare]),
     );
-    const budget = computeBudget(legs, chosenFaresByLeg, activeMembers.length);
-    if (legs.length === 0) {
-      return (
-        <div className="empty">
-          <Icon name="compass" size={22} />
-          <div style={{ fontWeight: 600, color: "var(--ink-soft)" }}>
-            Sem trajetos, sem orçamento ainda.
-          </div>
-          <div style={{ fontSize: 13.5, maxWidth: 380 }}>
-            Adicione paradas para o orçamento por moeda ganhar forma.
-          </div>
-        </div>
-      );
-    }
+    const [summary, lodgings, extras] = await Promise.all([
+      getBudget(accessToken, id),
+      getLodgings(accessToken, id),
+      getExtras(accessToken, id),
+    ]);
+    const sections = buildBudgetSections({
+      originCity: trip.origin,
+      stops,
+      legs,
+      chosenFaresByLeg,
+      lodgings,
+      extras,
+      summary,
+    });
+
     return (
       <>
         <div className="section-head">
           <span className="kicker">orçamento</span>
-          <h2>Custo estimado por pessoa</h2>
+          <h2>Custo estimado por moeda</h2>
         </div>
-        <div className="card flat" style={{ padding: "22px 26px", marginBottom: 36 }}>
-          <div style={{ display: "grid", gap: 14 }}>
-            {budget.legs.map((item) => (
-              <div
-                key={item.legId}
-                style={{ display: "flex", alignItems: "baseline", gap: 14, flexWrap: "wrap" }}
-              >
-                <span
-                  className="mono"
-                  style={{ fontSize: 11, color: "var(--muted)", minWidth: 60 }}
-                >
-                  trajeto {item.order + 1}
-                </span>
-                {item.chosen ? (
-                  <>
+
+        {/* subtotais por moeda — sem conversão (ADR-0016) */}
+        <div className="card flat" style={{ padding: "22px 26px", marginBottom: 28 }}>
+          {sections.subtotals.length > 0 ? (
+            <>
+              <div style={{ display: "flex", gap: 36, flexWrap: "wrap", alignItems: "flex-end" }}>
+                {sections.subtotals.map((s) => (
+                  <div
+                    key={s.currency}
+                    style={{ display: "flex", flexDirection: "column", gap: 3 }}
+                  >
+                    <span
+                      className="mono"
+                      style={{ fontSize: 10, color: "var(--muted)", textTransform: "uppercase" }}
+                    >
+                      por pessoa · {s.currency}
+                    </span>
                     <span
                       className="mono-num"
-                      style={{ fontSize: 22, fontWeight: 700, color: "var(--ink)" }}
+                      style={{
+                        fontSize: 36,
+                        fontWeight: 700,
+                        lineHeight: 1,
+                        color: "var(--accent)",
+                      }}
                     >
-                      {fmtMoney(item.chosen.value, item.chosen.currency)}
+                      {fmtMoney(s.perPerson, s.currency)}
                     </span>
-                    <span className="mono" style={{ fontSize: 12, color: "var(--ink-soft)" }}>
-                      {item.chosen.origin_airport} → {item.chosen.destination_airport}
+                    <span className="mono-num" style={{ fontSize: 11.5, color: "var(--ink-soft)" }}>
+                      grupo {fmtMoney(s.perGroup, s.currency)}
                     </span>
-                    <span className="chip green" style={{ fontSize: 11 }}>
-                      {item.chosen.airline}
-                    </span>
-                  </>
-                ) : (
-                  <span className="chip outline" style={{ fontSize: 11 }}>
-                    a decidir
-                  </span>
-                )}
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-
-          {Object.keys(budget.totalByCurrency).length > 0 && (
-            <div
-              style={{
-                marginTop: 20,
-                paddingTop: 16,
-                borderTop: "1px solid var(--border)",
-                display: "flex",
-                gap: 32,
-                flexWrap: "wrap",
-                alignItems: "flex-end",
-              }}
-            >
-              {Object.entries(budget.perPersonByCurrency).map(([currency, amount]) => (
-                <div key={currency} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                  <span
-                    className="mono"
-                    style={{ fontSize: 10, color: "var(--muted)", textTransform: "uppercase" }}
-                  >
-                    por pessoa · {currency}
-                  </span>
-                  <span
-                    className="mono-num"
-                    style={{ fontSize: 36, fontWeight: 700, lineHeight: 1, color: "var(--accent)" }}
-                  >
-                    {new Intl.NumberFormat("pt-BR", { style: "currency", currency }).format(amount)}
-                  </span>
-                  <span className="mono" style={{ fontSize: 11, color: "var(--muted)" }}>
-                    {activeMembers.length} pessoa{activeMembers.length !== 1 ? "s" : ""}
-                  </span>
-                </div>
-              ))}
-              {budget.hasMixedCurrencies && (
-                <span
-                  className="mono"
-                  style={{ fontSize: 11, color: "var(--muted)", alignSelf: "center" }}
-                >
-                  sem conversão de câmbio
-                </span>
-              )}
-            </div>
-          )}
-
-          {budget.hasUndecided && Object.keys(budget.totalByCurrency).length === 0 && (
-            <div className="empty" style={{ padding: "20px 0 4px" }}>
+              <div
+                className="mono"
+                style={{
+                  fontSize: 11,
+                  color: "var(--muted)",
+                  marginTop: 16,
+                  paddingTop: 12,
+                  borderTop: "1px solid var(--border)",
+                }}
+              >
+                subtotais por moeda · sem conversão de câmbio · {sections.memberCount} pessoa
+                {sections.memberCount !== 1 ? "s" : ""}
+              </div>
+            </>
+          ) : (
+            <div className="empty" style={{ padding: "12px 0 4px" }}>
               <Icon name="compass" size={18} />
-              <span style={{ fontSize: 13.5 }}>Nenhum trajeto tem passagem escolhida ainda.</span>
+              <span style={{ fontSize: 13.5 }}>
+                Sem Escolhidas, hospedagem ou extras — o orçamento aparece quando houver
+                lançamentos.
+              </span>
             </div>
           )}
         </div>
+
+        {/* rollup das passagens Escolhidas */}
+        {sections.fares.length > 0 && (
+          <div style={{ marginBottom: 28 }}>
+            <div className="section-head" style={{ marginBottom: 12 }}>
+              <span className="kicker">passagens</span>
+              <h2 style={{ fontSize: 18 }}>Escolhidas por trajeto</h2>
+            </div>
+            <div className="card flat" style={{ padding: "16px 20px" }}>
+              <div style={{ display: "grid", gap: 12 }}>
+                {sections.fares.map((f) => (
+                  <div
+                    key={f.legId}
+                    style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}
+                  >
+                    <span className="mono" style={{ fontSize: 12, color: "var(--ink-soft)" }}>
+                      {f.label}
+                    </span>
+                    {f.chosen ? (
+                      <>
+                        <span className="mono-num" style={{ fontSize: 17, fontWeight: 700 }}>
+                          {fmtMoney(f.chosen.value, f.chosen.currency)}
+                        </span>
+                        <span className="chip green" style={{ fontSize: 11 }}>
+                          {f.chosen.airline}
+                        </span>
+                      </>
+                    ) : (
+                      <Link
+                        href={`/trips/${id}/legs/${f.legId}`}
+                        className="chip outline"
+                        style={{ fontSize: 11 }}
+                      >
+                        a decidir
+                      </Link>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* hospedagem + extras (Organizador gerencia) */}
+        <BudgetEditor
+          tripId={id}
+          canManage={membership.role === "organizer"}
+          stops={stops.map((s) => ({ id: s.id, city: s.city }))}
+          lodgings={sections.lodgings}
+          extras={sections.extras}
+        />
       </>
     );
   }
@@ -532,7 +558,7 @@ export default async function TripDetail({ id, activeTab }: Props) {
   let content: React.ReactNode;
   switch (activeTab) {
     case "budget":
-      content = renderBudget();
+      content = await renderBudget();
       break;
     case "schedule":
       content = await renderSchedule();
