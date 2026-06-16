@@ -1649,3 +1649,48 @@ fieldset.card legend {
   border-radius: 50%;
   background: var(--line);
 }
+
+/* DemoOverlay "Ver exemplo" (#137) — Painel de exemplo somente-leitura.
+   Portado do protótipo (styles.css), sem a variante data-dir="terminal". */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(15, 18, 16, 0.55);
+  backdrop-filter: blur(3px);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+/* Backdrop clicável como <button> de verdade (fecha por clique/Enter/Espaço,
+   acessível por teclado). Preenche o overlay atrás do modal, sem visual. */
+.overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: transparent;
+  cursor: default;
+  padding: 0;
+}
+.modal {
+  position: relative;
+  z-index: 1;
+  width: min(960px, 96vw);
+  max-height: 90vh;
+  overflow: auto;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.5);
+}
+.demo-bar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}

@@ -251,6 +251,15 @@ const ICON_PATHS: Record<string, ReactNode> = {
       strokeLinejoin="round"
     />
   ),
+  x: (
+    <path
+      d="M4 4l8 8M12 4l-8 8"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+    />
+  ),
 };
 
 export type IconName = keyof typeof ICON_PATHS;
