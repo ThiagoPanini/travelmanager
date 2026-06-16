@@ -2,7 +2,15 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getAuthSession } from "@/auth";
 import { AppShell } from "@/components/app-shell";
-import { Code, CoverGraphic, Icon } from "@/components/atlas";
+import {
+  AvatarStack,
+  Code,
+  CoverGraphic,
+  Icon,
+  MiniRoute,
+  Progress,
+  StatusPill,
+} from "@/components/atlas";
 import { InvitationsInbox } from "@/components/invitations-inbox";
 import { activityHref, activityKindLabel } from "@/lib/activity/activity-item";
 import { getRecentActivity } from "@/lib/api/activity";
@@ -10,10 +18,11 @@ import { getCurrentUser } from "@/lib/api/current-user";
 import { getFares } from "@/lib/api/fares";
 import { getMyInvitations } from "@/lib/api/invitations";
 import { getPendingActions } from "@/lib/api/pending";
-import { getLegs, getTrips } from "@/lib/api/trips";
+import { getLegs, getTripMembers, getTrips } from "@/lib/api/trips";
 import { countdownDays, selectNextTrip } from "@/lib/dashboard/next-trip";
 import { toPendingItem } from "@/lib/dashboard/pending";
 import { formatDateRange } from "@/lib/format/date";
+import { suggestedAction, type TripStatus, tripProgress, tripStatus } from "@/lib/trips/card";
 import { displayCode } from "@/lib/trips/journey";
 
 function fmtMoney(value: string, currency: string): string {
@@ -65,6 +74,41 @@ export default async function TripsPage() {
         .flat()
         .filter((f) => f.is_chosen)
     : [];
+
+  // Cards ricos da lista (#133): status/progresso/próximo passo derivados de Paradas +
+  // pendências globais (sem N+1 nos Trajetos); avatares por Viagem (beta fechado).
+  const todayIso = new Date().toISOString();
+  const memberLists = await Promise.all(items.map((it) => getTripMembers(accessToken, it.trip.id)));
+  const statusOrder: Record<TripStatus, number> = {
+    ongoing: 0,
+    upcoming: 1,
+    planning: 2,
+    done: 3,
+  };
+  const cards = items
+    .map((item, i) => {
+      const { trip, stops } = item;
+      const tripPending = pending.filter((p) => p.tripId === trip.id);
+      const status = tripStatus(trip.start_date, trip.end_date, stops.length > 0, todayIso);
+      const routeCodes = [
+        trip.airport_code ?? displayCode(trip.origin),
+        ...stops.map((s) => s.airport_code ?? displayCode(s.city)),
+        trip.airport_code ?? displayCode(trip.origin),
+      ];
+      return {
+        ...item,
+        status,
+        routeCodes,
+        progress: tripProgress(stops.length, tripPending),
+        suggested: suggestedAction(trip.id, status, stops.length, tripPending),
+        members: (memberLists[i]?.members ?? []).map((m) => ({
+          seed: m.membership.user_id,
+          label: m.display_name ?? m.email,
+          avatarUrl: m.avatar_url,
+        })),
+      };
+    })
+    .sort((a, b) => statusOrder[a.status] - statusOrder[b.status]);
 
   return (
     <AppShell user={user} counts={{ pending: pending.length }}>
@@ -287,19 +331,8 @@ export default async function TripsPage() {
             </div>
           ) : (
             <div style={{ display: "grid", gap: 18 }}>
-              {items.map(({ trip, membership, stops }) => {
-                const codes = stops.length
-                  ? stops.map((s) => s.airport_code ?? displayCode(s.city)).join(" · ")
-                  : (trip.airport_code ?? displayCode(trip.origin));
-                const route = [
-                  { key: "origin", code: trip.airport_code ?? displayCode(trip.origin) },
-                  ...stops.map((stop) => ({
-                    key: stop.id,
-                    code: stop.airport_code ?? displayCode(stop.city),
-                  })),
-                  { key: "return", code: trip.airport_code ?? displayCode(trip.origin) },
-                ];
-                return (
+              {cards.map(
+                ({ trip, membership, stops, status, routeCodes, progress, suggested, members }) => (
                   <Link
                     key={trip.id}
                     href={`/trips/${trip.id}`}
@@ -312,7 +345,11 @@ export default async function TripsPage() {
                       color: "inherit",
                     }}
                   >
-                    <CoverGraphic seedText={trip.id} codeLabel={codes} height="100%" />
+                    <CoverGraphic
+                      seedText={trip.id}
+                      codeLabel={routeCodes.join(" · ")}
+                      height="100%"
+                    />
                     <div
                       style={{
                         padding: "22px 26px",
@@ -325,19 +362,14 @@ export default async function TripsPage() {
                         style={{
                           display: "flex",
                           alignItems: "baseline",
-                          gap: 14,
+                          gap: 12,
                           flexWrap: "wrap",
                         }}
                       >
                         <h2 className="display" style={{ fontSize: 23 }}>
                           {trip.name}
                         </h2>
-                        <span
-                          className="mono-num"
-                          style={{ fontSize: 12.5, color: "var(--muted)" }}
-                        >
-                          {formatDateRange(trip.start_date, trip.end_date)}
-                        </span>
+                        <StatusPill status={status} />
                         <span className="spacer" style={{ flex: 1 }} />
                         {membership.role === "organizer" && (
                           <span className="chip green">organizador</span>
@@ -348,42 +380,85 @@ export default async function TripsPage() {
                           {trip.description}
                         </p>
                       )}
-                      {stops.length ? (
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: 10,
-                            flexWrap: "wrap",
-                            marginTop: 2,
-                          }}
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 12,
+                          flexWrap: "wrap",
+                          marginTop: 2,
+                        }}
+                      >
+                        {stops.length ? (
+                          <MiniRoute codes={routeCodes} />
+                        ) : (
+                          <span className="chip outline">sem paradas definidas</span>
+                        )}
+                        <span
+                          className="mono-num"
+                          style={{ fontSize: 12.5, color: "var(--muted)" }}
                         >
-                          {route.map((point, index) => (
-                            <span
-                              key={point.key}
-                              style={{ display: "inline-flex", alignItems: "center", gap: 10 }}
-                            >
-                              {index > 0 && (
-                                <span style={{ color: "var(--muted)", fontSize: 12 }}>→</span>
-                              )}
-                              <Code code={point.code} size="sm" />
+                          {formatDateRange(trip.start_date, trip.end_date)}
+                        </span>
+                      </div>
+                      {progress.legsTotal > 0 && (
+                        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                              alignItems: "baseline",
+                            }}
+                          >
+                            <span className="mono" style={{ fontSize: 10, color: "var(--muted)" }}>
+                              trajetos decididos
                             </span>
-                          ))}
+                            <span
+                              className="mono-num"
+                              style={{ fontSize: 11, color: "var(--ink-soft)" }}
+                            >
+                              {progress.legsChosen}/{progress.legsTotal}
+                            </span>
+                          </div>
+                          <Progress
+                            value={progress.legsChosen}
+                            total={progress.legsTotal}
+                            tone={progress.allDecided ? "green" : "accent"}
+                          />
                         </div>
-                      ) : (
-                        <span className="chip outline" style={{ alignSelf: "flex-start" }}>
-                          sem paradas definidas
-                        </span>
                       )}
-                      <div style={{ marginTop: "auto", paddingTop: 6 }}>
-                        <span className="mono" style={{ fontSize: 10, color: "var(--muted)" }}>
-                          {stops.length} parada{stops.length !== 1 ? "s" : ""}
-                        </span>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 12,
+                          marginTop: "auto",
+                          paddingTop: 6,
+                        }}
+                      >
+                        {members.length > 0 && <AvatarStack members={members} />}
+                        <span className="spacer" style={{ flex: 1 }} />
+                        {suggested && (
+                          <span
+                            style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: 6,
+                              color: "var(--accent)",
+                              fontWeight: 600,
+                              fontSize: 13.5,
+                            }}
+                          >
+                            <Icon name={suggested.icon} size={14} />
+                            {suggested.text}
+                            <Icon name="arrowRight" size={13} />
+                          </span>
+                        )}
                       </div>
                     </div>
                   </Link>
-                );
-              })}
+                ),
+              )}
             </div>
           )}
         </div>
