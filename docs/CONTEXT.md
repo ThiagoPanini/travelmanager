@@ -23,13 +23,21 @@ O **termo canônico do glossário é em pt-BR** (o domínio é naturalmente pt-B
 | **Upvote** (`Vote`) | Voto positivo persistido de um `Usuário` da Viagem numa `Pesquisa de Passagem`. Toggle (votar/desfazer). Único por par (`Usuário`, `Pesquisa`). Sinal social/orgânico que informa a `Escolhida`. |
 | **Organizador** (`Organizer`) | Papel de um `Usuário` dentro de uma `Viagem` com poder de **escrita**: gerir metadados, `Parada`s, `Trajeto`s, membros (adicionar/remover, promover/rebaixar), registrar `Pesquisa de Passagem`s e marcar a `Escolhida`. O criador da Viagem é o primeiro organizador. |
 | **Membro** (`Member`) | Papel de um `Usuário` dentro de uma `Viagem` com acesso de **leitura + Upvote**. Não registra itens via formulário. Dormente no MVP (onde todos viram organizadores); existe para a fase aberta. |
-| **Usuário** (`User`) | Pessoa autenticada na plataforma, com **conta própria** criada por ela (cadastro por Google ou por e-mail com código de acesso). Tem `nome de exibição` e `avatar`, e é identificada unicamente por e-mail. Participa de várias `Viagem`s, com papéis distintos em cada. O acesso à **plataforma** é aberto; o acesso a uma **`Viagem`** é dado por `Membership`. |
+| **Convite** (`Invitation`) | Intenção, criada por um `Organizador`, de incluir um e-mail numa `Viagem`. Tem estado `pendente`/`aceito`/`recusado`. **Não é uma `Membership`**: gera uma `Notificação` ao convidado e só vira `Membership` (papel `Membro`) quando ele **aceita**; recusar descarta. Se o convidado ainda não tem conta, o `Convite` aguarda o cadastro para então ser apresentado. Substitui a resolução silenciosa via JIT do MVP. |
+| **Usuário** (`User`) | Pessoa autenticada na plataforma, com **conta própria** criada por ela (cadastro por Google ou por e-mail com código de acesso). Tem `nome de exibição`, `avatar` e `Preferências de Notificação`, e é identificada unicamente por e-mail. Participa de várias `Viagem`s, com papéis distintos em cada. O acesso à **plataforma** é aberto; o acesso a uma **`Viagem`** é dado por `Membership`. |
+| **Preferências de Notificação** (`NotificationPrefs`) | Ajustes do `Usuário` que governam a entrega de `Notificação`s: interruptor por tipo (`decision`/`task`/`mention`) e opt-in de **resumo por e-mail** (`digest`). Pertencem ao perfil do `Usuário`, não a uma `Viagem`. |
 | **Roteiro** (`Itinerary`) | Plano compartilhado do que o grupo pretende fazer durante uma `Parada` ("o que fazer nos 5 dias em NY"). Pertence a exatamente uma `Parada` e organiza os planos daquela estadia. |
 | **Item de Roteiro** (`ItineraryItem`) | Registro individual dentro de um `Roteiro`, representando uma atividade, lugar, reserva, link ou observação planejada para a `Parada`. Tem título e pode ter notas, link, dia/horário e ordem dentro da estadia. |
 | **Imagem de Capa** (`CoverImage`) | Imagem visual que representa uma `Viagem` ou uma `Parada` na interface. Não muda o significado da viagem nem da parada; é um recurso editorial para reconhecimento e contexto visual. |
 | **Comentário** (`Comment`) | Mensagem de **texto** que um `Usuário` com `Membership` (qualquer papel) escreve para discutir, de forma **assíncrona**, dentro de uma `Viagem`. Mira polimorficamente **um** alvo: uma `Pesquisa de Passagem`, um `Item de Roteiro` ou a própria `Viagem` (alvo Viagem = **mural** geral do grupo). É o **primeiro write disponível a um `Membro`**. Não é um sinal de decisão — `Upvote`/`Escolhida` continuam separados. |
 | **Tarefa** (`Task`) | Unidade de trabalho que um `Organizador` cria e atribui a um ou mais `Responsável`(eis) dentro de uma `Viagem`, para coordenar o que o grupo precisa fazer (ex.: "pesquisar passagem deste `Trajeto`", "reservar hotel"). Tem `título`, descrição e prazo opcionais, `status` (`a fazer`/`fazendo`/`feito`) e uma **âncora opcional** a um alvo (`Trajeto`, `Parada`, `Pesquisa de Passagem` ou `Item de Roteiro`). Visualizada como board. Várias por `Viagem`. |
 | **Responsável** (`assignee`) | `Usuário` com `Membership` na `Viagem` designado a uma `Tarefa`. Uma `Tarefa` pode ter vários. Pode mover o `status` da `Tarefa` em que está designado — mesmo sendo `Membro`. |
+| **Orçamento** (`Budget`) | Estimativa de custo de uma `Viagem`, **agregada** a partir de três fontes: as `Pesquisa de Passagem`s `Escolhida`s (passagens), as `Hospedagem`s e os `Extra`s. Não é uma entidade própria com valor único: é uma **visão somada por moeda** (ver invariante 15 — sem conversão de câmbio). Apresenta subtotais por pessoa e por grupo, **dentro de cada moeda**. |
+| **Hospedagem** (`Lodging`) | Linha de custo estimado de estadia, ancorada a uma `Parada`. Carrega `descrição`, `valor por noite` + `moeda`, e uma `base de rateio`. As noites são derivadas das datas da `Parada`. Compõe o `Orçamento`. |
+| **Extra** (`Extra`) | Linha de custo avulsa do `Orçamento`, no nível da `Viagem` (seguro, transporte, passeios…). Carrega `descrição`, `valor` + `moeda` e uma `base de rateio`. Não é ancorada a `Parada` nem a `Trajeto`. |
+| **Base de rateio** (`basis`) | Como uma linha de `Hospedagem`/`Extra` se distribui entre o grupo: **por pessoa** (o valor já é por cabeça) ou **rateado** (o valor é do grupo e se divide pelo nº de `Membership`s). Determina como a linha entra no subtotal por pessoa. |
+| **Notificação** (`Notification`) | Aviso **direcionado a um `Usuário` específico** sobre algo que pede sua atenção numa `Viagem`: ser adicionado (`invite`), uma `Escolhida` marcada num `Trajeto` de uma `Viagem` sua (`decision`), ser designado `Responsável` de uma `Tarefa` (`task`), ou ser mencionado num `Comentário` (`mention`). Persistida **por destinatário**, com estado **lida/não-lida**. Difere da `Atividade` (feed factual e público, sem destinatário nem estado de leitura). Não é sinal de decisão. |
+| **Atividade** (`Activity`) | Feed cronológico **derivado** (não persistido) do que aconteceu nas `Viagem`s de um `Usuário` — ex.: alguém entrou, registrou `Pesquisa de Passagem`, comentou. Público para os membros, **sem** destinatário nem estado de leitura. Não confundir com `Notificação`. |
 
 ## Invariantes de domínio
 
@@ -49,10 +57,13 @@ O **termo canônico do glossário é em pt-BR** (o domínio é naturalmente pt-B
 12. Um `Upvote` é único por par (`Usuário`, `Pesquisa de Passagem`).
 13. Só `Organizador`es registram/editam `Parada`s, `Item de Roteiro`s e `Pesquisa de Passagem`s via formulário; `Membro`s têm leitura + `Upvote` + `Comentário`.
 14. Um `Organizador` pode editar/apagar **qualquer** `Pesquisa de Passagem` da Viagem; a autoria (`registrado_por`) é preservada para histórico.
-15. `moeda` é registrada por `Pesquisa de Passagem`; **não há conversão de câmbio** — comparação é visual.
+15. `moeda` é registrada por linha de custo (`Pesquisa de Passagem`, `Hospedagem`, `Extra`); **não há conversão de câmbio** em lugar nenhum — nem na comparação de `Pesquisa de Passagem` (que é visual), nem no `Orçamento` (que **soma por moeda**, apresentando subtotais separados por moeda). Não há moeda-base do sistema.
 16. Acesso à **plataforma** é aberto: qualquer pessoa cria a própria conta (Google ou e-mail com código). Acesso a uma **`Viagem`** exige `Membership` nela — sem membership, a `Viagem` é invisível para o `Usuário`. *(Supersede o gate por allowlist do [ADR-0003](adr/0003-modelo-de-acesso-mvp.md); novo ADR a registrar.)*
 17. Qualquer `Usuário` com `Membership` numa `Viagem` pode escrever `Comentário`s nela. O autor edita/apaga os próprios; um `Organizador` pode apagar qualquer `Comentário` da Viagem (moderação). Um `Comentário` não altera a estrutura do itinerário nem sinais de decisão.
 18. Só `Organizador`es criam, atribuem, editam e apagam `Tarefa`s; qualquer `Responsável` (mesmo `Membro`) pode mover o `status` da `Tarefa` em que está designado. Todo `Responsável` precisa ter `Membership` na `Viagem`.
+19. Só `Organizador`es registram/editam/apagam linhas de `Orçamento` (`Hospedagem`, `Extra`), consistente com a invariante 13. O subtotal **por pessoa** divide as linhas `rateado` pelo nº de `Membership`s da `Viagem`; o subtotal nunca cruza moedas (invariante 15).
+20. Uma `Notificação` é **por destinatário** e seu estado lida/não-lida é por destinatário. Marcar como lida não altera nada no domínio que a originou (não é sinal de decisão). Só o próprio destinatário lê e marca suas `Notificação`s.
+21. Adicionar um e-mail a uma `Viagem` cria um `Convite` `pendente`, **não** uma `Membership`. A `Membership` (papel `Membro`) só passa a existir quando o convidado **aceita** o `Convite`. Ninguém entra numa `Viagem` sem aceite explícito.
 
 ## Boundaries de domínio
 
@@ -62,6 +73,8 @@ Cada boundary é dono dos seus modelos, regras e dados. Comunicação entre boun
 - **`trips`** — `Viagem`, `Parada`, `Trajeto`, `Roteiro`, `Membership` (papéis `Organizador`/`Membro` por Viagem), gestão de membros. Estrutura do itinerário.
 - **`fares`** — `Pesquisa de Passagem`, `Upvote`, `Escolhida`. A feature de comparação/convergência de passagens. Referencia `Trajeto` por `LegId`.
 - **`collaboration`** — `Comentário` e `Tarefa`: primitivos de coordenação do grupo, ancorados polimorficamente a alvos de outros boundaries (referencia `Pesquisa de Passagem`, `Item de Roteiro`, `Trajeto`, `Parada` ou `Viagem` por id), nunca importando seus modelos.
+- **`budget`** — `Hospedagem` e `Extra`: linhas de custo estimado. Agrega o `Orçamento` lendo as `Pesquisa de Passagem`s `Escolhida`s (via service de `fares`) e as `Parada`s/`Membership`s (via service de `trips`), nunca importando seus modelos. Não converte câmbio (invariante 15).
+- **`notifications`** — `Notificação`: avisos persistidos por destinatário, com estado lida/não-lida. Os boundaries que originam o evento (`trips`, `fares`, `collaboration`) **chamam o service de `notifications` diretamente** ao produzir o aviso — não há barramento de eventos; segue o padrão "um boundary chama o service de outro". A `Atividade` (feed derivado) permanece em `trips`.
 - **`shared`** — value objects e tipos base (ex.: `UserId`, `TripId`, `LegId`, `Money`, `AirportCode`, `DateRange`).
 - **`platform`** — adapters de DB, observabilidade, e-mail/auth.
 
@@ -77,12 +90,16 @@ Cada boundary é dono dos seus modelos, regras e dados. Comunicação entre boun
 | "Sigla" / "código visual" | `Aeroporto de Referência` ou aeroporto registrado na `Pesquisa de Passagem` |
 | "Plano" / "Programação" (soltos) | `Roteiro` ou `Item de Roteiro` |
 | "Foto do destino" | `Imagem de Capa` da `Viagem` ou `Imagem de Capa` da `Parada` |
-| "Convidado" | `Membro` (papel) ou `Usuário` |
+| "Convidado" | `Usuário` com `Convite` pendente (antes do aceite) ou `Membro` (depois) |
 | "Chat" / "Mensagem" / "Post" / "Discussão" (entidade) | `Comentário` |
 | "Reação" / "Emoji" (em item) | `Upvote` (na `Pesquisa`) ou `Comentário` (texto) |
 | "To-do" / "Card" / "Ticket" / "Atribuição" | `Tarefa` |
 | "Atribuído" / "Dono da tarefa" | `Responsável` |
 | "Admin" (no nível da Viagem) | `Organizador` |
+| "Custo" / "Despesa" / "Gasto" (entidade) | `Hospedagem`, `Extra` ou o `Orçamento` (a visão somada) |
+| "Conversão" / "câmbio" / "em reais" (no orçamento) | subtotal **por moeda** (não há conversão — invariante 15) |
+| "Alerta" / "Aviso" / "Aviso push" / "Feed" | `Notificação` (direcionada) ou `Atividade` (feed derivado) |
+| "Preferência de assento/voo" como entidade | campo de perfil do `Usuário` (não é domínio de `Viagem`) |
 
 ## Decisões abertas
 
