@@ -3,6 +3,7 @@ import type { CSSProperties, ReactNode } from "react";
 
 import { topographicAvatar } from "@/lib/identity/avatar";
 import { initials } from "@/lib/identity/user-display";
+import { TRIP_STATUS_LABEL, type TripStatus } from "@/lib/trips/card";
 
 // ---------- Icon ----------
 const ICON_PATHS: Record<string, ReactNode> = {
@@ -381,5 +382,76 @@ export function EmptyState({
       {body && <div style={{ fontSize: 13.5, maxWidth: 420 }}>{body}</div>}
       {action}
     </div>
+  );
+}
+
+// ---------- status pill ----------
+export function StatusPill({ status }: { status: TripStatus }) {
+  return <span className={`spill ${status}`}>{TRIP_STATUS_LABEL[status]}</span>;
+}
+
+// ---------- progress bar (segmented) ----------
+export function Progress({
+  value,
+  total,
+  tone = "accent",
+}: {
+  value: number;
+  total: number;
+  tone?: "accent" | "green";
+}) {
+  const segments = Math.max(total, 0);
+  const filled = Math.min(Math.max(value, 0), segments);
+  const onClass = tone === "green" ? "green" : "on";
+  return (
+    <div aria-label={`${filled} de ${segments}`} className="prog" role="img">
+      {Array.from({ length: segments }, (_, i) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: fixed-length segment bar
+        <span className={`seg ${i < filled ? onClass : ""}`} key={i} />
+      ))}
+    </div>
+  );
+}
+
+// ---------- avatar stack ----------
+export interface StackMember {
+  seed: string;
+  label: string;
+  avatarUrl?: string | null;
+}
+export function AvatarStack({ members, max = 4 }: { members: StackMember[]; max?: number }) {
+  const shown = members.slice(0, max);
+  const overflow = members.length - shown.length;
+  return (
+    <div className="astack">
+      {shown.map((m) => (
+        <UserAvatar avatarUrl={m.avatarUrl} key={m.seed} label={m.label} seed={m.seed} size={30} />
+      ))}
+      {overflow > 0 && (
+        <span
+          aria-label={`mais ${overflow}`}
+          className="avatar"
+          role="img"
+          title={`mais ${overflow}`}
+        >
+          +{overflow}
+        </span>
+      )}
+    </div>
+  );
+}
+
+// ---------- mini route (airport codes with arrows) ----------
+export function MiniRoute({ codes }: { codes: string[] }) {
+  return (
+    <span className="miniroute">
+      {codes.map((code, i) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: route order is stable
+        <span key={`${code}-${i}`} style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+          {i > 0 && <Icon name="arrowRight" size={11} />}
+          <Code code={code} size="sm" />
+        </span>
+      ))}
+    </span>
   );
 }
