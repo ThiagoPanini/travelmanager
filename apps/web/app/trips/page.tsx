@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-
 import { getAuthSession } from "@/auth";
+import { AppShell } from "@/components/app-shell";
 import { Code, CoverGraphic, Icon } from "@/components/atlas";
 import { getRecentActivity } from "@/lib/api/activity";
+import { getCurrentUser } from "@/lib/api/current-user";
 import { getFares } from "@/lib/api/fares";
 import { getPendingActions } from "@/lib/api/pending";
 import { getLegs, getTrips } from "@/lib/api/trips";
@@ -11,7 +12,6 @@ import { countdownDays, selectNextTrip } from "@/lib/dashboard/next-trip";
 import { toPendingItem } from "@/lib/dashboard/pending";
 import { formatDateRange } from "@/lib/format/date";
 import { displayCode } from "@/lib/trips/journey";
-import { AppTopbar } from "../app-topbar";
 
 function fmtMoney(value: string, currency: string): string {
   const numeric = Number.parseFloat(value.replace(/\./g, "").replace(",", "."));
@@ -27,11 +27,13 @@ export default async function TripsPage() {
   if (!session?.apiAccessToken) redirect("/login");
 
   const accessToken = session.apiAccessToken;
-  const [items, pendingActions, activity] = await Promise.all([
+  const [user, items, pendingActions, activity] = await Promise.all([
+    getCurrentUser(accessToken),
     getTrips(accessToken),
     getPendingActions(accessToken),
     getRecentActivity(accessToken),
   ]);
+  if (!user) redirect("/login");
   const pending = pendingActions.map(toPendingItem);
 
   // Próxima viagem em destaque (#67): hero com countdown e preços já Escolhidos.
@@ -61,8 +63,7 @@ export default async function TripsPage() {
     : [];
 
   return (
-    <div className="app-shell">
-      <AppTopbar active="trips" />
+    <AppShell user={user} counts={{ pending: pending.length }}>
       <main className="page fadeup">
         <div className="shell">
           <div className="section-head" style={{ marginBottom: 28 }}>
@@ -385,6 +386,6 @@ export default async function TripsPage() {
           )}
         </div>
       </main>
-    </div>
+    </AppShell>
   );
 }

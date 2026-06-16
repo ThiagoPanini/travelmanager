@@ -121,7 +121,58 @@ const ICON_PATHS: Record<string, ReactNode> = {
       strokeLinejoin="round"
     />
   ),
+  grid: (
+    <path
+      d="M2.5 2.5h4.5v4.5H2.5zM9 2.5h4.5v4.5H9zM2.5 9h4.5v4.5H2.5zM9 9h4.5v4.5H9z"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinejoin="round"
+    />
+  ),
+  checkSquare: (
+    <path
+      d="M3 3.5h10a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5zM5.5 8l2 2 3.5-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  ),
+  bell: (
+    <path
+      d="M8 2a4 4 0 0 0-4 4c0 3-1.2 4.5-1.5 5h11c-.3-.5-1.5-2-1.5-5a4 4 0 0 0-4-4zM6.5 13a1.5 1.5 0 0 0 3 0"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  ),
+  activity: (
+    <path
+      d="M1.5 8h3l1.5-4 2.5 8 1.5-4h4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  ),
+  user: (
+    <path
+      d="M8 8.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM2.5 14c0-2.6 2.4-4.5 5.5-4.5s5.5 1.9 5.5 4.5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  ),
 };
+
+export type IconName = keyof typeof ICON_PATHS;
 
 export function Icon({ name, size = 16 }: { name: keyof typeof ICON_PATHS; size?: number }) {
   return (
@@ -307,6 +358,28 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
           )}
         </span>
       ))}
+    </div>
+  );
+}
+
+// ---------- empty state ----------
+export function EmptyState({
+  icon = "compass",
+  title,
+  body,
+  action,
+}: {
+  icon?: IconName;
+  title: string;
+  body?: ReactNode;
+  action?: ReactNode;
+}) {
+  return (
+    <div className="empty">
+      <Icon name={icon} size={22} />
+      <div style={{ fontWeight: 600, color: "var(--ink-soft)" }}>{title}</div>
+      {body && <div style={{ fontSize: 13.5, maxWidth: 420 }}>{body}</div>}
+      {action}
     </div>
   );
 }
