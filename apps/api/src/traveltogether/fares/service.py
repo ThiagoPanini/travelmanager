@@ -241,6 +241,61 @@ def update_fare_quote(
     return fare
 
 
+def segments_have_foreign_content(
+    session: Session, segment_ids: Sequence[uuid.UUID], owner_id: uuid.UUID
+) -> bool:
+    """Há `Pesquisa` registrada por outra pessoa OU `Preferida` de outra pessoa
+    em algum dos `Trecho`s? Gate de remoção de `Rota`/`Trecho` (invariante 25).
+
+    Interface explícita para o boundary trips (ADR-0014).
+    """
+    from traveltogether.fares.models import Preference  # noqa: PLC0415
+
+    if not segment_ids:
+        return False
+    foreign_fare = session.exec(
+        select(FareQuoteSegment.fare_quote_id)
+        .join(FareQuote, col(FareQuote.id) == col(FareQuoteSegment.fare_quote_id))
+        .where(col(FareQuoteSegment.segment_id).in_(segment_ids))
+        .where(col(FareQuote.registered_by) != owner_id)
+    ).first()
+    if foreign_fare is not None:
+        return True
+    foreign_pref = session.exec(
+        select(Preference.id)
+        .where(col(Preference.segment_id).in_(segment_ids))
+        .where(col(Preference.user_id) != owner_id)
+    ).first()
+    return foreign_pref is not None
+
+
+def detach_segment(session: Session, segment_id: uuid.UUID) -> None:
+    """Apaga `Pesquisa`s ancoradas só neste `Trecho` (e suas `Preferida`s) antes de
+    remover o `Trecho`. Chamado pelo boundary trips ao podar `Rota`/`Trecho`.
+    """
+    from traveltogether.fares.models import Preference  # noqa: PLC0415
+
+    for pref in session.exec(select(Preference).where(col(Preference.segment_id) == segment_id)):
+        session.delete(pref)
+    links = list(
+        session.exec(select(FareQuoteSegment).where(col(FareQuoteSegment.segment_id) == segment_id))
+    )
+    for link in links:
+        session.delete(link)
+    session.flush()
+    # remove Pesquisas que ficaram órfãs (sem nenhum Trecho)
+    for fare_id in {link.fare_quote_id for link in links}:
+        still_linked = session.exec(
+            select(FareQuoteSegment.fare_quote_id).where(
+                col(FareQuoteSegment.fare_quote_id) == fare_id
+            )
+        ).first()
+        if still_linked is None:
+            fare = session.get(FareQuote, fare_id)
+            if fare is not None:
+                session.delete(fare)
+
+
 def delete_fare_quote(session: Session, fare: FareQuote) -> None:
     from traveltogether.fares.models import Preference  # noqa: PLC0415
 

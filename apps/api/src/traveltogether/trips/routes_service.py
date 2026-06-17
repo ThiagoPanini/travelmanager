@@ -13,9 +13,21 @@ import uuid
 
 from sqlmodel import Session, col, func, select
 
-from traveltogether.trips.models import Leg, Route, Segment, SegmentMode, Stop, Trip
+from traveltogether.trips.models import (
+    Leg,
+    MembershipRole,
+    Route,
+    Segment,
+    SegmentMode,
+    Stop,
+    Trip,
+)
 
 DEFAULT_ROUTE_LABEL = "Direto"
+
+
+class RouteWriteError(Exception):
+    """Remoção barrada pelo gate de moderação (invariante 25)."""
 
 
 def _leg_airports(session: Session, leg: Leg) -> tuple[str | None, str | None]:
@@ -148,6 +160,150 @@ def delete_routes_for_leg(session: Session, leg_id: uuid.UUID, *, commit: bool =
         session.commit()
     else:
         session.flush()
+
+
+# --- construtor multi-Rota (#144) ------------------------------------------
+
+
+def _next_order(values: list[int]) -> int:
+    return (max(values) + 1) if values else 1
+
+
+def create_route(
+    session: Session, leg_id: uuid.UUID, *, created_by: uuid.UUID, label: str = ""
+) -> Route:
+    """Cria uma `Rota` vazia no `Trajeto`, no fim da ordem (camada de exploração)."""
+    order = _next_order([r.order for r in list_routes(session, leg_id)])
+    route = Route(leg_id=leg_id, label=label, order=order, created_by=created_by)
+    session.add(route)
+    session.commit()
+    session.refresh(route)
+    return route
+
+
+def add_segment(
+    session: Session,
+    route_id: uuid.UUID,
+    *,
+    origin_airport: str | None = None,
+    destination_airport: str | None = None,
+    mode: SegmentMode = SegmentMode.air,
+) -> Segment:
+    """Acrescenta um `Trecho` ao fim da `Rota` (sequência ordenada, invariante 22)."""
+    order = _next_order([s.order for s in list_segments(session, route_id)])
+    segment = Segment(
+        route_id=route_id,
+        mode=mode,
+        origin_airport=origin_airport,
+        destination_airport=destination_airport,
+        order=order,
+    )
+    session.add(segment)
+    session.commit()
+    session.refresh(segment)
+    return segment
+
+
+def update_route(session: Session, route: Route, *, label: str | None = None) -> Route:
+    if label is not None:
+        route.label = label
+    session.add(route)
+    session.commit()
+    session.refresh(route)
+    return route
+
+
+def update_segment(
+    session: Session,
+    segment: Segment,
+    *,
+    origin_airport: str | None = None,
+    destination_airport: str | None = None,
+    mode: SegmentMode | None = None,
+) -> Segment:
+    if origin_airport is not None:
+        segment.origin_airport = origin_airport
+    if destination_airport is not None:
+        segment.destination_airport = destination_airport
+    if mode is not None:
+        segment.mode = mode
+    session.add(segment)
+    session.commit()
+    session.refresh(segment)
+    return segment
+
+
+def reorder_segments(
+    session: Session, route_id: uuid.UUID, ordered_ids: list[uuid.UUID]
+) -> list[Segment]:
+    """Reordena os `Trecho`s da `Rota` conforme `ordered_ids` (1-based, contíguo)."""
+    by_id = {s.id: s for s in list_segments(session, route_id)}
+    if set(ordered_ids) != set(by_id):
+        raise RouteWriteError("ordered_ids must match the route's segments exactly")
+    for index, segment_id in enumerate(ordered_ids, start=1):
+        segment = by_id[segment_id]
+        segment.order = index
+        session.add(segment)
+    session.commit()
+    return list_segments(session, route_id)
+
+
+def _segments_have_foreign_content(
+    session: Session, segment_ids: list[uuid.UUID], owner_id: uuid.UUID
+) -> bool:
+    """Há `Pesquisa`/`Preferida` de **outra** pessoa nos `Trecho`s? (invariante 25).
+
+    Interface explícita do boundary fares — import tardio para não acoplar os
+    modelos cross-boundary nem criar ciclo de import.
+    """
+    if not segment_ids:
+        return False
+    from traveltogether.fares.service import segments_have_foreign_content
+
+    return segments_have_foreign_content(session, segment_ids, owner_id)
+
+
+def _delete_segment_row(session: Session, segment: Segment) -> None:
+    from traveltogether.fares.service import detach_segment
+
+    detach_segment(session, segment.id)
+    session.delete(segment)
+
+
+def remove_route(
+    session: Session, route: Route, *, user_id: uuid.UUID, role: MembershipRole
+) -> None:
+    """Remove uma `Rota` e seus `Trecho`s sob o gate da invariante 25.
+
+    `Organizador` remove qualquer uma (moderação/prune). Senão só o autor, e só
+    enquanto a `Rota` não carrega `Pesquisa`/`Preferida` de terceiros.
+    """
+    segment_ids = [s.id for s in list_segments(session, route.id)]
+    if role != MembershipRole.organizer:
+        if route.created_by != user_id:
+            raise RouteWriteError("only the author or an organizer can remove this route")
+        if _segments_have_foreign_content(session, segment_ids, user_id):
+            raise RouteWriteError("route carries third-party content; pruning is organizer-only")
+    for segment in list_segments(session, route.id):
+        _delete_segment_row(session, segment)
+    session.delete(route)
+    session.commit()
+
+
+def remove_segment(
+    session: Session, segment: Segment, *, user_id: uuid.UUID, role: MembershipRole
+) -> None:
+    """Remove um `Trecho` sob o gate da invariante 25 (autoria herdada da `Rota`)."""
+    route = session.get(Route, segment.route_id)
+    if route is None:
+        raise RouteWriteError("segment has no route")
+    if role != MembershipRole.organizer:
+        if route.created_by != user_id:
+            raise RouteWriteError("only the author or an organizer can remove this segment")
+        if _segments_have_foreign_content(session, [segment.id], user_id):
+            raise RouteWriteError("segment carries third-party content; pruning is organizer-only")
+    _delete_segment_row(session, segment)
+    session.commit()
 
 
 def trip_has_segments(session: Session, trip_id: uuid.UUID) -> bool:
