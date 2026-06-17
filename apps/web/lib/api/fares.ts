@@ -113,19 +113,43 @@ export async function toggleUpvote(
   }
 }
 
-export async function chooseFare(
+export interface DecisionResponse {
+  fare_id: string;
+  user_preferred: boolean;
+  user_purchased: boolean;
+}
+
+export async function preferFare(
   accessToken: string,
   legId: string,
   fareId: string,
-): Promise<FareQuotePublic | null> {
+): Promise<DecisionResponse | null> {
   try {
-    const response = await fetch(`${apiUrl()}/legs/${legId}/fares/${fareId}/choose`, {
+    const response = await fetch(`${apiUrl()}/legs/${legId}/fares/${fareId}/prefer`, {
       method: "POST",
       cache: "no-store",
       headers: authHeaders(accessToken),
     });
     if (!response.ok) return null;
-    return (await response.json()) as FareQuotePublic;
+    return (await response.json()) as DecisionResponse;
+  } catch {
+    return null;
+  }
+}
+
+export async function purchaseFare(
+  accessToken: string,
+  legId: string,
+  fareId: string,
+): Promise<DecisionResponse | null> {
+  try {
+    const response = await fetch(`${apiUrl()}/legs/${legId}/fares/${fareId}/purchase`, {
+      method: "POST",
+      cache: "no-store",
+      headers: authHeaders(accessToken),
+    });
+    if (!response.ok) return null;
+    return (await response.json()) as DecisionResponse;
   } catch {
     return null;
   }

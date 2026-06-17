@@ -83,7 +83,6 @@ describe("markAllNotificationsRead", () => {
 });
 
 const PREFS: import("@traveltogether/types").NotificationPrefsPublic = {
-  decision: true,
   task: true,
   mention: true,
   digest: false,
@@ -110,12 +109,12 @@ describe("updateNotificationPrefs", () => {
   afterEach(() => vi.unstubAllGlobals());
 
   it("envia PUT com o patch e retorna prefs atualizadas", async () => {
-    const updated = { ...PREFS, decision: false };
+    const updated = { ...PREFS, task: false };
     vi.stubGlobal(
       "fetch",
       vi.fn().mockResolvedValue({ ok: true, json: () => Promise.resolve(updated) }),
     );
-    await expect(updateNotificationPrefs("token", { decision: false })).resolves.toEqual(updated);
+    await expect(updateNotificationPrefs("token", { task: false })).resolves.toEqual(updated);
     expect(fetch).toHaveBeenCalledWith(
       "http://localhost:8000/me/notification-prefs",
       expect.objectContaining({ method: "PUT" }),

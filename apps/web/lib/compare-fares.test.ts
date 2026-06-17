@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import type { FareRow } from "./compare-fares";
 import { sortFares } from "./compare-fares";
 
-const base: Omit<FareRow, "id" | "value" | "upvote_count" | "is_chosen"> = {
+const base: Omit<FareRow, "id" | "value" | "upvote_count" | "user_preferred"> = {
   leg_id: "leg-1",
   segment_id: "seg-1",
   registered_by: "user-1",
@@ -20,10 +20,13 @@ const base: Omit<FareRow, "id" | "value" | "upvote_count" | "is_chosen"> = {
   user_voted: false,
   registered_by_display_name: null,
   registered_by_avatar_url: null,
+  user_purchased: false,
+  preferred_by: [],
+  purchased_by: [],
 };
 
-function fare(id: string, value: string, upvote_count: number, is_chosen = false): FareRow {
-  return { ...base, id, value, upvote_count, is_chosen };
+function fare(id: string, value: string, upvote_count: number, user_preferred = false): FareRow {
+  return { ...base, id, value, upvote_count, user_preferred };
 }
 
 describe("sortFares", () => {

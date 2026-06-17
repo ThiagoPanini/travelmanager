@@ -58,7 +58,7 @@ export interface PanelAlert {
 
 export function pendingToAlert(item: PendingItem): PanelAlert {
   return {
-    icon: item.kind === "fare_without_chosen" ? "compass" : "up",
+    icon: item.kind === "leg_without_my_preference" ? "compass" : "up",
     title: item.verb,
     sub: `${item.target} · ${item.tripName}`,
     href: item.href,
@@ -167,7 +167,6 @@ const NOTIF_ICONS: Record<NotificationKind, IconName> = {
   invite: "users",
   task: "checkSquare",
   mention: "chat",
-  decision: "compass",
 };
 
 export function notificationIcon(kind: NotificationKind): IconName {

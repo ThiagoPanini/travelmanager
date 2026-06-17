@@ -19,14 +19,12 @@ import {
 
 const KIND_LABEL: Record<NotificationKind, string> = {
   invite: "convite",
-  decision: "escolhida",
   task: "tarefa",
   mention: "menção",
 };
 
 // `digest` é o resumo periódico; os demais são interruptores por `kind`.
 const PREF_LABEL: Record<keyof NotificationPrefsPublic, string> = {
-  decision: "Escolhidas marcadas",
   task: "Tarefas atribuídas a mim",
   mention: "Menções em comentários",
   digest: "Resumo periódico por e-mail",

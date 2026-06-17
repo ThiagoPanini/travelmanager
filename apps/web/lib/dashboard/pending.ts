@@ -3,7 +3,7 @@ import type { PendingActionKind, PendingActionPublic } from "@traveltogether/typ
 // Verbo de ação que descreve o que falta fazer em cada pendência derivada (#58).
 const VERBS: Record<PendingActionKind, string> = {
   leg_without_fare: "Registrar Pesquisa de Passagem",
-  fare_without_chosen: "Marcar a Escolhida",
+  leg_without_my_preference: "Marcar a Preferida",
   stop_without_itinerary: "Montar o Roteiro",
 };
 

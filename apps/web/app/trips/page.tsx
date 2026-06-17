@@ -72,7 +72,7 @@ export default async function TripsPage() {
         )
       )
         .flat()
-        .filter((f) => f.is_chosen)
+        .filter((f) => f.user_preferred)
     : [];
 
   // Cards ricos da lista (#133): status/progresso/próximo passo derivados de Paradas +

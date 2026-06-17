@@ -356,7 +356,9 @@ class ActivityItemPublic(SQLModel):
 
 class PendingActionKind(StrEnum):
     leg_without_fare = "leg_without_fare"
-    fare_without_chosen = "fare_without_chosen"
+    # Trajeto com Pesquisa(s) mas onde o próprio usuário ainda não tem Preferida
+    # (decisão por-pessoa, ADR-0018) — antes era a Escolhida de grupo.
+    leg_without_my_preference = "leg_without_my_preference"
     stop_without_itinerary = "stop_without_itinerary"
 
 

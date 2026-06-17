@@ -9,9 +9,10 @@ import CommentThread from "@/components/comment-thread";
 import { IataAutocomplete } from "@/components/iata-autocomplete";
 import { formatDate, formatDuration, formatMoney, moneyValue } from "@/lib/fares/format";
 import {
-  chooseFareAction,
   createFareAction,
   deleteFareAction,
+  preferFareAction,
+  purchaseFareAction,
   toggleUpvoteAction,
 } from "./actions";
 
@@ -71,12 +72,43 @@ export default function FaresPanel({
     if (result) setUpvotes((prev) => ({ ...prev, [fareId]: result }));
   }
 
-  async function handleChoose(fareId: string) {
+  async function handlePrefer(fareId: string) {
     setLoading(true);
-    const updated = await chooseFareAction(legId, fareId);
-    if (updated) {
+    const result = await preferFareAction(legId, fareId);
+    if (result) {
+      const segId = fares.find((f) => f.id === fareId)?.segment_id;
       setFares((prev) =>
-        prev.map((f) => ({ ...f, is_chosen: f.id === fareId ? !f.is_chosen : false })),
+        prev.map((f) => {
+          if (f.id === fareId)
+            return {
+              ...f,
+              user_preferred: result.user_preferred,
+              user_purchased: result.user_purchased,
+            };
+          // ≤1 Preferida por Trecho por usuário (invariante 11): zera as outras do mesmo Trecho.
+          if (result.user_preferred && f.segment_id === segId)
+            return { ...f, user_preferred: false, user_purchased: false };
+          return f;
+        }),
+      );
+    }
+    setLoading(false);
+  }
+
+  async function handlePurchase(fareId: string) {
+    setLoading(true);
+    const result = await purchaseFareAction(legId, fareId);
+    if (result) {
+      setFares((prev) =>
+        prev.map((f) =>
+          f.id === fareId
+            ? {
+                ...f,
+                user_preferred: result.user_preferred,
+                user_purchased: result.user_purchased,
+              }
+            : f,
+        ),
       );
     }
     setLoading(false);
@@ -97,7 +129,7 @@ export default function FaresPanel({
   const orderedFares = useMemo(
     () =>
       [...fares].sort((a, b) => {
-        const chosenDelta = (b.is_chosen ? 1 : 0) - (a.is_chosen ? 1 : 0);
+        const chosenDelta = (b.user_preferred ? 1 : 0) - (a.user_preferred ? 1 : 0);
         if (chosenDelta) return chosenDelta;
         const countFor = (id: string) => upvotes[id]?.count ?? 0;
         return countFor(b.id) - countFor(a.id);
@@ -398,7 +430,8 @@ export default function FaresPanel({
           <div className="board">
             {orderedFares.map((fare) => {
               const cheapest = fare.id === cheapestId;
-              const chosen = fare.is_chosen;
+              const chosen = fare.user_preferred;
+              const purchased = fare.user_purchased;
               const vote = voteFor(fare.id);
               const threadOpen = openThread === fare.id;
               return (
@@ -425,8 +458,14 @@ export default function FaresPanel({
                         }}
                       >
                         {fare.airline}
-                        {chosen && <span className="stamp">escolhida</span>}
+                        {purchased && <span className="stamp">comprada</span>}
+                        {chosen && !purchased && <span className="stamp">preferida</span>}
                         {!chosen && cheapest && <span className="chip outline">menor preço</span>}
+                        {fare.preferred_by.length > 0 && (
+                          <span className="chip outline" title="Quem prefere esta">
+                            {fare.preferred_by.length}× preferida
+                          </span>
+                        )}
                       </div>
                       <div
                         className="mono-num"
@@ -530,14 +569,22 @@ export default function FaresPanel({
                       >
                         <Icon name="message" size={13} />
                       </button>
-                      {isOrganizer && (
+                      <button
+                        className={`btn tiny ghost ${chosen ? "on" : ""}`}
+                        disabled={loading}
+                        onClick={() => handlePrefer(fare.id)}
+                        type="button"
+                      >
+                        {chosen ? "Preferida" : "Preferir"}
+                      </button>
+                      {chosen && (
                         <button
-                          className="btn tiny ghost"
+                          className={`btn tiny ghost ${purchased ? "on" : ""}`}
                           disabled={loading}
-                          onClick={() => handleChoose(fare.id)}
+                          onClick={() => handlePurchase(fare.id)}
                           type="button"
                         >
-                          {chosen ? "Desmarcar" : "Escolher"}
+                          {purchased ? "Comprada" : "Comprei"}
                         </button>
                       )}
                       {isOrganizer && (
@@ -576,23 +623,21 @@ export default function FaresPanel({
               <tr>
                 <th style={{ width: 150 }} />
                 {sortedFares.map((f) => (
-                  <th key={f.id} className={f.is_chosen ? "col-chosen" : undefined}>
+                  <th key={f.id} className={f.user_preferred ? "col-chosen" : undefined}>
                     <div style={{ fontWeight: 700, fontSize: 15 }}>{f.airline}</div>
-                    {f.is_chosen ? (
+                    {f.user_preferred ? (
                       <span className="stamp" style={{ marginTop: 8 }}>
-                        escolhida
+                        {f.user_purchased ? "comprada" : "preferida"}
                       </span>
                     ) : (
-                      isOrganizer && (
-                        <button
-                          className="btn tiny ghost"
-                          onClick={() => handleChoose(f.id)}
-                          style={{ marginTop: 8 }}
-                          type="button"
-                        >
-                          Escolher esta
-                        </button>
-                      )
+                      <button
+                        className="btn tiny ghost"
+                        onClick={() => handlePrefer(f.id)}
+                        style={{ marginTop: 8 }}
+                        type="button"
+                      >
+                        Preferir esta
+                      </button>
                     )}
                   </th>
                 ))}
@@ -607,7 +652,7 @@ export default function FaresPanel({
                     return (
                       <td
                         key={f.id}
-                        className={`${f.is_chosen ? "col-chosen" : ""} ${isBest ? "is-best" : ""}`.trim()}
+                        className={`${f.user_preferred ? "col-chosen" : ""} ${isBest ? "is-best" : ""}`.trim()}
                       >
                         {row.render(f)} {isBest && <span title="Melhor neste critério">●</span>}
                       </td>

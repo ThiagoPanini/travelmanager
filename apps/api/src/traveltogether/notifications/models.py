@@ -23,7 +23,6 @@ class NotificationKind(StrEnum):
     """
 
     invite = "invite"
-    decision = "decision"
     task = "task"
     mention = "mention"
 

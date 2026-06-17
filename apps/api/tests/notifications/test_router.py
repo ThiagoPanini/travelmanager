@@ -128,10 +128,10 @@ def test_get_and_update_prefs(
     _materialize_user(client, session, ALICE_EMAIL, headers)
 
     default = client.get("/me/notification-prefs", headers=headers).json()
-    assert default == {"decision": True, "task": True, "mention": True, "digest": False}
+    assert default == {"task": True, "mention": True, "digest": False}
 
     res = client.put(
-        "/me/notification-prefs", json={"decision": False, "digest": True}, headers=headers
+        "/me/notification-prefs", json={"task": False, "digest": True}, headers=headers
     )
     assert res.status_code == 200
-    assert res.json() == {"decision": False, "task": True, "mention": True, "digest": True}
+    assert res.json() == {"task": False, "mention": True, "digest": True}

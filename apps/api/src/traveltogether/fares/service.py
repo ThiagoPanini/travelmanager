@@ -93,7 +93,6 @@ def fare_to_public(session: Session, fare: FareQuote) -> FareQuotePublic:
         airline=fare.airline,
         link=fare.link,
         notes=fare.notes,
-        is_chosen=fare.is_chosen,
     )
 
 
@@ -171,49 +170,6 @@ def list_fare_quotes(session: Session, leg_id: uuid.UUID) -> list[FareQuote]:
     return _fares_for_segment_ids(session, leg_segment_ids(session, leg_id))
 
 
-def leg_fare_status(
-    session: Session, leg_ids: Sequence[uuid.UUID]
-) -> dict[uuid.UUID, tuple[int, bool]]:
-    """Para cada Trajeto com ≥1 Pesquisa: (qtd de Pesquisas, tem Escolhida).
-
-    Trajetos sem Pesquisa ficam ausentes do dict. Interface explícita para o
-    painel (#58) agregar pendências cross-Viagem sem N+1 (ADR-0014).
-    """
-    if not leg_ids:
-        return {}
-    status: dict[uuid.UUID, tuple[int, bool]] = {}
-    rows = session.exec(
-        select(Route.leg_id, FareQuote.is_chosen)
-        .join(Segment, col(Segment.route_id) == col(Route.id))
-        .join(FareQuoteSegment, col(FareQuoteSegment.segment_id) == col(Segment.id))
-        .join(FareQuote, col(FareQuote.id) == col(FareQuoteSegment.fare_quote_id))
-        .where(col(Route.leg_id).in_(leg_ids))
-    )
-    for leg_id, is_chosen in rows:
-        count, has_chosen = status.get(leg_id, (0, False))
-        status[leg_id] = (count + 1, has_chosen or is_chosen)
-    return status
-
-
-def chosen_fare_costs_for_trip(session: Session, trip_id: uuid.UUID) -> list[tuple[Decimal, str]]:
-    """Custos das `Pesquisa de Passagem`s `Escolhida`s de uma Viagem: (valor, moeda).
-
-    Interface explícita para o boundary budget agregar o Orçamento sem importar
-    o model FareQuote (ADR-0014/0016). A passagem é por pessoa.
-    """
-    rows = session.exec(
-        select(FareQuote)
-        .join(FareQuoteSegment, col(FareQuoteSegment.fare_quote_id) == col(FareQuote.id))
-        .join(Segment, col(Segment.id) == col(FareQuoteSegment.segment_id))
-        .join(Route, col(Route.id) == col(Segment.route_id))
-        .join(Leg, col(Leg.id) == col(Route.leg_id))
-        .where(col(Leg.trip_id) == trip_id)
-        .where(col(FareQuote.is_chosen).is_(True))
-        .distinct()
-    )
-    return [(fare.value, fare.currency) for fare in rows]
-
-
 def leg_has_fare_quotes(session: Session, leg_id: uuid.UUID) -> bool:
     from traveltogether.trips.routes_service import leg_segment_ids
 
@@ -274,6 +230,10 @@ def update_fare_quote(
 
 
 def delete_fare_quote(session: Session, fare: FareQuote) -> None:
+    from traveltogether.fares.models import Preference  # noqa: PLC0415
+
+    for pref in session.exec(select(Preference).where(col(Preference.fare_quote_id) == fare.id)):
+        session.delete(pref)
     for link in session.exec(
         select(FareQuoteSegment).where(col(FareQuoteSegment.fare_quote_id) == fare.id)
     ):

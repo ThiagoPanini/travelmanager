@@ -224,7 +224,7 @@ export interface ActivityItemPublic {
 
 export type PendingActionKind =
   | "leg_without_fare"
-  | "fare_without_chosen"
+  | "leg_without_my_preference"
   | "stop_without_itinerary";
 
 export interface PendingActionPublic {
@@ -274,11 +274,21 @@ export interface FareQuotePublic {
   airline: string;
   link: string;
   notes: string;
-  is_chosen: boolean;
   upvote_count: number;
   user_voted: boolean;
   registered_by_display_name: string | null;
   registered_by_avatar_url: string | null;
+  // Decisão por-pessoa (ADR-0018): marcação do próprio usuário + pilha do grupo.
+  user_preferred: boolean;
+  user_purchased: boolean;
+  preferred_by: FareMarker[];
+  purchased_by: FareMarker[];
+}
+
+export interface FareMarker {
+  user_id: string;
+  display_name: string | null;
+  avatar_url: string | null;
 }
 
 export interface FareQuoteCreate {
@@ -458,7 +468,7 @@ export interface BudgetSummary {
 }
 
 // notifications (Notificação — ADR-0017)
-export type NotificationKind = "invite" | "decision" | "task" | "mention";
+export type NotificationKind = "invite" | "task" | "mention";
 
 export interface NotificationPublic {
   id: string;
@@ -477,14 +487,12 @@ export interface NotificationInbox {
 }
 
 export interface NotificationPrefsPublic {
-  decision: boolean;
   task: boolean;
   mention: boolean;
   digest: boolean;
 }
 
 export interface NotificationPrefsUpdate {
-  decision?: boolean | null;
   task?: boolean | null;
   mention?: boolean | null;
   digest?: boolean | null;

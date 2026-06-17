@@ -3,7 +3,14 @@
 import type { FareQuoteCreate } from "@traveltogether/types";
 import { redirect } from "next/navigation";
 import { getAuthSession } from "@/auth";
-import { chooseFare, createFare, deleteFare, getUpvote, toggleUpvote } from "@/lib/api/fares";
+import {
+  createFare,
+  deleteFare,
+  getUpvote,
+  preferFare,
+  purchaseFare,
+  toggleUpvote,
+} from "@/lib/api/fares";
 
 export async function createFareAction(legId: string, data: FareQuoteCreate) {
   const session = await getAuthSession();
@@ -29,8 +36,14 @@ export async function toggleUpvoteAction(fareId: string) {
   return toggleUpvote(session.apiAccessToken, fareId);
 }
 
-export async function chooseFareAction(legId: string, fareId: string) {
+export async function preferFareAction(legId: string, fareId: string) {
   const session = await getAuthSession();
   if (!session?.apiAccessToken) redirect("/login");
-  return chooseFare(session.apiAccessToken, legId, fareId);
+  return preferFare(session.apiAccessToken, legId, fareId);
+}
+
+export async function purchaseFareAction(legId: string, fareId: string) {
+  const session = await getAuthSession();
+  if (!session?.apiAccessToken) redirect("/login");
+  return purchaseFare(session.apiAccessToken, legId, fareId);
 }
