@@ -24,7 +24,6 @@ def update_notification_prefs(
     session: Session,
     user_id: uuid.UUID,
     *,
-    decision: bool | None = None,
     task: bool | None = None,
     mention: bool | None = None,
     digest: bool | None = None,
@@ -33,8 +32,6 @@ def update_notification_prefs(
     prefs = session.get(NotificationPrefs, user_id)
     if prefs is None:
         prefs = NotificationPrefs(user_id=user_id)
-    if decision is not None:
-        prefs.decision = decision
     if task is not None:
         prefs.task = task
     if mention is not None:

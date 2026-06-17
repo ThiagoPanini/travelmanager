@@ -161,14 +161,17 @@ def _lodging_nights(arrival: datetime | None, departure: datetime | None) -> int
 def aggregate_budget(session: Session, trip_id: uuid.UUID) -> BudgetSummary:
     """Agrega o Orçamento da Viagem em subtotais por moeda (ADR-0016).
 
-    Soma três fontes — `Escolhida`s, `Hospedagem`s, `Extra`s — acumulando por
-    moeda. Cada linha contribui um valor **por grupo** e um **por pessoa**:
+    Soma três fontes — `Preferida`s/`Comprada`s, `Hospedagem`s, `Extra`s —
+    acumulando por moeda. Cada linha contribui um valor **por grupo** e um
+    **por pessoa**:
     - `per_person`: o valor já é por cabeça → por pessoa = valor, por grupo = valor × nº pessoas.
     - `split`: o valor é do grupo → por grupo = valor, por pessoa = valor ÷ nº pessoas.
-    As `Escolhida`s (passagens) contam como `per_person`. Nunca cruza moedas.
+    As passagens entram pela `Preferida`/`Comprada` **de cada pessoa**
+    (invariante 19): cada uma é o gasto real de um viajante (entra inteira no
+    grupo) e divide na média por cabeça (`split`). Nunca cruza moedas.
     """
     # imports locais p/ não acoplar o import-time de budget a fares/trips
-    from traveltogether.fares.service import chosen_fare_costs_for_trip
+    from traveltogether.fares.preferences_service import preferred_fare_costs_for_trip
     from traveltogether.trips.service import count_memberships, stop_period
 
     member_count = count_memberships(session, trip_id)
@@ -191,9 +194,10 @@ def aggregate_budget(session: Session, trip_id: uuid.UUID) -> BudgetSummary:
         else:
             add_split_line(currency, value)
 
-    # Passagens Escolhidas — por pessoa (cada viajante compra a própria).
-    for value, currency in chosen_fare_costs_for_trip(session, trip_id):
-        add_per_person_line(currency, value)
+    # Passagens — Preferida/Comprada de cada pessoa: gasto real de um viajante
+    # (entra inteiro no grupo, média por cabeça nos por-pessoa).
+    for value, currency in preferred_fare_costs_for_trip(session, trip_id):
+        add_split_line(currency, value)
 
     # Hospedagens — valor por noite × noites derivadas da Parada.
     for lodging in list_lodgings(session, trip_id):

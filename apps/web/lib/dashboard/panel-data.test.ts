@@ -67,7 +67,10 @@ describe("countdown", () => {
 function makePending(kind: PendingItem["kind"]): PendingItem {
   return {
     kind,
-    verb: kind === "fare_without_chosen" ? "Marcar a Escolhida" : "Registrar Pesquisa de Passagem",
+    verb:
+      kind === "leg_without_my_preference"
+        ? "Marcar a Preferida"
+        : "Registrar Pesquisa de Passagem",
     target: "GRU → LIS",
     tripId: "t1",
     tripName: "Portugal com a galera",
@@ -77,14 +80,14 @@ function makePending(kind: PendingItem["kind"]): PendingItem {
 
 describe("pendingToAlert", () => {
   it("leva verbo como título e Trajeto · Viagem como subtítulo", () => {
-    const alert = pendingToAlert(makePending("fare_without_chosen"));
-    expect(alert.title).toBe("Marcar a Escolhida");
+    const alert = pendingToAlert(makePending("leg_without_my_preference"));
+    expect(alert.title).toBe("Marcar a Preferida");
     expect(alert.sub).toBe("GRU → LIS · Portugal com a galera");
     expect(alert.href).toBe("/trips/t1/legs/leg1");
   });
 
   it("usa 'compass' para decidir a Escolhida e 'up' para registrar Pesquisa", () => {
-    expect(pendingToAlert(makePending("fare_without_chosen")).icon).toBe("compass");
+    expect(pendingToAlert(makePending("leg_without_my_preference")).icon).toBe("compass");
     expect(pendingToAlert(makePending("leg_without_fare")).icon).toBe("up");
   });
 });
@@ -127,7 +130,7 @@ describe("buildHero", () => {
   it("deriva trajetos decididos a partir de Paradas e pendências (#58)", () => {
     const hero = buildHero({
       trip,
-      pending: [makePending("fare_without_chosen")],
+      pending: [makePending("leg_without_my_preference")],
       budget: null,
       openTasks: 3,
       members: [],
@@ -202,7 +205,6 @@ describe("notificationIcon", () => {
     expect(notificationIcon("invite")).toBe("users");
     expect(notificationIcon("task")).toBe("checkSquare");
     expect(notificationIcon("mention")).toBe("chat");
-    expect(notificationIcon("decision")).toBe("compass");
   });
 });
 
@@ -235,7 +237,7 @@ describe("buildPanelData", () => {
     nextTrip: trip,
     trips: [trip],
     pending: [
-      makePendingAction("Portugal", "fare_without_chosen"),
+      makePendingAction("Portugal", "leg_without_my_preference"),
       makePendingAction("Portugal", "stop_without_itinerary"),
     ],
     tasks: [],
@@ -255,7 +257,7 @@ describe("buildPanelData", () => {
   it("'o que precisa de mim' exclui Roteiro pendente (só Trajetos)", () => {
     const data = buildPanelData(baseInput);
     expect(data.alerts).toHaveLength(1);
-    expect(data.alerts[0].title).toBe("Marcar a Escolhida");
+    expect(data.alerts[0].title).toBe("Marcar a Preferida");
   });
 
   it("monta o hero e o snapshot de Orçamento da próxima Viagem", () => {
@@ -273,7 +275,7 @@ describe("buildPanelData", () => {
 
   it("conta o total de pendências e Tarefas para os badges (não a fatia exibida)", () => {
     const manyPending = Array.from({ length: 7 }, () =>
-      makePendingAction("Portugal", "fare_without_chosen"),
+      makePendingAction("Portugal", "leg_without_my_preference"),
     );
     const data = buildPanelData({ ...baseInput, pending: manyPending });
     expect(data.alerts).toHaveLength(5); // fatia exibida

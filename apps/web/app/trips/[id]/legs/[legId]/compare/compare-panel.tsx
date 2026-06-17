@@ -61,7 +61,7 @@ export default function ComparePanel({ initialRows }: Props) {
               className="board-row"
               style={{
                 gridTemplateColumns: "auto 1fr auto auto",
-                background: row.is_chosen
+                background: row.user_preferred
                   ? "color-mix(in oklab, var(--accent) 7%, transparent)"
                   : undefined,
               }}
@@ -82,7 +82,10 @@ export default function ComparePanel({ initialRows }: Props) {
                   }}
                 >
                   {row.airline}
-                  {row.is_chosen && <span className="stamp">escolhida</span>}
+                  {row.user_purchased && <span className="stamp">comprada</span>}
+                  {row.user_preferred && !row.user_purchased && (
+                    <span className="stamp">preferida</span>
+                  )}
                 </div>
                 <div
                   className="mono-num"

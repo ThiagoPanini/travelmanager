@@ -22,7 +22,7 @@ describe("fixture do Painel de exemplo", () => {
   it("deriva o que precisa de mim a partir das pendências de Trajeto", () => {
     const { alerts } = EXAMPLE_PANEL_DATA;
     expect(alerts).toHaveLength(3);
-    expect(alerts.map((a) => a.title)).toContain("Marcar a Escolhida");
+    expect(alerts.map((a) => a.title)).toContain("Marcar a Preferida");
     expect(alerts.some((a) => a.sub.includes("LIS → CDG"))).toBe(true);
     // pendência de Roteiro (Parada sem itinerário) não vira alerta do Painel.
     expect(alerts.some((a) => a.sub.includes("Roma"))).toBe(false);

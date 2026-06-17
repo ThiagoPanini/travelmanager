@@ -68,8 +68,8 @@ def test_mark_read_flips_state_and_drops_unread_count(session: Session, user: Us
     created = notify(
         session,
         recipient_id=user.id,
-        kind=NotificationKind.decision,
-        text="Escolhida marcada",
+        kind=NotificationKind.task,
+        text="Tarefa atribuída",
         trip_id=uuid.uuid4(),
     )
     assert created is not None
@@ -106,13 +106,13 @@ def test_list_and_count_are_per_recipient(session: Session, user: User) -> None:
 
 
 def test_notify_respects_prefs_toggle_off(session: Session, user: User) -> None:
-    # Destinatário desligou avisos de `decision`.
-    update_notification_prefs(session, user.id, decision=False)
+    # Destinatário desligou avisos de `task`.
+    update_notification_prefs(session, user.id, task=False)
 
     suppressed = notify(
         session,
         recipient_id=user.id,
-        kind=NotificationKind.decision,
+        kind=NotificationKind.task,
         text="não deve aparecer",
         trip_id=uuid.uuid4(),
     )
@@ -123,7 +123,7 @@ def test_notify_respects_prefs_toggle_off(session: Session, user: User) -> None:
 
 def test_invite_is_always_delivered_regardless_of_prefs(session: Session, user: User) -> None:
     # Mesmo com tudo desligado, `invite` não tem interruptor — sempre entrega.
-    update_notification_prefs(session, user.id, decision=False, task=False, mention=False)
+    update_notification_prefs(session, user.id, task=False, mention=False)
 
     delivered = notify(
         session,

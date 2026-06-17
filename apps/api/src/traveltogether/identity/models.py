@@ -33,29 +33,27 @@ class NotificationPrefs(SQLModel, table=True):  # type: ignore[call-arg]
     """Preferências de Notificação do Usuário (ADR-0017).
 
     Uma linha por `Usuário` (PK = `user_id`). Interruptor por tipo
-    (`decision`/`task`/`mention`) + opt-in de resumo por e-mail (`digest`).
-    `invite` não tem interruptor — convite sempre é entregue. A ausência de linha
-    significa "tudo no padrão" (todos ligados, digest desligado).
+    (`task`/`mention`) + opt-in de resumo por e-mail (`digest`). `invite` não tem
+    interruptor — convite sempre é entregue. A ausência de linha significa "tudo
+    no padrão" (todos ligados, digest desligado). O tipo `decision` foi removido
+    com a aposentadoria da `Escolhida` de grupo (ADR-0018/0019).
     """
 
     __tablename__: ClassVar[str] = "notification_prefs"  # pyright: ignore[reportIncompatibleVariableOverride]
 
     user_id: uuid.UUID = Field(foreign_key="users.id", primary_key=True)
-    decision: bool = Field(default=True)
     task: bool = Field(default=True)
     mention: bool = Field(default=True)
     digest: bool = Field(default=False)
 
 
 class NotificationPrefsPublic(SQLModel):
-    decision: bool
     task: bool
     mention: bool
     digest: bool
 
 
 class NotificationPrefsUpdate(SQLModel):
-    decision: bool | None = None
     task: bool | None = None
     mention: bool | None = None
     digest: bool | None = None

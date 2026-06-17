@@ -8,8 +8,6 @@ destinatário certo, sem notificar o próprio autor da ação.
 
 import uuid
 from collections.abc import Iterator
-from datetime import datetime
-from decimal import Decimal
 
 import pytest
 from sqlalchemy.pool import StaticPool
@@ -18,11 +16,10 @@ from sqlmodel import Session, SQLModel, create_engine
 import traveltogether.collaboration.models  # noqa: F401  # pyright: ignore[reportUnusedImport]
 import traveltogether.fares.models  # noqa: F401  # pyright: ignore[reportUnusedImport]
 import traveltogether.notifications.models  # noqa: F401  # pyright: ignore[reportUnusedImport]
-from traveltogether.fares.models import FareQuote
 from traveltogether.identity.models import User
 from traveltogether.notifications.models import NotificationKind
 from traveltogether.notifications.service import list_for_user
-from traveltogether.trips.models import Leg, Membership, MembershipRole, Trip
+from traveltogether.trips.models import Membership, MembershipRole, Trip
 
 
 @pytest.fixture(name="session")
@@ -60,34 +57,6 @@ def _member(session: Session, trip: Trip, user: User, role: MembershipRole) -> M
     return membership
 
 
-def _leg(session: Session, trip: Trip) -> Leg:
-    from traveltogether.trips.routes_service import ensure_default_route_and_segment
-
-    leg = Leg(trip_id=trip.id, order=0)
-    session.add(leg)
-    session.commit()
-    session.refresh(leg)
-    ensure_default_route_and_segment(session, leg, created_by=trip.created_by)
-    return leg
-
-
-def _fare(session: Session, leg: Leg, registered_by: User) -> FareQuote:
-    from traveltogether.fares.service import create_fare_quote
-
-    return create_fare_quote(
-        session=session,
-        leg_id=leg.id,
-        registered_by=registered_by.id,
-        value=Decimal("1200.00"),
-        currency="BRL",
-        flight_date=datetime(2026, 7, 1, 8, 0),
-        duration_minutes=600,
-        origin_airport="GRU",
-        destination_airport="LIS",
-        airline="TAP",
-    )
-
-
 def test_invite_to_existing_user_creates_invite_notification(session: Session) -> None:
     from traveltogether.trips.members_service import add_member_by_email
 
@@ -103,45 +72,6 @@ def test_invite_to_existing_user_creates_invite_notification(session: Session) -
     assert items[0].kind == NotificationKind.invite
     assert items[0].trip_id == trip.id
     assert trip.name in items[0].text
-
-
-def test_mark_chosen_notifies_members_except_actor(session: Session) -> None:
-    from traveltogether.fares.chosen_service import mark_chosen
-
-    organizer = _user(session, "alice@example.com")
-    member = _user(session, "bob@example.com")
-    trip = _trip(session, organizer)
-    _member(session, trip, organizer, MembershipRole.organizer)
-    _member(session, trip, member, MembershipRole.member)
-    leg = _leg(session, trip)
-    fare = _fare(session, leg, organizer)
-
-    mark_chosen(session, leg.id, fare.id, actor_id=organizer.id)
-
-    member_items = list_for_user(session, member.id)
-    assert len(member_items) == 1
-    assert member_items[0].kind == NotificationKind.decision
-    assert member_items[0].trip_id == trip.id
-    # Ator não se notifica (invariante 20 / ADR-0017).
-    assert list_for_user(session, organizer.id) == []
-
-
-def test_unmark_chosen_does_not_notify(session: Session) -> None:
-    from traveltogether.fares.chosen_service import mark_chosen
-
-    organizer = _user(session, "alice@example.com")
-    member = _user(session, "bob@example.com")
-    trip = _trip(session, organizer)
-    _member(session, trip, organizer, MembershipRole.organizer)
-    _member(session, trip, member, MembershipRole.member)
-    leg = _leg(session, trip)
-    fare = _fare(session, leg, organizer)
-
-    mark_chosen(session, leg.id, fare.id, actor_id=organizer.id)  # marca
-    mark_chosen(session, leg.id, fare.id, actor_id=organizer.id)  # desmarca
-
-    # Continua só a notificação do primeiro marcar; desmarcar não gera evento.
-    assert len(list_for_user(session, member.id)) == 1
 
 
 def test_create_task_notifies_new_assignees_except_actor(session: Session) -> None:

@@ -50,11 +50,14 @@ function fare(over: Partial<FareQuotePublic> & { id: string }): FareQuotePublic 
     airline: "TAP",
     link: "",
     notes: "",
-    is_chosen: true,
     upvote_count: 0,
     user_voted: false,
     registered_by_display_name: null,
     registered_by_avatar_url: null,
+    user_preferred: true,
+    user_purchased: false,
+    preferred_by: [],
+    purchased_by: [],
     ...over,
   } as FareQuotePublic;
 }

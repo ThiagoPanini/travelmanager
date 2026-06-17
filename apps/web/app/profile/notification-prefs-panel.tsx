@@ -5,14 +5,9 @@ import { useState } from "react";
 
 import { updateNotificationPrefsAction } from "@/app/actions/notifications";
 
-type PrefKey = "decision" | "task" | "mention" | "digest";
+type PrefKey = "task" | "mention" | "digest";
 
 const ROWS: { key: PrefKey; title: string; hint: string }[] = [
-  {
-    key: "decision",
-    title: "Escolhida definida",
-    hint: "Quando uma Pesquisa de Passagem vira a Escolhida de um Trajeto.",
-  },
   {
     key: "task",
     title: "Tarefa designada",
@@ -32,7 +27,6 @@ const ROWS: { key: PrefKey; title: string; hint: string }[] = [
 
 export function NotificationPrefsPanel({ prefs }: { prefs: NotificationPrefsPublic }) {
   const [values, setValues] = useState<Record<PrefKey, boolean>>({
-    decision: prefs.decision,
     task: prefs.task,
     mention: prefs.mention,
     digest: prefs.digest,

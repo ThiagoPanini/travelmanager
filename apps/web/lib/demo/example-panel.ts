@@ -95,7 +95,7 @@ const nextTrip: TripSummary = { trip, membership, stops, cover_image_url: null }
 // Escolhida; FCO→GRU ainda sem nenhuma Pesquisa; Roma sem Roteiro.
 const pending: PendingActionPublic[] = [
   {
-    kind: "fare_without_chosen",
+    kind: "leg_without_my_preference",
     trip_id: TRIP_ID,
     trip_name: trip.name,
     target_kind: "leg",
@@ -103,7 +103,7 @@ const pending: PendingActionPublic[] = [
     label: "LIS → CDG",
   },
   {
-    kind: "fare_without_chosen",
+    kind: "leg_without_my_preference",
     trip_id: TRIP_ID,
     trip_name: trip.name,
     target_kind: "leg",
@@ -209,11 +209,11 @@ const notifications: NotificationInbox = {
   items: [
     {
       id: "n1",
-      kind: "decision",
+      kind: "mention",
       trip_id: TRIP_ID,
       target_type: "leg",
       target_id: "leg-gru-lis",
-      text: "A Escolhida de GRU → Lisboa foi marcada: TAP por R$ 4.280.",
+      text: "Rafael te marcou em GRU → Lisboa: “fechou a TAP por R$ 4.280 como sua Preferida?”",
       read_at: null,
       created_at: "2026-06-13T18:21:00",
     },

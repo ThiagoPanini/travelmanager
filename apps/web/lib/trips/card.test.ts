@@ -50,14 +50,14 @@ describe("tripProgress", () => {
 
   it("conta como decididos os Trajetos sem pendência de Pesquisa/Escolhida", () => {
     // 2 Trajetos no total (1 Parada), 1 sem Escolhida → 1 decidido
-    const p = tripProgress(1, [pend("fare_without_chosen")]);
+    const p = tripProgress(1, [pend("leg_without_my_preference")]);
     expect(p.legsTotal).toBe(2);
     expect(p.legsChosen).toBe(1);
     expect(p.allDecided).toBe(false);
   });
 
   it("trata Trajeto sem Pesquisa também como não decidido", () => {
-    const p = tripProgress(1, [pend("leg_without_fare"), pend("fare_without_chosen")]);
+    const p = tripProgress(1, [pend("leg_without_fare"), pend("leg_without_my_preference")]);
     expect(p.legsChosen).toBe(0);
   });
 
@@ -86,7 +86,7 @@ describe("suggestedAction", () => {
   it("prioriza decidir a Escolhida sobre pesquisar passagem", () => {
     const a = suggestedAction("t1", "upcoming", 2, [
       pend("leg_without_fare", "GRU → CDG"),
-      pend("fare_without_chosen", "GRU → LIS"),
+      pend("leg_without_my_preference", "GRU → LIS"),
     ]);
     expect(a).toEqual({ text: "Decidir GRU → LIS", href: "/trips/t1/legs/l1", icon: "compass" });
   });

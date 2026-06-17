@@ -37,7 +37,7 @@ describe("toPendingItem", () => {
   it("usa verbo de ação por tipo", () => {
     expect(toPendingItem(legAction).verb).toBe(pendingActionVerb("leg_without_fare"));
     expect(pendingActionVerb("leg_without_fare")).toMatch(/pesquisa/i);
-    expect(pendingActionVerb("fare_without_chosen")).toMatch(/escolhida/i);
+    expect(pendingActionVerb("leg_without_my_preference")).toMatch(/preferida/i);
     expect(pendingActionVerb("stop_without_itinerary")).toMatch(/roteiro/i);
   });
 });

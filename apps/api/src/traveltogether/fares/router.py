@@ -7,13 +7,21 @@ from fastapi import APIRouter, Depends, HTTPException, Response, status
 from pydantic import BaseModel
 from sqlmodel import Session
 
-from traveltogether.fares.chosen_service import mark_chosen
 from traveltogether.fares.models import (
+    FareMarker,
     FareQuote,
     FareQuoteCreate,
     FareQuotePublic,
     FareQuoteUpdate,
     FareQuoteWithVote,
+)
+from traveltogether.fares.preferences_service import (
+    PreferenceError,
+    fare_marker_ids,
+    toggle_preference,
+    toggle_purchased,
+    user_prefers_fare,
+    user_purchased_fare,
 )
 from traveltogether.fares.service import (
     create_fare_quote,
@@ -50,12 +58,6 @@ def _require_trip_membership(session: Session, leg: Leg, user_id: uuid.UUID) -> 
     membership = get_trip_membership(session, leg.trip_id, user_id)
     if membership is None:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="not a member")
-
-
-def _require_organizer(session: Session, leg: Leg, user_id: uuid.UUID) -> None:
-    membership = get_trip_membership(session, leg.trip_id, user_id)
-    if membership is None or membership.role != "organizer":
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="organizer required")
 
 
 def _get_fare_or_404(session: Session, leg_id: uuid.UUID, fare_id: uuid.UUID) -> FareQuote:
@@ -106,18 +108,39 @@ def get_fares(
     leg = _get_leg_or_404(session, leg_id)
     _require_trip_membership(session, leg, current_user.id)
     fares = list_fare_quotes(session, leg_id)
-    authors = get_users_by_ids(session, [f.registered_by for f in fares])
+    marker_ids: list[uuid.UUID] = []
+    fare_markers: dict[uuid.UUID, tuple[list[uuid.UUID], list[uuid.UUID]]] = {}
+    for f in fares:
+        preferred, purchased = fare_marker_ids(session, f.id)
+        fare_markers[f.id] = (preferred, purchased)
+        marker_ids.extend(preferred)
+    people = get_users_by_ids(session, [f.registered_by for f in fares] + marker_ids)
+
+    def _markers(ids: list[uuid.UUID]) -> list[FareMarker]:
+        return [
+            FareMarker(
+                user_id=uid,
+                display_name=(u.display_name if (u := people.get(uid)) else None),
+                avatar_url=(people[uid].avatar_url if uid in people else None),
+            )
+            for uid in ids
+        ]
+
     return [
         FareQuoteWithVote(
             **fare_to_public(session, f).model_dump(),
             upvote_count=get_upvote_count(session, f.id),
             user_voted=user_has_upvoted(session, f.id, current_user.id),
             registered_by_display_name=(
-                author.display_name if (author := authors.get(f.registered_by)) else None
+                author.display_name if (author := people.get(f.registered_by)) else None
             ),
             registered_by_avatar_url=(
-                authors[f.registered_by].avatar_url if f.registered_by in authors else None
+                people[f.registered_by].avatar_url if f.registered_by in people else None
             ),
+            user_preferred=user_prefers_fare(session, f.id, current_user.id),
+            user_purchased=user_purchased_fare(session, f.id, current_user.id),
+            preferred_by=_markers(fare_markers[f.id][0]),
+            purchased_by=_markers(fare_markers[f.id][1]),
         )
         for f in fares
     ]
@@ -166,18 +189,51 @@ def delete_fare(
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
-@router.post("/{leg_id}/fares/{fare_id}/choose", response_model=FareQuotePublic)
-def post_choose(
+class DecisionResponse(BaseModel):
+    fare_id: uuid.UUID
+    user_preferred: bool
+    user_purchased: bool
+
+
+@router.post("/{leg_id}/fares/{fare_id}/prefer", response_model=DecisionResponse)
+def post_prefer(
     leg_id: uuid.UUID,
     fare_id: uuid.UUID,
     current_user: Annotated[User, Depends(get_current_user)],
     session: Annotated[Session, Depends(get_session)],
-) -> FareQuotePublic:
+) -> DecisionResponse:
+    """Marca/desmarca a `Pesquisa` como `Preferida` do próprio usuário (invariante 13)."""
     leg = _get_leg_or_404(session, leg_id)
-    _require_organizer(session, leg, current_user.id)
+    _require_trip_membership(session, leg, current_user.id)
     _get_fare_or_404(session, leg_id, fare_id)
-    updated = mark_chosen(session, leg_id, fare_id, actor_id=current_user.id)
-    return fare_to_public(session, updated)
+    preferred = toggle_preference(session, fare_id, current_user.id)
+    return DecisionResponse(
+        fare_id=fare_id,
+        user_preferred=preferred,
+        user_purchased=user_purchased_fare(session, fare_id, current_user.id),
+    )
+
+
+@router.post("/{leg_id}/fares/{fare_id}/purchase", response_model=DecisionResponse)
+def post_purchase(
+    leg_id: uuid.UUID,
+    fare_id: uuid.UUID,
+    current_user: Annotated[User, Depends(get_current_user)],
+    session: Annotated[Session, Depends(get_session)],
+) -> DecisionResponse:
+    """Marca/desmarca a `Comprada` do próprio usuário (exige `Preferida` antes)."""
+    leg = _get_leg_or_404(session, leg_id)
+    _require_trip_membership(session, leg, current_user.id)
+    _get_fare_or_404(session, leg_id, fare_id)
+    try:
+        purchased = toggle_purchased(session, fare_id, current_user.id)
+    except PreferenceError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+    return DecisionResponse(
+        fare_id=fare_id,
+        user_preferred=user_prefers_fare(session, fare_id, current_user.id),
+        user_purchased=purchased,
+    )
 
 
 # ── upvotes ───────────────────────────────────────────────────────────────────

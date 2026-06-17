@@ -9,7 +9,7 @@ import pytest
 from sqlalchemy.pool import StaticPool
 from sqlmodel import Session, SQLModel, create_engine
 
-from traveltogether.fares.chosen_service import mark_chosen
+from traveltogether.fares.preferences_service import toggle_preference
 from traveltogether.fares.service import create_fare_quote
 from traveltogether.identity.models import User
 from traveltogether.trips.itinerary_service import create_itinerary_item
@@ -73,20 +73,20 @@ def test_leg_without_fare_is_pendencia(session: Session, user: User) -> None:
     assert pend.target_id == leg.id
 
 
-def test_leg_with_fare_but_no_chosen(session: Session, user: User) -> None:
+def test_leg_with_fare_but_no_preference(session: Session, user: User) -> None:
     trip, _ = create_trip(session, user.id, "Eurotrip", "", "São Paulo")
     leg = create_leg(session, trip.id)
     _fare(session, user, leg.id)
     kinds = [a.kind for a in list_pending_actions(session, user.id)]
-    assert PendingActionKind.fare_without_chosen in kinds
+    assert PendingActionKind.leg_without_my_preference in kinds
     assert PendingActionKind.leg_without_fare not in kinds
 
 
-def test_leg_with_chosen_fare_no_pendencia(session: Session, user: User) -> None:
+def test_leg_with_my_preference_no_pendencia(session: Session, user: User) -> None:
     trip, _ = create_trip(session, user.id, "Eurotrip", "", "São Paulo")
     leg = create_leg(session, trip.id)
     fare_id = _fare(session, user, leg.id)
-    mark_chosen(session, leg.id, fare_id)
+    toggle_preference(session, fare_id, user.id)
     leg_kinds = {a.kind for a in list_pending_actions(session, user.id) if a.target_kind == "leg"}
     assert leg_kinds == set()
 

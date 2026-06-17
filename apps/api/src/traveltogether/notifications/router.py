@@ -104,7 +104,6 @@ def put_my_prefs(
     prefs = update_notification_prefs(
         session,
         current_user.id,
-        decision=body.decision,
         task=body.task,
         mention=body.mention,
         digest=body.digest,

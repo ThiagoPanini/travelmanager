@@ -55,7 +55,7 @@ export default async function TripDetail({ id, activeTab }: Props) {
   const legFareEntries = await Promise.all(
     legs.map(async (leg) => {
       const fares = await getFares(accessToken, leg.id);
-      const chosenFare = fares.find((f) => f.is_chosen) ?? null;
+      const chosenFare = fares.find((f) => f.user_preferred) ?? null;
       const chosen = chosenFare !== null;
       const best = fares.reduce<{ value: string; currency: string } | null>(
         (acc, f) => (!acc || moneyValue(f.value) < moneyValue(acc.value) ? f : acc),

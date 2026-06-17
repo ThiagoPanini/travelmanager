@@ -54,7 +54,7 @@ export interface TripProgress {
 export function tripProgress(stopCount: number, pending: PendingItem[]): TripProgress {
   const legsTotal = stopCount >= 1 ? stopCount + 1 : 0;
   const undecidedLegs = pending.filter(
-    (p) => p.kind === "leg_without_fare" || p.kind === "fare_without_chosen",
+    (p) => p.kind === "leg_without_fare" || p.kind === "leg_without_my_preference",
   ).length;
   const legsChosen = Math.max(0, legsTotal - undecidedLegs);
   const stopsWithoutItinerary = pending.filter((p) => p.kind === "stop_without_itinerary").length;
@@ -86,7 +86,7 @@ export function suggestedAction(
   if (stopCount === 0) {
     return { text: "Adicionar a primeira parada", href: `/trips/${tripId}`, icon: "pin" };
   }
-  const decide = pending.find((p) => p.kind === "fare_without_chosen");
+  const decide = pending.find((p) => p.kind === "leg_without_my_preference");
   if (decide) return { text: `Decidir ${decide.target}`, href: decide.href, icon: "compass" };
   const fare = pending.find((p) => p.kind === "leg_without_fare");
   if (fare) return { text: `Pesquisar passagem ${fare.target}`, href: fare.href, icon: "plane" };

@@ -109,12 +109,13 @@ def _leg_label(leg: Leg, trip: Trip, stop_by_id: dict[uuid.UUID, Stop]) -> str:
 def list_pending_actions(session: Session, user_id: uuid.UUID) -> list[PendingActionPublic]:
     """Pendências derivadas cross-Viagem p/ o painel 'O que precisa de mim' (#58).
 
-    Sem entidade nova: agrega Trajetos sem Pesquisa, Pesquisas sem Escolhida e
-    Paradas sem Roteiro de todas as Viagens do usuário, sem N+1. Cruza o boundary
-    fares apenas via service (`leg_fare_status`), nunca importando FareQuote.
+    Sem entidade nova: agrega Trajetos sem Pesquisa, Trajetos sem a minha
+    Preferida e Paradas sem Roteiro de todas as Viagens do usuário, sem N+1.
+    Cruza o boundary fares só via service (`legs_preference_status`), nunca
+    importando FareQuote.
     """
     # import local p/ evitar acoplar o módulo trips ao import-time de fares
-    from traveltogether.fares.service import leg_fare_status
+    from traveltogether.fares.preferences_service import legs_preference_status
     from traveltogether.trips.itinerary_service import stop_ids_with_itinerary
 
     summaries = list_user_trip_summaries(session, user_id)
@@ -126,17 +127,17 @@ def list_pending_actions(session: Session, user_id: uuid.UUID) -> list[PendingAc
     stop_by_id = {stop.id: stop for stop in stops_all}
 
     legs = list_legs_for_trips(session, list(trips_by_id))
-    fare_status = leg_fare_status(session, [leg.id for leg in legs])
+    fare_status = legs_preference_status(session, [leg.id for leg in legs], user_id)
     with_itinerary = stop_ids_with_itinerary(session, [stop.id for stop in stops_all])
 
     actions: list[PendingActionPublic] = []
     for leg in legs:
         trip = trips_by_id[leg.trip_id]
-        count, has_chosen = fare_status.get(leg.id, (0, False))
+        count, i_prefer = fare_status.get(leg.id, (0, False))
         if count == 0:
             kind = PendingActionKind.leg_without_fare
-        elif not has_chosen:
-            kind = PendingActionKind.fare_without_chosen
+        elif not i_prefer:
+            kind = PendingActionKind.leg_without_my_preference
         else:
             continue
         actions.append(

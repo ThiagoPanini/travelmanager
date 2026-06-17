@@ -23,7 +23,7 @@ from traveltogether.budget.service import (
     list_lodgings,
     update_lodging,
 )
-from traveltogether.fares.chosen_service import mark_chosen
+from traveltogether.fares.preferences_service import toggle_preference
 from traveltogether.fares.service import create_fare_quote
 from traveltogether.identity.models import User
 from traveltogether.trips.legs_service import create_leg
@@ -89,7 +89,9 @@ def _add_stop(
     return stop
 
 
-def _add_chosen_fare(session: Session, trip: Trip, user: User, value: str, currency: str) -> None:
+def _add_preferred_fare(
+    session: Session, trip: Trip, user: User, value: str, currency: str
+) -> None:
     leg = create_leg(session, trip.id)
     fare = create_fare_quote(
         session=session,
@@ -103,7 +105,7 @@ def _add_chosen_fare(session: Session, trip: Trip, user: User, value: str, curre
         destination_airport="LIS",
         airline="TAP",
     )
-    mark_chosen(session, leg.id, fare.id)
+    toggle_preference(session, fare.id, user.id)
 
 
 # --- agregação -------------------------------------------------------------
@@ -121,7 +123,7 @@ def test_aggregate_keeps_currencies_separate_without_conversion(
     session: Session, trip: Trip, user: User
 ) -> None:
     # 1 pessoa (organizador). Passagem em BRL, hospedagem em EUR.
-    _add_chosen_fare(session, trip, user, "1500.00", "BRL")
+    _add_preferred_fare(session, trip, user, "1500.00", "BRL")
     stop = _add_stop(session, trip, nights=2)
     create_lodging(
         session,
