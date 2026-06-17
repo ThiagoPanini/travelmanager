@@ -636,6 +636,14 @@ fieldset.card legend {
   gap: 14px;
   margin-bottom: 16px;
 }
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
 .section-head .kicker {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -650,14 +658,6 @@ fieldset.card legend {
 }
 .section-head .spacer {
   flex: 1;
-}
-.kicker {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 600;
 }
 
 /* ---------- covers (graphic treatment) ---------- */

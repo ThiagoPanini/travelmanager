@@ -55,9 +55,7 @@ export default async function LegFaresPage({ params }: Props) {
   // ida-e-volta (par invertido, geralmente no `Trajeto` de volta · ADR-0019).
   const token = session.apiAccessToken;
   const otherLegs = legs.filter((item) => item.id !== legId);
-  const otherRoutes = await Promise.all(
-    otherLegs.map((item) => getRoutes(token, id, item.id)),
-  );
+  const otherRoutes = await Promise.all(otherLegs.map((item) => getRoutes(token, id, item.id)));
   const returnCandidates = otherRoutes
     .flat()
     .flatMap((route) => route.segments)
