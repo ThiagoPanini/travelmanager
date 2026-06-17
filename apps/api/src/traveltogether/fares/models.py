@@ -71,6 +71,10 @@ class FareQuotePublic(SQLModel):
     id: uuid.UUID
     leg_id: uuid.UUID
     segment_id: uuid.UUID
+    # `Trecho`s cobertos (≥1). >1 ⇒ ida-e-volta: o board mostra o selo
+    # "ida-e-volta" e o preço total nos dois `Trecho`s (ADR-0019, invariante 11).
+    segment_ids: list[uuid.UUID] = Field(default_factory=list)
+    round_trip: bool = False
     registered_by: uuid.UUID
     created_at: datetime
     value: Decimal
@@ -131,6 +135,10 @@ class FareQuoteCreate(SQLModel):
     airline: str
     link: str = ""
     notes: str = ""
+    # `Trecho` ancorado (default: o `Trecho` direto do `Trajeto`). `return_segment_id`
+    # casa o `Trecho` de volta → bilhete ida-e-volta cobrindo os dois (ADR-0019).
+    segment_id: uuid.UUID | None = None
+    return_segment_id: uuid.UUID | None = None
 
 
 class FareQuoteUpdate(SQLModel):

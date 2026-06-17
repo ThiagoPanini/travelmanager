@@ -51,6 +51,20 @@ export default async function LegFaresPage({ params }: Props) {
   const from = stopData(leg.origin_stop_id, stops, trip.origin, trip.airport_code);
   const to = stopData(leg.destination_stop_id, stops, trip.origin, trip.airport_code);
 
+  // `Trecho`s aéreos dos demais `Trajeto`s — candidatos a casar um bilhete
+  // ida-e-volta (par invertido, geralmente no `Trajeto` de volta · ADR-0019).
+  const token = session.apiAccessToken;
+  const otherLegs = legs.filter((item) => item.id !== legId);
+  const otherRoutes = await Promise.all(otherLegs.map((item) => getRoutes(token, id, item.id)));
+  const returnCandidates = otherRoutes
+    .flat()
+    .flatMap((route) => route.segments)
+    .filter((seg) => seg.mode === "air")
+    .map((seg) => ({
+      id: seg.id,
+      label: `${seg.origin_airport ?? "—"} → ${seg.destination_airport ?? "—"}`,
+    }));
+
   return (
     <div className="app-shell">
       <AppTopbar active="trips" />
@@ -74,6 +88,7 @@ export default async function LegFaresPage({ params }: Props) {
             toCode={to.code}
             fromCity={from.city}
             toCity={to.city}
+            returnCandidates={returnCandidates}
           />
         </div>
       </main>

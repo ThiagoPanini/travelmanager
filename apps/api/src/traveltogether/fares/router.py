@@ -99,6 +99,8 @@ def post_fare(
             airline=body.airline,
             link=body.link,
             notes=body.notes,
+            segment_id=body.segment_id,
+            return_segment_id=body.return_segment_id,
         )
     except GroundSegmentError as exc:
         raise HTTPException(

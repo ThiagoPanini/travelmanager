@@ -26,6 +26,9 @@ interface Props {
   toCode: string;
   fromCity: string;
   toCity: string;
+  // `Trecho`s aéreos de volta candidatos (par invertido noutro `Trajeto`) p/
+  // casar um bilhete ida-e-volta (ADR-0019, invariante 11).
+  returnCandidates?: { id: string; label: string }[];
 }
 
 const EMPTY_FORM = {
@@ -42,6 +45,7 @@ const EMPTY_FORM = {
   airline: "",
   link: "",
   notes: "",
+  return_segment_id: "",
 };
 
 export default function FaresPanel({
@@ -54,6 +58,7 @@ export default function FaresPanel({
   toCode,
   fromCity,
   toCity,
+  returnCandidates = [],
 }: Props) {
   const [fares, setFares] = useState<FareQuotePublic[]>(initialFares);
   const [form, setForm] = useState(EMPTY_FORM);
@@ -165,6 +170,7 @@ export default function FaresPanel({
       airline: form.airline,
       link: form.link,
       notes: form.notes,
+      return_segment_id: form.return_segment_id || null,
     });
     if (fare) {
       setFares((prev) => [...prev, fare]);
@@ -398,6 +404,22 @@ export default function FaresPanel({
                 value={form.notes}
               />
             </label>
+            {returnCandidates.length > 0 && (
+              <label className="field">
+                <span>Trecho de volta (ida-e-volta, opcional)</span>
+                <select
+                  onChange={(e) => setField("return_segment_id", e.target.value)}
+                  value={form.return_segment_id}
+                >
+                  <option value="">Só ida</option>
+                  {returnCandidates.map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            )}
           </div>
           <div className="form-actions" style={{ marginTop: 18 }}>
             <button className="btn small ghost" onClick={() => setShowForm(false)} type="button">
@@ -479,6 +501,11 @@ export default function FaresPanel({
                         }}
                       >
                         {fare.airline}
+                        {fare.round_trip && (
+                          <span className="chip outline" title="Bilhete cobre ida e volta">
+                            ida-e-volta
+                          </span>
+                        )}
                         {purchased && <span className="stamp">comprada</span>}
                         {chosen && !purchased && <span className="stamp">preferida</span>}
                         {!chosen && cheapest && <span className="chip outline">menor preço</span>}
