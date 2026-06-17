@@ -5,9 +5,11 @@ import { getAuthSession } from "@/auth";
 import { Breadcrumbs } from "@/components/atlas";
 import { getCurrentUser } from "@/lib/api/current-user";
 import { getFares } from "@/lib/api/fares";
+import { getRoutes } from "@/lib/api/routes";
 import { getLegs, getStops, getTrip } from "@/lib/api/trips";
 import { displayCode } from "@/lib/trips/journey";
 import FaresPanel from "./fares-panel";
+import RoutesPanel from "./routes-panel";
 
 interface Props {
   params: Promise<{ id: string; legId: string }>;
@@ -32,11 +34,12 @@ export default async function LegFaresPage({ params }: Props) {
   if (!session?.apiAccessToken) redirect("/login");
 
   const { id, legId } = await params;
-  const [data, stops, legs, fares, currentUser] = await Promise.all([
+  const [data, stops, legs, fares, routes, currentUser] = await Promise.all([
     getTrip(session.apiAccessToken, id),
     getStops(session.apiAccessToken, id),
     getLegs(session.apiAccessToken, id),
     getFares(session.apiAccessToken, legId),
+    getRoutes(session.apiAccessToken, id, legId),
     getCurrentUser(session.apiAccessToken),
   ]);
   if (!data) notFound();
@@ -60,6 +63,7 @@ export default async function LegFaresPage({ params }: Props) {
               { label: `Trajeto ${from.code} → ${to.code}` },
             ]}
           />
+          <RoutesPanel tripId={id} legId={legId} initialRoutes={routes} />
           <FaresPanel
             legId={legId}
             tripId={id}

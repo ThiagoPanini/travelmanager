@@ -257,6 +257,35 @@ export interface SegmentPublic {
   order: number;
 }
 
+// Rota com seus Trechos ordenados — payload do construtor (#144).
+export interface RouteWithSegments extends RoutePublic {
+  segments: SegmentPublic[];
+}
+
+export interface RouteCreate {
+  label?: string;
+}
+
+export interface RouteUpdate {
+  label?: string | null;
+}
+
+export interface SegmentCreate {
+  origin_airport?: string | null;
+  destination_airport?: string | null;
+  mode?: SegmentMode;
+}
+
+export interface SegmentUpdate {
+  origin_airport?: string | null;
+  destination_airport?: string | null;
+  mode?: SegmentMode | null;
+}
+
+export interface ReorderSegmentsRequest {
+  segment_ids: string[];
+}
+
 export interface FareQuotePublic {
   id: string;
   leg_id: string;

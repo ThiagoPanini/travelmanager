@@ -270,6 +270,36 @@ class SegmentPublic(SQLModel):
     order: int
 
 
+class RouteWithSegments(RoutePublic):
+    """`Rota` com seus `Trecho`s ordenados — payload do construtor (#144)."""
+
+    segments: list[SegmentPublic] = Field(default_factory=list)
+
+
+class RouteCreate(SQLModel):
+    label: str = ""
+
+
+class RouteUpdate(SQLModel):
+    label: str | None = None
+
+
+class SegmentCreate(SQLModel):
+    origin_airport: str | None = None
+    destination_airport: str | None = None
+    mode: SegmentMode = SegmentMode.air
+
+
+class SegmentUpdate(SQLModel):
+    origin_airport: str | None = None
+    destination_airport: str | None = None
+    mode: SegmentMode | None = None
+
+
+class ReorderSegmentsRequest(SQLModel):
+    segment_ids: list[uuid.UUID]
+
+
 class TripCreate(SQLModel):
     name: str
     description: str = ""

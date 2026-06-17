@@ -57,6 +57,16 @@ from traveltogether.trips.models import (
     PendingActionPublic,
     PendingInvitePublic,
     ReorderItineraryItemsRequest,
+    ReorderSegmentsRequest,
+    Route,
+    RouteCreate,
+    RoutePublic,
+    RouteUpdate,
+    RouteWithSegments,
+    Segment,
+    SegmentCreate,
+    SegmentPublic,
+    SegmentUpdate,
     Stop,
     StopCreate,
     StopPublic,
@@ -65,6 +75,18 @@ from traveltogether.trips.models import (
     TripCreate,
     TripPublic,
     TripUpdate,
+)
+from traveltogether.trips.routes_service import (
+    RouteWriteError,
+    add_segment,
+    create_route,
+    list_routes,
+    list_segments,
+    remove_route,
+    remove_segment,
+    reorder_segments,
+    update_route,
+    update_segment,
 )
 from traveltogether.trips.service import (
     TripPeriodError,
@@ -727,6 +749,216 @@ def delete_leg_route(
         )
     leg = _get_leg_or_404(session, trip_id, leg_id)
     delete_leg(session, leg)
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+# ── routes & segments (construtor multi-Rota, #144) ──────────────────────────
+
+
+def _get_route_or_404(session: Session, leg_id: uuid.UUID, route_id: uuid.UUID) -> Route:
+    route = session.get(Route, route_id)
+    if route is None or route.leg_id != leg_id:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="route not found")
+    return route
+
+
+def _get_segment_or_404(session: Session, route_id: uuid.UUID, segment_id: uuid.UUID) -> Segment:
+    segment = session.get(Segment, segment_id)
+    if segment is None or segment.route_id != route_id:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="segment not found")
+    return segment
+
+
+def _route_with_segments(session: Session, route: Route) -> RouteWithSegments:
+    return RouteWithSegments(
+        id=route.id,
+        leg_id=route.leg_id,
+        label=route.label,
+        order=route.order,
+        created_by=route.created_by,
+        created_at=route.created_at,
+        segments=[SegmentPublic.model_validate(s) for s in list_segments(session, route.id)],
+    )
+
+
+@router.get(
+    "/{trip_id}/legs/{leg_id}/routes",
+    response_model=list[RouteWithSegments],
+)
+def get_routes(
+    trip_id: uuid.UUID,
+    leg_id: uuid.UUID,
+    current_user: Annotated[User, Depends(get_current_user)],
+    session: Annotated[Session, Depends(get_session)],
+) -> list[RouteWithSegments]:
+    _get_trip_or_404(session, trip_id)
+    _require_membership(session, trip_id, current_user.id)
+    _get_leg_or_404(session, trip_id, leg_id)
+    return [_route_with_segments(session, r) for r in list_routes(session, leg_id)]
+
+
+@router.post(
+    "/{trip_id}/legs/{leg_id}/routes",
+    status_code=status.HTTP_201_CREATED,
+    response_model=RouteWithSegments,
+)
+def post_route(
+    trip_id: uuid.UUID,
+    leg_id: uuid.UUID,
+    body: RouteCreate,
+    current_user: Annotated[User, Depends(get_current_user)],
+    session: Annotated[Session, Depends(get_session)],
+) -> RouteWithSegments:
+    _get_trip_or_404(session, trip_id)
+    _require_membership(session, trip_id, current_user.id)
+    _get_leg_or_404(session, trip_id, leg_id)
+    route = create_route(session, leg_id, created_by=current_user.id, label=body.label)
+    return _route_with_segments(session, route)
+
+
+@router.patch(
+    "/{trip_id}/legs/{leg_id}/routes/{route_id}",
+    response_model=RoutePublic,
+)
+def patch_route(
+    trip_id: uuid.UUID,
+    leg_id: uuid.UUID,
+    route_id: uuid.UUID,
+    body: RouteUpdate,
+    current_user: Annotated[User, Depends(get_current_user)],
+    session: Annotated[Session, Depends(get_session)],
+) -> RoutePublic:
+    _get_trip_or_404(session, trip_id)
+    _require_membership(session, trip_id, current_user.id)
+    _get_leg_or_404(session, trip_id, leg_id)
+    route = _get_route_or_404(session, leg_id, route_id)
+    updated = update_route(session, route, label=body.label)
+    return RoutePublic.model_validate(updated)
+
+
+@router.delete(
+    "/{trip_id}/legs/{leg_id}/routes/{route_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+)
+def delete_route(
+    trip_id: uuid.UUID,
+    leg_id: uuid.UUID,
+    route_id: uuid.UUID,
+    current_user: Annotated[User, Depends(get_current_user)],
+    session: Annotated[Session, Depends(get_session)],
+) -> Response:
+    _get_trip_or_404(session, trip_id)
+    membership = _require_membership(session, trip_id, current_user.id)
+    _get_leg_or_404(session, trip_id, leg_id)
+    route = _get_route_or_404(session, leg_id, route_id)
+    try:
+        remove_route(session, route, user_id=current_user.id, role=membership.role)
+    except RouteWriteError as exc:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=str(exc)) from exc
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+@router.post(
+    "/{trip_id}/legs/{leg_id}/routes/{route_id}/segments",
+    status_code=status.HTTP_201_CREATED,
+    response_model=SegmentPublic,
+)
+def post_segment(
+    trip_id: uuid.UUID,
+    leg_id: uuid.UUID,
+    route_id: uuid.UUID,
+    body: SegmentCreate,
+    current_user: Annotated[User, Depends(get_current_user)],
+    session: Annotated[Session, Depends(get_session)],
+) -> SegmentPublic:
+    _get_trip_or_404(session, trip_id)
+    _require_membership(session, trip_id, current_user.id)
+    _get_leg_or_404(session, trip_id, leg_id)
+    _get_route_or_404(session, leg_id, route_id)
+    segment = add_segment(
+        session,
+        route_id,
+        origin_airport=body.origin_airport,
+        destination_airport=body.destination_airport,
+        mode=body.mode,
+    )
+    return SegmentPublic.model_validate(segment)
+
+
+@router.post(
+    "/{trip_id}/legs/{leg_id}/routes/{route_id}/segments/reorder",
+    response_model=list[SegmentPublic],
+)
+def post_reorder_segments(
+    trip_id: uuid.UUID,
+    leg_id: uuid.UUID,
+    route_id: uuid.UUID,
+    body: ReorderSegmentsRequest,
+    current_user: Annotated[User, Depends(get_current_user)],
+    session: Annotated[Session, Depends(get_session)],
+) -> list[SegmentPublic]:
+    _get_trip_or_404(session, trip_id)
+    _require_membership(session, trip_id, current_user.id)
+    _get_leg_or_404(session, trip_id, leg_id)
+    _get_route_or_404(session, leg_id, route_id)
+    try:
+        segments = reorder_segments(session, route_id, body.segment_ids)
+    except RouteWriteError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_CONTENT, detail=str(exc)
+        ) from exc
+    return [SegmentPublic.model_validate(s) for s in segments]
+
+
+@router.patch(
+    "/{trip_id}/legs/{leg_id}/routes/{route_id}/segments/{segment_id}",
+    response_model=SegmentPublic,
+)
+def patch_segment(
+    trip_id: uuid.UUID,
+    leg_id: uuid.UUID,
+    route_id: uuid.UUID,
+    segment_id: uuid.UUID,
+    body: SegmentUpdate,
+    current_user: Annotated[User, Depends(get_current_user)],
+    session: Annotated[Session, Depends(get_session)],
+) -> SegmentPublic:
+    _get_trip_or_404(session, trip_id)
+    _require_membership(session, trip_id, current_user.id)
+    _get_leg_or_404(session, trip_id, leg_id)
+    _get_route_or_404(session, leg_id, route_id)
+    segment = _get_segment_or_404(session, route_id, segment_id)
+    updated = update_segment(
+        session,
+        segment,
+        origin_airport=body.origin_airport,
+        destination_airport=body.destination_airport,
+        mode=body.mode,
+    )
+    return SegmentPublic.model_validate(updated)
+
+
+@router.delete(
+    "/{trip_id}/legs/{leg_id}/routes/{route_id}/segments/{segment_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+)
+def delete_segment(
+    trip_id: uuid.UUID,
+    leg_id: uuid.UUID,
+    route_id: uuid.UUID,
+    segment_id: uuid.UUID,
+    current_user: Annotated[User, Depends(get_current_user)],
+    session: Annotated[Session, Depends(get_session)],
+) -> Response:
+    _get_trip_or_404(session, trip_id)
+    membership = _require_membership(session, trip_id, current_user.id)
+    _get_leg_or_404(session, trip_id, leg_id)
+    _get_route_or_404(session, leg_id, route_id)
+    segment = _get_segment_or_404(session, route_id, segment_id)
+    try:
+        remove_segment(session, segment, user_id=current_user.id, role=membership.role)
+    except RouteWriteError as exc:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=str(exc)) from exc
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
