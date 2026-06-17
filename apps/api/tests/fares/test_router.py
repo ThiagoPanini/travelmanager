@@ -205,3 +205,64 @@ def test_get_fares_carries_author_display_name_and_avatar(
     fares = client.get(f"/legs/{leg['id']}/fares", headers=headers).json()
     assert fares[0]["registered_by_display_name"] == "Alice Atlas"
     assert fares[0]["registered_by_avatar_url"] == "https://cdn/alice.png"
+
+
+def _air_segment(
+    client: TestClient, headers: dict[str, str], trip_id: str, leg_id: str, origin: str, dest: str
+) -> str:
+    """Cria uma `Rota` com um `Trecho` aéreo no `Trajeto` e devolve o segment_id."""
+    route_res = client.post(
+        f"/trips/{trip_id}/legs/{leg_id}/routes",
+        json={"label": f"{origin}-{dest}"},
+        headers=headers,
+    )
+    assert route_res.status_code == 201
+    route_id = route_res.json()["id"]
+    seg_res = client.post(
+        f"/trips/{trip_id}/legs/{leg_id}/routes/{route_id}/segments",
+        json={"origin_airport": origin, "destination_airport": dest, "mode": "air"},
+        headers=headers,
+    )
+    assert seg_res.status_code == 201
+    return seg_res.json()["id"]
+
+
+def test_post_round_trip_fare_echoes_in_both_boards(
+    client: TestClient, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Uma `Pesquisa` ida-e-volta ecoa nos boards dos dois `Trajeto`s com selo."""
+    headers = _auth_headers(ALICE_EMAIL, monkeypatch)
+    trip_res = client.post(
+        "/trips",
+        json={"name": "EUA", "description": "", "origin": "São Paulo"},
+        headers=headers,
+    )
+    trip_id = trip_res.json()["trip"]["id"]
+    out_leg = client.post(f"/trips/{trip_id}/legs", json={}, headers=headers).json()["id"]
+    back_leg = client.post(f"/trips/{trip_id}/legs", json={}, headers=headers).json()["id"]
+    outbound = _air_segment(client, headers, trip_id, out_leg, "GRU", "MIA")
+    inbound = _air_segment(client, headers, trip_id, back_leg, "MIA", "GRU")
+
+    res = client.post(
+        f"/legs/{out_leg}/fares",
+        json={
+            **FARE_PAYLOAD,
+            "origin_airport": "GRU",
+            "destination_airport": "MIA",
+            "value": "4200.00",
+            "segment_id": outbound,
+            "return_segment_id": inbound,
+        },
+        headers=headers,
+    )
+    assert res.status_code == 201
+    body = res.json()
+    assert body["round_trip"] is True
+    assert set(body["segment_ids"]) == {outbound, inbound}
+
+    fare_id = body["id"]
+    out_board = client.get(f"/legs/{out_leg}/fares", headers=headers).json()
+    back_board = client.get(f"/legs/{back_leg}/fares", headers=headers).json()
+    assert [f["id"] for f in out_board] == [fare_id]
+    assert [f["id"] for f in back_board] == [fare_id]
+    assert back_board[0]["round_trip"] is True

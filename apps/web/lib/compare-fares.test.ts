@@ -5,6 +5,8 @@ import { sortFares } from "./compare-fares";
 const base: Omit<FareRow, "id" | "value" | "upvote_count" | "user_preferred"> = {
   leg_id: "leg-1",
   segment_id: "seg-1",
+  segment_ids: ["seg-1"],
+  round_trip: false,
   registered_by: "user-1",
   created_at: "2026-01-01T00:00:00",
   currency: "BRL",

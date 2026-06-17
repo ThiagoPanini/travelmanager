@@ -290,6 +290,10 @@ export interface FareQuotePublic {
   id: string;
   leg_id: string;
   segment_id: string;
+  // `Trecho`s cobertos (≥1). >1 ⇒ ida-e-volta: o board mostra o selo e o
+  // preço total nos dois `Trecho`s (ADR-0019, invariante 11).
+  segment_ids: string[];
+  round_trip: boolean;
   registered_by: string;
   created_at: string;
   value: string;
@@ -338,6 +342,10 @@ export interface FareQuoteCreate {
   airline: string;
   link?: string;
   notes?: string;
+  // `Trecho` ancorado (default: o direto do `Trajeto`). `return_segment_id` casa
+  // o `Trecho` de volta → bilhete ida-e-volta cobrindo os dois (ADR-0019).
+  segment_id?: string | null;
+  return_segment_id?: string | null;
 }
 
 export interface FareQuoteUpdate {

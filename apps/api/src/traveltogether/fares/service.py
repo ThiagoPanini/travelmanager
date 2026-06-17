@@ -76,7 +76,8 @@ def fare_to_public(session: Session, fare: FareQuote) -> FareQuotePublic:
 
     `leg_id` é derivado (não persistido) — back-compat com o board do `Trajeto`.
     """
-    segment_id = fare_primary_segment_id(session, fare.id)
+    segment_ids = fare_segment_ids(session, fare.id)
+    segment_id = segment_ids[0] if segment_ids else None
     leg_id = fare_leg_id(session, fare.id)
     if segment_id is None or leg_id is None:
         raise SegmentNotFoundError(f"fare {fare.id} is not anchored to a segment")
@@ -84,6 +85,8 @@ def fare_to_public(session: Session, fare: FareQuote) -> FareQuotePublic:
         id=fare.id,
         leg_id=leg_id,
         segment_id=segment_id,
+        segment_ids=segment_ids,
+        round_trip=len(segment_ids) > 1,
         registered_by=fare.registered_by,
         created_at=fare.created_at,
         value=fare.value,
@@ -120,23 +123,37 @@ def create_fare_quote(
     points: int | None = None,
     loyalty_program: str | None = None,
     segment_id: uuid.UUID | None = None,
+    return_segment_id: uuid.UUID | None = None,
 ) -> FareQuote:
-    """Cria uma `Pesquisa` ancorada num `Trecho`.
+    """Cria uma `Pesquisa` ancorada num ou mais `Trecho`s aéreos.
 
     `segment_id` explícito ancora ali; senão resolve o `Trecho` default do
-    `Trajeto` (`leg_id`) — a `Rota` "direta" do esqueleto.
+    `Trajeto` (`leg_id`) — a `Rota` "direta" do esqueleto. `return_segment_id`
+    (opcional) casa o `Trecho` de volta: um único bilhete ida-e-volta cobre os
+    dois `Trecho`s (ADR-0019, invariante 11). Nenhum `Trecho` pode ser terrestre
+    (invariante 26).
     """
     if segment_id is None:
-        segment = default_segment_for_leg(session, leg_id)
-        if segment is None:
+        primary = default_segment_for_leg(session, leg_id)
+        if primary is None:
             raise SegmentNotFoundError(f"leg {leg_id} has no default segment")
     else:
-        segment = session.get(Segment, segment_id)
-        if segment is None:
+        primary = session.get(Segment, segment_id)
+        if primary is None:
             raise SegmentNotFoundError(f"segment {segment_id} not found")
-    if segment.mode == SegmentMode.ground:
-        raise GroundSegmentError(f"segment {segment.id} is ground; it cannot host a fare quote")
-    segment_id = segment.id
+
+    segments = [primary]
+    if return_segment_id is not None:
+        inbound = session.get(Segment, return_segment_id)
+        if inbound is None:
+            raise SegmentNotFoundError(f"segment {return_segment_id} not found")
+        if inbound.id != primary.id:
+            segments.append(inbound)
+
+    for seg in segments:
+        if seg.mode == SegmentMode.ground:
+            raise GroundSegmentError(f"segment {seg.id} is ground; it cannot host a fare quote")
+
     fare = FareQuote(
         registered_by=registered_by,
         value=value,
@@ -155,7 +172,8 @@ def create_fare_quote(
     )
     session.add(fare)
     session.flush()
-    _link_fare_to_segment(session, fare.id, segment_id)
+    for seg in segments:
+        _link_fare_to_segment(session, fare.id, seg.id)
     session.commit()
     session.refresh(fare)
     return fare
