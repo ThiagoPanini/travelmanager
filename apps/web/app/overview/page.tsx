@@ -62,7 +62,7 @@ export default async function OverviewPage() {
   });
 
   return (
-    <AppShell user={user} counts={{ pending: data.pendingCount, tasks: data.taskCount }}>
+    <AppShell user={user}>
       <main>
         <PanelView data={data} readOnly={false} />
       </main>
