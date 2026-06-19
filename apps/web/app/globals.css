@@ -711,10 +711,17 @@ a {
   animation: slideIn 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
-/* ---- Wizard de cadastro (#162) ---- */
+/* ---- Wizard de cadastro (#162, centrado em #167) ---- */
+/* O casco não dá padding ao conteúdo (cada tela carrega o seu — o Painel via
+   .panel). O wizard centraliza e respira pela própria moldura, à paridade do
+   protótipo (App): coluna ~700px, margin auto, padding responsivo generoso. */
+.wiz-page {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: clamp(22px, 3.5vw, 40px) clamp(18px, 4vw, 32px) 56px;
+}
 .wiz-head {
-  max-width: 640px;
-  margin: 4px 0 26px;
+  margin: 0 0 26px;
 }
 .wiz-head h1 {
   font-size: 38px;
@@ -727,7 +734,7 @@ a {
 }
 
 .wizard {
-  max-width: 720px;
+  width: 100%;
 }
 
 .wiz-rail {
