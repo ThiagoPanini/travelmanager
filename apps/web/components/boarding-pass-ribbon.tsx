@@ -50,9 +50,10 @@ export function BoardingPassRibbon() {
           listStyle: "none",
           display: "flex",
           flexWrap: "wrap",
-          alignItems: "center",
+          justifyContent: "center",
+          alignItems: "flex-start",
           gap: 12,
-          padding: "20px 24px",
+          padding: "24px",
         }}
       >
         {ribbon.legs.map((leg, index) => (
@@ -61,7 +62,7 @@ export function BoardingPassRibbon() {
               <li
                 aria-hidden="true"
                 className="mono"
-                style={{ color: "var(--accent)", fontSize: 14 }}
+                style={{ color: "var(--accent)", fontSize: 14, paddingTop: 7 }}
               >
                 →
               </li>

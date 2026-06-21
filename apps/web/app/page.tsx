@@ -1,7 +1,7 @@
 import { BoardingPassRibbon } from "@/components/boarding-pass-ribbon";
 import { StepCards } from "@/components/step-cards";
 import { Wordmark } from "@/components/wordmark";
-import { cta, heroHeadline, heroSubtitle, tagline } from "@/lib/landing/content";
+import { entrar, eyebrow, heroSubtitle, heroTitle, tagline } from "@/lib/landing/content";
 
 export default function HomePage() {
   return (
@@ -15,46 +15,73 @@ export default function HomePage() {
       }}
     >
       <header
-        style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 16,
+          borderBottom: "var(--border-hairline) solid var(--line)",
+          paddingBottom: 24,
+        }}
       >
-        <Wordmark />
-        <span className="mono" style={{ fontSize: 11, color: "var(--text-faint)" }}>
-          {tagline}
-        </span>
+        <div style={{ display: "grid", gap: 2 }}>
+          <Wordmark />
+          <span
+            className="mono"
+            style={{
+              fontSize: 11,
+              color: "var(--text-faint)",
+              letterSpacing: "0.1em",
+              // alinhado ao texto do wordmark (anel 27 + gap 10), não ao símbolo ✦
+              marginLeft: 37,
+            }}
+          >
+            {tagline}
+          </span>
+        </div>
+        <a href={entrar.href} className="btn-ghost">
+          {entrar.label}
+        </a>
       </header>
 
       <section
         style={{
           maxWidth: "var(--hero-max)",
           display: "grid",
-          gap: 24,
+          gap: 20,
         }}
       >
+        <p
+          className="mono"
+          style={{ margin: 0, color: "var(--accent)", fontSize: 12, letterSpacing: "0.16em" }}
+        >
+          {eyebrow}
+        </p>
         <h1 style={{ fontSize: "clamp(40px, 8vw, 74px)", lineHeight: 0.92 }}>
-          {heroHeadline.map((line) => (
-            <span key={line} style={{ display: "block" }}>
-              {line}
-            </span>
-          ))}
+          {heroTitle.lead} <span style={{ color: "var(--accent)" }}>{heroTitle.accent}</span>
         </h1>
-        <p style={{ fontSize: 17, lineHeight: 1.55, color: "var(--text-muted)" }}>{heroSubtitle}</p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
-          <a href="#como-funciona" style={primaryCta}>
-            {cta.primary}
-          </a>
-          <a href="#exemplo" style={ghostCta}>
-            {cta.secondary} →
-          </a>
-        </div>
+        <p style={{ fontSize: 17, lineHeight: 1.55, color: "var(--text-muted)", maxWidth: "50ch" }}>
+          {heroSubtitle}
+        </p>
       </section>
 
-      <section id="como-funciona" style={{ display: "grid", gap: 20 }}>
-        <h2 style={{ fontSize: "clamp(28px, 5vw, 42px)" }}>Como funciona</h2>
+      <section>
         <StepCards />
       </section>
 
       <section style={{ display: "grid", gap: 20 }}>
-        <h2 style={{ fontSize: "clamp(28px, 5vw, 42px)" }}>Um exemplo de bordo</h2>
+        <h2
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: 13,
+            fontWeight: 500,
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+            color: "var(--text-faint)",
+          }}
+        >
+          Um exemplo de bordo
+        </h2>
         <BoardingPassRibbon />
       </section>
 
@@ -77,27 +104,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-const primaryCta: React.CSSProperties = {
-  background: "var(--accent)",
-  color: "var(--on-accent)",
-  fontFamily: "var(--font-display)",
-  textTransform: "uppercase",
-  letterSpacing: "0.05em",
-  fontWeight: 700,
-  fontSize: 15,
-  padding: "12px 22px",
-  borderRadius: "var(--radius-btn)",
-};
-
-const ghostCta: React.CSSProperties = {
-  border: "var(--border-outline) solid var(--line-strong)",
-  color: "var(--text-body)",
-  fontFamily: "var(--font-display)",
-  textTransform: "uppercase",
-  letterSpacing: "0.05em",
-  fontWeight: 600,
-  fontSize: 15,
-  padding: "12px 22px",
-  borderRadius: "var(--radius-btn)",
-};

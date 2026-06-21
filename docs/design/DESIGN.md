@@ -6,7 +6,7 @@ Spec de design completa do protótipo **`Tema-B-Moderno-Escuro.dc.html`**, escri
 
 ## 1. Produto
 
-TravelTogether é um **caderno de bordo compartilhado** para planejar viagens em grupo. O grupo (1) cadastra a viagem, (2) desenha as paradas cidade a cidade e (3) pesquisa o translado entre cada parada, decidindo junto.
+TravelTogether é um **organizador de viagens** para planejar viagens em grupo. O grupo (1) cadastra a viagem, (2) desenha as paradas cidade a cidade e (3) pesquisa o translado entre cada parada, decidindo junto.
 
 **Princípio de produto inquebrável:**
 > **Milhas e dinheiro vivem só na pesquisa de translado (tela Rotas) — nunca no Painel.** O Painel mostra decisões e progresso; valores aparecem apenas quando o grupo pesquisa o translado.
@@ -19,7 +19,7 @@ Caso de uso de exemplo no protótipo: *EUA Trip*, São Paulo → Nova York → M
 
 Modo noturno **quente** (azuis petróleo profundos + cremes, não cinza puro). Estética retrô-analógica de aviação: cartão de embarque, tripulação, códigos IATA, mapa de voo. Tipografia condensada em caixa alta contrastando com mono espaçado para metadados.
 
-**Tom de voz:** PT-BR informal, coletivo e direto ("Cadastrem", "Desenhem", "decidam juntos"). Metáfora de aviação como vocabulário (embarque, tripulação, translado, caderno de bordo). Sem jargão financeiro fora das Rotas.
+**Tom de voz:** PT-BR informal, coletivo e direto ("Cadastrem", "Desenhem", "decidam juntos"). Metáfora de aviação como vocabulário (embarque, tripulação, translado). Sem jargão financeiro fora das Rotas.
 
 ---
 

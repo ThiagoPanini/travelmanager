@@ -22,8 +22,8 @@ const mono = Spline_Sans_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "travel·together",
-  description: "Caderno de bordo compartilhado para planejar viagens em grupo.",
+  title: "traveltogether",
+  description: "Seu organizador de viagens em grupo: paradas, translados e roteiro num só lugar.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

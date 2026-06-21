@@ -124,3 +124,27 @@ a {
   background: var(--accent);
   color: var(--bg-root);
 }
+
+/* Botão fantasma sutil — CTA secundário (ex.: Entrar no header). Contorno leve + hover. */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border: var(--border-hairline) solid var(--line-strong);
+  border-radius: var(--radius-btn);
+  color: var(--text-muted);
+  font-family: var(--font-mono), "Spline Sans Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition:
+    border-color 0.18s ease,
+    color 0.18s ease,
+    background 0.18s ease;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--fill-accent);
+}
