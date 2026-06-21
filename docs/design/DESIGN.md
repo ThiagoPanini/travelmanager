@@ -1,6 +1,6 @@
 # TravelTogether — Tema B · Modo Escuro (Noturno)
 
-Spec de design completa do protótipo **`Tema-B-Moderno-Escuro.dc.html`**, escrita para que um agente de IA reconstrua ou estenda a interface com fidelidade. Tokens legíveis por máquina em [`tokens.json`](tokens.json); referência visual navegável em [`design-tokens.dc.html`](design-tokens.dc.html).
+Spec de design completa do protótipo **`Tema-B-Moderno-Escuro.dc.html`**, escrita para que um agente de IA reconstrua ou estenda a interface com fidelidade. Tokens legíveis por máquina em [`tokens.json`](tokens.json). O protótipo navegável e o showcase vivem no claude.ai/design (ver **Procedência**, ao final).
 
 ---
 
@@ -160,11 +160,13 @@ Ticket por rota: `direct` → 135.530 milhas / R$ 242,21 (GRU → JFK direto); `
 
 ## 9. Arquivos
 
-- `Tema-B-Moderno-Escuro.dc.html` — protótipo navegável (4 telas + switcher).
-- `design-tokens.dc.html` — referência visual navegável deste sistema.
-- `tokens.json` — tokens legíveis por máquina.
-- `DESIGN.md` — este documento.
-- `support.js` — runtime dos Design Components (não editar).
+Neste repositório vivem apenas a spec e os tokens; o restante é do projeto-fonte no claude.ai/design (ver **Procedência**):
+
+- `tokens.json` — tokens legíveis por máquina. *(neste repo)*
+- `DESIGN.md` — este documento. *(neste repo)*
+- `Tema-B-Moderno-Escuro.dc.html` — protótipo navegável, 4 telas + switcher. *(claude.ai/design)*
+- `design-tokens.dc.html` — referência visual navegável. *(claude.ai/design)*
+- `support.js` — runtime dos Design Components, não editar. *(claude.ai/design)*
 
 ---
 

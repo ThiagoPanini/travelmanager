@@ -1,0 +1,39 @@
+# CLAUDE.md
+
+> Repositório em **pt-BR** (prosa, comentários, copy de UI, commits).
+
+App de organização de viagens em grupo; a alma é compartilhar e decidir **Pesquisas de translado** (passagens). Monorepo Next.js + FastAPI + Postgres, reconstruído por fases após reset clean-room (2026-06-20). Só a **Fase 0+1** (skeleton + landing) está implementada.
+
+## Fonte-da-verdade — leia antes de trabalho substantivo
+
+1. **`CONTEXT.md`** — glossário de domínio + invariantes (regras que sempre valem; código que as viola é bug).
+2. **`docs/adr/`** ([índice](docs/adr/README.md)) — decisões e seus porquês · **`docs/roadmap.md`** — faseamento.
+3. **`docs/design/`** — sistema visual `Tema B · Noturno`.
+
+## Convenções (não negociáveis)
+
+- Termo de domínio em pt-BR; **identificador de código em inglês** (mapa no glossário do `CONTEXT.md`). Respeite os termos proibidos lá listados.
+- **Conventional Commits**, subject minúsculo (validado por commitlint).
+
+## Arquitetura
+
+- `apps/api/` — FastAPI · SQLModel · Alembic · uv · ruff · pyright · pytest. Modelos novos precisam entrar em `alembic/env.py`.
+- `apps/web/` — Next.js 15 (App Router) · Vitest.
+
+## Comandos
+
+```bash
+# API (de dentro de apps/api/)
+uv run uvicorn traveltogether.main:app --reload    # :8000
+uv run ruff check . && uv run pyright && uv run pytest -m "not integration"
+
+# Web (da raiz)
+pnpm --filter @traveltogether/web dev              # :3000
+pnpm --filter @traveltogether/web typecheck
+pnpm --filter @traveltogether/web test
+node_modules/.bin/biome check apps/web             # NÃO use `pnpm exec biome` (falso-verde)
+```
+
+## Gate
+
+Workflow `pr-checks` (web: biome + typecheck + vitest · api: ruff + pyright + pytest · gitleaks). `main` é protegida → merge via PR humano.
