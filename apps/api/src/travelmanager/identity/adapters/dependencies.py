@@ -31,6 +31,7 @@ from travelmanager.identity.application.ports import (
     GoogleTokenVerifier,
 )
 from travelmanager.identity.application.use_cases import (
+    CompleteOnboarding,
     CreateSession,
     RequestOtp,
     ResolveSession,
@@ -143,3 +144,8 @@ def provide_sign_in_with_google(
         create_session,
         SystemClock(),
     )
+
+
+def provide_complete_onboarding(db: Annotated[Session, Depends(get_db)]) -> CompleteOnboarding:
+    """Monta o use-case `CompleteOnboarding` para o request corrente."""
+    return CompleteOnboarding(SqlAlchemyUserRepository(db), SystemClock())

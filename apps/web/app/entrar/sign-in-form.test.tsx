@@ -1,10 +1,14 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-const { push, signIn } = vi.hoisted(() => ({ push: vi.fn(), signIn: vi.fn() }));
+const { push, signIn, getSession } = vi.hoisted(() => ({
+  push: vi.fn(),
+  signIn: vi.fn(),
+  getSession: vi.fn(),
+}));
 
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
-vi.mock("next-auth/react", () => ({ signIn }));
+vi.mock("next-auth/react", () => ({ signIn, getSession }));
 
 import { SignInForm } from "./sign-in-form";
 
@@ -23,6 +27,7 @@ afterEach(() => {
   vi.unstubAllGlobals();
   push.mockReset();
   signIn.mockReset();
+  getSession.mockReset();
 });
 
 describe("SignInForm (login OTP, duas etapas)", () => {
@@ -34,10 +39,10 @@ describe("SignInForm (login OTP, duas etapas)", () => {
     expect(screen.getByRole("button", { name: /continuar com google/i })).toBeEnabled();
   });
 
-  it("Google habilitado: o botão dispara o provedor google rumo ao /app", () => {
+  it("Google habilitado: o botão dispara o provedor google rumo ao onboarding", () => {
     render(<SignInForm googleEnabled />);
     fireEvent.click(screen.getByRole("button", { name: /continuar com google/i }));
-    expect(signIn).toHaveBeenCalledWith("google", { callbackUrl: "/app" });
+    expect(signIn).toHaveBeenCalledWith("google", { callbackUrl: "/onboarding" });
   });
 
   it("Google indisponível: botão desabilitado e nunca dispara o provedor", () => {
@@ -50,6 +55,7 @@ describe("SignInForm (login OTP, duas etapas)", () => {
 
   it("ponta-a-ponta: e-mail → código → cai no /app autenticado", async () => {
     signIn.mockResolvedValue({ ok: true, error: null });
+    getSession.mockResolvedValue({ needsOnboarding: false });
     render(<SignInForm />);
 
     // passo 1: pede o código
@@ -81,6 +87,23 @@ describe("SignInForm (login OTP, duas etapas)", () => {
       }),
     );
     await waitFor(() => expect(push).toHaveBeenCalledWith("/app"));
+  });
+
+  it("usuário novo (precisa onboarding) é levado ao /onboarding após o código", async () => {
+    signIn.mockResolvedValue({ ok: true, error: null });
+    getSession.mockResolvedValue({ needsOnboarding: true });
+    render(<SignInForm />);
+
+    fireEvent.change(screen.getByLabelText(/e-mail/i), {
+      target: { value: "novo@example.com" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: /continuar$/i }));
+    await screen.findByRole("group", { name: /código de embarque/i });
+
+    digitar("246813");
+    fireEvent.click(screen.getByRole("button", { name: /embarcar/i }));
+
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/onboarding"));
   });
 
   it("'trocar e-mail' volta ao passo 1", async () => {

@@ -1,0 +1,93 @@
+/* Tela de onboarding (Noturno): login-card central com o perfil mínimo. */
+
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 48px var(--page-gutter);
+}
+
+.card {
+  width: 100%;
+  max-width: 380px;
+  background: var(--surface);
+  border: var(--border-hairline) solid var(--line);
+  border-radius: 14px;
+  padding: 32px 28px;
+}
+
+.heading {
+  font-size: 26px;
+  margin: 0 0 4px;
+}
+
+.sub {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0 0 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  color: var(--text-bright);
+  background: var(--fill-subtle);
+  border: var(--border-hairline) solid var(--line);
+  border-radius: var(--radius-btn);
+}
+
+.input:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.primary {
+  width: 100%;
+  margin-top: 6px;
+  padding: 12px 16px;
+  font-family: var(--font-display), "Saira Condensed", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--bg-root);
+  background: var(--accent);
+  border: 0;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+}
+
+.primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.error {
+  margin: 0;
+  font-size: 13px;
+  color: var(--accent-alert);
+}
