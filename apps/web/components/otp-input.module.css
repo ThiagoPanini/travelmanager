@@ -1,0 +1,46 @@
+/* Componente otp-input do sistema Noturno (docs/design): código de embarque. */
+
+.group {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  padding: 0;
+  margin-bottom: 12px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+}
+
+.cells {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+
+.cell {
+  aspect-ratio: 0.9;
+  width: 100%;
+  text-align: center;
+  font-family: var(--font-display), "Saira Condensed", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--fill-subtle);
+  border: var(--border-hairline) solid var(--line-dashed);
+  border-radius: var(--radius-btn);
+  caret-color: var(--accent);
+  transition: border-color 0.15s ease;
+}
+
+.cell:focus {
+  outline: none;
+  border-color: var(--accent);
+  border-style: solid;
+}
+
+.group:disabled .cell {
+  opacity: 0.55;
+}

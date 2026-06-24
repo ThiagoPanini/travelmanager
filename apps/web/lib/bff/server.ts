@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import { internalApiUrl } from "@/lib/bff/url";
 
 /**
  * Plumbing do BFF (ADR-0004): repassa chamadas server-side para a API interna,
@@ -6,14 +7,9 @@ import { auth } from "@/auth";
  * rede interna alcança `INTERNAL_API_URL`.
  */
 
-/** Endereço da API interna; falha alto se não configurado (cabeado na #196). */
-export function internalApiUrl(): string {
-  const base = process.env.INTERNAL_API_URL;
-  if (!base) {
-    throw new Error("INTERNAL_API_URL não configurada");
-  }
-  return base;
-}
+// Reexportado para não quebrar quem importa `internalApiUrl` daqui; a fonte é
+// `@/lib/bff/url` (sem dependência de NextAuth — ver módulo).
+export { internalApiUrl };
 
 /** Cabeçalhos com `Authorization: Bearer <token>` quando há token de sessão. */
 export function withBearer(headers: HeadersInit | undefined, token: string | null): Headers {

@@ -26,10 +26,6 @@ Modo noturno **quente** (azuis petróleo profundos + cremes, não cinza puro), e
 
 Cada peça abaixo usa apenas tokens (`design-spec.md`). Estados nunca dependem só de cor; foco sempre visível; `span onClick` do protótipo vira controle semântico (`a` para navegação, `button` para comando).
 
-### Login / OTP input
-
-Coleta o código de embarque de 6 dígitos no login (Fase 2). Grupo de seis células `maxlength=1`, aspect-ratio ~`0.9`, fundo `fill-subtle`, dígito Saira em `accent`. Precisa de label do grupo ("Código de embarque"), `inputmode="numeric"`, `autocomplete="one-time-code"`, foco/avanço por célula e retorno ao apagar. Contador de expiração: vira `accent-alert` quando `ttl < 60s`, mas **nunca** comunica expiração só por cor — inclua o texto do tempo. Reenvio desabilitado até o contador zerar. Tokens: `--fill-subtle`, `--line-dashed`, `--radius-btn`, `--font-display`, `--accent`, `--text-faint`, `--accent-alert`.
-
 ### Painel da Viagem
 
 Container `max-width-panel`. Header com tabs/chips, resumo da viagem, contador de dias, progress strip e grid `1.5fr / 1fr`: coluna principal = timeline de Trajetos com decisões pessoais; rail = tripulação + cards "em breve". **Sem milhas/dinheiro** (inv. 5). Cascas V1: Roteiro, Orçamento, Ingressos.
@@ -85,7 +81,7 @@ Card com borda tracejada (`line-dashed`), ícone mono decorativo, título, nota 
 | Tela | Container | Conteúdo |
 |---|---|---|
 | **Landing** | `max-width-wide` | Já implementada como landing pública — ver `as-built.md`. |
-| **Login** | `login-card` central, full-height | OTP 6 dígitos, contador de expiração + reenvio, "Continuar com Google". |
+| **Login** | `login-card` central, full-height | Tela de login OTP (e-mail → código) já implementada — ver `as-built.md`. Falta: "Continuar com Google" funcional (#191) e reenvio com cooldown (#194). |
 | **Painel** | `max-width-panel` | Tabs/chips, resumo, progress strip, timeline de Trajetos + decisões pessoais, tripulação, "em breve". **Sem milhas/dinheiro.** |
 | **Rotas** | `max-width-wide`, grid `1.2fr / 1fr` | Paradas & Trajetos derivados + route option cards (esquerda); painel sticky com flight map + ticket panel (direita). Único lugar com dinheiro/pontos. |
 

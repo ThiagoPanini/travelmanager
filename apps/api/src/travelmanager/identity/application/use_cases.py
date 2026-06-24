@@ -1,10 +1,10 @@
-"""Use-cases de sessão (ADR-0005): o "mint" que OTP e Google vão reusar (ADR-0004).
+"""Use-cases de sessão e OTP (ADR-0005): o "mint" que OTP e Google reusam (ADR-0004).
 
 Cada use-case é um `@dataclass(frozen=True, slots=True)` callable: os Ports entram
 como campos no composition-time, e a borda chama só `use_case(args)`. A política
-de sessão (TTL, `last_used_at`, revogação) vive aqui; a persistência fica atrás do
-`SessionRepository`; o tempo, atrás do `Clock`. Nenhuma linha de HTTP nem de
-SQLAlchemy.
+de sessão (TTL, `last_used_at`, revogação) e a de OTP (geração, TTL, consumo único)
+vivem aqui; a persistência fica atrás dos repositórios; o tempo, atrás do `Clock`;
+o envio, atrás do `EmailSender`. Nenhuma linha de HTTP nem de SQLAlchemy.
 
 O kill-switch `is_active` **não** mora em `ResolveSession`: "não autenticado" e
 "usuário desativado" colapsam num 401 e são decididos no inbound
@@ -14,12 +14,21 @@ O kill-switch `is_active` **não** mora em `ResolveSession`: "não autenticado" 
 from dataclasses import dataclass
 from datetime import timedelta
 
-from travelmanager.identity.application.ports import SessionRepository, TokenGenerator
-from travelmanager.identity.domain.models import AuthSession, User
-from travelmanager.identity.domain.rules import hash_session_token
+from travelmanager.identity.application.ports import (
+    CodeGenerator,
+    EmailSender,
+    OtpRepository,
+    SessionRepository,
+    TokenGenerator,
+    UserRepository,
+)
+from travelmanager.identity.domain.models import AuthSession, OtpCode, User
+from travelmanager.identity.domain.rules import hash_otp_code, hash_session_token, normalize_email
 from travelmanager.shared.clock import Clock
+from travelmanager.shared.errors import Unauthorized
 
 DEFAULT_SESSION_TTL = timedelta(days=30)
+OTP_TTL = timedelta(minutes=10)
 
 
 @dataclass(frozen=True, slots=True)
@@ -103,3 +112,88 @@ class RevokeSession:
         """
         session.revoked_at = self.clock.now()
         self.sessions.save(session)
+
+
+@dataclass(frozen=True, slots=True)
+class RequestOtp:
+    """Gera um código OTP para um e-mail, persiste o hash e dispara o transporte."""
+
+    otps: OtpRepository
+    clock: Clock
+    codes: CodeGenerator
+    email_sender: EmailSender
+    pepper: str
+    ttl: timedelta = OTP_TTL
+
+    def __call__(self, email: str) -> None:
+        """Emite um código novo para o e-mail.
+
+        Pedir código não exige conta (OTP é chaveado por e-mail). O código cru só
+        existe aqui e no envio; o banco guarda apenas o HMAC.
+
+        Args:
+            email: E-mail destino, como digitado (normalizado aqui).
+        """
+        normalized = normalize_email(email)
+        code = self.codes.generate()
+        self.otps.save(
+            OtpCode(
+                email=normalized,
+                code_hash=hash_otp_code(code, self.pepper),
+                expires_at=self.clock.now() + self.ttl,
+            )
+        )
+        self.email_sender.send_code(normalized, code)
+
+
+@dataclass(frozen=True, slots=True)
+class VerifyOtp:
+    """Valida o código OTP e cunha a sessão, resolvendo o usuário pelo e-mail."""
+
+    otps: OtpRepository
+    users: UserRepository
+    create_session: CreateSession
+    clock: Clock
+    pepper: str
+
+    def __call__(
+        self, email: str, code: str, *, user_agent: str | None = None
+    ) -> tuple[User, str, bool]:
+        """Verifica o código e devolve `(usuário, token_em_claro, falta_onboarding)`.
+
+        Código certo dentro do TTL: consome o OTP, resolve-ou-cria o usuário (e-mail
+        é a chave natural; o OTP comprova posse, então carimba `email_verified_at`),
+        e reusa `CreateSession` para o mint. Qualquer outro caminho levanta
+        `Unauthorized` e **não** autentica.
+
+        Args:
+            email: E-mail do passo 1, como digitado (normalizado aqui).
+            code: Código de 6 dígitos digitado no passo 2.
+            user_agent: User-Agent do cliente, repassado à sessão.
+
+        Returns:
+            O usuário resolvido, o token de sessão em claro e se ainda falta
+            onboarding (perfil ausente ou sem `onboarded_at`).
+
+        Raises:
+            Unauthorized: código inexistente, errado, expirado ou já consumido.
+        """
+        normalized = normalize_email(email)
+        now = self.clock.now()
+        otp = self.otps.get_active(normalized, now)
+        if otp is None or otp.code_hash != hash_otp_code(code, self.pepper):
+            raise Unauthorized("código inválido ou expirado")
+        otp.consumed_at = now
+        self.otps.save(otp)
+
+        user = self.users.get_by_email(normalized)
+        if user is None:
+            user = User(email=normalized, email_verified_at=now)
+            self.users.save(user)
+        elif user.email_verified_at is None:
+            user.email_verified_at = now
+            self.users.save(user)
+
+        _, token = self.create_session(user, user_agent=user_agent)
+        needs_onboarding = user.profile is None or user.profile.onboarded_at is None
+        return user, token, needs_onboarding

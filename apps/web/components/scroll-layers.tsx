@@ -414,7 +414,7 @@ function MarcaLayer() {
           </span>
         </span>
         <a
-          href="#como-funciona"
+          href="/entrar"
           style={{
             marginTop: 8,
             background: "var(--accent)",

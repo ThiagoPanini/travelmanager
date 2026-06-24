@@ -13,11 +13,25 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, Header, HTTPException, Response, status
 
 from travelmanager.identity.adapters.dependencies import (
+    provide_request_otp,
     provide_resolve_session,
     provide_revoke_session,
+    provide_verify_otp,
 )
-from travelmanager.identity.adapters.schemas import MeRead, ProfileRead, UserRead
-from travelmanager.identity.application.use_cases import ResolveSession, RevokeSession
+from travelmanager.identity.adapters.schemas import (
+    MeRead,
+    OtpRequestIn,
+    OtpVerifyIn,
+    OtpVerifyOut,
+    ProfileRead,
+    UserRead,
+)
+from travelmanager.identity.application.use_cases import (
+    RequestOtp,
+    ResolveSession,
+    RevokeSession,
+    VerifyOtp,
+)
 from travelmanager.identity.domain.models import AuthSession
 
 router = APIRouter(prefix="/auth", tags=["auth"])
@@ -104,3 +118,51 @@ def logout(
     """
     revoke(session)
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+@router.post("/otp/request", status_code=status.HTTP_202_ACCEPTED)
+def otp_request(
+    payload: OtpRequestIn,
+    request_otp: Annotated[RequestOtp, Depends(provide_request_otp)],
+) -> Response:
+    """Passo 1: emite um código OTP para o e-mail e dispara o transporte.
+
+    Anti-enumeração (ADR-0004): responde sempre 202, exista ou não conta — não
+    revela quem já tem cadastro.
+
+    Args:
+        payload: Corpo com o e-mail.
+        request_otp: Use-case que gera, persiste e envia o código.
+
+    Returns:
+        Resposta 202 sem corpo (o código nunca trafega na resposta).
+    """
+    request_otp(payload.email)
+    return Response(status_code=status.HTTP_202_ACCEPTED)
+
+
+@router.post("/otp/verify", response_model=OtpVerifyOut)
+def otp_verify(
+    payload: OtpVerifyIn,
+    verify_otp: Annotated[VerifyOtp, Depends(provide_verify_otp)],
+    user_agent: Annotated[str | None, Header()] = None,
+) -> OtpVerifyOut:
+    """Passo 2: valida o código e cunha a sessão (token devolvido ao BFF).
+
+    Args:
+        payload: Corpo com e-mail e código.
+        verify_otp: Use-case que valida o OTP e reusa o mint de sessão.
+        user_agent: User-Agent do cliente, repassado à sessão.
+
+    Returns:
+        `OtpVerifyOut` com usuário, flag de onboarding e o token opaco de sessão.
+
+    Raises:
+        Unauthorized: código inexistente, errado, expirado ou já consumido (→ 401).
+    """
+    user, token, needs_onboarding = verify_otp(payload.email, payload.code, user_agent=user_agent)
+    return OtpVerifyOut(
+        user=UserRead.model_validate(user),
+        needs_onboarding=needs_onboarding,
+        session_token=token,
+    )

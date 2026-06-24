@@ -32,7 +32,7 @@ export default function HomePage() {
           }}
         >
           <Wordmark pulse />
-          <a href="#como-funciona" className={pageStyles.entrar}>
+          <a href="/entrar" className={pageStyles.entrar}>
             {nav.entrar}
           </a>
         </Reveal>
