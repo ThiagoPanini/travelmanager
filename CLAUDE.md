@@ -42,7 +42,7 @@ Porquê completo: [ADR-0005](docs/adr/0005-arquitetura-hexagonal-pragmatica.md) 
 ```bash
 # API (de dentro de apps/api/)
 uv run uvicorn travelmanager.main:app --reload    # :8000
-uv run ruff check . && uv run pyright && uv run pytest -m "not integration"
+uv run ruff format --check . && uv run ruff check . && uv run pyright && uv run pytest -m "not integration"  # `format --check` faz parte do gate (CI); `ruff check` sozinho não pega formatação
 
 # Web (da raiz)
 pnpm --filter @travelmanager/web dev              # :3000
@@ -54,3 +54,19 @@ node_modules/.bin/biome check apps/web             # NÃO use `pnpm exec biome` 
 ## Gate
 
 Workflow `pr-checks` (web: biome + typecheck + vitest · api: ruff + pyright + pytest · gitleaks). `main` é protegida → merge via PR criado por workflow de CI.
+
+## Agent skills
+
+Config que as skills de engenharia (Matt Pocock) assumem por repo — detalhe em `docs/agents/`.
+
+### Issue tracker
+
+Issues e PRDs vivem no GitHub Issues (`ThiagoPanini/travelmanager`, via `gh`); PRs externos **não** entram na triagem. Ver `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Cinco papéis de triagem no namespace `status:` — `status:needs-triage` / `needs-info` / `ready-for-agent` / `hitl` (= ready-for-human) / `wontfix`. Ver `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: `CONTEXT.md` (glossário pt-BR + invariantes) + `docs/adr/` na raiz. Ver `docs/agents/domain.md`.
