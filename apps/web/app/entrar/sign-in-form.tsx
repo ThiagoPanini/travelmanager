@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
+import { getSession, signIn } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { OtpInput } from "@/components/otp-input";
 import styles from "./entrar.module.css";
@@ -18,14 +18,17 @@ function formatRemaining(seconds: number): string {
 }
 
 /**
- * Login em duas etapas: e-mail → código → `/app`, com Google como alternativa.
+ * Login em duas etapas: e-mail → código → onboarding ou `/app`, com Google como
+ * alternativa.
  *
  * Passo 1 pede o código ao proxy do BFF (`/api/otp/request`, anti-enumeração na
  * API). Passo 2 entrega e-mail+código ao provedor `otp` do Auth.js, que verifica na
- * API interna e cunha a sessão (ADR-0004). "Continuar com Google" dispara o provedor
- * `google` do Auth.js (#191), que troca o `id_token` por uma sessão na API; quando o
- * deploy não tem credencial Google (`googleEnabled` falso), o botão fica
- * "indisponível". Endurecimento (cooldown, tentativas) é a fatia #194.
+ * API interna e cunha a sessão (ADR-0004); usuário novo (sem perfil) vai ao
+ * `/onboarding` antes da área logada (#192). "Continuar com Google" dispara o
+ * provedor `google` do Auth.js (#191), que troca o `id_token` por uma sessão na API e
+ * cai no `/onboarding` (que desvia quem já onboardou); sem credencial Google
+ * (`googleEnabled` falso), o botão fica "indisponível". Endurecimento (cooldown,
+ * tentativas) é a fatia #194.
  */
 export function SignInForm({ googleEnabled = false }: { googleEnabled?: boolean }) {
   const router = useRouter();
@@ -74,13 +77,15 @@ export function SignInForm({ googleEnabled = false }: { googleEnabled?: boolean 
     setError(null);
     setPending(true);
     const result = await signIn("otp", { email, code, redirect: false });
-    setPending(false);
     if (!result?.ok || result.error) {
+      setPending(false);
       setError("Código inválido ou expirado. Confira e tente de novo.");
       setCode("");
       return;
     }
-    router.push("/app");
+    // Usuário novo (sem perfil) passa pelo onboarding antes da área logada (#192).
+    const session = await getSession();
+    router.push(session?.needsOnboarding ? "/onboarding" : "/app");
   }
 
   function trocarEmail() {
@@ -122,7 +127,7 @@ export function SignInForm({ googleEnabled = false }: { googleEnabled?: boolean 
           className={styles.google}
           disabled={!googleEnabled}
           title={googleEnabled ? undefined : "Indisponível neste ambiente"}
-          onClick={() => signIn("google", { callbackUrl: "/app" })}
+          onClick={() => signIn("google", { callbackUrl: "/onboarding" })}
         >
           {googleEnabled ? "Continuar com Google" : "Google indisponível"}
         </button>

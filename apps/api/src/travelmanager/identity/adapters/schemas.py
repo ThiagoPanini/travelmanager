@@ -62,6 +62,18 @@ class GoogleVerifyIn(BaseModel):
     id_token: str
 
 
+class ProfileIn(BaseModel):
+    """Corpo de `POST /auth/profile`: o Perfil mínimo do onboarding (CONTEXT inv. 6).
+
+    Os obrigatoriedade/trim de cada campo é regra de domínio (no use-case), não do
+    schema — a borda só transporta as strings cruas.
+    """
+
+    display_name: str
+    origin_city: str
+    country: str
+
+
 class SessionGrant(BaseModel):
     """Sessão concedida: quem é + se falta onboarding + token opaco. Contrato comum a
     `/auth/otp/verify` e `/auth/google` (método de entrada é indiferente ao BFF).

@@ -33,3 +33,19 @@ export async function apiFetch(path: string, init: RequestInit = {}): Promise<Re
   const { headers, ...rest } = init;
   return fetch(url, { ...rest, headers: withBearer(headers, token) });
 }
+
+/** Perfil mínimo do onboarding, no formato que a API espera (`POST /auth/profile`). */
+export type ProfilePayload = {
+  display_name: string;
+  origin_city: string;
+  country: string;
+};
+
+/** Grava o Perfil do onboarding na API interna (autenticado); devolve a resposta crua. */
+export async function completeOnboarding(payload: ProfilePayload): Promise<Response> {
+  return apiFetch("/auth/profile", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+}

@@ -24,10 +24,10 @@ from travelmanager.identity.application.ports import (
     TokenGenerator,
     UserRepository,
 )
-from travelmanager.identity.domain.models import AuthIdentity, AuthSession, OtpCode, User
+from travelmanager.identity.domain.models import AuthIdentity, AuthSession, OtpCode, Profile, User
 from travelmanager.identity.domain.rules import hash_otp_code, hash_session_token, normalize_email
 from travelmanager.shared.clock import Clock
-from travelmanager.shared.errors import Unauthorized
+from travelmanager.shared.errors import Invalid, Unauthorized
 
 DEFAULT_SESSION_TTL = timedelta(days=30)
 OTP_TTL = timedelta(minutes=10)
@@ -200,6 +200,49 @@ class VerifyOtp:
         _, token = self.create_session(user, user_agent=user_agent)
         needs_onboarding = user.profile is None or user.profile.onboarded_at is None
         return user, token, needs_onboarding
+
+
+@dataclass(frozen=True, slots=True)
+class CompleteOnboarding:
+    """Grava o Perfil mínimo do usuário e carimba `onboarded_at` (encerra o onboarding)."""
+
+    users: UserRepository
+    clock: Clock
+
+    def __call__(self, user: User, *, display_name: str, origin_city: str, country: str) -> User:
+        """Persiste nome, cidade de origem e país, e carimba o fim do onboarding.
+
+        A `cidade de origem` é texto livre por ora (o mapa cidade→aeroporto é Fase 5,
+        ADR-0006). Cria o Perfil quando ausente ou atualiza o existente (idempotente);
+        carimbar `onboarded_at` é o que faz `needs_onboarding` virar `False`.
+
+        Args:
+            user: Usuário corrente (resolvido da sessão).
+            display_name: Nome de exibição (obrigatório).
+            origin_city: Cidade de origem em texto livre (obrigatória).
+            country: País em ISO-3166 alfa-2 (obrigatório; normalizado para caixa-alta).
+
+        Returns:
+            O próprio usuário, já com o Perfil gravado.
+
+        Raises:
+            Invalid: nome, cidade de origem ou país em branco.
+        """
+        name = display_name.strip()
+        city = origin_city.strip()
+        country_code = country.strip().upper()
+        if not name or not city or not country_code:
+            raise Invalid("nome, cidade de origem e país são obrigatórios")
+
+        profile = user.profile
+        if profile is None:
+            profile = Profile(user=user)
+        profile.display_name = name
+        profile.origin_city = city
+        profile.country = country_code
+        profile.onboarded_at = self.clock.now()
+        self.users.save(user)
+        return user
 
 
 @dataclass(frozen=True, slots=True)

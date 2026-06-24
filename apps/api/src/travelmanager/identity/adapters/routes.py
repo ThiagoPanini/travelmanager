@@ -13,6 +13,7 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, Header, HTTPException, Response, status
 
 from travelmanager.identity.adapters.dependencies import (
+    provide_complete_onboarding,
     provide_request_otp,
     provide_resolve_session,
     provide_revoke_session,
@@ -24,18 +25,20 @@ from travelmanager.identity.adapters.schemas import (
     MeRead,
     OtpRequestIn,
     OtpVerifyIn,
+    ProfileIn,
     ProfileRead,
     SessionGrant,
     UserRead,
 )
 from travelmanager.identity.application.use_cases import (
+    CompleteOnboarding,
     RequestOtp,
     ResolveSession,
     RevokeSession,
     SignInWithGoogle,
     VerifyOtp,
 )
-from travelmanager.identity.domain.models import AuthSession
+from travelmanager.identity.domain.models import AuthSession, User
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -85,6 +88,25 @@ def get_current_session(
 CurrentSession = Annotated[AuthSession, Depends(get_current_session)]
 
 
+def _me_read(user: User) -> MeRead:
+    """Monta o DTO `MeRead` a partir do usuário e seu perfil.
+
+    Args:
+        user: Usuário resolvido (com `profile` carregado, se houver).
+
+    Returns:
+        O DTO com usuário, perfil e flag de onboarding (perfil ausente ou sem
+        `onboarded_at` ⇒ falta onboarding).
+    """
+    profile = user.profile
+    needs_onboarding = profile is None or profile.onboarded_at is None
+    return MeRead(
+        user=UserRead.model_validate(user),
+        profile=ProfileRead.model_validate(profile) if profile is not None else None,
+        needs_onboarding=needs_onboarding,
+    )
+
+
 @router.get("/me", response_model=MeRead)
 def me(session: CurrentSession) -> MeRead:
     """Quem é o usuário corrente, seu perfil e se ainda falta onboarding.
@@ -95,14 +117,7 @@ def me(session: CurrentSession) -> MeRead:
     Returns:
         O DTO `MeRead` com usuário, perfil e flag de onboarding.
     """
-    user = session.user
-    profile = user.profile
-    needs_onboarding = profile is None or profile.onboarded_at is None
-    return MeRead(
-        user=UserRead.model_validate(user),
-        profile=ProfileRead.model_validate(profile) if profile is not None else None,
-        needs_onboarding=needs_onboarding,
-    )
+    return _me_read(session.user)
 
 
 @router.post("/logout", status_code=status.HTTP_204_NO_CONTENT)
@@ -196,3 +211,34 @@ def google_sign_in(
         needs_onboarding=needs_onboarding,
         session_token=token,
     )
+
+
+@router.post("/profile", response_model=MeRead)
+def complete_profile(
+    payload: ProfileIn,
+    session: CurrentSession,
+    complete: Annotated[CompleteOnboarding, Depends(provide_complete_onboarding)],
+) -> MeRead:
+    """Grava o Perfil do onboarding e devolve o `MeRead` já com `needs_onboarding` falso.
+
+    A sessão tem de existir (a dependency barra com 401 se ausente). O use-case valida
+    os campos obrigatórios e carimba `onboarded_at`.
+
+    Args:
+        payload: Nome de exibição, cidade de origem e país.
+        session: Sessão corrente (dono do Perfil).
+        complete: Use-case que grava o Perfil e encerra o onboarding.
+
+    Returns:
+        O `MeRead` atualizado (perfil gravado, `needs_onboarding` falso).
+
+    Raises:
+        Invalid: nome, cidade de origem ou país em branco (→ 422).
+    """
+    user = complete(
+        session.user,
+        display_name=payload.display_name,
+        origin_city=payload.origin_city,
+        country=payload.country,
+    )
+    return _me_read(user)
