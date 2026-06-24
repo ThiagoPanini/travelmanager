@@ -17,7 +17,7 @@ from travelmanager.identity.adapters.dependencies import session_pepper
 from travelmanager.identity.adapters.repository import SqlAlchemySessionRepository
 from travelmanager.identity.adapters.tokens import SecretsTokenGenerator
 from travelmanager.identity.application.use_cases import CreateSession
-from travelmanager.identity.domain.models import AuthSession, User
+from travelmanager.identity.domain.models import AuthSession, OtpCode, User
 from travelmanager.main import app
 from travelmanager.shared.clock import SystemClock
 from travelmanager.shared.db import get_db
@@ -98,6 +98,61 @@ class FakeSessionRepository:
         self._by_hash[session.token_hash] = session
 
 
+class FakeOtpRepository:
+    """`OtpRepository` fake: guarda OTPs em memória, sem DB."""
+
+    def __init__(self) -> None:
+        self.saved: list[OtpCode] = []
+
+    def save(self, otp: OtpCode) -> None:
+        if otp not in self.saved:
+            self.saved.append(otp)
+
+    def get_active(self, email: str, now: datetime) -> OtpCode | None:
+        ativos = [
+            o
+            for o in self.saved
+            if o.email == email and o.consumed_at is None and o.expires_at > now
+        ]
+        return ativos[-1] if ativos else None
+
+
+class FakeUserRepository:
+    """`UserRepository` fake: resolve por e-mail em memória, sem DB."""
+
+    def __init__(self) -> None:
+        self.saved: list[User] = []
+        self._by_email: dict[str, User] = {}
+
+    def get_by_email(self, email: str) -> User | None:
+        return self._by_email.get(email)
+
+    def save(self, user: User) -> None:
+        if user not in self.saved:
+            self.saved.append(user)
+        self._by_email[user.email] = user
+
+
+class FakeCodeGenerator:
+    """`CodeGenerator` fake: devolve um código previsível."""
+
+    def __init__(self, code: str = "654321") -> None:
+        self._code = code
+
+    def generate(self) -> str:
+        return self._code
+
+
+class FakeEmailSender:
+    """`EmailSender` fake: registra `(email, code)` enviados em `sent`."""
+
+    def __init__(self) -> None:
+        self.sent: list[tuple[str, str]] = []
+
+    def send_code(self, email: str, code: str) -> None:
+        self.sent.append((email, code))
+
+
 @pytest.fixture
 def clock() -> FixedClock:
     """Relógio fixo num instante UTC determinístico."""
@@ -114,3 +169,27 @@ def sessions() -> FakeSessionRepository:
 def tokens() -> FakeTokenGenerator:
     """Gerador de token previsível."""
     return FakeTokenGenerator()
+
+
+@pytest.fixture
+def otps() -> FakeOtpRepository:
+    """Repositório de OTPs em memória."""
+    return FakeOtpRepository()
+
+
+@pytest.fixture
+def users() -> FakeUserRepository:
+    """Repositório de usuários em memória."""
+    return FakeUserRepository()
+
+
+@pytest.fixture
+def codes() -> FakeCodeGenerator:
+    """Gerador de código OTP previsível."""
+    return FakeCodeGenerator()
+
+
+@pytest.fixture
+def email_sender() -> FakeEmailSender:
+    """Transporte de e-mail que captura os envios."""
+    return FakeEmailSender()

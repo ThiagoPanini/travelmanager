@@ -6,9 +6,28 @@ Domínio puro, sem double e sem banco: o `then` afirma só a regra.
 from datetime import UTC, datetime, timedelta
 
 from travelmanager.identity.domain.models import AuthSession
-from travelmanager.identity.domain.rules import hash_session_token
+from travelmanager.identity.domain.rules import hash_otp_code, hash_session_token
 
 _NOW = datetime(2026, 6, 24, 12, 0, tzinfo=UTC)
+
+
+class TestHashOtpCode:
+    def test_e_deterministico_e_difere_do_codigo(self) -> None:
+        # given: um código de 6 dígitos e um pepper
+        code, pepper = "012345", "otp-pepper-x"
+        # when:
+        digest = hash_otp_code(code, pepper)
+        # then: hex estável e nunca o código cru
+        assert digest == hash_otp_code(code, pepper)
+        assert digest != code
+
+    def test_pepper_diferente_muda_o_hash(self) -> None:
+        # given: o mesmo código sob dois peppers
+        # when:
+        a = hash_otp_code("012345", "otp-pepper-a")
+        b = hash_otp_code("012345", "otp-pepper-b")
+        # then:
+        assert a != b
 
 
 class TestHashSessionToken:

@@ -41,3 +41,28 @@ class MeRead(BaseModel):
     user: UserRead
     profile: ProfileRead | None = None
     needs_onboarding: bool
+
+
+class OtpRequestIn(BaseModel):
+    """Corpo de `/auth/otp/request`: o e-mail do passo 1."""
+
+    email: str
+
+
+class OtpVerifyIn(BaseModel):
+    """Corpo de `/auth/otp/verify`: e-mail + código de 6 dígitos do passo 2."""
+
+    email: str
+    code: str
+
+
+class OtpVerifyOut(BaseModel):
+    """Resposta de `/auth/otp/verify`: quem é + se falta onboarding + token de sessão.
+
+    O `session_token` é o opaco recém-cunhado: viaja **server-to-server** para o BFF,
+    que o guarda no cookie httpOnly do Auth.js (ADR-0004) — nunca chega ao browser.
+    """
+
+    user: UserRead
+    needs_onboarding: bool
+    session_token: str

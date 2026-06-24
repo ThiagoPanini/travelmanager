@@ -5,9 +5,10 @@
 verifica no ponto de uso (o retorno anotado dos `provide_*`).
 """
 
+from datetime import datetime
 from typing import Protocol
 
-from travelmanager.identity.domain.models import AuthSession
+from travelmanager.identity.domain.models import AuthSession, OtpCode, User
 
 
 class SessionRepository(Protocol):
@@ -38,4 +39,72 @@ class TokenGenerator(Protocol):
 
     def generate(self) -> str:
         """Cunha um token opaco, aleatório e URL-safe."""
+        ...
+
+
+class OtpRepository(Protocol):
+    """Persistência de códigos OTP, chaveados por e-mail."""
+
+    def save(self, otp: OtpCode) -> None:
+        """Cria ou persiste a mutação de um código OTP.
+
+        Args:
+            otp: A entidade a persistir.
+        """
+        ...
+
+    def get_active(self, email: str, now: datetime) -> OtpCode | None:
+        """Busca o OTP mais recente ainda válido para o e-mail.
+
+        Args:
+            email: E-mail normalizado (chave natural).
+            now: Instante de referência para descartar expirados.
+
+        Returns:
+            O código não-consumido e não-expirado mais recente, ou `None`.
+        """
+        ...
+
+
+class UserRepository(Protocol):
+    """Persistência de usuários, resolvidos pela chave natural (e-mail)."""
+
+    def get_by_email(self, email: str) -> User | None:
+        """Busca o usuário pelo e-mail normalizado.
+
+        Args:
+            email: E-mail normalizado.
+
+        Returns:
+            O usuário, ou `None` se ainda não existe.
+        """
+        ...
+
+    def save(self, user: User) -> None:
+        """Cria ou persiste a mutação de um usuário.
+
+        Args:
+            user: A entidade a persistir.
+        """
+        ...
+
+
+class CodeGenerator(Protocol):
+    """Fonte de códigos OTP numéricos."""
+
+    def generate(self) -> str:
+        """Cunha um código OTP de 6 dígitos numéricos (zeros à esquerda inclusos)."""
+        ...
+
+
+class EmailSender(Protocol):
+    """Transporte de e-mail transacional (o código OTP)."""
+
+    def send_code(self, email: str, code: str) -> None:
+        """Envia o código OTP ao e-mail.
+
+        Args:
+            email: Destinatário (e-mail normalizado).
+            code: Código OTP em claro.
+        """
         ...

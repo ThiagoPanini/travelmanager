@@ -136,6 +136,18 @@ class OtpCode(Base):
     consumed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), default=None)
     created_at: Mapped[datetime] = _created_at()
 
+    def is_redeemable_at(self, moment: datetime) -> bool:
+        """Diz se o código pode ser resgatado no instante dado.
+
+        Args:
+            moment: Instante de referência (timezone-aware).
+
+        Returns:
+            `True` quando não consumido e ainda não expirado; `False` caso
+            contrário.
+        """
+        return self.consumed_at is None and _as_aware(self.expires_at) > moment
+
 
 class AuthIdentity(Base):
     """Vínculo de provedor externo ao Usuário; `(provider, subject)` é único."""
