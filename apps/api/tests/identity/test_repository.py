@@ -5,6 +5,8 @@ Costura de persistência: prova que `save` grava e `get_by_token_hash` lê de vo
 
 from datetime import UTC, datetime, timedelta
 
+import pytest
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from travelmanager.identity.adapters.repository import (
@@ -54,3 +56,18 @@ class TestSqlAlchemyIdentityRepository:
         repo = SqlAlchemyIdentityRepository(db_session)
         # when/then:
         assert repo.get_by_provider_subject("google", "nao-existe") is None
+
+    def test_provider_subject_duplicado_viola_unique(self, db_session: Session, user: User) -> None:
+        # given: um vínculo Google já gravado
+        repo = SqlAlchemyIdentityRepository(db_session)
+        repo.save(
+            AuthIdentity(user_id=user.id, provider="google", subject="sub-dup", email=user.email)
+        )
+        # when/then: outro vínculo com o MESMO (provider, subject) é barrado pela
+        # constraint UNIQUE — o backstop de banco que garante "não duplica" (#195)
+        with pytest.raises(IntegrityError):
+            repo.save(
+                AuthIdentity(
+                    user_id=user.id, provider="google", subject="sub-dup", email=user.email
+                )
+            )

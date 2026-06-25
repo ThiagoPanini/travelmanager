@@ -4,8 +4,9 @@ A prova criptográfica do `id_token` (JWKS/`aud`/`iss`/`exp`) é concern do adap
 fica atrás do `GoogleTokenVerifier` Port; aqui o fake já devolve claims (ou `None`).
 `then` afirma a política de domínio: e-mail é a chave natural (ADR-0004), Google
 atesta o e-mail verificado, e o vínculo `(google, subject)` é registrado uma vez.
-Qualquer token recusado ou e-mail não-verificado **não** autentica. Vínculo de
-contas com e-mail pré-existente é a fatia #195.
+Qualquer token recusado ou e-mail não-verificado **não** autentica. A
+*convergência* cross-provider (vínculo OTP↔Google pelo mesmo e-mail) vive em
+`test_account_linking.py` (#195); aqui só o comportamento isolado da porta Google.
 """
 
 import pytest
