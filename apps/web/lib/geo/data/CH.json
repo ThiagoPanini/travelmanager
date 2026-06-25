@@ -1,0 +1,322 @@
+[
+  {
+    "name": "Zürich",
+    "asciiName": "Zuerich"
+  },
+  {
+    "name": "Geneva",
+    "asciiName": "Geneva"
+  },
+  {
+    "name": "Basel",
+    "asciiName": "Basel"
+  },
+  {
+    "name": "Lausanne",
+    "asciiName": "Lausanne"
+  },
+  {
+    "name": "Bern",
+    "asciiName": "Bern"
+  },
+  {
+    "name": "Winterthur",
+    "asciiName": "Winterthur"
+  },
+  {
+    "name": "Luzern",
+    "asciiName": "Luzern"
+  },
+  {
+    "name": "Sankt Gallen",
+    "asciiName": "Sankt Gallen"
+  },
+  {
+    "name": "Lugano",
+    "asciiName": "Lugano"
+  },
+  {
+    "name": "Biel/Bienne",
+    "asciiName": "Biel/Bienne"
+  },
+  {
+    "name": "Zürich (Kreis 11)",
+    "asciiName": "Zuerich (Kreis 11)"
+  },
+  {
+    "name": "Zürich (Kreis 3)",
+    "asciiName": "Zuerich (Kreis 3)"
+  },
+  {
+    "name": "Zürich (Kreis 9)",
+    "asciiName": "Zuerich (Kreis 9)"
+  },
+  {
+    "name": "Thun",
+    "asciiName": "Thun"
+  },
+  {
+    "name": "Bellinzona",
+    "asciiName": "Bellinzona"
+  },
+  {
+    "name": "Köniz",
+    "asciiName": "Koeniz"
+  },
+  {
+    "name": "Fribourg",
+    "asciiName": "Fribourg"
+  },
+  {
+    "name": "La Chaux-de-Fonds",
+    "asciiName": "La Chaux-de-Fonds"
+  },
+  {
+    "name": "Schaffhausen",
+    "asciiName": "Schaffhausen"
+  },
+  {
+    "name": "Zürich (Kreis 10)",
+    "asciiName": "Zuerich (Kreis 10)"
+  },
+  {
+    "name": "Chur",
+    "asciiName": "Chur"
+  },
+  {
+    "name": "Rapperswil",
+    "asciiName": "Rapperswil"
+  },
+  {
+    "name": "Uster",
+    "asciiName": "Uster"
+  },
+  {
+    "name": "Sitten",
+    "asciiName": "Sitten"
+  },
+  {
+    "name": "Zürich (Kreis 7)",
+    "asciiName": "Zuerich (Kreis 7)"
+  },
+  {
+    "name": "Neuchâtel",
+    "asciiName": "Neuchatel"
+  },
+  {
+    "name": "Emmen",
+    "asciiName": "Emmen"
+  },
+  {
+    "name": "Zug",
+    "asciiName": "Zug"
+  },
+  {
+    "name": "Yverdon-les-Bains",
+    "asciiName": "Yverdon-les-Bains"
+  },
+  {
+    "name": "Vernier",
+    "asciiName": "Vernier"
+  },
+  {
+    "name": "Zürich (Kreis 6)",
+    "asciiName": "Zuerich (Kreis 6)"
+  },
+  {
+    "name": "Zürich (Kreis 2)",
+    "asciiName": "Zuerich (Kreis 2)"
+  },
+  {
+    "name": "Zürich (Kreis 9) / Altstetten",
+    "asciiName": "Zuerich (Kreis 9) / Altstetten"
+  },
+  {
+    "name": "Zürich (Kreis 12)",
+    "asciiName": "Zuerich (Kreis 12)"
+  },
+  {
+    "name": "Lancy",
+    "asciiName": "Lancy"
+  },
+  {
+    "name": "Zürich (Kreis 4) / Aussersihl",
+    "asciiName": "Zuerich (Kreis 4) / Aussersihl"
+  },
+  {
+    "name": "Montreux",
+    "asciiName": "Montreux"
+  },
+  {
+    "name": "Frauenfeld",
+    "asciiName": "Frauenfeld"
+  },
+  {
+    "name": "Kriens",
+    "asciiName": "Kriens"
+  },
+  {
+    "name": "Wetzikon",
+    "asciiName": "Wetzikon"
+  },
+  {
+    "name": "Wil",
+    "asciiName": "Wil"
+  },
+  {
+    "name": "Bulle",
+    "asciiName": "Bulle"
+  },
+  {
+    "name": "Horgen",
+    "asciiName": "Horgen"
+  },
+  {
+    "name": "Kreuzlingen",
+    "asciiName": "Kreuzlingen"
+  },
+  {
+    "name": "Opfikon",
+    "asciiName": "Opfikon"
+  },
+  {
+    "name": "Aarau",
+    "asciiName": "Aarau"
+  },
+  {
+    "name": "Zürich (Kreis 3) / Sihlfeld",
+    "asciiName": "Zuerich (Kreis 3) / Sihlfeld"
+  },
+  {
+    "name": "Renens",
+    "asciiName": "Renens"
+  },
+  {
+    "name": "Dietikon",
+    "asciiName": "Dietikon"
+  },
+  {
+    "name": "Baar",
+    "asciiName": "Baar"
+  },
+  {
+    "name": "Bülach",
+    "asciiName": "Buelach"
+  },
+  {
+    "name": "Zürich (Kreis 6) / Unterstrass",
+    "asciiName": "Zuerich (Kreis 6) / Unterstrass"
+  },
+  {
+    "name": "Riehen",
+    "asciiName": "Riehen"
+  },
+  {
+    "name": "Vevey",
+    "asciiName": "Vevey"
+  },
+  {
+    "name": "Dübendorf",
+    "asciiName": "Dubendorf"
+  },
+  {
+    "name": "Meyrin",
+    "asciiName": "Meyrin"
+  },
+  {
+    "name": "Carouge",
+    "asciiName": "Carouge"
+  },
+  {
+    "name": "Baden",
+    "asciiName": "Baden"
+  },
+  {
+    "name": "Reinach",
+    "asciiName": "Reinach"
+  },
+  {
+    "name": "Olten",
+    "asciiName": "Olten"
+  },
+  {
+    "name": "Martigny-Ville",
+    "asciiName": "Martigny-Ville"
+  },
+  {
+    "name": "Wettingen",
+    "asciiName": "Wettingen"
+  },
+  {
+    "name": "Allschwil",
+    "asciiName": "Allschwil"
+  },
+  {
+    "name": "Zürich (Kreis 11) / Oerlikon",
+    "asciiName": "Zuerich (Kreis 11) / Oerlikon"
+  },
+  {
+    "name": "Zürich (Kreis 11) / Seebach",
+    "asciiName": "Zuerich (Kreis 11) / Seebach"
+  },
+  {
+    "name": "Monthey",
+    "asciiName": "Monthey"
+  },
+  {
+    "name": "Jona",
+    "asciiName": "Jona"
+  },
+  {
+    "name": "Onex",
+    "asciiName": "Onex"
+  },
+  {
+    "name": "Zürich (Kreis 11) / Affoltern",
+    "asciiName": "Zuerich (Kreis 11) / Affoltern"
+  },
+  {
+    "name": "Zürich (Kreis 10) / Höngg",
+    "asciiName": "Zuerich (Kreis 10) / Hoengg"
+  },
+  {
+    "name": "Gossau",
+    "asciiName": "Gossau"
+  },
+  {
+    "name": "Muttenz",
+    "asciiName": "Muttenz"
+  },
+  {
+    "name": "Nyon",
+    "asciiName": "Nyon"
+  },
+  {
+    "name": "Sierre",
+    "asciiName": "Sierre"
+  },
+  {
+    "name": "Solothurn",
+    "asciiName": "Solothurn"
+  },
+  {
+    "name": "Cham",
+    "asciiName": "Cham"
+  },
+  {
+    "name": "Zürich (Kreis 9) / Albisrieden",
+    "asciiName": "Zuerich (Kreis 9) / Albisrieden"
+  },
+  {
+    "name": "Burgdorf",
+    "asciiName": "Burgdorf"
+  },
+  {
+    "name": "Oberwinterthur (Kreis 2)",
+    "asciiName": "Oberwinterthur (Kreis 2)"
+  },
+  {
+    "name": "Kloten",
+    "asciiName": "Kloten"
+  }
+]

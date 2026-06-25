@@ -1,0 +1,322 @@
+[
+  {
+    "name": "Rotterdam",
+    "asciiName": "Rotterdam"
+  },
+  {
+    "name": "Amsterdam",
+    "asciiName": "Amsterdam"
+  },
+  {
+    "name": "The Hague",
+    "asciiName": "The Hague"
+  },
+  {
+    "name": "Utrecht",
+    "asciiName": "Utrecht"
+  },
+  {
+    "name": "Groningen",
+    "asciiName": "Groningen"
+  },
+  {
+    "name": "Eindhoven",
+    "asciiName": "Eindhoven"
+  },
+  {
+    "name": "Tilburg",
+    "asciiName": "Tilburg"
+  },
+  {
+    "name": "Breda",
+    "asciiName": "Breda"
+  },
+  {
+    "name": "Nijmegen",
+    "asciiName": "Nijmegen"
+  },
+  {
+    "name": "Almere Stad",
+    "asciiName": "Almere Stad"
+  },
+  {
+    "name": "Haarlem",
+    "asciiName": "Haarlem"
+  },
+  {
+    "name": "Arnhem",
+    "asciiName": "Arnhem"
+  },
+  {
+    "name": "'s-Hertogenbosch",
+    "asciiName": "'s-Hertogenbosch"
+  },
+  {
+    "name": "Enschede",
+    "asciiName": "Enschede"
+  },
+  {
+    "name": "Zaanstad",
+    "asciiName": "Zaanstad"
+  },
+  {
+    "name": "Amersfoort",
+    "asciiName": "Amersfoort"
+  },
+  {
+    "name": "Apeldoorn",
+    "asciiName": "Apeldoorn"
+  },
+  {
+    "name": "Hoofddorp",
+    "asciiName": "Hoofddorp"
+  },
+  {
+    "name": "Zwolle",
+    "asciiName": "Zwolle"
+  },
+  {
+    "name": "Leeuwarden",
+    "asciiName": "Leeuwarden"
+  },
+  {
+    "name": "Maastricht",
+    "asciiName": "Maastricht"
+  },
+  {
+    "name": "Leiden",
+    "asciiName": "Leiden"
+  },
+  {
+    "name": "Dordrecht",
+    "asciiName": "Dordrecht"
+  },
+  {
+    "name": "Zoetermeer",
+    "asciiName": "Zoetermeer"
+  },
+  {
+    "name": "Venlo",
+    "asciiName": "Venlo"
+  },
+  {
+    "name": "Deventer",
+    "asciiName": "Deventer"
+  },
+  {
+    "name": "Delft",
+    "asciiName": "Delft"
+  },
+  {
+    "name": "Alkmaar",
+    "asciiName": "Alkmaar"
+  },
+  {
+    "name": "Heerlen",
+    "asciiName": "Heerlen"
+  },
+  {
+    "name": "Amsterdam-Zuidoost",
+    "asciiName": "Amsterdam-Zuidoost"
+  },
+  {
+    "name": "Hilversum",
+    "asciiName": "Hilversum"
+  },
+  {
+    "name": "Hengelo",
+    "asciiName": "Hengelo"
+  },
+  {
+    "name": "Purmerend",
+    "asciiName": "Purmerend"
+  },
+  {
+    "name": "Lelystad",
+    "asciiName": "Lelystad"
+  },
+  {
+    "name": "Amstelveen",
+    "asciiName": "Amstelveen"
+  },
+  {
+    "name": "Roosendaal",
+    "asciiName": "Roosendaal"
+  },
+  {
+    "name": "Oss",
+    "asciiName": "Oss"
+  },
+  {
+    "name": "Schiedam",
+    "asciiName": "Schiedam"
+  },
+  {
+    "name": "Spijkenisse",
+    "asciiName": "Spijkenisse"
+  },
+  {
+    "name": "Helmond",
+    "asciiName": "Helmond"
+  },
+  {
+    "name": "Vlaardingen",
+    "asciiName": "Vlaardingen"
+  },
+  {
+    "name": "Almelo",
+    "asciiName": "Almelo"
+  },
+  {
+    "name": "Gouda",
+    "asciiName": "Gouda"
+  },
+  {
+    "name": "Zaandam",
+    "asciiName": "Zaandam"
+  },
+  {
+    "name": "Alphen aan den Rijn",
+    "asciiName": "Alphen aan den Rijn"
+  },
+  {
+    "name": "Hoorn",
+    "asciiName": "Hoorn"
+  },
+  {
+    "name": "Assen",
+    "asciiName": "Assen"
+  },
+  {
+    "name": "Velsen-Zuid",
+    "asciiName": "Velsen-Zuid"
+  },
+  {
+    "name": "Ede",
+    "asciiName": "Ede"
+  },
+  {
+    "name": "Bergen op Zoom",
+    "asciiName": "Bergen op Zoom"
+  },
+  {
+    "name": "Capelle aan den IJssel",
+    "asciiName": "Capelle aan den IJssel"
+  },
+  {
+    "name": "Nieuwegein",
+    "asciiName": "Nieuwegein"
+  },
+  {
+    "name": "Veenendaal",
+    "asciiName": "Veenendaal"
+  },
+  {
+    "name": "Zeist",
+    "asciiName": "Zeist"
+  },
+  {
+    "name": "Den Helder",
+    "asciiName": "Den Helder"
+  },
+  {
+    "name": "Hardenberg",
+    "asciiName": "Hardenberg"
+  },
+  {
+    "name": "Emmen",
+    "asciiName": "Emmen"
+  },
+  {
+    "name": "Oosterhout",
+    "asciiName": "Oosterhout"
+  },
+  {
+    "name": "Doetinchem",
+    "asciiName": "Doetinchem"
+  },
+  {
+    "name": "Kerkrade",
+    "asciiName": "Kerkrade"
+  },
+  {
+    "name": "Leidsche Rijn",
+    "asciiName": "Leidsche Rijn"
+  },
+  {
+    "name": "Kampen",
+    "asciiName": "Kampen"
+  },
+  {
+    "name": "Weert",
+    "asciiName": "Weert"
+  },
+  {
+    "name": "Woerden",
+    "asciiName": "Woerden"
+  },
+  {
+    "name": "Sittard",
+    "asciiName": "Sittard"
+  },
+  {
+    "name": "Heerhugowaard",
+    "asciiName": "Heerhugowaard"
+  },
+  {
+    "name": "Rijswijk",
+    "asciiName": "Rijswijk"
+  },
+  {
+    "name": "Middelburg",
+    "asciiName": "Middelburg"
+  },
+  {
+    "name": "Emmeloord",
+    "asciiName": "Emmeloord"
+  },
+  {
+    "name": "Zwijndrecht",
+    "asciiName": "Zwijndrecht"
+  },
+  {
+    "name": "Waalwijk",
+    "asciiName": "Waalwijk"
+  },
+  {
+    "name": "Vlissingen",
+    "asciiName": "Vlissingen"
+  },
+  {
+    "name": "Ridderkerk",
+    "asciiName": "Ridderkerk"
+  },
+  {
+    "name": "Drachten",
+    "asciiName": "Drachten"
+  },
+  {
+    "name": "Soest",
+    "asciiName": "Soest"
+  },
+  {
+    "name": "Roermond",
+    "asciiName": "Roermond"
+  },
+  {
+    "name": "Heerenveen",
+    "asciiName": "Heerenveen"
+  },
+  {
+    "name": "Medemblik",
+    "asciiName": "Medemblik"
+  },
+  {
+    "name": "Huizen",
+    "asciiName": "Huizen"
+  },
+  {
+    "name": "Tiel",
+    "asciiName": "Tiel"
+  }
+]

@@ -1,0 +1,322 @@
+[
+  {
+    "name": "Tokyo",
+    "asciiName": "Tokyo"
+  },
+  {
+    "name": "Yokohama",
+    "asciiName": "Yokohama"
+  },
+  {
+    "name": "Osaka",
+    "asciiName": "Osaka"
+  },
+  {
+    "name": "Nagoya",
+    "asciiName": "Nagoya"
+  },
+  {
+    "name": "Sapporo",
+    "asciiName": "Sapporo"
+  },
+  {
+    "name": "Fukuoka",
+    "asciiName": "Fukuoka"
+  },
+  {
+    "name": "Kawasaki",
+    "asciiName": "Kawasaki"
+  },
+  {
+    "name": "Kobe",
+    "asciiName": "Kobe"
+  },
+  {
+    "name": "Kyoto",
+    "asciiName": "Kyoto"
+  },
+  {
+    "name": "Saitama",
+    "asciiName": "Saitama"
+  },
+  {
+    "name": "Hiroshima",
+    "asciiName": "Hiroshima"
+  },
+  {
+    "name": "Sendai",
+    "asciiName": "Sendai"
+  },
+  {
+    "name": "Chiba",
+    "asciiName": "Chiba"
+  },
+  {
+    "name": "Kitakyushu",
+    "asciiName": "Kitakyushu"
+  },
+  {
+    "name": "Setagaya",
+    "asciiName": "Setagaya"
+  },
+  {
+    "name": "Sakai",
+    "asciiName": "Sakai"
+  },
+  {
+    "name": "Niigata",
+    "asciiName": "Niigata"
+  },
+  {
+    "name": "Hamamatsu",
+    "asciiName": "Hamamatsu"
+  },
+  {
+    "name": "Ōta",
+    "asciiName": "Ota"
+  },
+  {
+    "name": "Kumamoto",
+    "asciiName": "Kumamoto"
+  },
+  {
+    "name": "Aihara",
+    "asciiName": "Aihara"
+  },
+  {
+    "name": "Okayama",
+    "asciiName": "Okayama"
+  },
+  {
+    "name": "Sagamihara",
+    "asciiName": "Sagamihara"
+  },
+  {
+    "name": "Edogawe",
+    "asciiName": "Edogawe"
+  },
+  {
+    "name": "Adachi",
+    "asciiName": "Adachi"
+  },
+  {
+    "name": "Shizuoka",
+    "asciiName": "Shizuoka"
+  },
+  {
+    "name": "Honchō",
+    "asciiName": "Honcho"
+  },
+  {
+    "name": "Kawaguchi",
+    "asciiName": "Kawaguchi"
+  },
+  {
+    "name": "Kagoshima",
+    "asciiName": "Kagoshima"
+  },
+  {
+    "name": "Suginami",
+    "asciiName": "Suginami"
+  },
+  {
+    "name": "Itabashi",
+    "asciiName": "Itabashi"
+  },
+  {
+    "name": "Hachiōji",
+    "asciiName": "Hachioji"
+  },
+  {
+    "name": "Kotō",
+    "asciiName": "Koto"
+  },
+  {
+    "name": "Himeji",
+    "asciiName": "Himeji"
+  },
+  {
+    "name": "Utsunomiya",
+    "asciiName": "Utsunomiya"
+  },
+  {
+    "name": "Matsuyama",
+    "asciiName": "Matsuyama"
+  },
+  {
+    "name": "Matsudo",
+    "asciiName": "Matsudo"
+  },
+  {
+    "name": "Ichikawa",
+    "asciiName": "Ichikawa"
+  },
+  {
+    "name": "Higashiosaka",
+    "asciiName": "Higashiosaka"
+  },
+  {
+    "name": "Nishinomiya",
+    "asciiName": "Nishinomiya"
+  },
+  {
+    "name": "Kurashiki",
+    "asciiName": "Kurashiki"
+  },
+  {
+    "name": "Ōita",
+    "asciiName": "Oita"
+  },
+  {
+    "name": "Fukuyama",
+    "asciiName": "Fukuyama"
+  },
+  {
+    "name": "Kanazawa",
+    "asciiName": "Kanazawa"
+  },
+  {
+    "name": "Amagasaki",
+    "asciiName": "Amagasaki"
+  },
+  {
+    "name": "Katsushika",
+    "asciiName": "Katsushika"
+  },
+  {
+    "name": "Fujisawa",
+    "asciiName": "Fujisawa"
+  },
+  {
+    "name": "Kashiwa",
+    "asciiName": "Kashiwa"
+  },
+  {
+    "name": "Machida",
+    "asciiName": "Machida"
+  },
+  {
+    "name": "Toyota",
+    "asciiName": "Toyota"
+  },
+  {
+    "name": "Shinagawa",
+    "asciiName": "Shinagawa"
+  },
+  {
+    "name": "Takamatsu",
+    "asciiName": "Takamatsu"
+  },
+  {
+    "name": "Toyama",
+    "asciiName": "Toyama"
+  },
+  {
+    "name": "Yokosuka",
+    "asciiName": "Yokosuka"
+  },
+  {
+    "name": "Nagasaki",
+    "asciiName": "Nagasaki"
+  },
+  {
+    "name": "Hirakata",
+    "asciiName": "Hirakata"
+  },
+  {
+    "name": "Gifu",
+    "asciiName": "Gifu"
+  },
+  {
+    "name": "Toyonaka",
+    "asciiName": "Toyonaka"
+  },
+  {
+    "name": "Miyazaki",
+    "asciiName": "Miyazaki"
+  },
+  {
+    "name": "Suita",
+    "asciiName": "Suita"
+  },
+  {
+    "name": "Okazaki",
+    "asciiName": "Okazaki"
+  },
+  {
+    "name": "Ichinomiya",
+    "asciiName": "Ichinomiya"
+  },
+  {
+    "name": "Toyohashi",
+    "asciiName": "Toyohashi"
+  },
+  {
+    "name": "Minato",
+    "asciiName": "Minato"
+  },
+  {
+    "name": "Takasaki",
+    "asciiName": "Takasaki"
+  },
+  {
+    "name": "Nagano",
+    "asciiName": "Nagano"
+  },
+  {
+    "name": "Nara-shi",
+    "asciiName": "Nara-shi"
+  },
+  {
+    "name": "Iwaki",
+    "asciiName": "Iwaki"
+  },
+  {
+    "name": "Wakayama",
+    "asciiName": "Wakayama"
+  },
+  {
+    "name": "Kawagoe",
+    "asciiName": "Kawagoe"
+  },
+  {
+    "name": "Takatsuki",
+    "asciiName": "Takatsuki"
+  },
+  {
+    "name": "Shinjuku",
+    "asciiName": "Shinjuku"
+  },
+  {
+    "name": "Koshigaya",
+    "asciiName": "Koshigaya"
+  },
+  {
+    "name": "Ōtsu",
+    "asciiName": "Otsu"
+  },
+  {
+    "name": "Nakano",
+    "asciiName": "Nakano"
+  },
+  {
+    "name": "Tokorozawa",
+    "asciiName": "Tokorozawa"
+  },
+  {
+    "name": "Asahikawa",
+    "asciiName": "Asahikawa"
+  },
+  {
+    "name": "Maebashi",
+    "asciiName": "Maebashi"
+  },
+  {
+    "name": "Kita",
+    "asciiName": "Kita"
+  },
+  {
+    "name": "Kochi",
+    "asciiName": "Kochi"
+  }
+]

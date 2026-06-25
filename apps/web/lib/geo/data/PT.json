@@ -1,0 +1,322 @@
+[
+  {
+    "name": "Lisbon",
+    "asciiName": "Lisbon"
+  },
+  {
+    "name": "Porto",
+    "asciiName": "Porto"
+  },
+  {
+    "name": "Braga",
+    "asciiName": "Braga"
+  },
+  {
+    "name": "Amadora",
+    "asciiName": "Amadora"
+  },
+  {
+    "name": "Coimbra",
+    "asciiName": "Coimbra"
+  },
+  {
+    "name": "Leiria",
+    "asciiName": "Leiria"
+  },
+  {
+    "name": "Setúbal",
+    "asciiName": "Setubal"
+  },
+  {
+    "name": "Funchal",
+    "asciiName": "Funchal"
+  },
+  {
+    "name": "Viseu",
+    "asciiName": "Viseu"
+  },
+  {
+    "name": "Queluz",
+    "asciiName": "Queluz"
+  },
+  {
+    "name": "Cacém",
+    "asciiName": "Cacem"
+  },
+  {
+    "name": "Aveiro",
+    "asciiName": "Aveiro"
+  },
+  {
+    "name": "Vila Nova de Gaia",
+    "asciiName": "Vila Nova de Gaia"
+  },
+  {
+    "name": "Faro",
+    "asciiName": "Faro"
+  },
+  {
+    "name": "Algueirão",
+    "asciiName": "Algueirao"
+  },
+  {
+    "name": "Loures",
+    "asciiName": "Loures"
+  },
+  {
+    "name": "Felgueiras",
+    "asciiName": "Felgueiras"
+  },
+  {
+    "name": "Rio de Mouro",
+    "asciiName": "Rio de Mouro"
+  },
+  {
+    "name": "Odivelas",
+    "asciiName": "Odivelas"
+  },
+  {
+    "name": "Évora",
+    "asciiName": "Evora"
+  },
+  {
+    "name": "Amora",
+    "asciiName": "Amora"
+  },
+  {
+    "name": "Corroios",
+    "asciiName": "Corroios"
+  },
+  {
+    "name": "Barreiro",
+    "asciiName": "Barreiro"
+  },
+  {
+    "name": "Monsanto",
+    "asciiName": "Monsanto"
+  },
+  {
+    "name": "Rio Tinto",
+    "asciiName": "Rio Tinto"
+  },
+  {
+    "name": "São Domingos de Rana",
+    "asciiName": "Sao Domingos de Rana"
+  },
+  {
+    "name": "Figueira da Foz",
+    "asciiName": "Figueira da Foz"
+  },
+  {
+    "name": "Lumiar",
+    "asciiName": "Lumiar"
+  },
+  {
+    "name": "Paranhos",
+    "asciiName": "Paranhos"
+  },
+  {
+    "name": "Ponte de Lima",
+    "asciiName": "Ponte de Lima"
+  },
+  {
+    "name": "Olival",
+    "asciiName": "Olival"
+  },
+  {
+    "name": "Santo António dos Olivais",
+    "asciiName": "Santo Antonio dos Olivais"
+  },
+  {
+    "name": "Sesimbra",
+    "asciiName": "Sesimbra"
+  },
+  {
+    "name": "Guimarães",
+    "asciiName": "Guimaraes"
+  },
+  {
+    "name": "Guarda",
+    "asciiName": "Guarda"
+  },
+  {
+    "name": "Ermesinde",
+    "asciiName": "Ermesinde"
+  },
+  {
+    "name": "Santo Ovídio",
+    "asciiName": "Santo Ovidio"
+  },
+  {
+    "name": "Portimão",
+    "asciiName": "Portimao"
+  },
+  {
+    "name": "Damaia",
+    "asciiName": "Damaia"
+  },
+  {
+    "name": "Cidade Universitária",
+    "asciiName": "Cidade Universitaria"
+  },
+  {
+    "name": "Benfica",
+    "asciiName": "Benfica"
+  },
+  {
+    "name": "Cascais",
+    "asciiName": "Cascais"
+  },
+  {
+    "name": "Maia",
+    "asciiName": "Maia"
+  },
+  {
+    "name": "Viana do Castelo",
+    "asciiName": "Viana do Castelo"
+  },
+  {
+    "name": "Marvila",
+    "asciiName": "Marvila"
+  },
+  {
+    "name": "Bragança",
+    "asciiName": "Braganca"
+  },
+  {
+    "name": "Oeiras",
+    "asciiName": "Oeiras"
+  },
+  {
+    "name": "Beja",
+    "asciiName": "Beja"
+  },
+  {
+    "name": "Esposende",
+    "asciiName": "Esposende"
+  },
+  {
+    "name": "Afurada de Baixo",
+    "asciiName": "Afurada de Baixo"
+  },
+  {
+    "name": "Almada",
+    "asciiName": "Almada"
+  },
+  {
+    "name": "Olivais",
+    "asciiName": "Olivais"
+  },
+  {
+    "name": "Lagos",
+    "asciiName": "Lagos"
+  },
+  {
+    "name": "Castelo Branco",
+    "asciiName": "Castelo Branco"
+  },
+  {
+    "name": "Alcabideche",
+    "asciiName": "Alcabideche"
+  },
+  {
+    "name": "Bairro Novo",
+    "asciiName": "Bairro Novo"
+  },
+  {
+    "name": "Espinho",
+    "asciiName": "Espinho"
+  },
+  {
+    "name": "Câmara de Lobos",
+    "asciiName": "Camara de Lobos"
+  },
+  {
+    "name": "Alvalade",
+    "asciiName": "Alvalade"
+  },
+  {
+    "name": "Arrentela",
+    "asciiName": "Arrentela"
+  },
+  {
+    "name": "Montijo",
+    "asciiName": "Montijo"
+  },
+  {
+    "name": "Charneca de Caparica",
+    "asciiName": "Charneca de Caparica"
+  },
+  {
+    "name": "Campanhã",
+    "asciiName": "Campanha"
+  },
+  {
+    "name": "Santarém",
+    "asciiName": "Santarem"
+  },
+  {
+    "name": "Olhão",
+    "asciiName": "Olhao"
+  },
+  {
+    "name": "Aldoar",
+    "asciiName": "Aldoar"
+  },
+  {
+    "name": "Póvoa de Varzim",
+    "asciiName": "Povoa de Varzim"
+  },
+  {
+    "name": "Senhora da Hora",
+    "asciiName": "Senhora da Hora"
+  },
+  {
+    "name": "Marinha Grande",
+    "asciiName": "Marinha Grande"
+  },
+  {
+    "name": "Póvoa de Santa Iria",
+    "asciiName": "Povoa de Santa Iria"
+  },
+  {
+    "name": "Sequeira",
+    "asciiName": "Sequeira"
+  },
+  {
+    "name": "Massamá",
+    "asciiName": "Massama"
+  },
+  {
+    "name": "Matosinhos",
+    "asciiName": "Matosinhos"
+  },
+  {
+    "name": "Gondomar",
+    "asciiName": "Gondomar"
+  },
+  {
+    "name": "Águas Santas",
+    "asciiName": "Aguas Santas"
+  },
+  {
+    "name": "Vila do Conde",
+    "asciiName": "Vila do Conde"
+  },
+  {
+    "name": "Caldas da Rainha",
+    "asciiName": "Caldas da Rainha"
+  },
+  {
+    "name": "Alfornelos",
+    "asciiName": "Alfornelos"
+  },
+  {
+    "name": "São Martinho",
+    "asciiName": "Sao Martinho"
+  },
+  {
+    "name": "Canidelo",
+    "asciiName": "Canidelo"
+  }
+]

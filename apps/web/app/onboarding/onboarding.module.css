@@ -1,4 +1,4 @@
-/* Tela de onboarding (Noturno): login-card central com o perfil mínimo. */
+/* Tela de onboarding (Noturno): wizard de 2 passos (Fase 2, #215). */
 
 .screen {
   min-height: 100vh;
@@ -12,22 +12,66 @@
 
 .card {
   width: 100%;
-  max-width: 380px;
+  max-width: 400px;
   background: var(--surface);
   border: var(--border-hairline) solid var(--line);
   border-radius: 14px;
   padding: 32px 28px;
 }
 
+.eyebrow {
+  font-family: var(--font-mono), "Spline Sans Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-align: center;
+  margin: 0 0 10px;
+}
+
 .heading {
   font-size: 26px;
   margin: 0 0 4px;
+  text-align: center;
 }
 
 .sub {
   font-size: 14px;
   color: var(--text-muted);
-  margin: 0 0 24px;
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+/* Wizard */
+
+.wizard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.progressTrack {
+  height: 3px;
+  background: var(--fill-subtle);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: var(--radius-pill);
+  transition: width 0.3s ease;
+}
+
+.progressLabel {
+  font-family: var(--font-mono), "Spline Sans Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-align: center;
+  margin: 0;
 }
 
 .form {
@@ -48,8 +92,7 @@
   color: var(--text-faint);
 }
 
-.input,
-.select {
+.input {
   width: 100%;
   padding: 12px 14px;
   font-size: 15px;
@@ -59,15 +102,19 @@
   border-radius: var(--radius-btn);
 }
 
-.input:focus,
-.select:focus {
+.input:focus {
   outline: none;
   border-color: var(--accent);
 }
 
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
 .primary {
-  width: 100%;
-  margin-top: 6px;
+  flex: 1;
   padding: 12px 16px;
   font-family: var(--font-display), "Saira Condensed", sans-serif;
   font-size: 16px;
@@ -84,6 +131,25 @@
 .primary:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.secondary {
+  padding: 12px 16px;
+  font-family: var(--font-display), "Saira Condensed", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  background: transparent;
+  border: var(--border-hairline) solid var(--line-strong);
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+}
+
+.secondary:hover {
+  color: var(--text-body);
+  border-color: var(--line-muted);
 }
 
 .error {

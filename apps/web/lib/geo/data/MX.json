@@ -1,0 +1,322 @@
+[
+  {
+    "name": "Mexico City",
+    "asciiName": "Mexico City"
+  },
+  {
+    "name": "Tijuana",
+    "asciiName": "Tijuana"
+  },
+  {
+    "name": "Iztapalapa",
+    "asciiName": "Iztapalapa"
+  },
+  {
+    "name": "Puebla",
+    "asciiName": "Puebla"
+  },
+  {
+    "name": "Ecatepec de Morelos",
+    "asciiName": "Ecatepec de Morelos"
+  },
+  {
+    "name": "Santiago de Querétaro",
+    "asciiName": "Santiago de Queretaro"
+  },
+  {
+    "name": "León de los Aldama",
+    "asciiName": "Leon de los Aldama"
+  },
+  {
+    "name": "Ciudad Juárez",
+    "asciiName": "Ciudad Juarez"
+  },
+  {
+    "name": "Zapopan",
+    "asciiName": "Zapopan"
+  },
+  {
+    "name": "Guadalajara",
+    "asciiName": "Guadalajara"
+  },
+  {
+    "name": "Mérida",
+    "asciiName": "Merida"
+  },
+  {
+    "name": "Gustavo Adolfo Madero",
+    "asciiName": "Gustavo Adolfo Madero"
+  },
+  {
+    "name": "Monterrey",
+    "asciiName": "Monterrey"
+  },
+  {
+    "name": "Ciudad Nezahualcoyotl",
+    "asciiName": "Ciudad Nezahualcoyotl"
+  },
+  {
+    "name": "Mexicali",
+    "asciiName": "Mexicali"
+  },
+  {
+    "name": "Chihuahua",
+    "asciiName": "Chihuahua"
+  },
+  {
+    "name": "Cancún",
+    "asciiName": "Cancun"
+  },
+  {
+    "name": "Naucalpan de Juárez",
+    "asciiName": "Naucalpan de Juarez"
+  },
+  {
+    "name": "Hermosillo",
+    "asciiName": "Hermosillo"
+  },
+  {
+    "name": "Culiacán",
+    "asciiName": "Culiacan"
+  },
+  {
+    "name": "Morelia",
+    "asciiName": "Morelia"
+  },
+  {
+    "name": "Torreón",
+    "asciiName": "Torreon"
+  },
+  {
+    "name": "Álvaro Obregón",
+    "asciiName": "Alvaro Obregon"
+  },
+  {
+    "name": "San Luis Potosí",
+    "asciiName": "San Luis Potosi"
+  },
+  {
+    "name": "Aguascalientes",
+    "asciiName": "Aguascalientes"
+  },
+  {
+    "name": "Saltillo",
+    "asciiName": "Saltillo"
+  },
+  {
+    "name": "Guadalupe",
+    "asciiName": "Guadalupe"
+  },
+  {
+    "name": "Acapulco de Juárez",
+    "asciiName": "Acapulco de Juarez"
+  },
+  {
+    "name": "Tlalnepantla",
+    "asciiName": "Tlalnepantla"
+  },
+  {
+    "name": "Tlaquepaque",
+    "asciiName": "Tlaquepaque"
+  },
+  {
+    "name": "Coyoacán",
+    "asciiName": "Coyoacan"
+  },
+  {
+    "name": "Tuxtla",
+    "asciiName": "Tuxtla"
+  },
+  {
+    "name": "Reynosa",
+    "asciiName": "Reynosa"
+  },
+  {
+    "name": "Tlalpan",
+    "asciiName": "Tlalpan"
+  },
+  {
+    "name": "Cuautitlán Izcalli",
+    "asciiName": "Cuautitlan Izcalli"
+  },
+  {
+    "name": "Cuauhtémoc",
+    "asciiName": "Cuauhtemoc"
+  },
+  {
+    "name": "Victoria de Durango",
+    "asciiName": "Victoria de Durango"
+  },
+  {
+    "name": "Heroica Matamoros",
+    "asciiName": "Heroica Matamoros"
+  },
+  {
+    "name": "Toluca",
+    "asciiName": "Toluca"
+  },
+  {
+    "name": "Ciudad López Mateos",
+    "asciiName": "Ciudad Lopez Mateos"
+  },
+  {
+    "name": "Ciudad Apodaca",
+    "asciiName": "Ciudad Apodaca"
+  },
+  {
+    "name": "Ciudad General Escobedo",
+    "asciiName": "Ciudad General Escobedo"
+  },
+  {
+    "name": "Ensenada",
+    "asciiName": "Ensenada"
+  },
+  {
+    "name": "Xochimilco",
+    "asciiName": "Xochimilco"
+  },
+  {
+    "name": "Venustiano Carranza",
+    "asciiName": "Venustiano Carranza"
+  },
+  {
+    "name": "Veracruz",
+    "asciiName": "Veracruz"
+  },
+  {
+    "name": "Xalapa de Enríquez",
+    "asciiName": "Xalapa de Enriquez"
+  },
+  {
+    "name": "Nuevo Laredo",
+    "asciiName": "Nuevo Laredo"
+  },
+  {
+    "name": "Azcapotzalco",
+    "asciiName": "Azcapotzalco"
+  },
+  {
+    "name": "San Nicolás de los Garza",
+    "asciiName": "San Nicolas de los Garza"
+  },
+  {
+    "name": "Tonalá",
+    "asciiName": "Tonala"
+  },
+  {
+    "name": "Ojo de Agua",
+    "asciiName": "Ojo de Agua"
+  },
+  {
+    "name": "Benito Juárez",
+    "asciiName": "Benito Juarez"
+  },
+  {
+    "name": "Xico",
+    "asciiName": "Xico"
+  },
+  {
+    "name": "Iztacalco",
+    "asciiName": "Iztacalco"
+  },
+  {
+    "name": "Mazatlán",
+    "asciiName": "Mazatlan"
+  },
+  {
+    "name": "Irapuato",
+    "asciiName": "Irapuato"
+  },
+  {
+    "name": "Miguel Hidalgo",
+    "asciiName": "Miguel Hidalgo"
+  },
+  {
+    "name": "Benito Juarez",
+    "asciiName": "Benito Juarez"
+  },
+  {
+    "name": "Tapachula",
+    "asciiName": "Tapachula"
+  },
+  {
+    "name": "Villahermosa",
+    "asciiName": "Villahermosa"
+  },
+  {
+    "name": "Celaya",
+    "asciiName": "Celaya"
+  },
+  {
+    "name": "Cuernavaca",
+    "asciiName": "Cuernavaca"
+  },
+  {
+    "name": "Tepic",
+    "asciiName": "Tepic"
+  },
+  {
+    "name": "Ciudad Victoria",
+    "asciiName": "Ciudad Victoria"
+  },
+  {
+    "name": "Soledad de Graciano Sánchez",
+    "asciiName": "Soledad de Graciano Sanchez"
+  },
+  {
+    "name": "Ciudad Obregón",
+    "asciiName": "Ciudad Obregon"
+  },
+  {
+    "name": "Ixtapaluca",
+    "asciiName": "Ixtapaluca"
+  },
+  {
+    "name": "Coatzacoalcos",
+    "asciiName": "Coatzacoalcos"
+  },
+  {
+    "name": "Tampico",
+    "asciiName": "Tampico"
+  },
+  {
+    "name": "Ciudad Benito Juárez",
+    "asciiName": "Ciudad Benito Juarez"
+  },
+  {
+    "name": "Tláhuac",
+    "asciiName": "Tlahuac"
+  },
+  {
+    "name": "Santa Catarina",
+    "asciiName": "Santa Catarina"
+  },
+  {
+    "name": "Uruapan",
+    "asciiName": "Uruapan"
+  },
+  {
+    "name": "Cholula",
+    "asciiName": "Cholula"
+  },
+  {
+    "name": "Nicolás Romero",
+    "asciiName": "Nicolas Romero"
+  },
+  {
+    "name": "Zumpango",
+    "asciiName": "Zumpango"
+  },
+  {
+    "name": "Coacalco",
+    "asciiName": "Coacalco"
+  },
+  {
+    "name": "Nogales",
+    "asciiName": "Nogales"
+  },
+  {
+    "name": "Gómez Palacio",
+    "asciiName": "Gomez Palacio"
+  }
+]
