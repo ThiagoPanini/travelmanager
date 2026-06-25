@@ -1,0 +1,322 @@
+[
+  {
+    "name": "Sydney",
+    "asciiName": "Sydney"
+  },
+  {
+    "name": "Brisbane",
+    "asciiName": "Brisbane"
+  },
+  {
+    "name": "Melbourne",
+    "asciiName": "Melbourne"
+  },
+  {
+    "name": "Perth",
+    "asciiName": "Perth"
+  },
+  {
+    "name": "Adelaide",
+    "asciiName": "Adelaide"
+  },
+  {
+    "name": "Gold Coast",
+    "asciiName": "Gold Coast"
+  },
+  {
+    "name": "Newcastle",
+    "asciiName": "Newcastle"
+  },
+  {
+    "name": "Canberra",
+    "asciiName": "Canberra"
+  },
+  {
+    "name": "Central Coast",
+    "asciiName": "Central Coast"
+  },
+  {
+    "name": "Sunshine Coast",
+    "asciiName": "Sunshine Coast"
+  },
+  {
+    "name": "Logan City",
+    "asciiName": "Logan City"
+  },
+  {
+    "name": "Geelong",
+    "asciiName": "Geelong"
+  },
+  {
+    "name": "Wollongong",
+    "asciiName": "Wollongong"
+  },
+  {
+    "name": "Hobart",
+    "asciiName": "Hobart"
+  },
+  {
+    "name": "Townsville",
+    "asciiName": "Townsville"
+  },
+  {
+    "name": "Cairns",
+    "asciiName": "Cairns"
+  },
+  {
+    "name": "Toowoomba",
+    "asciiName": "Toowoomba"
+  },
+  {
+    "name": "Darwin",
+    "asciiName": "Darwin"
+  },
+  {
+    "name": "City of Port Phillip",
+    "asciiName": "City of Port Phillip"
+  },
+  {
+    "name": "Ballarat",
+    "asciiName": "Ballarat"
+  },
+  {
+    "name": "Mandurah",
+    "asciiName": "Mandurah"
+  },
+  {
+    "name": "Bendigo",
+    "asciiName": "Bendigo"
+  },
+  {
+    "name": "Caloundra",
+    "asciiName": "Caloundra"
+  },
+  {
+    "name": "Launceston",
+    "asciiName": "Launceston"
+  },
+  {
+    "name": "Maitland",
+    "asciiName": "Maitland"
+  },
+  {
+    "name": "Tuggeranong Administrative District",
+    "asciiName": "Tuggeranong Administrative District"
+  },
+  {
+    "name": "Mackay",
+    "asciiName": "Mackay"
+  },
+  {
+    "name": "Rockhampton",
+    "asciiName": "Rockhampton"
+  },
+  {
+    "name": "Coffs Harbour",
+    "asciiName": "Coffs Harbour"
+  },
+  {
+    "name": "Blue Mountains",
+    "asciiName": "Blue Mountains"
+  },
+  {
+    "name": "Bunbury",
+    "asciiName": "Bunbury"
+  },
+  {
+    "name": "Bundaberg",
+    "asciiName": "Bundaberg"
+  },
+  {
+    "name": "Adelaide Hills",
+    "asciiName": "Adelaide Hills"
+  },
+  {
+    "name": "Point Cook",
+    "asciiName": "Point Cook"
+  },
+  {
+    "name": "Craigieburn",
+    "asciiName": "Craigieburn"
+  },
+  {
+    "name": "Pittwater",
+    "asciiName": "Pittwater"
+  },
+  {
+    "name": "Melbourne City Centre",
+    "asciiName": "Melbourne City Centre"
+  },
+  {
+    "name": "Tarneit",
+    "asciiName": "Tarneit"
+  },
+  {
+    "name": "Pakenham",
+    "asciiName": "Pakenham"
+  },
+  {
+    "name": "Hervey Bay",
+    "asciiName": "Hervey Bay"
+  },
+  {
+    "name": "Port Macquarie",
+    "asciiName": "Port Macquarie"
+  },
+  {
+    "name": "Reservoir",
+    "asciiName": "Reservoir"
+  },
+  {
+    "name": "Berwick",
+    "asciiName": "Berwick"
+  },
+  {
+    "name": "Werribee",
+    "asciiName": "Werribee"
+  },
+  {
+    "name": "Blacktown",
+    "asciiName": "Blacktown"
+  },
+  {
+    "name": "Gladstone",
+    "asciiName": "Gladstone"
+  },
+  {
+    "name": "Tamworth",
+    "asciiName": "Tamworth"
+  },
+  {
+    "name": "Dubbo",
+    "asciiName": "Dubbo"
+  },
+  {
+    "name": "Glen Waverley",
+    "asciiName": "Glen Waverley"
+  },
+  {
+    "name": "Orange",
+    "asciiName": "Orange"
+  },
+  {
+    "name": "Castle Hill",
+    "asciiName": "Castle Hill"
+  },
+  {
+    "name": "Wodonga",
+    "asciiName": "Wodonga"
+  },
+  {
+    "name": "Sunbury",
+    "asciiName": "Sunbury"
+  },
+  {
+    "name": "Geraldton",
+    "asciiName": "Geraldton"
+  },
+  {
+    "name": "Baldivis",
+    "asciiName": "Baldivis"
+  },
+  {
+    "name": "St Albans",
+    "asciiName": "St Albans"
+  },
+  {
+    "name": "Frankston",
+    "asciiName": "Frankston"
+  },
+  {
+    "name": "Auburn",
+    "asciiName": "Auburn"
+  },
+  {
+    "name": "Hoppers Crossing",
+    "asciiName": "Hoppers Crossing"
+  },
+  {
+    "name": "Baulkham Hills",
+    "asciiName": "Baulkham Hills"
+  },
+  {
+    "name": "Truganina",
+    "asciiName": "Truganina"
+  },
+  {
+    "name": "Bathurst",
+    "asciiName": "Bathurst"
+  },
+  {
+    "name": "Mount Waverley",
+    "asciiName": "Mount Waverley"
+  },
+  {
+    "name": "Saint Albans",
+    "asciiName": "Saint Albans"
+  },
+  {
+    "name": "Albany",
+    "asciiName": "Albany"
+  },
+  {
+    "name": "Bankstown",
+    "asciiName": "Bankstown"
+  },
+  {
+    "name": "Mildura",
+    "asciiName": "Mildura"
+  },
+  {
+    "name": "Canning Vale",
+    "asciiName": "Canning Vale"
+  },
+  {
+    "name": "Frankston East",
+    "asciiName": "Frankston East"
+  },
+  {
+    "name": "Preston",
+    "asciiName": "Preston"
+  },
+  {
+    "name": "Palmerston",
+    "asciiName": "Palmerston"
+  },
+  {
+    "name": "Rowville",
+    "asciiName": "Rowville"
+  },
+  {
+    "name": "Epping",
+    "asciiName": "Epping"
+  },
+  {
+    "name": "Southport",
+    "asciiName": "Southport"
+  },
+  {
+    "name": "Warrnambool",
+    "asciiName": "Warrnambool"
+  },
+  {
+    "name": "Shepparton",
+    "asciiName": "Shepparton"
+  },
+  {
+    "name": "Surfers Paradise",
+    "asciiName": "Surfers Paradise"
+  },
+  {
+    "name": "Doncaster East",
+    "asciiName": "Doncaster East"
+  },
+  {
+    "name": "Noble Park",
+    "asciiName": "Noble Park"
+  },
+  {
+    "name": "Narre Warren South",
+    "asciiName": "Narre Warren South"
+  }
+]

@@ -1,0 +1,322 @@
+[
+  {
+    "name": "Rome",
+    "asciiName": "Rome"
+  },
+  {
+    "name": "Milan",
+    "asciiName": "Milan"
+  },
+  {
+    "name": "Naples",
+    "asciiName": "Naples"
+  },
+  {
+    "name": "Turin",
+    "asciiName": "Turin"
+  },
+  {
+    "name": "Palermo",
+    "asciiName": "Palermo"
+  },
+  {
+    "name": "Genoa",
+    "asciiName": "Genoa"
+  },
+  {
+    "name": "Bologna",
+    "asciiName": "Bologna"
+  },
+  {
+    "name": "Florence",
+    "asciiName": "Florence"
+  },
+  {
+    "name": "Bari",
+    "asciiName": "Bari"
+  },
+  {
+    "name": "Catania",
+    "asciiName": "Catania"
+  },
+  {
+    "name": "Verona",
+    "asciiName": "Verona"
+  },
+  {
+    "name": "Messina",
+    "asciiName": "Messina"
+  },
+  {
+    "name": "Trieste",
+    "asciiName": "Trieste"
+  },
+  {
+    "name": "Padua",
+    "asciiName": "Padua"
+  },
+  {
+    "name": "Brescia",
+    "asciiName": "Brescia"
+  },
+  {
+    "name": "Taranto",
+    "asciiName": "Taranto"
+  },
+  {
+    "name": "Parma",
+    "asciiName": "Parma"
+  },
+  {
+    "name": "Prato",
+    "asciiName": "Prato"
+  },
+  {
+    "name": "Modena",
+    "asciiName": "Modena"
+  },
+  {
+    "name": "Reggio Calabria",
+    "asciiName": "Reggio Calabria"
+  },
+  {
+    "name": "Quarto Oggiaro",
+    "asciiName": "Quarto Oggiaro"
+  },
+  {
+    "name": "Reggio nell'Emilia",
+    "asciiName": "Reggio nell'Emilia"
+  },
+  {
+    "name": "Livorno",
+    "asciiName": "Livorno"
+  },
+  {
+    "name": "Cagliari",
+    "asciiName": "Cagliari"
+  },
+  {
+    "name": "Rimini",
+    "asciiName": "Rimini"
+  },
+  {
+    "name": "Mestre",
+    "asciiName": "Mestre"
+  },
+  {
+    "name": "Circoiscrizione II",
+    "asciiName": "Circoiscrizione II"
+  },
+  {
+    "name": "Foggia",
+    "asciiName": "Foggia"
+  },
+  {
+    "name": "Circoiscrizione VIII",
+    "asciiName": "Circoiscrizione VIII"
+  },
+  {
+    "name": "Ferrara",
+    "asciiName": "Ferrara"
+  },
+  {
+    "name": "Circoiscrizione III",
+    "asciiName": "Circoiscrizione III"
+  },
+  {
+    "name": "Acilia-Castel Fusano-Ostia Antica",
+    "asciiName": "Acilia-Castel Fusano-Ostia Antica"
+  },
+  {
+    "name": "Circoiscrizione V",
+    "asciiName": "Circoiscrizione V"
+  },
+  {
+    "name": "Salerno",
+    "asciiName": "Salerno"
+  },
+  {
+    "name": "Monza",
+    "asciiName": "Monza"
+  },
+  {
+    "name": "Siracusa",
+    "asciiName": "Siracusa"
+  },
+  {
+    "name": "Bergamo",
+    "asciiName": "Bergamo"
+  },
+  {
+    "name": "Trento",
+    "asciiName": "Trento"
+  },
+  {
+    "name": "Perugia",
+    "asciiName": "Perugia"
+  },
+  {
+    "name": "Pescara",
+    "asciiName": "Pescara"
+  },
+  {
+    "name": "Forlì",
+    "asciiName": "Forli"
+  },
+  {
+    "name": "Vicenza",
+    "asciiName": "Vicenza"
+  },
+  {
+    "name": "Terni",
+    "asciiName": "Terni"
+  },
+  {
+    "name": "Pisa",
+    "asciiName": "Pisa"
+  },
+  {
+    "name": "Bolzano",
+    "asciiName": "Bolzano"
+  },
+  {
+    "name": "Circoiscrizione VI",
+    "asciiName": "Circoiscrizione VI"
+  },
+  {
+    "name": "Piacenza",
+    "asciiName": "Piacenza"
+  },
+  {
+    "name": "Novara",
+    "asciiName": "Novara"
+  },
+  {
+    "name": "Arezzo",
+    "asciiName": "Arezzo"
+  },
+  {
+    "name": "Udine",
+    "asciiName": "Udine"
+  },
+  {
+    "name": "Andria",
+    "asciiName": "Andria"
+  },
+  {
+    "name": "Circoiscrizione IV",
+    "asciiName": "Circoiscrizione IV"
+  },
+  {
+    "name": "Cesena",
+    "asciiName": "Cesena"
+  },
+  {
+    "name": "La Spezia",
+    "asciiName": "La Spezia"
+  },
+  {
+    "name": "Barletta",
+    "asciiName": "Barletta"
+  },
+  {
+    "name": "Alessandria",
+    "asciiName": "Alessandria"
+  },
+  {
+    "name": "Sassari",
+    "asciiName": "Sassari"
+  },
+  {
+    "name": "Ancona",
+    "asciiName": "Ancona"
+  },
+  {
+    "name": "Circoiscrizione VII",
+    "asciiName": "Circoiscrizione VII"
+  },
+  {
+    "name": "Guidonia Montecelio",
+    "asciiName": "Guidonia Montecelio"
+  },
+  {
+    "name": "Campo di Marte",
+    "asciiName": "Campo di Marte"
+  },
+  {
+    "name": "Brindisi",
+    "asciiName": "Brindisi"
+  },
+  {
+    "name": "Treviso",
+    "asciiName": "Treviso"
+  },
+  {
+    "name": "Torre del Greco",
+    "asciiName": "Torre del Greco"
+  },
+  {
+    "name": "Lido di Ostia",
+    "asciiName": "Lido di Ostia"
+  },
+  {
+    "name": "Como",
+    "asciiName": "Como"
+  },
+  {
+    "name": "Busto Arsizio",
+    "asciiName": "Busto Arsizio"
+  },
+  {
+    "name": "Sesto San Giovanni",
+    "asciiName": "Sesto San Giovanni"
+  },
+  {
+    "name": "Lucca",
+    "asciiName": "Lucca"
+  },
+  {
+    "name": "Pozzuoli",
+    "asciiName": "Pozzuoli"
+  },
+  {
+    "name": "Ravenna",
+    "asciiName": "Ravenna"
+  },
+  {
+    "name": "Lecce",
+    "asciiName": "Lecce"
+  },
+  {
+    "name": "Varese",
+    "asciiName": "Varese"
+  },
+  {
+    "name": "Giugliano in Campania",
+    "asciiName": "Giugliano in Campania"
+  },
+  {
+    "name": "Catanzaro",
+    "asciiName": "Catanzaro"
+  },
+  {
+    "name": "Circoiscrizione I",
+    "asciiName": "Circoiscrizione I"
+  },
+  {
+    "name": "Marsala",
+    "asciiName": "Marsala"
+  },
+  {
+    "name": "Pesaro",
+    "asciiName": "Pesaro"
+  },
+  {
+    "name": "Fuorigrotta",
+    "asciiName": "Fuorigrotta"
+  },
+  {
+    "name": "Latina",
+    "asciiName": "Latina"
+  }
+]

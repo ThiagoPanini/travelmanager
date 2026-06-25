@@ -1,0 +1,322 @@
+[
+  {
+    "name": "Paris",
+    "asciiName": "Paris"
+  },
+  {
+    "name": "Marseille",
+    "asciiName": "Marseille"
+  },
+  {
+    "name": "Lyon",
+    "asciiName": "Lyon"
+  },
+  {
+    "name": "Toulouse",
+    "asciiName": "Toulouse"
+  },
+  {
+    "name": "Nice",
+    "asciiName": "Nice"
+  },
+  {
+    "name": "Nantes",
+    "asciiName": "Nantes"
+  },
+  {
+    "name": "Marne La Vallée",
+    "asciiName": "Marne La Vallee"
+  },
+  {
+    "name": "Strasbourg",
+    "asciiName": "Strasbourg"
+  },
+  {
+    "name": "Bordeaux",
+    "asciiName": "Bordeaux"
+  },
+  {
+    "name": "Montpellier",
+    "asciiName": "Montpellier"
+  },
+  {
+    "name": "Lille",
+    "asciiName": "Lille"
+  },
+  {
+    "name": "Paris 15 Vaugirard",
+    "asciiName": "Paris 15 Vaugirard"
+  },
+  {
+    "name": "Rennes",
+    "asciiName": "Rennes"
+  },
+  {
+    "name": "Reims",
+    "asciiName": "Reims"
+  },
+  {
+    "name": "Le Havre",
+    "asciiName": "Le Havre"
+  },
+  {
+    "name": "Paris 20 Ménilmontant",
+    "asciiName": "Paris 20 Menilmontant"
+  },
+  {
+    "name": "Cergy-Pontoise",
+    "asciiName": "Cergy-Pontoise"
+  },
+  {
+    "name": "Paris 18 Buttes-Montmartre",
+    "asciiName": "Paris 18 Buttes-Montmartre"
+  },
+  {
+    "name": "Paris 13 Gobelins",
+    "asciiName": "Paris 13 Gobelins"
+  },
+  {
+    "name": "Paris 19 Buttes-Chaumont",
+    "asciiName": "Paris 19 Buttes-Chaumont"
+  },
+  {
+    "name": "Paris 13e Arrondissement",
+    "asciiName": "Paris 13e Arrondissement"
+  },
+  {
+    "name": "Saint-Étienne",
+    "asciiName": "Saint-Etienne"
+  },
+  {
+    "name": "Toulon",
+    "asciiName": "Toulon"
+  },
+  {
+    "name": "Angers",
+    "asciiName": "Angers"
+  },
+  {
+    "name": "Dijon",
+    "asciiName": "Dijon"
+  },
+  {
+    "name": "Paris 16 Passy",
+    "asciiName": "Paris 16 Passy"
+  },
+  {
+    "name": "Paris 17 Batignolles-Monceau",
+    "asciiName": "Paris 17 Batignolles-Monceau"
+  },
+  {
+    "name": "Grenoble",
+    "asciiName": "Grenoble"
+  },
+  {
+    "name": "Nîmes",
+    "asciiName": "Nimes"
+  },
+  {
+    "name": "Clermont-Ferrand",
+    "asciiName": "Clermont-Ferrand"
+  },
+  {
+    "name": "Aix-en-Provence",
+    "asciiName": "Aix-en-Provence"
+  },
+  {
+    "name": "Saint-Quentin-en-Yvelines",
+    "asciiName": "Saint-Quentin-en-Yvelines"
+  },
+  {
+    "name": "Brest",
+    "asciiName": "Brest"
+  },
+  {
+    "name": "Le Mans",
+    "asciiName": "Le Mans"
+  },
+  {
+    "name": "Paris 11e Arrondissement",
+    "asciiName": "Paris 11e Arrondissement"
+  },
+  {
+    "name": "Amiens",
+    "asciiName": "Amiens"
+  },
+  {
+    "name": "Tours",
+    "asciiName": "Tours"
+  },
+  {
+    "name": "Limoges",
+    "asciiName": "Limoges"
+  },
+  {
+    "name": "Paris 12e Arrondissement",
+    "asciiName": "Paris 12e Arrondissement"
+  },
+  {
+    "name": "Paris 11 Popincourt",
+    "asciiName": "Paris 11 Popincourt"
+  },
+  {
+    "name": "Paris 12 Reuilly",
+    "asciiName": "Paris 12 Reuilly"
+  },
+  {
+    "name": "Paris 14 Observatoire",
+    "asciiName": "Paris 14 Observatoire"
+  },
+  {
+    "name": "Villeurbanne",
+    "asciiName": "Villeurbanne"
+  },
+  {
+    "name": "Besançon",
+    "asciiName": "Besancon"
+  },
+  {
+    "name": "Metz",
+    "asciiName": "Metz"
+  },
+  {
+    "name": "Orléans",
+    "asciiName": "Orleans"
+  },
+  {
+    "name": "Rouen",
+    "asciiName": "Rouen"
+  },
+  {
+    "name": "Mulhouse",
+    "asciiName": "Mulhouse"
+  },
+  {
+    "name": "Montreuil",
+    "asciiName": "Montreuil"
+  },
+  {
+    "name": "Perpignan",
+    "asciiName": "Perpignan"
+  },
+  {
+    "name": "Caen",
+    "asciiName": "Caen"
+  },
+  {
+    "name": "Boulogne-Billancourt",
+    "asciiName": "Boulogne-Billancourt"
+  },
+  {
+    "name": "Nancy",
+    "asciiName": "Nancy"
+  },
+  {
+    "name": "Lyon 03",
+    "asciiName": "Lyon 03"
+  },
+  {
+    "name": "Argenteuil",
+    "asciiName": "Argenteuil"
+  },
+  {
+    "name": "Roubaix",
+    "asciiName": "Roubaix"
+  },
+  {
+    "name": "Tourcoing",
+    "asciiName": "Tourcoing"
+  },
+  {
+    "name": "Saint-Denis",
+    "asciiName": "Saint-Denis"
+  },
+  {
+    "name": "Avignon",
+    "asciiName": "Avignon"
+  },
+  {
+    "name": "Marseille 13",
+    "asciiName": "Marseille 13"
+  },
+  {
+    "name": "Asnières-sur-Seine",
+    "asciiName": "Asnieres-sur-Seine"
+  },
+  {
+    "name": "Nanterre",
+    "asciiName": "Nanterre"
+  },
+  {
+    "name": "Dunkirk",
+    "asciiName": "Dunkirk"
+  },
+  {
+    "name": "Lyon 08",
+    "asciiName": "Lyon 08"
+  },
+  {
+    "name": "Poitiers",
+    "asciiName": "Poitiers"
+  },
+  {
+    "name": "Versailles",
+    "asciiName": "Versailles"
+  },
+  {
+    "name": "Courbevoie",
+    "asciiName": "Courbevoie"
+  },
+  {
+    "name": "Créteil",
+    "asciiName": "Creteil"
+  },
+  {
+    "name": "Paris 10 Entrepôt",
+    "asciiName": "Paris 10 Entrepot"
+  },
+  {
+    "name": "Paris 10e Arrondissement",
+    "asciiName": "Paris 10e Arrondissement"
+  },
+  {
+    "name": "Pau",
+    "asciiName": "Pau"
+  },
+  {
+    "name": "Lyon 07",
+    "asciiName": "Lyon 07"
+  },
+  {
+    "name": "Colombes",
+    "asciiName": "Colombes"
+  },
+  {
+    "name": "Vitry-sur-Seine",
+    "asciiName": "Vitry-sur-Seine"
+  },
+  {
+    "name": "Aulnay-sous-Bois",
+    "asciiName": "Aulnay-sous-Bois"
+  },
+  {
+    "name": "Marseille 08",
+    "asciiName": "Marseille 08"
+  },
+  {
+    "name": "Marseille 15",
+    "asciiName": "Marseille 15"
+  },
+  {
+    "name": "Marseille 09",
+    "asciiName": "Marseille 09"
+  },
+  {
+    "name": "La Rochelle",
+    "asciiName": "La Rochelle"
+  },
+  {
+    "name": "Champigny-sur-Marne",
+    "asciiName": "Champigny-sur-Marne"
+  }
+]

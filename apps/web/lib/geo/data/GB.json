@@ -1,0 +1,322 @@
+[
+  {
+    "name": "London",
+    "asciiName": "London"
+  },
+  {
+    "name": "Birmingham",
+    "asciiName": "Birmingham"
+  },
+  {
+    "name": "Glasgow",
+    "asciiName": "Glasgow"
+  },
+  {
+    "name": "Manchester",
+    "asciiName": "Manchester"
+  },
+  {
+    "name": "Sheffield",
+    "asciiName": "Sheffield"
+  },
+  {
+    "name": "Leeds",
+    "asciiName": "Leeds"
+  },
+  {
+    "name": "Edinburgh",
+    "asciiName": "Edinburgh"
+  },
+  {
+    "name": "Liverpool",
+    "asciiName": "Liverpool"
+  },
+  {
+    "name": "Bristol",
+    "asciiName": "Bristol"
+  },
+  {
+    "name": "Cardiff",
+    "asciiName": "Cardiff"
+  },
+  {
+    "name": "Leicester",
+    "asciiName": "Leicester"
+  },
+  {
+    "name": "Bradford",
+    "asciiName": "Bradford"
+  },
+  {
+    "name": "Belfast",
+    "asciiName": "Belfast"
+  },
+  {
+    "name": "Coventry",
+    "asciiName": "Coventry"
+  },
+  {
+    "name": "Brent",
+    "asciiName": "Brent"
+  },
+  {
+    "name": "Birkenhead",
+    "asciiName": "Birkenhead"
+  },
+  {
+    "name": "Nottingham",
+    "asciiName": "Nottingham"
+  },
+  {
+    "name": "Islington",
+    "asciiName": "Islington"
+  },
+  {
+    "name": "Reading",
+    "asciiName": "Reading"
+  },
+  {
+    "name": "Kingston upon Hull",
+    "asciiName": "Kingston upon Hull"
+  },
+  {
+    "name": "Preston",
+    "asciiName": "Preston"
+  },
+  {
+    "name": "Swansea",
+    "asciiName": "Swansea"
+  },
+  {
+    "name": "Newcastle upon Tyne",
+    "asciiName": "Newcastle upon Tyne"
+  },
+  {
+    "name": "Southend-on-Sea",
+    "asciiName": "Southend-on-Sea"
+  },
+  {
+    "name": "Brighton",
+    "asciiName": "Brighton"
+  },
+  {
+    "name": "Derby",
+    "asciiName": "Derby"
+  },
+  {
+    "name": "Southampton",
+    "asciiName": "Southampton"
+  },
+  {
+    "name": "Wolverhampton",
+    "asciiName": "Wolverhampton"
+  },
+  {
+    "name": "Plymouth",
+    "asciiName": "Plymouth"
+  },
+  {
+    "name": "Stoke-on-Trent",
+    "asciiName": "Stoke-on-Trent"
+  },
+  {
+    "name": "Milton Keynes",
+    "asciiName": "Milton Keynes"
+  },
+  {
+    "name": "City of Westminster",
+    "asciiName": "City of Westminster"
+  },
+  {
+    "name": "Northampton",
+    "asciiName": "Northampton"
+  },
+  {
+    "name": "Oldham",
+    "asciiName": "Oldham"
+  },
+  {
+    "name": "Bexley",
+    "asciiName": "Bexley"
+  },
+  {
+    "name": "Luton",
+    "asciiName": "Luton"
+  },
+  {
+    "name": "Barking",
+    "asciiName": "Barking"
+  },
+  {
+    "name": "Archway",
+    "asciiName": "Archway"
+  },
+  {
+    "name": "Portsmouth",
+    "asciiName": "Portsmouth"
+  },
+  {
+    "name": "Swindon",
+    "asciiName": "Swindon"
+  },
+  {
+    "name": "Dudley",
+    "asciiName": "Dudley"
+  },
+  {
+    "name": "Aberdeen",
+    "asciiName": "Aberdeen"
+  },
+  {
+    "name": "Sutton",
+    "asciiName": "Sutton"
+  },
+  {
+    "name": "St Helens",
+    "asciiName": "St Helens"
+  },
+  {
+    "name": "Ipswich",
+    "asciiName": "Ipswich"
+  },
+  {
+    "name": "Wigan",
+    "asciiName": "Wigan"
+  },
+  {
+    "name": "Croydon",
+    "asciiName": "Croydon"
+  },
+  {
+    "name": "Warrington",
+    "asciiName": "Warrington"
+  },
+  {
+    "name": "Walsall",
+    "asciiName": "Walsall"
+  },
+  {
+    "name": "Mansfield",
+    "asciiName": "Mansfield"
+  },
+  {
+    "name": "Sunderland",
+    "asciiName": "Sunderland"
+  },
+  {
+    "name": "Ilford",
+    "asciiName": "Ilford"
+  },
+  {
+    "name": "Slough",
+    "asciiName": "Slough"
+  },
+  {
+    "name": "Bournemouth",
+    "asciiName": "Bournemouth"
+  },
+  {
+    "name": "Peterborough",
+    "asciiName": "Peterborough"
+  },
+  {
+    "name": "Oxford",
+    "asciiName": "Oxford"
+  },
+  {
+    "name": "Newport",
+    "asciiName": "Newport"
+  },
+  {
+    "name": "Enfield Town",
+    "asciiName": "Enfield Town"
+  },
+  {
+    "name": "York",
+    "asciiName": "York"
+  },
+  {
+    "name": "Telford",
+    "asciiName": "Telford"
+  },
+  {
+    "name": "Poole",
+    "asciiName": "Poole"
+  },
+  {
+    "name": "Burnley",
+    "asciiName": "Burnley"
+  },
+  {
+    "name": "Harrow",
+    "asciiName": "Harrow"
+  },
+  {
+    "name": "Huddersfield",
+    "asciiName": "Huddersfield"
+  },
+  {
+    "name": "Dundee",
+    "asciiName": "Dundee"
+  },
+  {
+    "name": "Blackburn",
+    "asciiName": "Blackburn"
+  },
+  {
+    "name": "Cambridge",
+    "asciiName": "Cambridge"
+  },
+  {
+    "name": "Blackpool",
+    "asciiName": "Blackpool"
+  },
+  {
+    "name": "Basildon",
+    "asciiName": "Basildon"
+  },
+  {
+    "name": "Norwich",
+    "asciiName": "Norwich"
+  },
+  {
+    "name": "Middlesbrough",
+    "asciiName": "Middlesbrough"
+  },
+  {
+    "name": "Bolton",
+    "asciiName": "Bolton"
+  },
+  {
+    "name": "Stockport",
+    "asciiName": "Stockport"
+  },
+  {
+    "name": "High Wycombe",
+    "asciiName": "High Wycombe"
+  },
+  {
+    "name": "Gloucester",
+    "asciiName": "Gloucester"
+  },
+  {
+    "name": "Exeter",
+    "asciiName": "Exeter"
+  },
+  {
+    "name": "Colchester",
+    "asciiName": "Colchester"
+  },
+  {
+    "name": "Tottenham",
+    "asciiName": "Tottenham"
+  },
+  {
+    "name": "Salford",
+    "asciiName": "Salford"
+  },
+  {
+    "name": "Newcastle under Lyme",
+    "asciiName": "Newcastle under Lyme"
+  }
+]

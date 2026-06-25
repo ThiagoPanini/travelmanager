@@ -1,0 +1,322 @@
+[
+  {
+    "name": "New York City",
+    "asciiName": "New York City"
+  },
+  {
+    "name": "Los Angeles",
+    "asciiName": "Los Angeles"
+  },
+  {
+    "name": "Brooklyn",
+    "asciiName": "Brooklyn"
+  },
+  {
+    "name": "Chicago",
+    "asciiName": "Chicago"
+  },
+  {
+    "name": "Queens",
+    "asciiName": "Queens"
+  },
+  {
+    "name": "Houston",
+    "asciiName": "Houston"
+  },
+  {
+    "name": "Phoenix",
+    "asciiName": "Phoenix"
+  },
+  {
+    "name": "Philadelphia",
+    "asciiName": "Philadelphia"
+  },
+  {
+    "name": "San Antonio",
+    "asciiName": "San Antonio"
+  },
+  {
+    "name": "Manhattan",
+    "asciiName": "Manhattan"
+  },
+  {
+    "name": "San Diego",
+    "asciiName": "San Diego"
+  },
+  {
+    "name": "The Bronx",
+    "asciiName": "The Bronx"
+  },
+  {
+    "name": "Dallas",
+    "asciiName": "Dallas"
+  },
+  {
+    "name": "Jacksonville",
+    "asciiName": "Jacksonville"
+  },
+  {
+    "name": "Fort Worth",
+    "asciiName": "Fort Worth"
+  },
+  {
+    "name": "San Jose",
+    "asciiName": "San Jose"
+  },
+  {
+    "name": "Austin",
+    "asciiName": "Austin"
+  },
+  {
+    "name": "Columbus",
+    "asciiName": "Columbus"
+  },
+  {
+    "name": "Charlotte",
+    "asciiName": "Charlotte"
+  },
+  {
+    "name": "Indianapolis",
+    "asciiName": "Indianapolis"
+  },
+  {
+    "name": "San Francisco",
+    "asciiName": "San Francisco"
+  },
+  {
+    "name": "Seattle",
+    "asciiName": "Seattle"
+  },
+  {
+    "name": "Denver",
+    "asciiName": "Denver"
+  },
+  {
+    "name": "Washington",
+    "asciiName": "Washington"
+  },
+  {
+    "name": "Nashville",
+    "asciiName": "Nashville"
+  },
+  {
+    "name": "Oklahoma City",
+    "asciiName": "Oklahoma City"
+  },
+  {
+    "name": "El Paso",
+    "asciiName": "El Paso"
+  },
+  {
+    "name": "Boston",
+    "asciiName": "Boston"
+  },
+  {
+    "name": "Portland",
+    "asciiName": "Portland"
+  },
+  {
+    "name": "Detroit",
+    "asciiName": "Detroit"
+  },
+  {
+    "name": "Las Vegas",
+    "asciiName": "Las Vegas"
+  },
+  {
+    "name": "New South Memphis",
+    "asciiName": "New South Memphis"
+  },
+  {
+    "name": "Memphis",
+    "asciiName": "Memphis"
+  },
+  {
+    "name": "Louisville",
+    "asciiName": "Louisville"
+  },
+  {
+    "name": "Baltimore",
+    "asciiName": "Baltimore"
+  },
+  {
+    "name": "South Boston",
+    "asciiName": "South Boston"
+  },
+  {
+    "name": "Albuquerque",
+    "asciiName": "Albuquerque"
+  },
+  {
+    "name": "Milwaukee",
+    "asciiName": "Milwaukee"
+  },
+  {
+    "name": "Tucson",
+    "asciiName": "Tucson"
+  },
+  {
+    "name": "Fresno",
+    "asciiName": "Fresno"
+  },
+  {
+    "name": "Sacramento",
+    "asciiName": "Sacramento"
+  },
+  {
+    "name": "Atlanta",
+    "asciiName": "Atlanta"
+  },
+  {
+    "name": "Miami",
+    "asciiName": "Miami"
+  },
+  {
+    "name": "Omaha",
+    "asciiName": "Omaha"
+  },
+  {
+    "name": "Raleigh",
+    "asciiName": "Raleigh"
+  },
+  {
+    "name": "Kansas City",
+    "asciiName": "Kansas City"
+  },
+  {
+    "name": "Long Beach",
+    "asciiName": "Long Beach"
+  },
+  {
+    "name": "Mesa",
+    "asciiName": "Mesa"
+  },
+  {
+    "name": "Staten Island",
+    "asciiName": "Staten Island"
+  },
+  {
+    "name": "Colorado Springs",
+    "asciiName": "Colorado Springs"
+  },
+  {
+    "name": "Virginia Beach",
+    "asciiName": "Virginia Beach"
+  },
+  {
+    "name": "Oakland",
+    "asciiName": "Oakland"
+  },
+  {
+    "name": "Tampa",
+    "asciiName": "Tampa"
+  },
+  {
+    "name": "Tulsa",
+    "asciiName": "Tulsa"
+  },
+  {
+    "name": "Minneapolis",
+    "asciiName": "Minneapolis"
+  },
+  {
+    "name": "Wichita",
+    "asciiName": "Wichita"
+  },
+  {
+    "name": "Arlington",
+    "asciiName": "Arlington"
+  },
+  {
+    "name": "Bakersfield",
+    "asciiName": "Bakersfield"
+  },
+  {
+    "name": "Cleveland",
+    "asciiName": "Cleveland"
+  },
+  {
+    "name": "New Orleans",
+    "asciiName": "New Orleans"
+  },
+  {
+    "name": "Aurora",
+    "asciiName": "Aurora"
+  },
+  {
+    "name": "Honolulu",
+    "asciiName": "Honolulu"
+  },
+  {
+    "name": "Anaheim",
+    "asciiName": "Anaheim"
+  },
+  {
+    "name": "West Raleigh",
+    "asciiName": "West Raleigh"
+  },
+  {
+    "name": "Orlando",
+    "asciiName": "Orlando"
+  },
+  {
+    "name": "Lexington",
+    "asciiName": "Lexington"
+  },
+  {
+    "name": "Riverside",
+    "asciiName": "Riverside"
+  },
+  {
+    "name": "Corpus Christi",
+    "asciiName": "Corpus Christi"
+  },
+  {
+    "name": "Lexington-Fayette",
+    "asciiName": "Lexington-Fayette"
+  },
+  {
+    "name": "Cincinnati",
+    "asciiName": "Cincinnati"
+  },
+  {
+    "name": "Santa Ana",
+    "asciiName": "Santa Ana"
+  },
+  {
+    "name": "Stockton",
+    "asciiName": "Stockton"
+  },
+  {
+    "name": "Pittsburgh",
+    "asciiName": "Pittsburgh"
+  },
+  {
+    "name": "Saint Paul",
+    "asciiName": "Saint Paul"
+  },
+  {
+    "name": "Lincoln",
+    "asciiName": "Lincoln"
+  },
+  {
+    "name": "Anchorage",
+    "asciiName": "Anchorage"
+  },
+  {
+    "name": "Meads",
+    "asciiName": "Meads"
+  },
+  {
+    "name": "Henderson",
+    "asciiName": "Henderson"
+  },
+  {
+    "name": "Greensboro",
+    "asciiName": "Greensboro"
+  },
+  {
+    "name": "Plano",
+    "asciiName": "Plano"
+  }
+]

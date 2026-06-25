@@ -1,0 +1,322 @@
+[
+  {
+    "name": "São Paulo",
+    "asciiName": "Sao Paulo"
+  },
+  {
+    "name": "Rio de Janeiro",
+    "asciiName": "Rio de Janeiro"
+  },
+  {
+    "name": "Belo Horizonte",
+    "asciiName": "Belo Horizonte"
+  },
+  {
+    "name": "Salvador",
+    "asciiName": "Salvador"
+  },
+  {
+    "name": "Fortaleza",
+    "asciiName": "Fortaleza"
+  },
+  {
+    "name": "Manaus",
+    "asciiName": "Manaus"
+  },
+  {
+    "name": "Brasília",
+    "asciiName": "Brasilia"
+  },
+  {
+    "name": "Curitiba",
+    "asciiName": "Curitiba"
+  },
+  {
+    "name": "Recife",
+    "asciiName": "Recife"
+  },
+  {
+    "name": "Goiânia",
+    "asciiName": "Goiania"
+  },
+  {
+    "name": "Belém",
+    "asciiName": "Belem"
+  },
+  {
+    "name": "Porto Alegre",
+    "asciiName": "Porto Alegre"
+  },
+  {
+    "name": "Guarulhos",
+    "asciiName": "Guarulhos"
+  },
+  {
+    "name": "Maceió",
+    "asciiName": "Maceio"
+  },
+  {
+    "name": "Campinas",
+    "asciiName": "Campinas"
+  },
+  {
+    "name": "São Luís",
+    "asciiName": "Sao Luis"
+  },
+  {
+    "name": "Campo Grande",
+    "asciiName": "Campo Grande"
+  },
+  {
+    "name": "Natal",
+    "asciiName": "Natal"
+  },
+  {
+    "name": "Teresina",
+    "asciiName": "Teresina"
+  },
+  {
+    "name": "Nova Iguaçu",
+    "asciiName": "Nova Iguacu"
+  },
+  {
+    "name": "Duque de Caxias",
+    "asciiName": "Duque de Caxias"
+  },
+  {
+    "name": "João Pessoa",
+    "asciiName": "Joao Pessoa"
+  },
+  {
+    "name": "São Bernardo do Campo",
+    "asciiName": "Sao Bernardo do Campo"
+  },
+  {
+    "name": "São José dos Campos",
+    "asciiName": "Sao Jose dos Campos"
+  },
+  {
+    "name": "Osasco",
+    "asciiName": "Osasco"
+  },
+  {
+    "name": "Ribeirão Preto",
+    "asciiName": "Ribeirao Preto"
+  },
+  {
+    "name": "Sorocaba",
+    "asciiName": "Sorocaba"
+  },
+  {
+    "name": "Aracaju",
+    "asciiName": "Aracaju"
+  },
+  {
+    "name": "Santo André",
+    "asciiName": "Santo Andre"
+  },
+  {
+    "name": "Jaboatão dos Guararapes",
+    "asciiName": "Jaboatao dos Guararapes"
+  },
+  {
+    "name": "Contagem",
+    "asciiName": "Contagem"
+  },
+  {
+    "name": "Feira de Santana",
+    "asciiName": "Feira de Santana"
+  },
+  {
+    "name": "Cuiabá",
+    "asciiName": "Cuiaba"
+  },
+  {
+    "name": "Londrina",
+    "asciiName": "Londrina"
+  },
+  {
+    "name": "Juiz de Fora",
+    "asciiName": "Juiz de Fora"
+  },
+  {
+    "name": "Uberlândia",
+    "asciiName": "Uberlandia"
+  },
+  {
+    "name": "Porto Velho",
+    "asciiName": "Porto Velho"
+  },
+  {
+    "name": "Serra",
+    "asciiName": "Serra"
+  },
+  {
+    "name": "Macapá",
+    "asciiName": "Macapa"
+  },
+  {
+    "name": "Campos dos Goytacazes",
+    "asciiName": "Campos dos Goytacazes"
+  },
+  {
+    "name": "Aparecida de Goiânia",
+    "asciiName": "Aparecida de Goiania"
+  },
+  {
+    "name": "Florianópolis",
+    "asciiName": "Florianopolis"
+  },
+  {
+    "name": "São José do Rio Preto",
+    "asciiName": "Sao Jose do Rio Preto"
+  },
+  {
+    "name": "Mauá",
+    "asciiName": "Maua"
+  },
+  {
+    "name": "São João de Meriti",
+    "asciiName": "Sao Joao de Meriti"
+  },
+  {
+    "name": "Belford Roxo",
+    "asciiName": "Belford Roxo"
+  },
+  {
+    "name": "Joinville",
+    "asciiName": "Joinville"
+  },
+  {
+    "name": "Niterói",
+    "asciiName": "Niteroi"
+  },
+  {
+    "name": "Jundiaí",
+    "asciiName": "Jundiai"
+  },
+  {
+    "name": "Ananindeua",
+    "asciiName": "Ananindeua"
+  },
+  {
+    "name": "Santos",
+    "asciiName": "Santos"
+  },
+  {
+    "name": "Boa Vista",
+    "asciiName": "Boa Vista"
+  },
+  {
+    "name": "Rio Branco",
+    "asciiName": "Rio Branco"
+  },
+  {
+    "name": "Montes Claros",
+    "asciiName": "Montes Claros"
+  },
+  {
+    "name": "Piracicaba",
+    "asciiName": "Piracicaba"
+  },
+  {
+    "name": "Caruaru",
+    "asciiName": "Caruaru"
+  },
+  {
+    "name": "Vila Velha",
+    "asciiName": "Vila Velha"
+  },
+  {
+    "name": "Diadema",
+    "asciiName": "Diadema"
+  },
+  {
+    "name": "Carapicuíba",
+    "asciiName": "Carapicuiba"
+  },
+  {
+    "name": "Petrolina",
+    "asciiName": "Petrolina"
+  },
+  {
+    "name": "Grajaú",
+    "asciiName": "Grajau"
+  },
+  {
+    "name": "Betim",
+    "asciiName": "Betim"
+  },
+  {
+    "name": "Caxias do Sul",
+    "asciiName": "Caxias do Sul"
+  },
+  {
+    "name": "Bauru",
+    "asciiName": "Bauru"
+  },
+  {
+    "name": "Itaquaquecetuba",
+    "asciiName": "Itaquaquecetuba"
+  },
+  {
+    "name": "Olinda",
+    "asciiName": "Olinda"
+  },
+  {
+    "name": "Blumenau",
+    "asciiName": "Blumenau"
+  },
+  {
+    "name": "Franca",
+    "asciiName": "Franca"
+  },
+  {
+    "name": "Caucaia",
+    "asciiName": "Caucaia"
+  },
+  {
+    "name": "Cariacica",
+    "asciiName": "Cariacica"
+  },
+  {
+    "name": "Praia Grande",
+    "asciiName": "Praia Grande"
+  },
+  {
+    "name": "Campina Grande",
+    "asciiName": "Campina Grande"
+  },
+  {
+    "name": "Paulista",
+    "asciiName": "Paulista"
+  },
+  {
+    "name": "Uberaba",
+    "asciiName": "Uberaba"
+  },
+  {
+    "name": "São Vicente",
+    "asciiName": "Sao Vicente"
+  },
+  {
+    "name": "Ribeirão das Neves",
+    "asciiName": "Ribeirao das Neves"
+  },
+  {
+    "name": "São José dos Pinhais",
+    "asciiName": "Sao Jose dos Pinhais"
+  },
+  {
+    "name": "Canoas",
+    "asciiName": "Canoas"
+  },
+  {
+    "name": "Mogi das Cruzes",
+    "asciiName": "Mogi das Cruzes"
+  },
+  {
+    "name": "Guarujá",
+    "asciiName": "Guaruja"
+  }
+]

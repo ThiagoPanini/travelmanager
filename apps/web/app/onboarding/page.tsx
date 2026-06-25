@@ -47,8 +47,9 @@ export default async function OnboardingPage() {
     <main className={styles.screen}>
       <Wordmark />
       <section className={styles.card}>
-        <h1 className={styles.heading}>Quase lá</h1>
-        <p className={styles.sub}>Só o essencial para personalizar suas viagens.</p>
+        <p className={styles.eyebrow}>Antes de embarcar</p>
+        <h1 className={styles.heading}>Complete seu perfil</h1>
+        <p className={styles.sub}>Duas informações rápidas para personalizar suas viagens.</p>
         <SessionBoundary session={session}>
           <OnboardingForm defaultName={defaultName} />
         </SessionBoundary>

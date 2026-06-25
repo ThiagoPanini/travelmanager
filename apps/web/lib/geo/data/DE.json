@@ -1,0 +1,322 @@
+[
+  {
+    "name": "Berlin",
+    "asciiName": "Berlin"
+  },
+  {
+    "name": "Hamburg",
+    "asciiName": "Hamburg"
+  },
+  {
+    "name": "Munich",
+    "asciiName": "Munich"
+  },
+  {
+    "name": "Köln",
+    "asciiName": "Koeln"
+  },
+  {
+    "name": "Frankfurt am Main",
+    "asciiName": "Frankfurt am Main"
+  },
+  {
+    "name": "Düsseldorf",
+    "asciiName": "Duesseldorf"
+  },
+  {
+    "name": "Stuttgart",
+    "asciiName": "Stuttgart"
+  },
+  {
+    "name": "Essen",
+    "asciiName": "Essen"
+  },
+  {
+    "name": "Dortmund",
+    "asciiName": "Dortmund"
+  },
+  {
+    "name": "Dresden",
+    "asciiName": "Dresden"
+  },
+  {
+    "name": "Bremen",
+    "asciiName": "Bremen"
+  },
+  {
+    "name": "Nuremberg",
+    "asciiName": "Nuremberg"
+  },
+  {
+    "name": "Hannover",
+    "asciiName": "Hannover"
+  },
+  {
+    "name": "Leipzig",
+    "asciiName": "Leipzig"
+  },
+  {
+    "name": "Duisburg",
+    "asciiName": "Duisburg"
+  },
+  {
+    "name": "Wandsbek",
+    "asciiName": "Wandsbek"
+  },
+  {
+    "name": "Bochum",
+    "asciiName": "Bochum"
+  },
+  {
+    "name": "Wuppertal",
+    "asciiName": "Wuppertal"
+  },
+  {
+    "name": "Bielefeld",
+    "asciiName": "Bielefeld"
+  },
+  {
+    "name": "Bonn",
+    "asciiName": "Bonn"
+  },
+  {
+    "name": "Hamburg-Nord",
+    "asciiName": "Hamburg-Nord"
+  },
+  {
+    "name": "Münster",
+    "asciiName": "Muenster"
+  },
+  {
+    "name": "Mannheim",
+    "asciiName": "Mannheim"
+  },
+  {
+    "name": "Hamburg-Mitte",
+    "asciiName": "Hamburg-Mitte"
+  },
+  {
+    "name": "Augsburg",
+    "asciiName": "Augsburg"
+  },
+  {
+    "name": "Wiesbaden",
+    "asciiName": "Wiesbaden"
+  },
+  {
+    "name": "Marienthal",
+    "asciiName": "Marienthal"
+  },
+  {
+    "name": "Karlsruhe",
+    "asciiName": "Karlsruhe"
+  },
+  {
+    "name": "Gelsenkirchen",
+    "asciiName": "Gelsenkirchen"
+  },
+  {
+    "name": "Eimsbüttel",
+    "asciiName": "Eimsbuettel"
+  },
+  {
+    "name": "Aachen",
+    "asciiName": "Aachen"
+  },
+  {
+    "name": "Mönchengladbach",
+    "asciiName": "Moenchengladbach"
+  },
+  {
+    "name": "Kiel",
+    "asciiName": "Kiel"
+  },
+  {
+    "name": "Altona",
+    "asciiName": "Altona"
+  },
+  {
+    "name": "Chemnitz",
+    "asciiName": "Chemnitz"
+  },
+  {
+    "name": "Braunschweig",
+    "asciiName": "Braunschweig"
+  },
+  {
+    "name": "Magdeburg",
+    "asciiName": "Magdeburg"
+  },
+  {
+    "name": "Krefeld",
+    "asciiName": "Krefeld"
+  },
+  {
+    "name": "Halle (Saale)",
+    "asciiName": "Halle (Saale)"
+  },
+  {
+    "name": "Freiburg",
+    "asciiName": "Freiburg"
+  },
+  {
+    "name": "Neue Neustadt",
+    "asciiName": "Neue Neustadt"
+  },
+  {
+    "name": "Mainz",
+    "asciiName": "Mainz"
+  },
+  {
+    "name": "Oberhausen",
+    "asciiName": "Oberhausen"
+  },
+  {
+    "name": "Erfurt",
+    "asciiName": "Erfurt"
+  },
+  {
+    "name": "Lübeck",
+    "asciiName": "Luebeck"
+  },
+  {
+    "name": "Hagen",
+    "asciiName": "Hagen"
+  },
+  {
+    "name": "Rostock",
+    "asciiName": "Rostock"
+  },
+  {
+    "name": "Kassel",
+    "asciiName": "Kassel"
+  },
+  {
+    "name": "Potsdam",
+    "asciiName": "Potsdam"
+  },
+  {
+    "name": "Saarbrücken",
+    "asciiName": "Saarbruecken"
+  },
+  {
+    "name": "Hamm",
+    "asciiName": "Hamm"
+  },
+  {
+    "name": "Mülheim",
+    "asciiName": "Muelheim"
+  },
+  {
+    "name": "Herne",
+    "asciiName": "Herne"
+  },
+  {
+    "name": "Harburg",
+    "asciiName": "Harburg"
+  },
+  {
+    "name": "Darmstadt",
+    "asciiName": "Darmstadt"
+  },
+  {
+    "name": "Osnabrück",
+    "asciiName": "Osnabrueck"
+  },
+  {
+    "name": "Neukölln",
+    "asciiName": "Neukoelln"
+  },
+  {
+    "name": "Solingen",
+    "asciiName": "Solingen"
+  },
+  {
+    "name": "Ludwigshafen am Rhein",
+    "asciiName": "Ludwigshafen am Rhein"
+  },
+  {
+    "name": "Leverkusen",
+    "asciiName": "Leverkusen"
+  },
+  {
+    "name": "Oldenburg",
+    "asciiName": "Oldenburg"
+  },
+  {
+    "name": "Kreuzberg",
+    "asciiName": "Kreuzberg"
+  },
+  {
+    "name": "Neuss",
+    "asciiName": "Neuss"
+  },
+  {
+    "name": "Regensburg",
+    "asciiName": "Regensburg"
+  },
+  {
+    "name": "Prenzlauer Berg",
+    "asciiName": "Prenzlauer Berg Bezirk"
+  },
+  {
+    "name": "Heidelberg",
+    "asciiName": "Heidelberg"
+  },
+  {
+    "name": "Paderborn",
+    "asciiName": "Paderborn"
+  },
+  {
+    "name": "Würzburg",
+    "asciiName": "Wuerzburg"
+  },
+  {
+    "name": "Fürth",
+    "asciiName": "Fuerth"
+  },
+  {
+    "name": "Charlottenburg",
+    "asciiName": "Charlottenburg"
+  },
+  {
+    "name": "Wolfsburg",
+    "asciiName": "Wolfsburg"
+  },
+  {
+    "name": "Schöneberg",
+    "asciiName": "Schoeneberg"
+  },
+  {
+    "name": "Recklinghausen",
+    "asciiName": "Recklinghausen"
+  },
+  {
+    "name": "Göttingen",
+    "asciiName": "Goettingen"
+  },
+  {
+    "name": "Heilbronn",
+    "asciiName": "Heilbronn"
+  },
+  {
+    "name": "Ingolstadt",
+    "asciiName": "Ingolstadt"
+  },
+  {
+    "name": "Ulm",
+    "asciiName": "Ulm"
+  },
+  {
+    "name": "Bottrop",
+    "asciiName": "Bottrop"
+  },
+  {
+    "name": "Bergedorf",
+    "asciiName": "Bergedorf"
+  },
+  {
+    "name": "Pforzheim",
+    "asciiName": "Pforzheim"
+  }
+]

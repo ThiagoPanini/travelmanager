@@ -1,0 +1,322 @@
+[
+  {
+    "name": "Buenos Aires",
+    "asciiName": "Buenos Aires"
+  },
+  {
+    "name": "Córdoba",
+    "asciiName": "Cordoba"
+  },
+  {
+    "name": "Rosario",
+    "asciiName": "Rosario"
+  },
+  {
+    "name": "Mar del Plata",
+    "asciiName": "Mar del Plata"
+  },
+  {
+    "name": "San Miguel de Tucumán",
+    "asciiName": "San Miguel de Tucuman"
+  },
+  {
+    "name": "Salta",
+    "asciiName": "Salta"
+  },
+  {
+    "name": "Santa Fe",
+    "asciiName": "Santa Fe"
+  },
+  {
+    "name": "Corrientes",
+    "asciiName": "Corrientes"
+  },
+  {
+    "name": "Posadas",
+    "asciiName": "Posadas"
+  },
+  {
+    "name": "Bahía Blanca",
+    "asciiName": "Bahia Blanca"
+  },
+  {
+    "name": "Resistencia",
+    "asciiName": "Resistencia"
+  },
+  {
+    "name": "Merlo",
+    "asciiName": "Merlo"
+  },
+  {
+    "name": "Quilmes",
+    "asciiName": "Quilmes"
+  },
+  {
+    "name": "San Salvador de Jujuy",
+    "asciiName": "San Salvador de Jujuy"
+  },
+  {
+    "name": "Santiago del Estero",
+    "asciiName": "Santiago del Estero"
+  },
+  {
+    "name": "Paraná",
+    "asciiName": "Parana"
+  },
+  {
+    "name": "Neuquén",
+    "asciiName": "Neuquen"
+  },
+  {
+    "name": "José C. Paz",
+    "asciiName": "Jose C. Paz"
+  },
+  {
+    "name": "Formosa",
+    "asciiName": "Formosa"
+  },
+  {
+    "name": "La Plata",
+    "asciiName": "La Plata"
+  },
+  {
+    "name": "Berazategui",
+    "asciiName": "Berazategui"
+  },
+  {
+    "name": "La Rioja",
+    "asciiName": "La Rioja"
+  },
+  {
+    "name": "San Luis",
+    "asciiName": "San Luis"
+  },
+  {
+    "name": "San Miguel",
+    "asciiName": "San Miguel"
+  },
+  {
+    "name": "Ituzaingó",
+    "asciiName": "Ituzaingo"
+  },
+  {
+    "name": "Catamarca",
+    "asciiName": "Catamarca"
+  },
+  {
+    "name": "Río Cuarto",
+    "asciiName": "Rio Cuarto"
+  },
+  {
+    "name": "Balvanera",
+    "asciiName": "Balvanera"
+  },
+  {
+    "name": "Concordia",
+    "asciiName": "Concordia"
+  },
+  {
+    "name": "Comodoro Rivadavia",
+    "asciiName": "Comodoro Rivadavia"
+  },
+  {
+    "name": "Belgrano",
+    "asciiName": "Belgrano"
+  },
+  {
+    "name": "San Nicolás de los Arroyos",
+    "asciiName": "San Nicolas de los Arroyos"
+  },
+  {
+    "name": "San Rafael",
+    "asciiName": "San Rafael"
+  },
+  {
+    "name": "Tandil",
+    "asciiName": "Tandil"
+  },
+  {
+    "name": "Ezeiza",
+    "asciiName": "Ezeiza"
+  },
+  {
+    "name": "Mendoza",
+    "asciiName": "Mendoza"
+  },
+  {
+    "name": "Villa Lugano",
+    "asciiName": "Villa Lugano"
+  },
+  {
+    "name": "Lomas de Zamora",
+    "asciiName": "Lomas de Zamora"
+  },
+  {
+    "name": "San Juan",
+    "asciiName": "San Juan"
+  },
+  {
+    "name": "Castelar",
+    "asciiName": "Castelar"
+  },
+  {
+    "name": "San Justo",
+    "asciiName": "San Justo"
+  },
+  {
+    "name": "Santa Rosa",
+    "asciiName": "Santa Rosa"
+  },
+  {
+    "name": "Morón",
+    "asciiName": "Moron"
+  },
+  {
+    "name": "Zárate",
+    "asciiName": "Zarate"
+  },
+  {
+    "name": "Trelew",
+    "asciiName": "Trelew"
+  },
+  {
+    "name": "Luján",
+    "asciiName": "Lujan"
+  },
+  {
+    "name": "Villa Mercedes",
+    "asciiName": "Villa Mercedes"
+  },
+  {
+    "name": "Río Gallegos",
+    "asciiName": "Rio Gallegos"
+  },
+  {
+    "name": "San Carlos de Bariloche",
+    "asciiName": "San Carlos de Bariloche"
+  },
+  {
+    "name": "Villa María",
+    "asciiName": "Villa Maria"
+  },
+  {
+    "name": "Pergamino",
+    "asciiName": "Pergamino"
+  },
+  {
+    "name": "Reconquista",
+    "asciiName": "Reconquista"
+  },
+  {
+    "name": "Olavarría",
+    "asciiName": "Olavarria"
+  },
+  {
+    "name": "Rafaela",
+    "asciiName": "Rafaela"
+  },
+  {
+    "name": "Junín",
+    "asciiName": "Junin"
+  },
+  {
+    "name": "Campana",
+    "asciiName": "Campana"
+  },
+  {
+    "name": "San Martín",
+    "asciiName": "San Martin"
+  },
+  {
+    "name": "Presidencia Roque Sáenz Peña",
+    "asciiName": "Presidencia Roque Saenz Pena"
+  },
+  {
+    "name": "Pilar",
+    "asciiName": "Pilar"
+  },
+  {
+    "name": "Bella Vista",
+    "asciiName": "Bella Vista"
+  },
+  {
+    "name": "Gualeguaychú",
+    "asciiName": "Gualeguaychu"
+  },
+  {
+    "name": "Barracas",
+    "asciiName": "Barracas"
+  },
+  {
+    "name": "Cipolletti",
+    "asciiName": "Cipolletti"
+  },
+  {
+    "name": "Gobernador Gálvez",
+    "asciiName": "Gobernador Galvez"
+  },
+  {
+    "name": "San Ramón de la Nueva Orán",
+    "asciiName": "San Ramon de la Nueva Oran"
+  },
+  {
+    "name": "Chimbas",
+    "asciiName": "Chimbas"
+  },
+  {
+    "name": "Necochea",
+    "asciiName": "Necochea"
+  },
+  {
+    "name": "General Roca",
+    "asciiName": "General Roca"
+  },
+  {
+    "name": "Venado Tuerto",
+    "asciiName": "Venado Tuerto"
+  },
+  {
+    "name": "Don Torcuato",
+    "asciiName": "Don Torcuato"
+  },
+  {
+    "name": "Goya",
+    "asciiName": "Goya"
+  },
+  {
+    "name": "Villa Carlos Paz",
+    "asciiName": "Villa Carlos Paz"
+  },
+  {
+    "name": "Concepción del Uruguay",
+    "asciiName": "Concepcion del Uruguay"
+  },
+  {
+    "name": "Puerto Madryn",
+    "asciiName": "Puerto Madryn"
+  },
+  {
+    "name": "Mercedes",
+    "asciiName": "Mercedes"
+  },
+  {
+    "name": "Tartagal",
+    "asciiName": "Tartagal"
+  },
+  {
+    "name": "Hurlingham",
+    "asciiName": "Hurlingham"
+  },
+  {
+    "name": "Santo Tomé",
+    "asciiName": "Santo Tome"
+  },
+  {
+    "name": "San Francisco",
+    "asciiName": "San Francisco"
+  },
+  {
+    "name": "El Palomar",
+    "asciiName": "El Palomar"
+  }
+]

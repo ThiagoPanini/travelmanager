@@ -1,0 +1,322 @@
+[
+  {
+    "name": "Madrid",
+    "asciiName": "Madrid"
+  },
+  {
+    "name": "Barcelona",
+    "asciiName": "Barcelona"
+  },
+  {
+    "name": "Valencia",
+    "asciiName": "Valencia"
+  },
+  {
+    "name": "Zaragoza",
+    "asciiName": "Zaragoza"
+  },
+  {
+    "name": "Sevilla",
+    "asciiName": "Sevilla"
+  },
+  {
+    "name": "Málaga",
+    "asciiName": "Malaga"
+  },
+  {
+    "name": "Murcia",
+    "asciiName": "Murcia"
+  },
+  {
+    "name": "Palma",
+    "asciiName": "Palma"
+  },
+  {
+    "name": "Las Palmas de Gran Canaria",
+    "asciiName": "Las Palmas de Gran Canaria"
+  },
+  {
+    "name": "Alicante",
+    "asciiName": "Alicante"
+  },
+  {
+    "name": "Bilbao",
+    "asciiName": "Bilbao"
+  },
+  {
+    "name": "Córdoba",
+    "asciiName": "Cordoba"
+  },
+  {
+    "name": "Valladolid",
+    "asciiName": "Valladolid"
+  },
+  {
+    "name": "Vigo",
+    "asciiName": "Vigo"
+  },
+  {
+    "name": "Gijón",
+    "asciiName": "Gijon"
+  },
+  {
+    "name": "Eixample",
+    "asciiName": "Eixample"
+  },
+  {
+    "name": "Gasteiz / Vitoria",
+    "asciiName": "Gasteiz / Vitoria"
+  },
+  {
+    "name": "L'Hospitalet de Llobregat",
+    "asciiName": "L'Hospitalet de Llobregat"
+  },
+  {
+    "name": "Latina",
+    "asciiName": "Latina"
+  },
+  {
+    "name": "Carabanchel",
+    "asciiName": "Carabanchel"
+  },
+  {
+    "name": "A Coruña",
+    "asciiName": "A Coruna"
+  },
+  {
+    "name": "Puente de Vallecas",
+    "asciiName": "Puente de Vallecas"
+  },
+  {
+    "name": "Fuencarral",
+    "asciiName": "Fuencarral"
+  },
+  {
+    "name": "Sant Martí",
+    "asciiName": "Sant Marti"
+  },
+  {
+    "name": "Elche",
+    "asciiName": "Elche"
+  },
+  {
+    "name": "Granada",
+    "asciiName": "Granada"
+  },
+  {
+    "name": "Ciudad Lineal",
+    "asciiName": "Ciudad Lineal"
+  },
+  {
+    "name": "Fuencarral-El Pardo",
+    "asciiName": "Fuencarral-El Pardo"
+  },
+  {
+    "name": "Oviedo",
+    "asciiName": "Oviedo"
+  },
+  {
+    "name": "Terrassa",
+    "asciiName": "Terrassa"
+  },
+  {
+    "name": "Badalona",
+    "asciiName": "Badalona"
+  },
+  {
+    "name": "Cartagena",
+    "asciiName": "Cartagena"
+  },
+  {
+    "name": "Jerez de la Frontera",
+    "asciiName": "Jerez de la Frontera"
+  },
+  {
+    "name": "Sabadell",
+    "asciiName": "Sabadell"
+  },
+  {
+    "name": "Santa Cruz de Tenerife",
+    "asciiName": "Santa Cruz de Tenerife"
+  },
+  {
+    "name": "Pamplona",
+    "asciiName": "Pamplona"
+  },
+  {
+    "name": "Móstoles",
+    "asciiName": "Mostoles"
+  },
+  {
+    "name": "Almería",
+    "asciiName": "Almeria"
+  },
+  {
+    "name": "Alcalá de Henares",
+    "asciiName": "Alcala de Henares"
+  },
+  {
+    "name": "Fuenlabrada",
+    "asciiName": "Fuenlabrada"
+  },
+  {
+    "name": "Leganés",
+    "asciiName": "Leganes"
+  },
+  {
+    "name": "Getafe",
+    "asciiName": "Getafe"
+  },
+  {
+    "name": "Donostia / San Sebastián",
+    "asciiName": "San Sebastian"
+  },
+  {
+    "name": "Sants-Montjuïc",
+    "asciiName": "Sants-Montjuic"
+  },
+  {
+    "name": "Burgos",
+    "asciiName": "Burgos"
+  },
+  {
+    "name": "Santander",
+    "asciiName": "Santander"
+  },
+  {
+    "name": "Albacete",
+    "asciiName": "Albacete"
+  },
+  {
+    "name": "Alcorcón",
+    "asciiName": "Alcorcon"
+  },
+  {
+    "name": "Castelló de la Plana",
+    "asciiName": "Castello de la Plana"
+  },
+  {
+    "name": "Horta-Guinardó",
+    "asciiName": "Horta-Guinardo"
+  },
+  {
+    "name": "Nou Barris",
+    "asciiName": "Nou Barris"
+  },
+  {
+    "name": "Hortaleza",
+    "asciiName": "Hortaleza"
+  },
+  {
+    "name": "San Blas-Canillejas",
+    "asciiName": "San Blas-Canillejas"
+  },
+  {
+    "name": "Marbella",
+    "asciiName": "Marbella"
+  },
+  {
+    "name": "Tetuán de las Victorias",
+    "asciiName": "Tetuan de las Victorias"
+  },
+  {
+    "name": "Logroño",
+    "asciiName": "Logrono"
+  },
+  {
+    "name": "La Laguna",
+    "asciiName": "La Laguna"
+  },
+  {
+    "name": "Badajoz",
+    "asciiName": "Badajoz"
+  },
+  {
+    "name": "Madrid Centro",
+    "asciiName": "Madrid Centro"
+  },
+  {
+    "name": "Arganzuela",
+    "asciiName": "Arganzuela"
+  },
+  {
+    "name": "Sarrià-Sant Gervasi",
+    "asciiName": "Sarria-Sant Gervasi"
+  },
+  {
+    "name": "Salamanca",
+    "asciiName": "Salamanca"
+  },
+  {
+    "name": "Chamberí",
+    "asciiName": "Chamberi"
+  },
+  {
+    "name": "Salamanca",
+    "asciiName": "Salamanca"
+  },
+  {
+    "name": "Huelva",
+    "asciiName": "Huelva"
+  },
+  {
+    "name": "Sant Andreu",
+    "asciiName": "Sant Andreu"
+  },
+  {
+    "name": "Tarragona",
+    "asciiName": "Tarragona"
+  },
+  {
+    "name": "Usera",
+    "asciiName": "Usera"
+  },
+  {
+    "name": "Lleida",
+    "asciiName": "Lleida"
+  },
+  {
+    "name": "Chamartín",
+    "asciiName": "Chamartin"
+  },
+  {
+    "name": "Mataró",
+    "asciiName": "Mataro"
+  },
+  {
+    "name": "Villaverde",
+    "asciiName": "Villaverde"
+  },
+  {
+    "name": "Retiro",
+    "asciiName": "Retiro"
+  },
+  {
+    "name": "León",
+    "asciiName": "Leon"
+  },
+  {
+    "name": "Telde",
+    "asciiName": "Telde"
+  },
+  {
+    "name": "Dos Hermanas",
+    "asciiName": "Dos Hermanas"
+  },
+  {
+    "name": "Gràcia",
+    "asciiName": "Gracia"
+  },
+  {
+    "name": "Algeciras",
+    "asciiName": "Algeciras"
+  },
+  {
+    "name": "Santa Coloma de Gramenet",
+    "asciiName": "Santa Coloma de Gramenet"
+  },
+  {
+    "name": "Torrejón de Ardoz",
+    "asciiName": "Torrejon de Ardoz"
+  }
+]

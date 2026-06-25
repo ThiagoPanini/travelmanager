@@ -1,0 +1,322 @@
+[
+  {
+    "name": "Bogotá",
+    "asciiName": "Bogota"
+  },
+  {
+    "name": "Cali",
+    "asciiName": "Cali"
+  },
+  {
+    "name": "Medellín",
+    "asciiName": "Medellin"
+  },
+  {
+    "name": "Barranquilla",
+    "asciiName": "Barranquilla"
+  },
+  {
+    "name": "Kennedy",
+    "asciiName": "Kennedy"
+  },
+  {
+    "name": "Cartagena",
+    "asciiName": "Cartagena"
+  },
+  {
+    "name": "Cúcuta",
+    "asciiName": "Cucuta"
+  },
+  {
+    "name": "Soacha",
+    "asciiName": "Soacha"
+  },
+  {
+    "name": "Bucaramanga",
+    "asciiName": "Bucaramanga"
+  },
+  {
+    "name": "Ibagué",
+    "asciiName": "Ibague"
+  },
+  {
+    "name": "Santa Marta",
+    "asciiName": "Santa Marta"
+  },
+  {
+    "name": "Montería",
+    "asciiName": "Monteria"
+  },
+  {
+    "name": "Valledupar",
+    "asciiName": "Valledupar"
+  },
+  {
+    "name": "Pereira",
+    "asciiName": "Pereira"
+  },
+  {
+    "name": "Manizales",
+    "asciiName": "Manizales"
+  },
+  {
+    "name": "Buenaventura",
+    "asciiName": "Buenaventura"
+  },
+  {
+    "name": "Bello",
+    "asciiName": "Bello"
+  },
+  {
+    "name": "Pasto",
+    "asciiName": "Pasto"
+  },
+  {
+    "name": "Neiva",
+    "asciiName": "Neiva"
+  },
+  {
+    "name": "Soledad",
+    "asciiName": "Soledad"
+  },
+  {
+    "name": "Villavicencio",
+    "asciiName": "Villavicencio"
+  },
+  {
+    "name": "Popayán",
+    "asciiName": "Popayan"
+  },
+  {
+    "name": "Palmira",
+    "asciiName": "Palmira"
+  },
+  {
+    "name": "Armenia",
+    "asciiName": "Armenia"
+  },
+  {
+    "name": "Itagüí",
+    "asciiName": "Itaguei"
+  },
+  {
+    "name": "Sincelejo",
+    "asciiName": "Sincelejo"
+  },
+  {
+    "name": "Floridablanca",
+    "asciiName": "Floridablanca"
+  },
+  {
+    "name": "Buenaventura",
+    "asciiName": "Buenaventura"
+  },
+  {
+    "name": "Tuluá",
+    "asciiName": "Tulua"
+  },
+  {
+    "name": "Dosquebradas",
+    "asciiName": "Dosquebradas"
+  },
+  {
+    "name": "Barrancabermeja",
+    "asciiName": "Barrancabermeja"
+  },
+  {
+    "name": "Riohacha",
+    "asciiName": "Riohacha"
+  },
+  {
+    "name": "Tunja",
+    "asciiName": "Tunja"
+  },
+  {
+    "name": "Yopal",
+    "asciiName": "Yopal"
+  },
+  {
+    "name": "Florencia",
+    "asciiName": "Florencia"
+  },
+  {
+    "name": "Maicao",
+    "asciiName": "Maicao"
+  },
+  {
+    "name": "Piedecuesta",
+    "asciiName": "Piedecuesta"
+  },
+  {
+    "name": "Envigado",
+    "asciiName": "Envigado"
+  },
+  {
+    "name": "Facatativá",
+    "asciiName": "Facatativa"
+  },
+  {
+    "name": "Pitalito",
+    "asciiName": "Pitalito"
+  },
+  {
+    "name": "Madrid",
+    "asciiName": "Madrid"
+  },
+  {
+    "name": "Cartago",
+    "asciiName": "Cartago"
+  },
+  {
+    "name": "Zipaquirá",
+    "asciiName": "Zipaquira"
+  },
+  {
+    "name": "Quibdó",
+    "asciiName": "Quibdo"
+  },
+  {
+    "name": "Malambo",
+    "asciiName": "Malambo"
+  },
+  {
+    "name": "Rionegro",
+    "asciiName": "Rionegro"
+  },
+  {
+    "name": "Mosquera",
+    "asciiName": "Mosquera"
+  },
+  {
+    "name": "Chía",
+    "asciiName": "Chia"
+  },
+  {
+    "name": "Magangué",
+    "asciiName": "Magangue"
+  },
+  {
+    "name": "Funza",
+    "asciiName": "Funza"
+  },
+  {
+    "name": "Guadalajara de Buga",
+    "asciiName": "Guadalajara de Buga"
+  },
+  {
+    "name": "Sogamoso",
+    "asciiName": "Sogamoso"
+  },
+  {
+    "name": "Girón",
+    "asciiName": "Giron"
+  },
+  {
+    "name": "Girardot City",
+    "asciiName": "Girardot City"
+  },
+  {
+    "name": "Sabanalarga",
+    "asciiName": "Sabanalarga"
+  },
+  {
+    "name": "Ocaña",
+    "asciiName": "Ocana"
+  },
+  {
+    "name": "Santander de Quilichao",
+    "asciiName": "Santander de Quilichao"
+  },
+  {
+    "name": "Aguachica",
+    "asciiName": "Aguachica"
+  },
+  {
+    "name": "Cereté",
+    "asciiName": "Cerete"
+  },
+  {
+    "name": "Duitama",
+    "asciiName": "Duitama"
+  },
+  {
+    "name": "Montelíbano",
+    "asciiName": "Montelibano"
+  },
+  {
+    "name": "Fusagasugá",
+    "asciiName": "Fusagasuga"
+  },
+  {
+    "name": "Ciénaga",
+    "asciiName": "Cienaga"
+  },
+  {
+    "name": "Tumaco",
+    "asciiName": "Tumaco"
+  },
+  {
+    "name": "Apartadó",
+    "asciiName": "Apartado"
+  },
+  {
+    "name": "Chigorodó",
+    "asciiName": "Chigorodo"
+  },
+  {
+    "name": "Arauca",
+    "asciiName": "Arauca"
+  },
+  {
+    "name": "Sabaneta",
+    "asciiName": "Sabaneta"
+  },
+  {
+    "name": "Caldas",
+    "asciiName": "Caldas"
+  },
+  {
+    "name": "La Dorada",
+    "asciiName": "La Dorada"
+  },
+  {
+    "name": "Calarcá",
+    "asciiName": "Calarca"
+  },
+  {
+    "name": "Ipiales",
+    "asciiName": "Ipiales"
+  },
+  {
+    "name": "Yumbo",
+    "asciiName": "Yumbo"
+  },
+  {
+    "name": "Planeta Rica",
+    "asciiName": "Planeta Rica"
+  },
+  {
+    "name": "Granada",
+    "asciiName": "Granada"
+  },
+  {
+    "name": "Chinchiná",
+    "asciiName": "Chinchina"
+  },
+  {
+    "name": "Baranoa",
+    "asciiName": "Baranoa"
+  },
+  {
+    "name": "Villa del Rosario",
+    "asciiName": "Villa del Rosario"
+  },
+  {
+    "name": "San Marcos",
+    "asciiName": "San Marcos"
+  },
+  {
+    "name": "Sahagún",
+    "asciiName": "Sahagun"
+  }
+]

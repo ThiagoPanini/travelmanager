@@ -1,0 +1,322 @@
+[
+  {
+    "name": "Lima",
+    "asciiName": "Lima"
+  },
+  {
+    "name": "Callao",
+    "asciiName": "Callao"
+  },
+  {
+    "name": "Arequipa",
+    "asciiName": "Arequipa"
+  },
+  {
+    "name": "Trujillo",
+    "asciiName": "Trujillo"
+  },
+  {
+    "name": "Piura",
+    "asciiName": "Piura"
+  },
+  {
+    "name": "Chiclayo",
+    "asciiName": "Chiclayo"
+  },
+  {
+    "name": "Huancayo",
+    "asciiName": "Huancayo"
+  },
+  {
+    "name": "Cusco",
+    "asciiName": "Cusco"
+  },
+  {
+    "name": "Iquitos",
+    "asciiName": "Iquitos"
+  },
+  {
+    "name": "Pucallpa",
+    "asciiName": "Pucallpa"
+  },
+  {
+    "name": "Chimbote",
+    "asciiName": "Chimbote"
+  },
+  {
+    "name": "Tacna",
+    "asciiName": "Tacna"
+  },
+  {
+    "name": "Ica",
+    "asciiName": "Ica"
+  },
+  {
+    "name": "Santiago de Surco",
+    "asciiName": "Santiago de Surco"
+  },
+  {
+    "name": "Juliaca",
+    "asciiName": "Juliaca"
+  },
+  {
+    "name": "Cajamarca",
+    "asciiName": "Cajamarca"
+  },
+  {
+    "name": "Huánuco",
+    "asciiName": "Huanuco"
+  },
+  {
+    "name": "Miraflores",
+    "asciiName": "Miraflores"
+  },
+  {
+    "name": "Santa Anita - Los Ficus",
+    "asciiName": "Santa Anita - Los Ficus"
+  },
+  {
+    "name": "Sullana",
+    "asciiName": "Sullana"
+  },
+  {
+    "name": "Chincha Alta",
+    "asciiName": "Chincha Alta"
+  },
+  {
+    "name": "Ayacucho",
+    "asciiName": "Ayacucho"
+  },
+  {
+    "name": "San Martin",
+    "asciiName": "San Martin"
+  },
+  {
+    "name": "Puno",
+    "asciiName": "Puno"
+  },
+  {
+    "name": "Huaraz",
+    "asciiName": "Huaraz"
+  },
+  {
+    "name": "San Francisco De Borja",
+    "asciiName": "San Francisco De Borja"
+  },
+  {
+    "name": "Talara",
+    "asciiName": "Talara"
+  },
+  {
+    "name": "Tumbes",
+    "asciiName": "Tumbes"
+  },
+  {
+    "name": "Chosica",
+    "asciiName": "Chosica"
+  },
+  {
+    "name": "Puerto Maldonado",
+    "asciiName": "Puerto Maldonado"
+  },
+  {
+    "name": "Breña",
+    "asciiName": "Brena"
+  },
+  {
+    "name": "San Juan",
+    "asciiName": "San Juan"
+  },
+  {
+    "name": "Ciudad Satelite",
+    "asciiName": "Ciudad Satelite"
+  },
+  {
+    "name": "Chilca",
+    "asciiName": "Chilca"
+  },
+  {
+    "name": "Selva Alegre",
+    "asciiName": "Selva Alegre"
+  },
+  {
+    "name": "Abancay",
+    "asciiName": "Abancay"
+  },
+  {
+    "name": "Moquegua",
+    "asciiName": "Moquegua"
+  },
+  {
+    "name": "Chulucanas",
+    "asciiName": "Chulucanas"
+  },
+  {
+    "name": "San Isidro",
+    "asciiName": "San Isidro"
+  },
+  {
+    "name": "San Fernando",
+    "asciiName": "San Fernando"
+  },
+  {
+    "name": "Jesus Maria",
+    "asciiName": "Jesus Maria"
+  },
+  {
+    "name": "Santiago",
+    "asciiName": "Santiago"
+  },
+  {
+    "name": "Huaral",
+    "asciiName": "Huaral"
+  },
+  {
+    "name": "Pisco",
+    "asciiName": "Pisco"
+  },
+  {
+    "name": "Villa Poeta José Gálvez Barrenechea",
+    "asciiName": "Villa Poeta Jose Galvez Barrenechea"
+  },
+  {
+    "name": "San Miguel",
+    "asciiName": "San Miguel"
+  },
+  {
+    "name": "Wanchaq",
+    "asciiName": "Wanchaq"
+  },
+  {
+    "name": "Cerro de Pasco",
+    "asciiName": "Cerro de Pasco"
+  },
+  {
+    "name": "Belen",
+    "asciiName": "Belen"
+  },
+  {
+    "name": "Catacaos",
+    "asciiName": "Catacaos"
+  },
+  {
+    "name": "Paita",
+    "asciiName": "Paita"
+  },
+  {
+    "name": "Huacho",
+    "asciiName": "Huacho"
+  },
+  {
+    "name": "Ilo",
+    "asciiName": "Ilo"
+  },
+  {
+    "name": "Tingo María",
+    "asciiName": "Tingo Maria"
+  },
+  {
+    "name": "Jaén",
+    "asciiName": "Jaen"
+  },
+  {
+    "name": "Tarma",
+    "asciiName": "Tarma"
+  },
+  {
+    "name": "Moyobamba",
+    "asciiName": "Moyobamba"
+  },
+  {
+    "name": "Huancavelica",
+    "asciiName": "Huancavelica"
+  },
+  {
+    "name": "Centenario",
+    "asciiName": "Centenario"
+  },
+  {
+    "name": "Cono Norte",
+    "asciiName": "Cono Norte"
+  },
+  {
+    "name": "Barranca",
+    "asciiName": "Barranca"
+  },
+  {
+    "name": "Jacobo Hunter",
+    "asciiName": "Jacobo Hunter"
+  },
+  {
+    "name": "Lambayeque",
+    "asciiName": "Lambayeque"
+  },
+  {
+    "name": "Picsi",
+    "asciiName": "Picsi"
+  },
+  {
+    "name": "Chepén",
+    "asciiName": "Chepen"
+  },
+  {
+    "name": "Carmen De La Legua Reynoso",
+    "asciiName": "Carmen De La Legua Reynoso"
+  },
+  {
+    "name": "Yurimaguas",
+    "asciiName": "Yurimaguas"
+  },
+  {
+    "name": "Saña",
+    "asciiName": "Sana"
+  },
+  {
+    "name": "Tambopata",
+    "asciiName": "Tambopata"
+  },
+  {
+    "name": "Juanjuí",
+    "asciiName": "Juanjui"
+  },
+  {
+    "name": "Barranco",
+    "asciiName": "Barranco"
+  },
+  {
+    "name": "La Unión",
+    "asciiName": "La Union"
+  },
+  {
+    "name": "Ferreñafe",
+    "asciiName": "Ferrenafe"
+  },
+  {
+    "name": "Sicuani",
+    "asciiName": "Sicuani"
+  },
+  {
+    "name": "La Oroya",
+    "asciiName": "La Oroya"
+  },
+  {
+    "name": "Chocope",
+    "asciiName": "Chocope"
+  },
+  {
+    "name": "Nuevo Imperial",
+    "asciiName": "Nuevo Imperial"
+  },
+  {
+    "name": "Imperial",
+    "asciiName": "Imperial"
+  },
+  {
+    "name": "Chachapoyas",
+    "asciiName": "Chachapoyas"
+  },
+  {
+    "name": "Tambo Grande",
+    "asciiName": "Tambo Grande"
+  }
+]

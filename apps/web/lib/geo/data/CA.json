@@ -1,0 +1,322 @@
+[
+  {
+    "name": "Toronto",
+    "asciiName": "Toronto"
+  },
+  {
+    "name": "Montréal",
+    "asciiName": "Montreal"
+  },
+  {
+    "name": "Calgary",
+    "asciiName": "Calgary"
+  },
+  {
+    "name": "Ottawa",
+    "asciiName": "Ottawa"
+  },
+  {
+    "name": "Edmonton",
+    "asciiName": "Edmonton"
+  },
+  {
+    "name": "Winnipeg",
+    "asciiName": "Winnipeg"
+  },
+  {
+    "name": "Mississauga",
+    "asciiName": "Mississauga"
+  },
+  {
+    "name": "Vancouver",
+    "asciiName": "Vancouver"
+  },
+  {
+    "name": "Brampton",
+    "asciiName": "Brampton"
+  },
+  {
+    "name": "Hamilton",
+    "asciiName": "Hamilton"
+  },
+  {
+    "name": "Surrey",
+    "asciiName": "Surrey"
+  },
+  {
+    "name": "Québec",
+    "asciiName": "Quebec"
+  },
+  {
+    "name": "Halifax",
+    "asciiName": "Halifax"
+  },
+  {
+    "name": "Laval",
+    "asciiName": "Laval"
+  },
+  {
+    "name": "London",
+    "asciiName": "London"
+  },
+  {
+    "name": "Etobicoke",
+    "asciiName": "Etobicoke"
+  },
+  {
+    "name": "Markham",
+    "asciiName": "Markham"
+  },
+  {
+    "name": "Vaughan",
+    "asciiName": "Vaughan"
+  },
+  {
+    "name": "Gatineau",
+    "asciiName": "Gatineau"
+  },
+  {
+    "name": "Victoria",
+    "asciiName": "Victoria"
+  },
+  {
+    "name": "Saskatoon",
+    "asciiName": "Saskatoon"
+  },
+  {
+    "name": "Kitchener",
+    "asciiName": "Kitchener"
+  },
+  {
+    "name": "Burnaby",
+    "asciiName": "Burnaby"
+  },
+  {
+    "name": "Windsor",
+    "asciiName": "Windsor"
+  },
+  {
+    "name": "Longueuil",
+    "asciiName": "Longueuil"
+  },
+  {
+    "name": "Regina",
+    "asciiName": "Regina"
+  },
+  {
+    "name": "Oakville",
+    "asciiName": "Oakville"
+  },
+  {
+    "name": "Richmond",
+    "asciiName": "Richmond"
+  },
+  {
+    "name": "Richmond Hill",
+    "asciiName": "Richmond Hill"
+  },
+  {
+    "name": "Burlington",
+    "asciiName": "Burlington"
+  },
+  {
+    "name": "Nepean",
+    "asciiName": "Nepean"
+  },
+  {
+    "name": "Oshawa",
+    "asciiName": "Oshawa"
+  },
+  {
+    "name": "Greater Sudbury",
+    "asciiName": "Greater Sudbury"
+  },
+  {
+    "name": "Newton",
+    "asciiName": "Newton"
+  },
+  {
+    "name": "Gloucester",
+    "asciiName": "Gloucester"
+  },
+  {
+    "name": "Saguenay",
+    "asciiName": "Saguenay"
+  },
+  {
+    "name": "Coquitlam",
+    "asciiName": "Coquitlam"
+  },
+  {
+    "name": "Barrie",
+    "asciiName": "Barrie"
+  },
+  {
+    "name": "Rosemont–La Petite-Patrie",
+    "asciiName": "Rosemont-La Petite-Patrie"
+  },
+  {
+    "name": "Villeray–Saint-Michel–Parc-Extension",
+    "asciiName": "Villeray-Saint-Michel-Parc-Extension"
+  },
+  {
+    "name": "Kelowna",
+    "asciiName": "Kelowna"
+  },
+  {
+    "name": "Trois-Rivières",
+    "asciiName": "Trois-Rivieres"
+  },
+  {
+    "name": "Guelph",
+    "asciiName": "Guelph"
+  },
+  {
+    "name": "Lévis",
+    "asciiName": "Levis"
+  },
+  {
+    "name": "Mercier–Hochelaga-Maisonneuve",
+    "asciiName": "Mercier-Hochelaga-Maisonneuve"
+  },
+  {
+    "name": "Abbotsford",
+    "asciiName": "Abbotsford"
+  },
+  {
+    "name": "Whitby",
+    "asciiName": "Whitby"
+  },
+  {
+    "name": "St. Catharines",
+    "asciiName": "St. Catharines"
+  },
+  {
+    "name": "Ahuntsic-Cartierville",
+    "asciiName": "Ahuntsic-Cartierville"
+  },
+  {
+    "name": "Le Vieux-Longueuil",
+    "asciiName": "Le Vieux-Longueuil"
+  },
+  {
+    "name": "Milton",
+    "asciiName": "Milton"
+  },
+  {
+    "name": "Langley",
+    "asciiName": "Langley"
+  },
+  {
+    "name": "Kingston",
+    "asciiName": "Kingston"
+  },
+  {
+    "name": "Cambridge",
+    "asciiName": "Cambridge"
+  },
+  {
+    "name": "Sherbrooke",
+    "asciiName": "Sherbrooke"
+  },
+  {
+    "name": "Orléans",
+    "asciiName": "Orleans"
+  },
+  {
+    "name": "Ottawa South",
+    "asciiName": "Ottawa South"
+  },
+  {
+    "name": "Saint-Louis-de-Terrebonne",
+    "asciiName": "Saint-Louis-de-Terrebonne"
+  },
+  {
+    "name": "Ajax",
+    "asciiName": "Ajax"
+  },
+  {
+    "name": "Saanich",
+    "asciiName": "Saanich"
+  },
+  {
+    "name": "Rivière-des-Prairies–Pointe-aux-Trembles",
+    "asciiName": "Riviere-des-Prairies-Pointe-aux-Trembles"
+  },
+  {
+    "name": "Terrebonne",
+    "asciiName": "Terrebonne"
+  },
+  {
+    "name": "Sainte-Foy",
+    "asciiName": "Sainte-Foy"
+  },
+  {
+    "name": "St. John's",
+    "asciiName": "St. John's"
+  },
+  {
+    "name": "Thunder Bay",
+    "asciiName": "Thunder Bay"
+  },
+  {
+    "name": "La Cité-Limoilou",
+    "asciiName": "La Cite-Limoilou"
+  },
+  {
+    "name": "Sydney",
+    "asciiName": "Sydney"
+  },
+  {
+    "name": "Le Plateau-Mont-Royal",
+    "asciiName": "Le Plateau-Mont-Royal"
+  },
+  {
+    "name": "Waterloo",
+    "asciiName": "Waterloo"
+  },
+  {
+    "name": "Ville-Marie",
+    "asciiName": "Ville-Marie"
+  },
+  {
+    "name": "Brantford",
+    "asciiName": "Brantford"
+  },
+  {
+    "name": "Kamloops",
+    "asciiName": "Kamloops"
+  },
+  {
+    "name": "Lethbridge",
+    "asciiName": "Lethbridge"
+  },
+  {
+    "name": "Whalley",
+    "asciiName": "Whalley"
+  },
+  {
+    "name": "Delta",
+    "asciiName": "Delta"
+  },
+  {
+    "name": "Chilliwack",
+    "asciiName": "Chilliwack"
+  },
+  {
+    "name": "Dartmouth",
+    "asciiName": "Dartmouth"
+  },
+  {
+    "name": "Red Deer",
+    "asciiName": "Red Deer"
+  },
+  {
+    "name": "Niagara Falls",
+    "asciiName": "Niagara Falls"
+  },
+  {
+    "name": "Saint-Laurent",
+    "asciiName": "Saint-Laurent"
+  }
+]

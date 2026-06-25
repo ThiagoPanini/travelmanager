@@ -1,0 +1,322 @@
+[
+  {
+    "name": "Santiago",
+    "asciiName": "Santiago"
+  },
+  {
+    "name": "Puente Alto",
+    "asciiName": "Puente Alto"
+  },
+  {
+    "name": "Maipú",
+    "asciiName": "Maipu"
+  },
+  {
+    "name": "Antofagasta",
+    "asciiName": "Antofagasta"
+  },
+  {
+    "name": "Viña del Mar",
+    "asciiName": "Vina del Mar"
+  },
+  {
+    "name": "Valparaíso",
+    "asciiName": "Valparaiso"
+  },
+  {
+    "name": "Ñuñoa",
+    "asciiName": "Nunoa"
+  },
+  {
+    "name": "San Bernardo",
+    "asciiName": "San Bernardo"
+  },
+  {
+    "name": "Puerto Montt",
+    "asciiName": "Puerto Montt"
+  },
+  {
+    "name": "Arica",
+    "asciiName": "Arica"
+  },
+  {
+    "name": "Peñalolén",
+    "asciiName": "Penalolen"
+  },
+  {
+    "name": "Temuco",
+    "asciiName": "Temuco"
+  },
+  {
+    "name": "Concepción",
+    "asciiName": "Concepcion"
+  },
+  {
+    "name": "Rancagua",
+    "asciiName": "Rancagua"
+  },
+  {
+    "name": "Quilicura",
+    "asciiName": "Quilicura"
+  },
+  {
+    "name": "La Pintana",
+    "asciiName": "La Pintana"
+  },
+  {
+    "name": "Iquique",
+    "asciiName": "Iquique"
+  },
+  {
+    "name": "Talca",
+    "asciiName": "Talca"
+  },
+  {
+    "name": "Calama",
+    "asciiName": "Calama"
+  },
+  {
+    "name": "Coquimbo",
+    "asciiName": "Coquimbo"
+  },
+  {
+    "name": "La Serena",
+    "asciiName": "La Serena"
+  },
+  {
+    "name": "Talcahuano",
+    "asciiName": "Talcahuano"
+  },
+  {
+    "name": "Chillán",
+    "asciiName": "Chillan"
+  },
+  {
+    "name": "Renca",
+    "asciiName": "Renca"
+  },
+  {
+    "name": "Colina",
+    "asciiName": "Colina"
+  },
+  {
+    "name": "Alto Hospicio",
+    "asciiName": "Alto Hospicio"
+  },
+  {
+    "name": "Osorno",
+    "asciiName": "Osorno"
+  },
+  {
+    "name": "Valdivia",
+    "asciiName": "Valdivia"
+  },
+  {
+    "name": "Villa Mercedes",
+    "asciiName": "Villa Mercedes"
+  },
+  {
+    "name": "Quilpué",
+    "asciiName": "Quilpue"
+  },
+  {
+    "name": "Copiapó",
+    "asciiName": "Copiapo"
+  },
+  {
+    "name": "Los Ángeles",
+    "asciiName": "Los Angeles"
+  },
+  {
+    "name": "San Pedro de la Paz",
+    "asciiName": "San Pedro de la Paz"
+  },
+  {
+    "name": "Punta Arenas",
+    "asciiName": "Punta Arenas"
+  },
+  {
+    "name": "Coronel",
+    "asciiName": "Coronel"
+  },
+  {
+    "name": "Lo Prado",
+    "asciiName": "Lo Prado"
+  },
+  {
+    "name": "Curicó",
+    "asciiName": "Curico"
+  },
+  {
+    "name": "Lampa",
+    "asciiName": "Lampa"
+  },
+  {
+    "name": "Villa Alemana",
+    "asciiName": "Villa Alemana"
+  },
+  {
+    "name": "San Antonio",
+    "asciiName": "San Antonio"
+  },
+  {
+    "name": "Hualpén",
+    "asciiName": "Hualpen"
+  },
+  {
+    "name": "Peñaflor",
+    "asciiName": "Penaflor"
+  },
+  {
+    "name": "Chiguayante",
+    "asciiName": "Chiguayante"
+  },
+  {
+    "name": "Ovalle",
+    "asciiName": "Ovalle"
+  },
+  {
+    "name": "Padre Las Casas",
+    "asciiName": "Padre Las Casas"
+  },
+  {
+    "name": "Paine",
+    "asciiName": "Paine"
+  },
+  {
+    "name": "Linares",
+    "asciiName": "Linares"
+  },
+  {
+    "name": "Quillota",
+    "asciiName": "Quillota"
+  },
+  {
+    "name": "Buin",
+    "asciiName": "Buin"
+  },
+  {
+    "name": "Padre Hurtado",
+    "asciiName": "Padre Hurtado"
+  },
+  {
+    "name": "Melipilla",
+    "asciiName": "Melipilla"
+  },
+  {
+    "name": "Los Andes",
+    "asciiName": "Los Andes"
+  },
+  {
+    "name": "San Felipe",
+    "asciiName": "San Felipe"
+  },
+  {
+    "name": "Talagante",
+    "asciiName": "Talagante"
+  },
+  {
+    "name": "Tomé",
+    "asciiName": "Tome"
+  },
+  {
+    "name": "La Calera",
+    "asciiName": "La Calera"
+  },
+  {
+    "name": "Villarrica",
+    "asciiName": "Villarrica"
+  },
+  {
+    "name": "Hacienda La Calera",
+    "asciiName": "Hacienda La Calera"
+  },
+  {
+    "name": "Lota",
+    "asciiName": "Lota"
+  },
+  {
+    "name": "Limache",
+    "asciiName": "Limache"
+  },
+  {
+    "name": "Penco",
+    "asciiName": "Penco"
+  },
+  {
+    "name": "Coyhaique",
+    "asciiName": "Coyhaique"
+  },
+  {
+    "name": "Vallenar",
+    "asciiName": "Vallenar"
+  },
+  {
+    "name": "Angol",
+    "asciiName": "Angol"
+  },
+  {
+    "name": "San Vicente de Tagua Tagua",
+    "asciiName": "San Vicente de Tagua Tagua"
+  },
+  {
+    "name": "Machalí",
+    "asciiName": "Machali"
+  },
+  {
+    "name": "Concón",
+    "asciiName": "Concon"
+  },
+  {
+    "name": "Castro",
+    "asciiName": "Castro"
+  },
+  {
+    "name": "Constitución",
+    "asciiName": "Constitucion"
+  },
+  {
+    "name": "Ancud",
+    "asciiName": "Ancud"
+  },
+  {
+    "name": "Molina",
+    "asciiName": "Molina"
+  },
+  {
+    "name": "San Javier",
+    "asciiName": "San Javier"
+  },
+  {
+    "name": "San Clemente",
+    "asciiName": "San Clemente"
+  },
+  {
+    "name": "Placilla",
+    "asciiName": "Placilla"
+  },
+  {
+    "name": "Cauquenes",
+    "asciiName": "Cauquenes"
+  },
+  {
+    "name": "Rengo",
+    "asciiName": "Rengo"
+  },
+  {
+    "name": "Puerto Varas",
+    "asciiName": "Puerto Varas"
+  },
+  {
+    "name": "Labranza",
+    "asciiName": "Labranza"
+  },
+  {
+    "name": "Santa Cruz",
+    "asciiName": "Santa Cruz"
+  },
+  {
+    "name": "Lautaro",
+    "asciiName": "Lautaro"
+  }
+]
