@@ -96,6 +96,31 @@ class TestResendEmailSender:
         assert "246813" in corpo["text"]
         assert isinstance(capturado["timeout"], (int, float))
 
+    def test_envia_html_com_codigo_e_fallback_text(self, monkeypatch: pytest.MonkeyPatch) -> None:
+        # given: transporte Resend com a chamada de rede interceptada
+        capturado: dict[str, object] = {}
+
+        class _Resp:
+            def close(self) -> None: ...
+
+        def _fake_urlopen(req: urllib.request.Request, **kwargs: object) -> _Resp:
+            capturado["req"] = req
+            return _Resp()
+
+        monkeypatch.setattr(urllib.request, "urlopen", _fake_urlopen)
+        sender = ResendEmailSender("re_test", "no-reply@mail.panlabs.tech")
+        # when:
+        sender.send_code("viajante@example.com", "246813")
+        # then: payload contém html com o código e text como fallback
+        req = capturado["req"]
+        assert isinstance(req, urllib.request.Request)
+        assert isinstance(req.data, bytes)
+        corpo = json.loads(req.data)
+        assert "html" in corpo, "Resend precisa do campo 'html' para e-mail HTML"
+        assert "246813" in corpo["html"], "código deve aparecer no HTML"
+        assert "text" in corpo, "fallback texto-puro obrigatório para entregabilidade"
+        assert "246813" in corpo["text"], "código deve aparecer no texto-puro"
+
 
 class TestEmailSenderSelection:
     def test_sem_resend_api_key_usa_transporte_dev(self, monkeypatch: pytest.MonkeyPatch) -> None:
