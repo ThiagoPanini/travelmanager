@@ -358,8 +358,11 @@ class SignInWithGoogle:
         reusa `CreateSession` para o mint. Token recusado ou e-mail não-verificado
         levanta `Unauthorized` e **não** autentica.
 
-        O happy path aqui é o **usuário novo**; o caminho de vínculo a uma conta
-        e-mail pré-existente por outra porta é endurecido na fatia #195.
+        O **vínculo de contas** cai no mesmo ramo: e-mail pré-existente por outra
+        porta (OTP) é resolvido pela chave natural e ganha a linha `(google,
+        subject)` uma única vez — sem duplicar usuário. O guard anti-takeover é o
+        `email_verified`: Google não-verificado sobre e-mail existente **não**
+        vincula. Contrato travado em `tests/identity/test_account_linking.py` (#195).
 
         Args:
             id_token: O JWT cru vindo da dança OAuth (repassado pelo BFF).
