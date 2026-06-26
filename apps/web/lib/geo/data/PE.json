@@ -1,322 +1,562 @@
 [
   {
     "name": "Lima",
-    "asciiName": "Lima"
+    "asciiName": "Lima",
+    "lat": -12.0432,
+    "lng": -77.0282,
+    "population": 7737002
   },
   {
     "name": "Callao",
-    "asciiName": "Callao"
+    "asciiName": "Callao",
+    "lat": -12.0516,
+    "lng": -77.1345,
+    "population": 1226200
   },
   {
     "name": "Arequipa",
-    "asciiName": "Arequipa"
+    "asciiName": "Arequipa",
+    "lat": -16.399,
+    "lng": -71.5375,
+    "population": 1195700
   },
   {
     "name": "Trujillo",
-    "asciiName": "Trujillo"
+    "asciiName": "Trujillo",
+    "lat": -8.116,
+    "lng": -79.03,
+    "population": 1067700
   },
   {
     "name": "Piura",
-    "asciiName": "Piura"
+    "asciiName": "Piura",
+    "lat": -5.1819,
+    "lng": -80.6571,
+    "population": 630000
   },
   {
     "name": "Chiclayo",
-    "asciiName": "Chiclayo"
+    "asciiName": "Chiclayo",
+    "lat": -6.7701,
+    "lng": -79.8549,
+    "population": 609400
   },
   {
     "name": "Huancayo",
-    "asciiName": "Huancayo"
+    "asciiName": "Huancayo",
+    "lat": -12.0687,
+    "lng": -75.2103,
+    "population": 456250
   },
   {
     "name": "Cusco",
-    "asciiName": "Cusco"
+    "asciiName": "Cusco",
+    "lat": -13.5319,
+    "lng": -71.967,
+    "population": 428450
   },
   {
     "name": "Iquitos",
-    "asciiName": "Iquitos"
+    "asciiName": "Iquitos",
+    "lat": -3.7481,
+    "lng": -73.2529,
+    "population": 377609
   },
   {
     "name": "Pucallpa",
-    "asciiName": "Pucallpa"
+    "asciiName": "Pucallpa",
+    "lat": -8.3791,
+    "lng": -74.5539,
+    "population": 326040
   },
   {
     "name": "Chimbote",
-    "asciiName": "Chimbote"
+    "asciiName": "Chimbote",
+    "lat": -9.0751,
+    "lng": -78.5937,
+    "population": 316966
   },
   {
     "name": "Tacna",
-    "asciiName": "Tacna"
+    "asciiName": "Tacna",
+    "lat": -18.0146,
+    "lng": -70.2536,
+    "population": 286240
   },
   {
     "name": "Ica",
-    "asciiName": "Ica"
+    "asciiName": "Ica",
+    "lat": -14.0754,
+    "lng": -75.7342,
+    "population": 282407
   },
   {
     "name": "Santiago de Surco",
-    "asciiName": "Santiago de Surco"
+    "asciiName": "Santiago de Surco",
+    "lat": -12.1359,
+    "lng": -77.0074,
+    "population": 251648
   },
   {
     "name": "Juliaca",
-    "asciiName": "Juliaca"
+    "asciiName": "Juliaca",
+    "lat": -15.5,
+    "lng": -70.1333,
+    "population": 245675
   },
   {
     "name": "Cajamarca",
-    "asciiName": "Cajamarca"
+    "asciiName": "Cajamarca",
+    "lat": -7.1638,
+    "lng": -78.5003,
+    "population": 201329
   },
   {
     "name": "Huánuco",
-    "asciiName": "Huanuco"
+    "asciiName": "Huanuco",
+    "lat": -9.9288,
+    "lng": -76.2399,
+    "population": 196627
   },
   {
     "name": "Miraflores",
-    "asciiName": "Miraflores"
+    "asciiName": "Miraflores",
+    "lat": -12.1133,
+    "lng": -77.0327,
+    "population": 187401
   },
   {
     "name": "Santa Anita - Los Ficus",
-    "asciiName": "Santa Anita - Los Ficus"
+    "asciiName": "Santa Anita - Los Ficus",
+    "lat": -12.0505,
+    "lng": -76.9733,
+    "population": 184614
   },
   {
     "name": "Sullana",
-    "asciiName": "Sullana"
+    "asciiName": "Sullana",
+    "lat": -4.9039,
+    "lng": -80.6853,
+    "population": 160789
   },
   {
     "name": "Chincha Alta",
-    "asciiName": "Chincha Alta"
+    "asciiName": "Chincha Alta",
+    "lat": -13.4098,
+    "lng": -76.1323,
+    "population": 153076
   },
   {
     "name": "Ayacucho",
-    "asciiName": "Ayacucho"
+    "asciiName": "Ayacucho",
+    "lat": -13.1638,
+    "lng": -74.2234,
+    "population": 140033
   },
   {
     "name": "San Martin",
-    "asciiName": "San Martin"
+    "asciiName": "San Martin",
+    "lat": -5.1859,
+    "lng": -80.6693,
+    "population": 130000
   },
   {
     "name": "Puno",
-    "asciiName": "Puno"
+    "asciiName": "Puno",
+    "lat": -15.84,
+    "lng": -70.022,
+    "population": 128637
   },
   {
     "name": "Huaraz",
-    "asciiName": "Huaraz"
+    "asciiName": "Huaraz",
+    "lat": -9.5261,
+    "lng": -77.5287,
+    "population": 118836
   },
   {
     "name": "San Francisco De Borja",
-    "asciiName": "San Francisco De Borja"
+    "asciiName": "San Francisco De Borja",
+    "lat": -12.0891,
+    "lng": -76.9988,
+    "population": 105076
   },
   {
     "name": "Talara",
-    "asciiName": "Talara"
+    "asciiName": "Talara",
+    "lat": -4.5772,
+    "lng": -81.2719,
+    "population": 99074
   },
   {
     "name": "Tumbes",
-    "asciiName": "Tumbes"
+    "asciiName": "Tumbes",
+    "lat": -3.5559,
+    "lng": -80.4426,
+    "population": 96946
   },
   {
     "name": "Chosica",
-    "asciiName": "Chosica"
+    "asciiName": "Chosica",
+    "lat": -11.9431,
+    "lng": -76.7094,
+    "population": 88606
   },
   {
     "name": "Puerto Maldonado",
-    "asciiName": "Puerto Maldonado"
+    "asciiName": "Puerto Maldonado",
+    "lat": -12.5895,
+    "lng": -69.1995,
+    "population": 85024
   },
   {
     "name": "Breña",
-    "asciiName": "Brena"
+    "asciiName": "Brena",
+    "lat": -12.0561,
+    "lng": -77.0529,
+    "population": 81909
   },
   {
     "name": "San Juan",
-    "asciiName": "San Juan"
+    "asciiName": "San Juan",
+    "lat": -3.7761,
+    "lng": -73.2814,
+    "population": 78153
   },
   {
     "name": "Ciudad Satelite",
-    "asciiName": "Ciudad Satelite"
+    "asciiName": "Ciudad Satelite",
+    "lat": -16.4308,
+    "lng": -71.5292,
+    "population": 76410
   },
   {
     "name": "Chilca",
-    "asciiName": "Chilca"
+    "asciiName": "Chilca",
+    "lat": -12.0863,
+    "lng": -75.2083,
+    "population": 73371
   },
   {
     "name": "Selva Alegre",
-    "asciiName": "Selva Alegre"
+    "asciiName": "Selva Alegre",
+    "lat": -16.3706,
+    "lng": -71.5272,
+    "population": 72696
   },
   {
     "name": "Abancay",
-    "asciiName": "Abancay"
+    "asciiName": "Abancay",
+    "lat": -13.6343,
+    "lng": -72.8838,
+    "population": 72277
   },
   {
     "name": "Moquegua",
-    "asciiName": "Moquegua"
+    "asciiName": "Moquegua",
+    "lat": -17.1975,
+    "lng": -70.9359,
+    "population": 69882
   },
   {
     "name": "Chulucanas",
-    "asciiName": "Chulucanas"
+    "asciiName": "Chulucanas",
+    "lat": -5.0925,
+    "lng": -80.1625,
+    "population": 68835
   },
   {
     "name": "San Isidro",
-    "asciiName": "San Isidro"
+    "asciiName": "San Isidro",
+    "lat": -12.0965,
+    "lng": -77.0426,
+    "population": 68309
   },
   {
     "name": "San Fernando",
-    "asciiName": "San Fernando"
+    "asciiName": "San Fernando",
+    "lat": -8.3982,
+    "lng": -74.5377,
+    "population": 67844
   },
   {
     "name": "Jesus Maria",
-    "asciiName": "Jesus Maria"
+    "asciiName": "Jesus Maria",
+    "lat": -12.0698,
+    "lng": -77.0449,
+    "population": 66171
   },
   {
     "name": "Santiago",
-    "asciiName": "Santiago"
+    "asciiName": "Santiago",
+    "lat": -13.5273,
+    "lng": -71.9843,
+    "population": 64075
   },
   {
     "name": "Huaral",
-    "asciiName": "Huaral"
+    "asciiName": "Huaral",
+    "lat": -11.495,
+    "lng": -77.2078,
+    "population": 62174
   },
   {
     "name": "Pisco",
-    "asciiName": "Pisco"
+    "asciiName": "Pisco",
+    "lat": -13.7103,
+    "lng": -76.2054,
+    "population": 61869
   },
   {
     "name": "Villa Poeta José Gálvez Barrenechea",
-    "asciiName": "Villa Poeta Jose Galvez Barrenechea"
+    "asciiName": "Villa Poeta Jose Galvez Barrenechea",
+    "lat": -12.2131,
+    "lng": -76.9052,
+    "population": 61000
   },
   {
     "name": "San Miguel",
-    "asciiName": "San Miguel"
+    "asciiName": "San Miguel",
+    "lat": -15.478,
+    "lng": -70.125,
+    "population": 60850
   },
   {
     "name": "Wanchaq",
-    "asciiName": "Wanchaq"
+    "asciiName": "Wanchaq",
+    "lat": -13.5249,
+    "lng": -71.9653,
+    "population": 59134
   },
   {
     "name": "Cerro de Pasco",
-    "asciiName": "Cerro de Pasco"
+    "asciiName": "Cerro de Pasco",
+    "lat": -10.6658,
+    "lng": -76.2531,
+    "population": 58899
   },
   {
     "name": "Belen",
-    "asciiName": "Belen"
+    "asciiName": "Belen",
+    "lat": -3.7602,
+    "lng": -73.2497,
+    "population": 57824
   },
   {
     "name": "Catacaos",
-    "asciiName": "Catacaos"
+    "asciiName": "Catacaos",
+    "lat": -5.2667,
+    "lng": -80.6833,
+    "population": 57304
   },
   {
     "name": "Paita",
-    "asciiName": "Paita"
+    "asciiName": "Paita",
+    "lat": -5.0892,
+    "lng": -81.1144,
+    "population": 56151
   },
   {
     "name": "Huacho",
-    "asciiName": "Huacho"
+    "asciiName": "Huacho",
+    "lat": -11.1172,
+    "lng": -77.6058,
+    "population": 54545
   },
   {
     "name": "Ilo",
-    "asciiName": "Ilo"
+    "asciiName": "Ilo",
+    "lat": -17.6318,
+    "lng": -71.3411,
+    "population": 53476
   },
   {
     "name": "Tingo María",
-    "asciiName": "Tingo Maria"
+    "asciiName": "Tingo Maria",
+    "lat": -9.2953,
+    "lng": -75.9957,
+    "population": 53177
   },
   {
     "name": "Jaén",
-    "asciiName": "Jaen"
+    "asciiName": "Jaen",
+    "lat": -5.7073,
+    "lng": -78.8078,
+    "population": 52493
   },
   {
     "name": "Tarma",
-    "asciiName": "Tarma"
+    "asciiName": "Tarma",
+    "lat": -11.419,
+    "lng": -75.6899,
+    "population": 51350
   },
   {
     "name": "Moyobamba",
-    "asciiName": "Moyobamba"
+    "asciiName": "Moyobamba",
+    "lat": -6.0344,
+    "lng": -76.9742,
+    "population": 50073
   },
   {
     "name": "Huancavelica",
-    "asciiName": "Huancavelica"
+    "asciiName": "Huancavelica",
+    "lat": -12.7869,
+    "lng": -74.973,
+    "population": 49570
   },
   {
     "name": "Centenario",
-    "asciiName": "Centenario"
+    "asciiName": "Centenario",
+    "lat": -9.5166,
+    "lng": -77.5304,
+    "population": 47581
   },
   {
     "name": "Cono Norte",
-    "asciiName": "Cono Norte"
+    "asciiName": "Cono Norte",
+    "lat": -16.3237,
+    "lng": -71.5815,
+    "population": 47347
   },
   {
     "name": "Barranca",
-    "asciiName": "Barranca"
+    "asciiName": "Barranca",
+    "lat": -10.75,
+    "lng": -77.7667,
+    "population": 46290
   },
   {
     "name": "Jacobo Hunter",
-    "asciiName": "Jacobo Hunter"
+    "asciiName": "Jacobo Hunter",
+    "lat": -16.4408,
+    "lng": -71.5533,
+    "population": 46092
   },
   {
     "name": "Lambayeque",
-    "asciiName": "Lambayeque"
+    "asciiName": "Lambayeque",
+    "lat": -6.7011,
+    "lng": -79.9061,
+    "population": 43710
   },
   {
     "name": "Picsi",
-    "asciiName": "Picsi"
+    "asciiName": "Picsi",
+    "lat": -6.7178,
+    "lng": -79.7697,
+    "population": 43610
   },
   {
     "name": "Chepén",
-    "asciiName": "Chepen"
+    "asciiName": "Chepen",
+    "lat": -7.2244,
+    "lng": -79.4248,
+    "population": 41992
   },
   {
     "name": "Carmen De La Legua Reynoso",
-    "asciiName": "Carmen De La Legua Reynoso"
+    "asciiName": "Carmen De La Legua Reynoso",
+    "lat": -12.0535,
+    "lng": -77.098,
+    "population": 41863
   },
   {
     "name": "Yurimaguas",
-    "asciiName": "Yurimaguas"
+    "asciiName": "Yurimaguas",
+    "lat": -5.9018,
+    "lng": -76.1223,
+    "population": 41827
   },
   {
     "name": "Saña",
-    "asciiName": "Sana"
+    "asciiName": "Sana",
+    "lat": -6.9189,
+    "lng": -79.582,
+    "population": 39200
   },
   {
     "name": "Tambopata",
-    "asciiName": "Tambopata"
+    "asciiName": "Tambopata",
+    "lat": -12.6719,
+    "lng": -69.3555,
+    "population": 38966
   },
   {
     "name": "Juanjuí",
-    "asciiName": "Juanjui"
+    "asciiName": "Juanjui",
+    "lat": -7.177,
+    "lng": -76.7277,
+    "population": 37715
   },
   {
     "name": "Barranco",
-    "asciiName": "Barranco"
+    "asciiName": "Barranco",
+    "lat": -12.143,
+    "lng": -77.0186,
+    "population": 37525
   },
   {
     "name": "La Unión",
-    "asciiName": "La Union"
+    "asciiName": "La Union",
+    "lat": -5.4023,
+    "lng": -80.7422,
+    "population": 34834
   },
   {
     "name": "Ferreñafe",
-    "asciiName": "Ferrenafe"
+    "asciiName": "Ferrenafe",
+    "lat": -6.6389,
+    "lng": -79.7889,
+    "population": 34357
   },
   {
     "name": "Sicuani",
-    "asciiName": "Sicuani"
+    "asciiName": "Sicuani",
+    "lat": -14.2694,
+    "lng": -71.2261,
+    "population": 33575
   },
   {
     "name": "La Oroya",
-    "asciiName": "La Oroya"
+    "asciiName": "La Oroya",
+    "lat": -11.5189,
+    "lng": -75.8993,
+    "population": 33345
   },
   {
     "name": "Chocope",
-    "asciiName": "Chocope"
+    "asciiName": "Chocope",
+    "lat": -7.7914,
+    "lng": -79.2217,
+    "population": 32370
   },
   {
     "name": "Nuevo Imperial",
-    "asciiName": "Nuevo Imperial"
+    "asciiName": "Nuevo Imperial",
+    "lat": -13.0754,
+    "lng": -76.3172,
+    "population": 32344
   },
   {
     "name": "Imperial",
-    "asciiName": "Imperial"
+    "asciiName": "Imperial",
+    "lat": -13.0593,
+    "lng": -76.3527,
+    "population": 32344
   },
   {
     "name": "Chachapoyas",
-    "asciiName": "Chachapoyas"
+    "asciiName": "Chachapoyas",
+    "lat": -6.2317,
+    "lng": -77.869,
+    "population": 32026
   },
   {
     "name": "Tambo Grande",
-    "asciiName": "Tambo Grande"
+    "asciiName": "Tambo Grande",
+    "lat": -4.9269,
+    "lng": -80.3447,
+    "population": 30033
   }
 ]

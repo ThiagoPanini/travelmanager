@@ -1,114 +1,198 @@
 [
   {
     "name": "Asunción",
-    "asciiName": "Asuncion"
+    "asciiName": "Asuncion",
+    "lat": -25.2865,
+    "lng": -57.647,
+    "population": 1482200
   },
   {
     "name": "Ciudad del Este",
-    "asciiName": "Ciudad del Este"
+    "asciiName": "Ciudad del Este",
+    "lat": -25.5036,
+    "lng": -54.6507,
+    "population": 301815
   },
   {
     "name": "San Lorenzo",
-    "asciiName": "San Lorenzo"
+    "asciiName": "San Lorenzo",
+    "lat": -25.3397,
+    "lng": -57.5088,
+    "population": 227876
   },
   {
     "name": "Capiatá",
-    "asciiName": "Capiata"
+    "asciiName": "Capiata",
+    "lat": -25.3552,
+    "lng": -57.4454,
+    "population": 198553
   },
   {
     "name": "Lambaré",
-    "asciiName": "Lambare"
+    "asciiName": "Lambare",
+    "lat": -25.3468,
+    "lng": -57.6065,
+    "population": 126377
   },
   {
     "name": "Fernando de la Mora",
-    "asciiName": "Fernando de la Mora"
+    "asciiName": "Fernando de la Mora",
+    "lat": -25.3386,
+    "lng": -57.5217,
+    "population": 120167
   },
   {
     "name": "Limpio",
-    "asciiName": "Limpio"
+    "asciiName": "Limpio",
+    "lat": -25.1661,
+    "lng": -57.4856,
+    "population": 96143
   },
   {
     "name": "Nemby",
-    "asciiName": "Nemby"
+    "asciiName": "Nemby",
+    "lat": -25.3949,
+    "lng": -57.5357,
+    "population": 94641
   },
   {
     "name": "Pedro Juan Caballero",
-    "asciiName": "Pedro Juan Caballero"
+    "asciiName": "Pedro Juan Caballero",
+    "lat": -22.5492,
+    "lng": -55.7387,
+    "population": 75109
   },
   {
     "name": "Encarnación",
-    "asciiName": "Encarnacion"
+    "asciiName": "Encarnacion",
+    "lat": -27.3318,
+    "lng": -55.8666,
+    "population": 74983
   },
   {
     "name": "Mariano Roque Alonso",
-    "asciiName": "Mariano Roque Alonso"
+    "asciiName": "Mariano Roque Alonso",
+    "lat": -25.2079,
+    "lng": -57.532,
+    "population": 72008
   },
   {
     "name": "Itauguá",
-    "asciiName": "Itaugua"
+    "asciiName": "Itaugua",
+    "lat": -25.3926,
+    "lng": -57.3542,
+    "population": 64997
   },
   {
     "name": "Villa Elisa",
-    "asciiName": "Villa Elisa"
+    "asciiName": "Villa Elisa",
+    "lat": -25.3676,
+    "lng": -57.5927,
+    "population": 64099
   },
   {
     "name": "Villa Hayes",
-    "asciiName": "Villa Hayes"
+    "asciiName": "Villa Hayes",
+    "lat": -25.093,
+    "lng": -57.5272,
+    "population": 57217
   },
   {
     "name": "Caacupé",
-    "asciiName": "Caacupe"
+    "asciiName": "Caacupe",
+    "lat": -25.3858,
+    "lng": -57.1422,
+    "population": 56864
   },
   {
     "name": "San Antonio",
-    "asciiName": "San Antonio"
+    "asciiName": "San Antonio",
+    "lat": -25.4213,
+    "lng": -57.5472,
+    "population": 55754
   },
   {
     "name": "Caaguazú",
-    "asciiName": "Caaguazu"
+    "asciiName": "Caaguazu",
+    "lat": -25.471,
+    "lng": -56.016,
+    "population": 54808
   },
   {
     "name": "Presidente Franco",
-    "asciiName": "Presidente Franco"
+    "asciiName": "Presidente Franco",
+    "lat": -25.5638,
+    "lng": -54.611,
+    "population": 54292
   },
   {
     "name": "Coronel Oviedo",
-    "asciiName": "Coronel Oviedo"
+    "asciiName": "Coronel Oviedo",
+    "lat": -25.4461,
+    "lng": -56.4393,
+    "population": 51286
   },
   {
     "name": "Concepción",
-    "asciiName": "Concepcion"
+    "asciiName": "Concepcion",
+    "lat": -23.3998,
+    "lng": -57.4324,
+    "population": 48123
   },
   {
     "name": "Villarrica",
-    "asciiName": "Villarrica"
+    "asciiName": "Villarrica",
+    "lat": -25.7495,
+    "lng": -56.4352,
+    "population": 41157
   },
   {
     "name": "Pilar",
-    "asciiName": "Pilar"
+    "asciiName": "Pilar",
+    "lat": -26.8587,
+    "lng": -58.3064,
+    "population": 32810
   },
   {
     "name": "Yby Yaú",
-    "asciiName": "Yby Yau"
+    "asciiName": "Yby Yau",
+    "lat": -22.9661,
+    "lng": -56.5407,
+    "population": 31290
   },
   {
     "name": "Caazapá",
-    "asciiName": "Caazapa"
+    "asciiName": "Caazapa",
+    "lat": -26.1966,
+    "lng": -56.3679,
+    "population": 23996
   },
   {
     "name": "Filadelfia",
-    "asciiName": "Filadelfia"
+    "asciiName": "Filadelfia",
+    "lat": -22.3394,
+    "lng": -60.0316,
+    "population": 19927
   },
   {
     "name": "Itá",
-    "asciiName": "Ita"
+    "asciiName": "Ita",
+    "lat": -25.5005,
+    "lng": -57.3672,
+    "population": 18459
   },
   {
     "name": "San Juan Bautista",
-    "asciiName": "San Juan Bautista"
+    "asciiName": "San Juan Bautista",
+    "lat": -26.6703,
+    "lng": -57.1407,
+    "population": 16593
   },
   {
     "name": "Loma Plata",
-    "asciiName": "Loma Plata"
+    "asciiName": "Loma Plata",
+    "lat": -22.3829,
+    "lng": -59.8355,
+    "population": 16460
   }
 ]

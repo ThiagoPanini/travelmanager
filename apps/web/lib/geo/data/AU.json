@@ -1,322 +1,562 @@
 [
   {
     "name": "Sydney",
-    "asciiName": "Sydney"
+    "asciiName": "Sydney",
+    "lat": -33.8678,
+    "lng": 151.2073,
+    "population": 5638830
   },
   {
     "name": "Brisbane",
-    "asciiName": "Brisbane"
+    "asciiName": "Brisbane",
+    "lat": -27.4679,
+    "lng": 153.0281,
+    "population": 5638830
   },
   {
     "name": "Melbourne",
-    "asciiName": "Melbourne"
+    "asciiName": "Melbourne",
+    "lat": -37.814,
+    "lng": 144.9633,
+    "population": 5435590
   },
   {
     "name": "Perth",
-    "asciiName": "Perth"
+    "asciiName": "Perth",
+    "lat": -31.9522,
+    "lng": 115.8614,
+    "population": 2384371
   },
   {
     "name": "Adelaide",
-    "asciiName": "Adelaide"
+    "asciiName": "Adelaide",
+    "lat": -34.9287,
+    "lng": 138.5986,
+    "population": 1469163
   },
   {
     "name": "Gold Coast",
-    "asciiName": "Gold Coast"
+    "asciiName": "Gold Coast",
+    "lat": -28.0003,
+    "lng": 153.4309,
+    "population": 640778
   },
   {
     "name": "Newcastle",
-    "asciiName": "Newcastle"
-  },
-  {
-    "name": "Canberra",
-    "asciiName": "Canberra"
-  },
-  {
-    "name": "Central Coast",
-    "asciiName": "Central Coast"
+    "asciiName": "Newcastle",
+    "lat": -32.9295,
+    "lng": 151.7801,
+    "population": 508437
   },
   {
     "name": "Sunshine Coast",
-    "asciiName": "Sunshine Coast"
+    "asciiName": "Sunshine Coast",
+    "lat": -26.6568,
+    "lng": 153.0796,
+    "population": 398840
+  },
+  {
+    "name": "Canberra",
+    "asciiName": "Canberra",
+    "lat": -35.2835,
+    "lng": 149.1281,
+    "population": 367752
+  },
+  {
+    "name": "Central Coast",
+    "asciiName": "Central Coast",
+    "lat": -33.4298,
+    "lng": 151.3714,
+    "population": 346596
   },
   {
     "name": "Logan City",
-    "asciiName": "Logan City"
+    "asciiName": "Logan City",
+    "lat": -27.6392,
+    "lng": 153.1094,
+    "population": 345098
   },
   {
     "name": "Geelong",
-    "asciiName": "Geelong"
+    "asciiName": "Geelong",
+    "lat": -38.1471,
+    "lng": 144.3607,
+    "population": 282809
   },
   {
     "name": "Wollongong",
-    "asciiName": "Wollongong"
+    "asciiName": "Wollongong",
+    "lat": -34.424,
+    "lng": 150.8935,
+    "population": 280153
   },
   {
     "name": "Hobart",
-    "asciiName": "Hobart"
+    "asciiName": "Hobart",
+    "lat": -42.8794,
+    "lng": 147.3294,
+    "population": 254930
   },
   {
     "name": "Townsville",
-    "asciiName": "Townsville"
+    "asciiName": "Townsville",
+    "lat": -19.2664,
+    "lng": 146.8057,
+    "population": 201313
   },
   {
     "name": "Cairns",
-    "asciiName": "Cairns"
+    "asciiName": "Cairns",
+    "lat": -16.9237,
+    "lng": 145.7661,
+    "population": 153075
   },
   {
     "name": "Toowoomba",
-    "asciiName": "Toowoomba"
+    "asciiName": "Toowoomba",
+    "lat": -27.5606,
+    "lng": 151.9539,
+    "population": 142163
   },
   {
     "name": "Darwin",
-    "asciiName": "Darwin"
+    "asciiName": "Darwin",
+    "lat": -12.4611,
+    "lng": 130.8419,
+    "population": 139902
   },
   {
     "name": "City of Port Phillip",
-    "asciiName": "City of Port Phillip"
+    "asciiName": "City of Port Phillip",
+    "lat": -37.8338,
+    "lng": 144.9383,
+    "population": 112669
   },
   {
     "name": "Ballarat",
-    "asciiName": "Ballarat"
+    "asciiName": "Ballarat",
+    "lat": -37.5662,
+    "lng": 143.8496,
+    "population": 111973
   },
   {
     "name": "Mandurah",
-    "asciiName": "Mandurah"
+    "asciiName": "Mandurah",
+    "lat": -32.5269,
+    "lng": 115.7217,
+    "population": 107643
   },
   {
     "name": "Bendigo",
-    "asciiName": "Bendigo"
+    "asciiName": "Bendigo",
+    "lat": -36.7582,
+    "lng": 144.2802,
+    "population": 103034
   },
   {
     "name": "Caloundra",
-    "asciiName": "Caloundra"
+    "asciiName": "Caloundra",
+    "lat": -26.8035,
+    "lng": 153.122,
+    "population": 96305
   },
   {
     "name": "Launceston",
-    "asciiName": "Launceston"
+    "asciiName": "Launceston",
+    "lat": -41.4388,
+    "lng": 147.1347,
+    "population": 90953
   },
   {
     "name": "Maitland",
-    "asciiName": "Maitland"
+    "asciiName": "Maitland",
+    "lat": -32.7331,
+    "lng": 151.5574,
+    "population": 89597
   },
   {
     "name": "Tuggeranong Administrative District",
-    "asciiName": "Tuggeranong Administrative District"
+    "asciiName": "Tuggeranong Administrative District",
+    "lat": -35.4165,
+    "lng": 149.0695,
+    "population": 89461
   },
   {
     "name": "Mackay",
-    "asciiName": "Mackay"
+    "asciiName": "Mackay",
+    "lat": -21.1534,
+    "lng": 149.1655,
+    "population": 84333
   },
   {
     "name": "Rockhampton",
-    "asciiName": "Rockhampton"
+    "asciiName": "Rockhampton",
+    "lat": -23.3803,
+    "lng": 150.506,
+    "population": 81021
   },
   {
     "name": "Coffs Harbour",
-    "asciiName": "Coffs Harbour"
+    "asciiName": "Coffs Harbour",
+    "lat": -30.2963,
+    "lng": 153.1135,
+    "population": 78759
   },
   {
     "name": "Blue Mountains",
-    "asciiName": "Blue Mountains"
+    "asciiName": "Blue Mountains",
+    "lat": -33.7133,
+    "lng": 150.3307,
+    "population": 78121
   },
   {
     "name": "Bunbury",
-    "asciiName": "Bunbury"
+    "asciiName": "Bunbury",
+    "lat": -33.3271,
+    "lng": 115.6414,
+    "population": 76452
   },
   {
     "name": "Bundaberg",
-    "asciiName": "Bundaberg"
+    "asciiName": "Bundaberg",
+    "lat": -24.8662,
+    "lng": 152.3479,
+    "population": 73747
   },
   {
     "name": "Adelaide Hills",
-    "asciiName": "Adelaide Hills"
+    "asciiName": "Adelaide Hills",
+    "lat": -34.9112,
+    "lng": 138.7074,
+    "population": 72260
   },
   {
     "name": "Point Cook",
-    "asciiName": "Point Cook"
+    "asciiName": "Point Cook",
+    "lat": -37.9148,
+    "lng": 144.7509,
+    "population": 66781
   },
   {
     "name": "Craigieburn",
-    "asciiName": "Craigieburn"
+    "asciiName": "Craigieburn",
+    "lat": -37.6,
+    "lng": 144.95,
+    "population": 65178
   },
   {
     "name": "Pittwater",
-    "asciiName": "Pittwater"
+    "asciiName": "Pittwater",
+    "lat": -33.6662,
+    "lng": 151.3017,
+    "population": 63482
   },
   {
     "name": "Melbourne City Centre",
-    "asciiName": "Melbourne City Centre"
+    "asciiName": "Melbourne City Centre",
+    "lat": -37.815,
+    "lng": 144.9666,
+    "population": 60057
   },
   {
     "name": "Tarneit",
-    "asciiName": "Tarneit"
+    "asciiName": "Tarneit",
+    "lat": -37.8363,
+    "lng": 144.6595,
+    "population": 56370
   },
   {
     "name": "Pakenham",
-    "asciiName": "Pakenham"
+    "asciiName": "Pakenham",
+    "lat": -38.0702,
+    "lng": 145.4741,
+    "population": 54118
   },
   {
     "name": "Hervey Bay",
-    "asciiName": "Hervey Bay"
+    "asciiName": "Hervey Bay",
+    "lat": -25.2876,
+    "lng": 152.7694,
+    "population": 52230
   },
   {
     "name": "Port Macquarie",
-    "asciiName": "Port Macquarie"
+    "asciiName": "Port Macquarie",
+    "lat": -31.4308,
+    "lng": 152.9089,
+    "population": 51965
   },
   {
     "name": "Reservoir",
-    "asciiName": "Reservoir"
+    "asciiName": "Reservoir",
+    "lat": -37.7167,
+    "lng": 145,
+    "population": 51096
   },
   {
     "name": "Berwick",
-    "asciiName": "Berwick"
+    "asciiName": "Berwick",
+    "lat": -38.0333,
+    "lng": 145.35,
+    "population": 50298
   },
   {
     "name": "Werribee",
-    "asciiName": "Werribee"
+    "asciiName": "Werribee",
+    "lat": -37.9,
+    "lng": 144.6667,
+    "population": 50027
   },
   {
     "name": "Blacktown",
-    "asciiName": "Blacktown"
+    "asciiName": "Blacktown",
+    "lat": -33.7667,
+    "lng": 150.9167,
+    "population": 46942
   },
   {
     "name": "Gladstone",
-    "asciiName": "Gladstone"
+    "asciiName": "Gladstone",
+    "lat": -23.8485,
+    "lng": 151.2577,
+    "population": 45185
   },
   {
     "name": "Tamworth",
-    "asciiName": "Tamworth"
+    "asciiName": "Tamworth",
+    "lat": -31.0905,
+    "lng": 150.9291,
+    "population": 43874
   },
   {
     "name": "Dubbo",
-    "asciiName": "Dubbo"
+    "asciiName": "Dubbo",
+    "lat": -32.2429,
+    "lng": 148.6048,
+    "population": 43516
   },
   {
     "name": "Glen Waverley",
-    "asciiName": "Glen Waverley"
+    "asciiName": "Glen Waverley",
+    "lat": -37.8781,
+    "lng": 145.1648,
+    "population": 42642
   },
   {
     "name": "Orange",
-    "asciiName": "Orange"
+    "asciiName": "Orange",
+    "lat": -33.284,
+    "lng": 149.1002,
+    "population": 41920
   },
   {
     "name": "Castle Hill",
-    "asciiName": "Castle Hill"
+    "asciiName": "Castle Hill",
+    "lat": -33.7333,
+    "lng": 151,
+    "population": 39284
   },
   {
     "name": "Wodonga",
-    "asciiName": "Wodonga"
+    "asciiName": "Wodonga",
+    "lat": -36.1218,
+    "lng": 146.8881,
+    "population": 38949
   },
   {
     "name": "Sunbury",
-    "asciiName": "Sunbury"
+    "asciiName": "Sunbury",
+    "lat": -37.5774,
+    "lng": 144.7261,
+    "population": 38851
   },
   {
     "name": "Geraldton",
-    "asciiName": "Geraldton"
+    "asciiName": "Geraldton",
+    "lat": -28.779,
+    "lng": 114.6146,
+    "population": 38595
   },
   {
     "name": "Baldivis",
-    "asciiName": "Baldivis"
+    "asciiName": "Baldivis",
+    "lat": -32.3289,
+    "lng": 115.8305,
+    "population": 37697
   },
   {
     "name": "St Albans",
-    "asciiName": "St Albans"
+    "asciiName": "St Albans",
+    "lat": -37.745,
+    "lng": 144.8005,
+    "population": 37629
   },
   {
     "name": "Frankston",
-    "asciiName": "Frankston"
+    "asciiName": "Frankston",
+    "lat": -38.1446,
+    "lng": 145.1229,
+    "population": 37331
   },
   {
     "name": "Auburn",
-    "asciiName": "Auburn"
+    "asciiName": "Auburn",
+    "lat": -33.85,
+    "lng": 151.0333,
+    "population": 37245
   },
   {
     "name": "Hoppers Crossing",
-    "asciiName": "Hoppers Crossing"
+    "asciiName": "Hoppers Crossing",
+    "lat": -37.8826,
+    "lng": 144.7003,
+    "population": 37216
   },
   {
     "name": "Baulkham Hills",
-    "asciiName": "Baulkham Hills"
+    "asciiName": "Baulkham Hills",
+    "lat": -33.7588,
+    "lng": 150.9929,
+    "population": 36792
   },
   {
     "name": "Truganina",
-    "asciiName": "Truganina"
+    "asciiName": "Truganina",
+    "lat": -37.8167,
+    "lng": 144.75,
+    "population": 36305
   },
   {
     "name": "Bathurst",
-    "asciiName": "Bathurst"
+    "asciiName": "Bathurst",
+    "lat": -33.4166,
+    "lng": 149.5806,
+    "population": 36230
   },
   {
     "name": "Mount Waverley",
-    "asciiName": "Mount Waverley"
+    "asciiName": "Mount Waverley",
+    "lat": -37.8771,
+    "lng": 145.1294,
+    "population": 35340
   },
   {
     "name": "Saint Albans",
-    "asciiName": "Saint Albans"
+    "asciiName": "Saint Albans",
+    "lat": -37.7333,
+    "lng": 144.8,
+    "population": 35091
   },
   {
     "name": "Albany",
-    "asciiName": "Albany"
+    "asciiName": "Albany",
+    "lat": -35.0269,
+    "lng": 117.8837,
+    "population": 35053
   },
   {
     "name": "Bankstown",
-    "asciiName": "Bankstown"
+    "asciiName": "Bankstown",
+    "lat": -33.9167,
+    "lng": 151.0333,
+    "population": 34933
   },
   {
     "name": "Mildura",
-    "asciiName": "Mildura"
+    "asciiName": "Mildura",
+    "lat": -34.1855,
+    "lng": 142.1625,
+    "population": 34565
   },
   {
     "name": "Canning Vale",
-    "asciiName": "Canning Vale"
+    "asciiName": "Canning Vale",
+    "lat": -32.058,
+    "lng": 115.9181,
+    "population": 34504
   },
   {
     "name": "Frankston East",
-    "asciiName": "Frankston East"
+    "asciiName": "Frankston East",
+    "lat": -38.1333,
+    "lng": 145.1333,
+    "population": 34457
   },
   {
     "name": "Preston",
-    "asciiName": "Preston"
+    "asciiName": "Preston",
+    "lat": -37.75,
+    "lng": 145.0167,
+    "population": 33790
   },
   {
     "name": "Palmerston",
-    "asciiName": "Palmerston"
+    "asciiName": "Palmerston",
+    "lat": -12.486,
+    "lng": 130.9833,
+    "population": 33695
   },
   {
     "name": "Rowville",
-    "asciiName": "Rowville"
+    "asciiName": "Rowville",
+    "lat": -37.9333,
+    "lng": 145.2333,
+    "population": 33571
   },
   {
     "name": "Epping",
-    "asciiName": "Epping"
+    "asciiName": "Epping",
+    "lat": -37.65,
+    "lng": 145.0333,
+    "population": 33489
   },
   {
     "name": "Southport",
-    "asciiName": "Southport"
+    "asciiName": "Southport",
+    "lat": -27.9672,
+    "lng": 153.398,
+    "population": 32965
   },
   {
     "name": "Warrnambool",
-    "asciiName": "Warrnambool"
+    "asciiName": "Warrnambool",
+    "lat": -38.3818,
+    "lng": 142.488,
+    "population": 32894
   },
   {
     "name": "Shepparton",
-    "asciiName": "Shepparton"
+    "asciiName": "Shepparton",
+    "lat": -36.3805,
+    "lng": 145.3987,
+    "population": 32067
+  },
+  {
+    "name": "Liverpool",
+    "asciiName": "Liverpool",
+    "lat": -33.9194,
+    "lng": 150.9259,
+    "population": 31078
   },
   {
     "name": "Surfers Paradise",
-    "asciiName": "Surfers Paradise"
+    "asciiName": "Surfers Paradise",
+    "lat": -28.0027,
+    "lng": 153.43,
+    "population": 31073
   },
   {
     "name": "Doncaster East",
-    "asciiName": "Doncaster East"
+    "asciiName": "Doncaster East",
+    "lat": -37.7876,
+    "lng": 145.1489,
+    "population": 30926
   },
   {
     "name": "Noble Park",
-    "asciiName": "Noble Park"
-  },
-  {
-    "name": "Narre Warren South",
-    "asciiName": "Narre Warren South"
+    "asciiName": "Noble Park",
+    "lat": -37.9667,
+    "lng": 145.1667,
+    "population": 30921
   }
 ]

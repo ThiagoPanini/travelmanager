@@ -1,322 +1,562 @@
 [
   {
     "name": "Madrid",
-    "asciiName": "Madrid"
+    "asciiName": "Madrid",
+    "lat": 40.4165,
+    "lng": -3.7026,
+    "population": 3255944
   },
   {
     "name": "Barcelona",
-    "asciiName": "Barcelona"
+    "asciiName": "Barcelona",
+    "lat": 41.3888,
+    "lng": 2.159,
+    "population": 1686208
   },
   {
     "name": "Valencia",
-    "asciiName": "Valencia"
+    "asciiName": "Valencia",
+    "lat": 39.4739,
+    "lng": -0.3797,
+    "population": 824340
   },
   {
     "name": "Zaragoza",
-    "asciiName": "Zaragoza"
+    "asciiName": "Zaragoza",
+    "lat": 41.6561,
+    "lng": -0.8773,
+    "population": 686986
   },
   {
     "name": "Sevilla",
-    "asciiName": "Sevilla"
+    "asciiName": "Sevilla",
+    "lat": 37.3828,
+    "lng": -5.9732,
+    "population": 686741
   },
   {
     "name": "Málaga",
-    "asciiName": "Malaga"
+    "asciiName": "Malaga",
+    "lat": 36.7202,
+    "lng": -4.4203,
+    "population": 592346
   },
   {
     "name": "Murcia",
-    "asciiName": "Murcia"
+    "asciiName": "Murcia",
+    "lat": 37.987,
+    "lng": -1.13,
+    "population": 471982
   },
   {
     "name": "Palma",
-    "asciiName": "Palma"
+    "asciiName": "Palma",
+    "lat": 39.5694,
+    "lng": 2.6502,
+    "population": 438234
   },
   {
     "name": "Las Palmas de Gran Canaria",
-    "asciiName": "Las Palmas de Gran Canaria"
+    "asciiName": "Las Palmas de Gran Canaria",
+    "lat": 28.1018,
+    "lng": -15.4157,
+    "population": 383516
   },
   {
     "name": "Alicante",
-    "asciiName": "Alicante"
+    "asciiName": "Alicante",
+    "lat": 38.3452,
+    "lng": -0.4815,
+    "population": 348901
   },
   {
     "name": "Bilbao",
-    "asciiName": "Bilbao"
+    "asciiName": "Bilbao",
+    "lat": 43.2627,
+    "lng": -2.9253,
+    "population": 347342
   },
   {
     "name": "Córdoba",
-    "asciiName": "Cordoba"
+    "asciiName": "Cordoba",
+    "lat": 37.8916,
+    "lng": -4.7727,
+    "population": 325708
   },
   {
     "name": "Valladolid",
-    "asciiName": "Valladolid"
+    "asciiName": "Valladolid",
+    "lat": 41.6554,
+    "lng": -4.7235,
+    "population": 300618
   },
   {
     "name": "Vigo",
-    "asciiName": "Vigo"
+    "asciiName": "Vigo",
+    "lat": 42.2328,
+    "lng": -8.7226,
+    "population": 293642
   },
   {
     "name": "Gijón",
-    "asciiName": "Gijon"
+    "asciiName": "Gijon",
+    "lat": 43.5357,
+    "lng": -5.6615,
+    "population": 271780
   },
   {
     "name": "Eixample",
-    "asciiName": "Eixample"
+    "asciiName": "Eixample",
+    "lat": 41.389,
+    "lng": 2.1618,
+    "population": 266477
   },
   {
     "name": "Gasteiz / Vitoria",
-    "asciiName": "Gasteiz / Vitoria"
+    "asciiName": "Gasteiz / Vitoria",
+    "lat": 42.85,
+    "lng": -2.6727,
+    "population": 257407
   },
   {
     "name": "L'Hospitalet de Llobregat",
-    "asciiName": "L'Hospitalet de Llobregat"
+    "asciiName": "L'Hospitalet de Llobregat",
+    "lat": 41.3597,
+    "lng": 2.1003,
+    "population": 257038
   },
   {
     "name": "Latina",
-    "asciiName": "Latina"
+    "asciiName": "Latina",
+    "lat": 40.389,
+    "lng": -3.7457,
+    "population": 256644
   },
   {
     "name": "Carabanchel",
-    "asciiName": "Carabanchel"
+    "asciiName": "Carabanchel",
+    "lat": 40.3909,
+    "lng": -3.7242,
+    "population": 253678
   },
   {
     "name": "A Coruña",
-    "asciiName": "A Coruna"
+    "asciiName": "A Coruna",
+    "lat": 43.3714,
+    "lng": -8.396,
+    "population": 250438
   },
   {
     "name": "Puente de Vallecas",
-    "asciiName": "Puente de Vallecas"
+    "asciiName": "Puente de Vallecas",
+    "lat": 40.3935,
+    "lng": -3.662,
+    "population": 244151
   },
   {
     "name": "Fuencarral",
-    "asciiName": "Fuencarral"
+    "asciiName": "Fuencarral",
+    "lat": 40.5,
+    "lng": -3.6833,
+    "population": 238765
   },
   {
     "name": "Sant Martí",
-    "asciiName": "Sant Marti"
+    "asciiName": "Sant Marti",
+    "lat": 41.4181,
+    "lng": 2.1993,
+    "population": 235719
   },
   {
     "name": "Elche",
-    "asciiName": "Elche"
+    "asciiName": "Elche",
+    "lat": 38.2622,
+    "lng": -0.7011,
+    "population": 234765
   },
   {
     "name": "Granada",
-    "asciiName": "Granada"
+    "asciiName": "Granada",
+    "lat": 37.1882,
+    "lng": -3.6067,
+    "population": 233532
   },
   {
     "name": "Ciudad Lineal",
-    "asciiName": "Ciudad Lineal"
+    "asciiName": "Ciudad Lineal",
+    "lat": 40.4451,
+    "lng": -3.6513,
+    "population": 228171
   },
   {
     "name": "Fuencarral-El Pardo",
-    "asciiName": "Fuencarral-El Pardo"
+    "asciiName": "Fuencarral-El Pardo",
+    "lat": 40.4984,
+    "lng": -3.7314,
+    "population": 220085
   },
   {
     "name": "Oviedo",
-    "asciiName": "Oviedo"
+    "asciiName": "Oviedo",
+    "lat": 43.3603,
+    "lng": -5.8448,
+    "population": 220027
   },
   {
     "name": "Terrassa",
-    "asciiName": "Terrassa"
+    "asciiName": "Terrassa",
+    "lat": 41.5667,
+    "lng": 2.0167,
+    "population": 218535
   },
   {
     "name": "Badalona",
-    "asciiName": "Badalona"
+    "asciiName": "Badalona",
+    "lat": 41.45,
+    "lng": 2.2474,
+    "population": 217741
   },
   {
     "name": "Cartagena",
-    "asciiName": "Cartagena"
+    "asciiName": "Cartagena",
+    "lat": 37.602,
+    "lng": -0.984,
+    "population": 213943
   },
   {
     "name": "Jerez de la Frontera",
-    "asciiName": "Jerez de la Frontera"
+    "asciiName": "Jerez de la Frontera",
+    "lat": 36.6865,
+    "lng": -6.1361,
+    "population": 212879
   },
   {
     "name": "Sabadell",
-    "asciiName": "Sabadell"
+    "asciiName": "Sabadell",
+    "lat": 41.5433,
+    "lng": 2.1094,
+    "population": 211734
   },
   {
     "name": "Santa Cruz de Tenerife",
-    "asciiName": "Santa Cruz de Tenerife"
+    "asciiName": "Santa Cruz de Tenerife",
+    "lat": 28.4682,
+    "lng": -16.2546,
+    "population": 211359
   },
   {
     "name": "Pamplona",
-    "asciiName": "Pamplona"
+    "asciiName": "Pamplona",
+    "lat": 42.8169,
+    "lng": -1.6432,
+    "population": 208243
   },
   {
     "name": "Móstoles",
-    "asciiName": "Mostoles"
+    "asciiName": "Mostoles",
+    "lat": 40.3223,
+    "lng": -3.865,
+    "population": 207095
   },
   {
     "name": "Almería",
-    "asciiName": "Almeria"
+    "asciiName": "Almeria",
+    "lat": 36.8381,
+    "lng": -2.4597,
+    "population": 196851
   },
   {
     "name": "Alcalá de Henares",
-    "asciiName": "Alcala de Henares"
+    "asciiName": "Alcala de Henares",
+    "lat": 40.4821,
+    "lng": -3.36,
+    "population": 193751
   },
   {
     "name": "Fuenlabrada",
-    "asciiName": "Fuenlabrada"
+    "asciiName": "Fuenlabrada",
+    "lat": 40.2842,
+    "lng": -3.7941,
+    "population": 190496
   },
   {
     "name": "Leganés",
-    "asciiName": "Leganes"
+    "asciiName": "Leganes",
+    "lat": 40.3272,
+    "lng": -3.7635,
+    "population": 188425
   },
   {
     "name": "Getafe",
-    "asciiName": "Getafe"
+    "asciiName": "Getafe",
+    "lat": 40.3057,
+    "lng": -3.7329,
+    "population": 187525
   },
   {
     "name": "Donostia / San Sebastián",
-    "asciiName": "San Sebastian"
+    "asciiName": "San Sebastian",
+    "lat": 43.3128,
+    "lng": -1.975,
+    "population": 185357
   },
   {
     "name": "Sants-Montjuïc",
-    "asciiName": "Sants-Montjuic"
+    "asciiName": "Sants-Montjuic",
+    "lat": 41.3726,
+    "lng": 2.1546,
+    "population": 183120
   },
   {
     "name": "Burgos",
-    "asciiName": "Burgos"
+    "asciiName": "Burgos",
+    "lat": 42.3411,
+    "lng": -3.7018,
+    "population": 176418
   },
   {
     "name": "Santander",
-    "asciiName": "Santander"
+    "asciiName": "Santander",
+    "lat": 43.4659,
+    "lng": -3.8049,
+    "population": 173635
   },
   {
     "name": "Albacete",
-    "asciiName": "Albacete"
+    "asciiName": "Albacete",
+    "lat": 38.9942,
+    "lng": -1.8564,
+    "population": 173050
   },
   {
     "name": "Alcorcón",
-    "asciiName": "Alcorcon"
+    "asciiName": "Alcorcon",
+    "lat": 40.3458,
+    "lng": -3.8249,
+    "population": 172384
   },
   {
     "name": "Castelló de la Plana",
-    "asciiName": "Castello de la Plana"
+    "asciiName": "Castello de la Plana",
+    "lat": 39.9857,
+    "lng": -0.0493,
+    "population": 171857
   },
   {
     "name": "Horta-Guinardó",
-    "asciiName": "Horta-Guinardo"
+    "asciiName": "Horta-Guinardo",
+    "lat": 41.4185,
+    "lng": 2.1677,
+    "population": 168092
   },
   {
     "name": "Nou Barris",
-    "asciiName": "Nou Barris"
+    "asciiName": "Nou Barris",
+    "lat": 41.4416,
+    "lng": 2.1773,
+    "population": 166310
   },
   {
     "name": "Hortaleza",
-    "asciiName": "Hortaleza"
+    "asciiName": "Hortaleza",
+    "lat": 40.4744,
+    "lng": -3.6411,
+    "population": 161661
   },
   {
     "name": "San Blas-Canillejas",
-    "asciiName": "San Blas-Canillejas"
+    "asciiName": "San Blas-Canillejas",
+    "lat": 40.4389,
+    "lng": -3.6154,
+    "population": 157367
   },
   {
     "name": "Marbella",
-    "asciiName": "Marbella"
+    "asciiName": "Marbella",
+    "lat": 36.5154,
+    "lng": -4.8858,
+    "population": 156295
   },
   {
     "name": "Tetuán de las Victorias",
-    "asciiName": "Tetuan de las Victorias"
+    "asciiName": "Tetuan de las Victorias",
+    "lat": 40.4598,
+    "lng": -3.6975,
+    "population": 155000
   },
   {
     "name": "Logroño",
-    "asciiName": "Logrono"
+    "asciiName": "Logrono",
+    "lat": 42.4662,
+    "lng": -2.4511,
+    "population": 151164
   },
   {
     "name": "La Laguna",
-    "asciiName": "La Laguna"
+    "asciiName": "La Laguna",
+    "lat": 28.4853,
+    "lng": -16.3201,
+    "population": 150661
   },
   {
     "name": "Badajoz",
-    "asciiName": "Badajoz"
+    "asciiName": "Badajoz",
+    "lat": 38.8779,
+    "lng": -6.9706,
+    "population": 150530
   },
   {
     "name": "Madrid Centro",
-    "asciiName": "Madrid Centro"
+    "asciiName": "Madrid Centro",
+    "lat": 40.4183,
+    "lng": -3.7027,
+    "population": 149718
   },
   {
     "name": "Arganzuela",
-    "asciiName": "Arganzuela"
+    "asciiName": "Arganzuela",
+    "lat": 40.4002,
+    "lng": -3.6962,
+    "population": 148797
   },
   {
     "name": "Sarrià-Sant Gervasi",
-    "asciiName": "Sarria-Sant Gervasi"
+    "asciiName": "Sarria-Sant Gervasi",
+    "lat": 41.401,
+    "lng": 2.1394,
+    "population": 147912
   },
   {
     "name": "Salamanca",
-    "asciiName": "Salamanca"
+    "asciiName": "Salamanca",
+    "lat": 40.4297,
+    "lng": -3.6797,
+    "population": 147707
   },
   {
     "name": "Chamberí",
-    "asciiName": "Chamberi"
+    "asciiName": "Chamberi",
+    "lat": 40.434,
+    "lng": -3.7038,
+    "population": 145934
   },
   {
     "name": "Salamanca",
-    "asciiName": "Salamanca"
+    "asciiName": "Salamanca",
+    "lat": 40.9688,
+    "lng": -5.6639,
+    "population": 144825
   },
   {
     "name": "Huelva",
-    "asciiName": "Huelva"
+    "asciiName": "Huelva",
+    "lat": 37.2664,
+    "lng": -6.94,
+    "population": 144258
   },
   {
     "name": "Sant Andreu",
-    "asciiName": "Sant Andreu"
+    "asciiName": "Sant Andreu",
+    "lat": 41.4354,
+    "lng": 2.1898,
+    "population": 142598
   },
   {
     "name": "Tarragona",
-    "asciiName": "Tarragona"
+    "asciiName": "Tarragona",
+    "lat": 41.1191,
+    "lng": 1.2454,
+    "population": 141542
   },
   {
     "name": "Usera",
-    "asciiName": "Usera"
+    "asciiName": "Usera",
+    "lat": 40.3887,
+    "lng": -3.7003,
+    "population": 141189
   },
   {
     "name": "Lleida",
-    "asciiName": "Lleida"
+    "asciiName": "Lleida",
+    "lat": 41.6167,
+    "lng": 0.6222,
+    "population": 140797
   },
   {
     "name": "Chamartín",
-    "asciiName": "Chamartin"
+    "asciiName": "Chamartin",
+    "lat": 40.4621,
+    "lng": -3.6766,
+    "population": 140000
   },
   {
     "name": "Mataró",
-    "asciiName": "Mataro"
+    "asciiName": "Mataro",
+    "lat": 41.5421,
+    "lng": 2.4445,
+    "population": 126988
   },
   {
     "name": "Villaverde",
-    "asciiName": "Villaverde"
+    "asciiName": "Villaverde",
+    "lat": 40.35,
+    "lng": -3.7,
+    "population": 126802
   },
   {
     "name": "Retiro",
-    "asciiName": "Retiro"
+    "asciiName": "Retiro",
+    "lat": 40.4132,
+    "lng": -3.6831,
+    "population": 126058
   },
   {
     "name": "León",
-    "asciiName": "Leon"
+    "asciiName": "Leon",
+    "lat": 42.6,
+    "lng": -5.5703,
+    "population": 124772
   },
   {
     "name": "Telde",
-    "asciiName": "Telde"
+    "asciiName": "Telde",
+    "lat": 27.9924,
+    "lng": -15.4191,
+    "population": 123265
   },
   {
     "name": "Dos Hermanas",
-    "asciiName": "Dos Hermanas"
+    "asciiName": "Dos Hermanas",
+    "lat": 37.2829,
+    "lng": -5.9209,
+    "population": 122943
   },
   {
     "name": "Gràcia",
-    "asciiName": "Gracia"
+    "asciiName": "Gracia",
+    "lat": 41.4024,
+    "lng": 2.1564,
+    "population": 121502
   },
   {
     "name": "Algeciras",
-    "asciiName": "Algeciras"
+    "asciiName": "Algeciras",
+    "lat": 36.1333,
+    "lng": -5.4505,
+    "population": 121414
   },
   {
     "name": "Santa Coloma de Gramenet",
-    "asciiName": "Santa Coloma de Gramenet"
+    "asciiName": "Santa Coloma de Gramenet",
+    "lat": 41.4515,
+    "lng": 2.2081,
+    "population": 118821
   },
   {
     "name": "Torrejón de Ardoz",
-    "asciiName": "Torrejon de Ardoz"
+    "asciiName": "Torrejon de Ardoz",
+    "lat": 40.4554,
+    "lng": -3.4697,
+    "population": 118162
   }
 ]

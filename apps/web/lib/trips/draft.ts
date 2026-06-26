@@ -41,6 +41,13 @@ export type StopDraft = {
   arrivalDate: string | null;
   /** Proposta do salto compartilhado parada[i-1]→parada[i]; `null` só no índice 0. */
   desiredTransfer: TransferDraft | null;
+  /**
+   * Coordenadas da cidade (client-only — só quando escolhida do dataset GeoNames).
+   * Alimentam o mapa vetorial (ADR-0010) e **nunca** entram em `draftToPayload`
+   * (contrato congelado — ADR-0011). `null` em texto livre / parada sem cidade.
+   */
+  lat: number | null;
+  lng: number | null;
 };
 
 /** Convite cego do rascunho — só e-mail + papel (ADR-0002). */
@@ -105,6 +112,8 @@ function blankStop(): StopDraft {
     country: null,
     arrivalDate: null,
     desiredTransfer: { kind: "undecided" },
+    lat: null,
+    lng: null,
   };
 }
 
@@ -116,7 +125,17 @@ export function createInitialDraft(): TripDraft {
     description: "",
     departureDate: null,
     entryTransfer: null,
-    stops: [{ id: makeId(), city: "", country: null, arrivalDate: null, desiredTransfer: null }],
+    stops: [
+      {
+        id: makeId(),
+        city: "",
+        country: null,
+        arrivalDate: null,
+        desiredTransfer: null,
+        lat: null,
+        lng: null,
+      },
+    ],
     invitations: [],
   };
 }
@@ -172,10 +191,23 @@ export type TripDraftAction =
   | { type: "setName"; name: string }
   | { type: "setDescription"; description: string }
   | { type: "setDeparture"; date: string | null }
-  | { type: "setDestination"; city: string; country: string | null }
+  | {
+      type: "setDestination";
+      city: string;
+      country: string | null;
+      lat?: number | null;
+      lng?: number | null;
+    }
   | { type: "setStopLocation"; id: string; city: string; country: string | null }
   | { type: "addStop"; index?: number }
-  | { type: "insertStop"; index: number; city: string; country: string | null }
+  | {
+      type: "insertStop";
+      index: number;
+      city: string;
+      country: string | null;
+      lat?: number | null;
+      lng?: number | null;
+    }
   | { type: "removeStop"; id: string }
   | { type: "moveStop"; id: string; direction: "up" | "down" }
   | { type: "setStopDate"; id: string; date: string | null }
@@ -218,7 +250,15 @@ export function tripDraftReducer(draft: TripDraft, action: TripDraftAction): Tri
     case "setDestination": {
       const last = draft.stops.length - 1;
       const stops = draft.stops.map((stop, i) =>
-        i === last ? { ...stop, city: action.city, country: action.country } : stop,
+        i === last
+          ? {
+              ...stop,
+              city: action.city,
+              country: action.country,
+              lat: action.lat ?? null,
+              lng: action.lng ?? null,
+            }
+          : stop,
       );
       return { ...draft, stops };
     }
@@ -253,6 +293,8 @@ export function tripDraftReducer(draft: TripDraft, action: TripDraftAction): Tri
         ...blankStop(),
         city: action.city,
         country: action.country,
+        lat: action.lat ?? null,
+        lng: action.lng ?? null,
       });
       return { ...draft, stops: normalizeStops(stops) };
     }
@@ -379,7 +421,13 @@ export function loadDraft(): TripDraft | null {
     if (!raw) return null;
     const parsed = JSON.parse(raw) as unknown;
     if (!isTripDraft(parsed)) return null;
-    return { ...parsed, stops: normalizeStops(parsed.stops) };
+    // Rascunhos antigos podem não ter coords — default null (client-only; ADR-0010).
+    const stops = normalizeStops(parsed.stops).map((stop) => ({
+      ...stop,
+      lat: stop.lat ?? null,
+      lng: stop.lng ?? null,
+    }));
+    return { ...parsed, stops };
   } catch {
     return null;
   }

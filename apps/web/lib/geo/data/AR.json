@@ -1,322 +1,562 @@
 [
   {
     "name": "Buenos Aires",
-    "asciiName": "Buenos Aires"
+    "asciiName": "Buenos Aires",
+    "lat": -34.6131,
+    "lng": -58.3772,
+    "population": 2891082
   },
   {
     "name": "Córdoba",
-    "asciiName": "Cordoba"
+    "asciiName": "Cordoba",
+    "lat": -31.4065,
+    "lng": -64.1885,
+    "population": 2106734
   },
   {
     "name": "Rosario",
-    "asciiName": "Rosario"
+    "asciiName": "Rosario",
+    "lat": -32.9468,
+    "lng": -60.6393,
+    "population": 948312
   },
   {
     "name": "Mar del Plata",
-    "asciiName": "Mar del Plata"
+    "asciiName": "Mar del Plata",
+    "lat": -38.0004,
+    "lng": -57.5562,
+    "population": 593337
   },
   {
     "name": "San Miguel de Tucumán",
-    "asciiName": "San Miguel de Tucuman"
+    "asciiName": "San Miguel de Tucuman",
+    "lat": -26.816,
+    "lng": -65.2105,
+    "population": 548866
   },
   {
     "name": "Salta",
-    "asciiName": "Salta"
+    "asciiName": "Salta",
+    "lat": -24.8065,
+    "lng": -65.42,
+    "population": 520683
   },
   {
     "name": "Santa Fe",
-    "asciiName": "Santa Fe"
+    "asciiName": "Santa Fe",
+    "lat": -31.6488,
+    "lng": -60.7087,
+    "population": 391164
   },
   {
     "name": "Corrientes",
-    "asciiName": "Corrientes"
+    "asciiName": "Corrientes",
+    "lat": -27.4678,
+    "lng": -58.8344,
+    "population": 346334
   },
   {
     "name": "Posadas",
-    "asciiName": "Posadas"
+    "asciiName": "Posadas",
+    "lat": -27.3918,
+    "lng": -55.9238,
+    "population": 305874
   },
   {
     "name": "Bahía Blanca",
-    "asciiName": "Bahia Blanca"
+    "asciiName": "Bahia Blanca",
+    "lat": -38.7176,
+    "lng": -62.2654,
+    "population": 299101
   },
   {
     "name": "Resistencia",
-    "asciiName": "Resistencia"
+    "asciiName": "Resistencia",
+    "lat": -27.4636,
+    "lng": -58.9866,
+    "population": 290793
   },
   {
     "name": "Merlo",
-    "asciiName": "Merlo"
+    "asciiName": "Merlo",
+    "lat": -34.6654,
+    "lng": -58.7274,
+    "population": 268961
   },
   {
     "name": "Quilmes",
-    "asciiName": "Quilmes"
+    "asciiName": "Quilmes",
+    "lat": -34.7206,
+    "lng": -58.2545,
+    "population": 262379
   },
   {
     "name": "San Salvador de Jujuy",
-    "asciiName": "San Salvador de Jujuy"
+    "asciiName": "San Salvador de Jujuy",
+    "lat": -24.1928,
+    "lng": -65.2934,
+    "population": 257970
   },
   {
     "name": "Santiago del Estero",
-    "asciiName": "Santiago del Estero"
+    "asciiName": "Santiago del Estero",
+    "lat": -27.8005,
+    "lng": -64.2628,
+    "population": 252192
   },
   {
     "name": "Paraná",
-    "asciiName": "Parana"
+    "asciiName": "Parana",
+    "lat": -31.7327,
+    "lng": -60.529,
+    "population": 247139
   },
   {
     "name": "Neuquén",
-    "asciiName": "Neuquen"
+    "asciiName": "Neuquen",
+    "lat": -38.9508,
+    "lng": -68.0592,
+    "population": 231198
   },
   {
     "name": "José C. Paz",
-    "asciiName": "Jose C. Paz"
+    "asciiName": "Jose C. Paz",
+    "lat": -34.5154,
+    "lng": -58.7681,
+    "population": 230208
   },
   {
     "name": "Formosa",
-    "asciiName": "Formosa"
+    "asciiName": "Formosa",
+    "lat": -26.1849,
+    "lng": -58.1731,
+    "population": 222226
   },
   {
     "name": "La Plata",
-    "asciiName": "La Plata"
+    "asciiName": "La Plata",
+    "lat": -34.9213,
+    "lng": -57.9544,
+    "population": 195443
   },
   {
     "name": "Berazategui",
-    "asciiName": "Berazategui"
+    "asciiName": "Berazategui",
+    "lat": -34.7653,
+    "lng": -58.2128,
+    "population": 180523
   },
   {
     "name": "La Rioja",
-    "asciiName": "La Rioja"
+    "asciiName": "La Rioja",
+    "lat": -29.4133,
+    "lng": -66.8564,
+    "population": 178872
   },
   {
     "name": "San Luis",
-    "asciiName": "San Luis"
+    "asciiName": "San Luis",
+    "lat": -33.2914,
+    "lng": -66.3247,
+    "population": 169947
   },
   {
     "name": "San Miguel",
-    "asciiName": "San Miguel"
+    "asciiName": "San Miguel",
+    "lat": -34.5433,
+    "lng": -58.7123,
+    "population": 168762
   },
   {
     "name": "Ituzaingó",
-    "asciiName": "Ituzaingo"
+    "asciiName": "Ituzaingo",
+    "lat": -27.585,
+    "lng": -56.6871,
+    "population": 168419
   },
   {
     "name": "Catamarca",
-    "asciiName": "Catamarca"
+    "asciiName": "Catamarca",
+    "lat": -28.4696,
+    "lng": -65.7852,
+    "population": 159139
   },
   {
     "name": "Río Cuarto",
-    "asciiName": "Rio Cuarto"
+    "asciiName": "Rio Cuarto",
+    "lat": -33.1304,
+    "lng": -64.3527,
+    "population": 157010
   },
   {
     "name": "Balvanera",
-    "asciiName": "Balvanera"
+    "asciiName": "Balvanera",
+    "lat": -34.6103,
+    "lng": -58.3977,
+    "population": 152198
   },
   {
     "name": "Concordia",
-    "asciiName": "Concordia"
+    "asciiName": "Concordia",
+    "lat": -31.3919,
+    "lng": -58.0171,
+    "population": 145210
   },
   {
     "name": "Comodoro Rivadavia",
-    "asciiName": "Comodoro Rivadavia"
+    "asciiName": "Comodoro Rivadavia",
+    "lat": -45.8626,
+    "lng": -67.494,
+    "population": 140850
   },
   {
     "name": "Belgrano",
-    "asciiName": "Belgrano"
+    "asciiName": "Belgrano",
+    "lat": -34.5627,
+    "lng": -58.4583,
+    "population": 138942
   },
   {
     "name": "San Nicolás de los Arroyos",
-    "asciiName": "San Nicolas de los Arroyos"
+    "asciiName": "San Nicolas de los Arroyos",
+    "lat": -33.3342,
+    "lng": -60.2108,
+    "population": 134217
   },
   {
     "name": "San Rafael",
-    "asciiName": "San Rafael"
+    "asciiName": "San Rafael",
+    "lat": -34.6153,
+    "lng": -68.3324,
+    "population": 118009
   },
   {
     "name": "Tandil",
-    "asciiName": "Tandil"
+    "asciiName": "Tandil",
+    "lat": -37.3287,
+    "lng": -59.1369,
+    "population": 115877
   },
   {
     "name": "Ezeiza",
-    "asciiName": "Ezeiza"
+    "asciiName": "Ezeiza",
+    "lat": -34.8544,
+    "lng": -58.5247,
+    "population": 115021
   },
   {
     "name": "Mendoza",
-    "asciiName": "Mendoza"
+    "asciiName": "Mendoza",
+    "lat": -32.8895,
+    "lng": -68.8458,
+    "population": 114893
   },
   {
     "name": "Villa Lugano",
-    "asciiName": "Villa Lugano"
+    "asciiName": "Villa Lugano",
+    "lat": -34.6791,
+    "lng": -58.4726,
+    "population": 114000
   },
   {
     "name": "Lomas de Zamora",
-    "asciiName": "Lomas de Zamora"
+    "asciiName": "Lomas de Zamora",
+    "lat": -34.7574,
+    "lng": -58.4028,
+    "population": 111897
   },
   {
     "name": "San Juan",
-    "asciiName": "San Juan"
+    "asciiName": "San Juan",
+    "lat": -31.5373,
+    "lng": -68.5257,
+    "population": 109123
   },
   {
     "name": "Castelar",
-    "asciiName": "Castelar"
+    "asciiName": "Castelar",
+    "lat": -34.6514,
+    "lng": -58.6407,
+    "population": 107786
   },
   {
     "name": "San Justo",
-    "asciiName": "San Justo"
+    "asciiName": "San Justo",
+    "lat": -34.6811,
+    "lng": -58.5638,
+    "population": 105274
   },
   {
     "name": "Santa Rosa",
-    "asciiName": "Santa Rosa"
+    "asciiName": "Santa Rosa",
+    "lat": -36.6162,
+    "lng": -64.2899,
+    "population": 102860
   },
   {
     "name": "Morón",
-    "asciiName": "Moron"
+    "asciiName": "Moron",
+    "lat": -34.6512,
+    "lng": -58.622,
+    "population": 99066
   },
   {
     "name": "Zárate",
-    "asciiName": "Zarate"
+    "asciiName": "Zarate",
+    "lat": -34.0958,
+    "lng": -59.0242,
+    "population": 99061
   },
   {
     "name": "Trelew",
-    "asciiName": "Trelew"
+    "asciiName": "Trelew",
+    "lat": -43.2489,
+    "lng": -65.305,
+    "population": 97915
   },
   {
     "name": "Luján",
-    "asciiName": "Lujan"
+    "asciiName": "Lujan",
+    "lat": -34.5664,
+    "lng": -59.1148,
+    "population": 97363
   },
   {
     "name": "Villa Mercedes",
-    "asciiName": "Villa Mercedes"
+    "asciiName": "Villa Mercedes",
+    "lat": -33.6757,
+    "lng": -65.4578,
+    "population": 96781
   },
   {
     "name": "Río Gallegos",
-    "asciiName": "Rio Gallegos"
+    "asciiName": "Rio Gallegos",
+    "lat": -51.6253,
+    "lng": -69.2523,
+    "population": 95796
   },
   {
     "name": "San Carlos de Bariloche",
-    "asciiName": "San Carlos de Bariloche"
+    "asciiName": "San Carlos de Bariloche",
+    "lat": -41.1456,
+    "lng": -71.3082,
+    "population": 95394
   },
   {
     "name": "Villa María",
-    "asciiName": "Villa Maria"
+    "asciiName": "Villa Maria",
+    "lat": -32.4075,
+    "lng": -63.2402,
+    "population": 92453
   },
   {
     "name": "Pergamino",
-    "asciiName": "Pergamino"
+    "asciiName": "Pergamino",
+    "lat": -33.891,
+    "lng": -60.5746,
+    "population": 91399
   },
   {
     "name": "Reconquista",
-    "asciiName": "Reconquista"
+    "asciiName": "Reconquista",
+    "lat": -29.15,
+    "lng": -59.65,
+    "population": 90184
   },
   {
     "name": "Olavarría",
-    "asciiName": "Olavarria"
+    "asciiName": "Olavarria",
+    "lat": -36.8938,
+    "lng": -60.3232,
+    "population": 89721
   },
   {
     "name": "Rafaela",
-    "asciiName": "Rafaela"
+    "asciiName": "Rafaela",
+    "lat": -31.2528,
+    "lng": -61.4908,
+    "population": 88713
   },
   {
     "name": "Junín",
-    "asciiName": "Junin"
+    "asciiName": "Junin",
+    "lat": -34.5939,
+    "lng": -60.9464,
+    "population": 87509
   },
   {
     "name": "Campana",
-    "asciiName": "Campana"
+    "asciiName": "Campana",
+    "lat": -34.1633,
+    "lng": -58.9592,
+    "population": 86860
   },
   {
     "name": "San Martín",
-    "asciiName": "San Martin"
+    "asciiName": "San Martin",
+    "lat": -33.0834,
+    "lng": -68.4731,
+    "population": 82549
   },
   {
     "name": "Presidencia Roque Sáenz Peña",
-    "asciiName": "Presidencia Roque Saenz Pena"
+    "asciiName": "Presidencia Roque Saenz Pena",
+    "lat": -26.7909,
+    "lng": -60.4413,
+    "population": 81879
   },
   {
     "name": "Pilar",
-    "asciiName": "Pilar"
+    "asciiName": "Pilar",
+    "lat": -34.4587,
+    "lng": -58.914,
+    "population": 81120
   },
   {
     "name": "Bella Vista",
-    "asciiName": "Bella Vista"
+    "asciiName": "Bella Vista",
+    "lat": -34.5651,
+    "lng": -58.6903,
+    "population": 79737
   },
   {
     "name": "Gualeguaychú",
-    "asciiName": "Gualeguaychu"
+    "asciiName": "Gualeguaychu",
+    "lat": -33.0078,
+    "lng": -58.5184,
+    "population": 78676
   },
   {
     "name": "Barracas",
-    "asciiName": "Barracas"
+    "asciiName": "Barracas",
+    "lat": -34.6497,
+    "lng": -58.3834,
+    "population": 77474
   },
   {
     "name": "Cipolletti",
-    "asciiName": "Cipolletti"
+    "asciiName": "Cipolletti",
+    "lat": -38.9339,
+    "lng": -67.9903,
+    "population": 75078
   },
   {
     "name": "Gobernador Gálvez",
-    "asciiName": "Gobernador Galvez"
+    "asciiName": "Gobernador Galvez",
+    "lat": -33.0302,
+    "lng": -60.6404,
+    "population": 74650
   },
   {
     "name": "San Ramón de la Nueva Orán",
-    "asciiName": "San Ramon de la Nueva Oran"
+    "asciiName": "San Ramon de la Nueva Oran",
+    "lat": -23.137,
+    "lng": -64.3243,
+    "population": 74059
   },
   {
     "name": "Chimbas",
-    "asciiName": "Chimbas"
+    "asciiName": "Chimbas",
+    "lat": -31.4931,
+    "lng": -68.5326,
+    "population": 73829
   },
   {
     "name": "Necochea",
-    "asciiName": "Necochea"
+    "asciiName": "Necochea",
+    "lat": -38.5545,
+    "lng": -58.7396,
+    "population": 73557
   },
   {
     "name": "General Roca",
-    "asciiName": "General Roca"
+    "asciiName": "General Roca",
+    "lat": -39.0333,
+    "lng": -67.5833,
+    "population": 73212
   },
   {
     "name": "Venado Tuerto",
-    "asciiName": "Venado Tuerto"
+    "asciiName": "Venado Tuerto",
+    "lat": -33.7458,
+    "lng": -61.9671,
+    "population": 72340
   },
   {
     "name": "Don Torcuato",
-    "asciiName": "Don Torcuato"
+    "asciiName": "Don Torcuato",
+    "lat": -34.4946,
+    "lng": -58.6273,
+    "population": 71356
   },
   {
     "name": "Goya",
-    "asciiName": "Goya"
+    "asciiName": "Goya",
+    "lat": -29.1399,
+    "lng": -59.2634,
+    "population": 70245
   },
   {
     "name": "Villa Carlos Paz",
-    "asciiName": "Villa Carlos Paz"
+    "asciiName": "Villa Carlos Paz",
+    "lat": -31.4183,
+    "lng": -64.4901,
+    "population": 69451
   },
   {
     "name": "Concepción del Uruguay",
-    "asciiName": "Concepcion del Uruguay"
+    "asciiName": "Concepcion del Uruguay",
+    "lat": -32.4846,
+    "lng": -58.2322,
+    "population": 67895
   },
   {
     "name": "Puerto Madryn",
-    "asciiName": "Puerto Madryn"
+    "asciiName": "Puerto Madryn",
+    "lat": -42.7685,
+    "lng": -65.0383,
+    "population": 64555
   },
   {
     "name": "Mercedes",
-    "asciiName": "Mercedes"
+    "asciiName": "Mercedes",
+    "lat": -34.6507,
+    "lng": -59.4314,
+    "population": 63284
   },
   {
     "name": "Tartagal",
-    "asciiName": "Tartagal"
+    "asciiName": "Tartagal",
+    "lat": -22.5168,
+    "lng": -63.8056,
+    "population": 60819
   },
   {
     "name": "Hurlingham",
-    "asciiName": "Hurlingham"
+    "asciiName": "Hurlingham",
+    "lat": -34.5904,
+    "lng": -58.629,
+    "population": 60000
   },
   {
     "name": "Santo Tomé",
-    "asciiName": "Santo Tome"
+    "asciiName": "Santo Tome",
+    "lat": -31.6627,
+    "lng": -60.7653,
+    "population": 59072
   },
   {
     "name": "San Francisco",
-    "asciiName": "San Francisco"
+    "asciiName": "San Francisco",
+    "lat": -31.425,
+    "lng": -62.084,
+    "population": 59062
   },
   {
     "name": "El Palomar",
-    "asciiName": "El Palomar"
+    "asciiName": "El Palomar",
+    "lat": -34.6177,
+    "lng": -58.6015,
+    "population": 59031
   }
 ]

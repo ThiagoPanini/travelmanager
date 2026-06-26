@@ -1,322 +1,562 @@
 [
   {
     "name": "Rome",
-    "asciiName": "Rome"
+    "asciiName": "Rome",
+    "lat": 41.8919,
+    "lng": 12.5113,
+    "population": 2318895
   },
   {
     "name": "Milan",
-    "asciiName": "Milan"
+    "asciiName": "Milan",
+    "lat": 45.4643,
+    "lng": 9.1895,
+    "population": 1371498
   },
   {
     "name": "Naples",
-    "asciiName": "Naples"
+    "asciiName": "Naples",
+    "lat": 40.8522,
+    "lng": 14.2681,
+    "population": 909048
   },
   {
     "name": "Turin",
-    "asciiName": "Turin"
+    "asciiName": "Turin",
+    "lat": 45.0705,
+    "lng": 7.6868,
+    "population": 847287
   },
   {
     "name": "Palermo",
-    "asciiName": "Palermo"
+    "asciiName": "Palermo",
+    "lat": 38.1166,
+    "lng": 13.3636,
+    "population": 648260
   },
   {
     "name": "Genoa",
-    "asciiName": "Genoa"
+    "asciiName": "Genoa",
+    "lat": 44.4048,
+    "lng": 8.9444,
+    "population": 580097
   },
   {
     "name": "Bologna",
-    "asciiName": "Bologna"
+    "asciiName": "Bologna",
+    "lat": 44.4938,
+    "lng": 11.3387,
+    "population": 394843
   },
   {
     "name": "Florence",
-    "asciiName": "Florence"
+    "asciiName": "Florence",
+    "lat": 43.7793,
+    "lng": 11.2463,
+    "population": 367150
   },
   {
     "name": "Bari",
-    "asciiName": "Bari"
+    "asciiName": "Bari",
+    "lat": 41.1207,
+    "lng": 16.8698,
+    "population": 316491
   },
   {
     "name": "Catania",
-    "asciiName": "Catania"
+    "asciiName": "Catania",
+    "lat": 37.4922,
+    "lng": 15.0704,
+    "population": 311584
   },
   {
     "name": "Verona",
-    "asciiName": "Verona"
+    "asciiName": "Verona",
+    "lat": 45.4385,
+    "lng": 10.9938,
+    "population": 258031
   },
   {
     "name": "Messina",
-    "asciiName": "Messina"
+    "asciiName": "Messina",
+    "lat": 38.1939,
+    "lng": 15.5526,
+    "population": 219948
   },
   {
     "name": "Trieste",
-    "asciiName": "Trieste"
+    "asciiName": "Trieste",
+    "lat": 45.6495,
+    "lng": 13.7768,
+    "population": 204338
   },
   {
     "name": "Padua",
-    "asciiName": "Padua"
+    "asciiName": "Padua",
+    "lat": 45.408,
+    "lng": 11.8859,
+    "population": 203725
   },
   {
     "name": "Brescia",
-    "asciiName": "Brescia"
+    "asciiName": "Brescia",
+    "lat": 45.5356,
+    "lng": 10.2147,
+    "population": 200423
   },
   {
     "name": "Taranto",
-    "asciiName": "Taranto"
+    "asciiName": "Taranto",
+    "lat": 40.4644,
+    "lng": 17.2471,
+    "population": 198585
   },
   {
     "name": "Parma",
-    "asciiName": "Parma"
+    "asciiName": "Parma",
+    "lat": 44.7993,
+    "lng": 10.3262,
+    "population": 198292
   },
   {
     "name": "Prato",
-    "asciiName": "Prato"
+    "asciiName": "Prato",
+    "lat": 43.8805,
+    "lng": 11.097,
+    "population": 195089
   },
   {
     "name": "Modena",
-    "asciiName": "Modena"
+    "asciiName": "Modena",
+    "lat": 44.6478,
+    "lng": 10.9254,
+    "population": 184732
   },
   {
     "name": "Reggio Calabria",
-    "asciiName": "Reggio Calabria"
+    "asciiName": "Reggio Calabria",
+    "lat": 38.1105,
+    "lng": 15.6613,
+    "population": 182455
   },
   {
     "name": "Quarto Oggiaro",
-    "asciiName": "Quarto Oggiaro"
+    "asciiName": "Quarto Oggiaro",
+    "lat": 45.5131,
+    "lng": 9.1434,
+    "population": 182118
   },
   {
     "name": "Reggio nell'Emilia",
-    "asciiName": "Reggio nell'Emilia"
+    "asciiName": "Reggio nell'Emilia",
+    "lat": 44.6983,
+    "lng": 10.6313,
+    "population": 171944
   },
   {
     "name": "Livorno",
-    "asciiName": "Livorno"
+    "asciiName": "Livorno",
+    "lat": 43.5443,
+    "lng": 10.3262,
+    "population": 157017
   },
   {
     "name": "Cagliari",
-    "asciiName": "Cagliari"
+    "asciiName": "Cagliari",
+    "lat": 39.2305,
+    "lng": 9.1192,
+    "population": 149257
   },
   {
     "name": "Rimini",
-    "asciiName": "Rimini"
+    "asciiName": "Rimini",
+    "lat": 44.0576,
+    "lng": 12.5653,
+    "population": 148688
   },
   {
     "name": "Mestre",
-    "asciiName": "Mestre"
+    "asciiName": "Mestre",
+    "lat": 45.4917,
+    "lng": 12.2454,
+    "population": 147662
   },
   {
     "name": "Circoiscrizione II",
-    "asciiName": "Circoiscrizione II"
+    "asciiName": "Circoiscrizione II",
+    "lat": 45.0501,
+    "lng": 7.6405,
+    "population": 141344
   },
   {
     "name": "Foggia",
-    "asciiName": "Foggia"
+    "asciiName": "Foggia",
+    "lat": 41.4585,
+    "lng": 15.5519,
+    "population": 137032
   },
   {
     "name": "Circoiscrizione VIII",
-    "asciiName": "Circoiscrizione VIII"
+    "asciiName": "Circoiscrizione VIII",
+    "lat": 45.0379,
+    "lng": 7.6717,
+    "population": 134028
   },
   {
     "name": "Ferrara",
-    "asciiName": "Ferrara"
+    "asciiName": "Ferrara",
+    "lat": 44.838,
+    "lng": 11.6206,
+    "population": 132009
   },
   {
     "name": "Circoiscrizione III",
-    "asciiName": "Circoiscrizione III"
+    "asciiName": "Circoiscrizione III",
+    "lat": 45.0628,
+    "lng": 7.6307,
+    "population": 130709
   },
   {
     "name": "Acilia-Castel Fusano-Ostia Antica",
-    "asciiName": "Acilia-Castel Fusano-Ostia Antica"
+    "asciiName": "Acilia-Castel Fusano-Ostia Antica",
+    "lat": 41.7634,
+    "lng": 12.3308,
+    "population": 129362
   },
   {
     "name": "Circoiscrizione V",
-    "asciiName": "Circoiscrizione V"
+    "asciiName": "Circoiscrizione V",
+    "lat": 45.1015,
+    "lng": 7.6554,
+    "population": 126666
   },
   {
     "name": "Salerno",
-    "asciiName": "Salerno"
+    "asciiName": "Salerno",
+    "lat": 40.6755,
+    "lng": 14.7933,
+    "population": 125797
   },
   {
     "name": "Monza",
-    "asciiName": "Monza"
+    "asciiName": "Monza",
+    "lat": 45.5801,
+    "lng": 9.2725,
+    "population": 124398
   },
   {
     "name": "Siracusa",
-    "asciiName": "Siracusa"
+    "asciiName": "Siracusa",
+    "lat": 37.0754,
+    "lng": 15.2866,
+    "population": 121605
   },
   {
     "name": "Bergamo",
-    "asciiName": "Bergamo"
+    "asciiName": "Bergamo",
+    "lat": 45.696,
+    "lng": 9.6672,
+    "population": 121200
   },
   {
     "name": "Trento",
-    "asciiName": "Trento"
+    "asciiName": "Trento",
+    "lat": 46.0679,
+    "lng": 11.1211,
+    "population": 120709
   },
   {
     "name": "Perugia",
-    "asciiName": "Perugia"
+    "asciiName": "Perugia",
+    "lat": 43.1122,
+    "lng": 12.3888,
+    "population": 120137
   },
   {
     "name": "Pescara",
-    "asciiName": "Pescara"
+    "asciiName": "Pescara",
+    "lat": 42.4584,
+    "lng": 14.2028,
+    "population": 119554
   },
   {
     "name": "Forlì",
-    "asciiName": "Forli"
+    "asciiName": "Forli",
+    "lat": 44.2218,
+    "lng": 12.0414,
+    "population": 116696
   },
   {
     "name": "Vicenza",
-    "asciiName": "Vicenza"
+    "asciiName": "Vicenza",
+    "lat": 45.5467,
+    "lng": 11.5475,
+    "population": 111980
   },
   {
     "name": "Terni",
-    "asciiName": "Terni"
+    "asciiName": "Terni",
+    "lat": 42.5634,
+    "lng": 12.6433,
+    "population": 111189
   },
   {
     "name": "Pisa",
-    "asciiName": "Pisa"
+    "asciiName": "Pisa",
+    "lat": 43.7085,
+    "lng": 10.4036,
+    "population": 109960
   },
   {
     "name": "Bolzano",
-    "asciiName": "Bolzano"
+    "asciiName": "Bolzano",
+    "lat": 46.4907,
+    "lng": 11.3398,
+    "population": 107436
   },
   {
     "name": "Circoiscrizione VI",
-    "asciiName": "Circoiscrizione VI"
+    "asciiName": "Circoiscrizione VI",
+    "lat": 45.1022,
+    "lng": 7.7003,
+    "population": 107369
   },
   {
     "name": "Piacenza",
-    "asciiName": "Piacenza"
+    "asciiName": "Piacenza",
+    "lat": 45.0524,
+    "lng": 9.6934,
+    "population": 103607
   },
   {
     "name": "Novara",
-    "asciiName": "Novara"
+    "asciiName": "Novara",
+    "lat": 45.4469,
+    "lng": 8.6212,
+    "population": 101916
   },
   {
     "name": "Arezzo",
-    "asciiName": "Arezzo"
+    "asciiName": "Arezzo",
+    "lat": 43.4628,
+    "lng": 11.8807,
+    "population": 100734
   },
   {
     "name": "Udine",
-    "asciiName": "Udine"
+    "asciiName": "Udine",
+    "lat": 46.0693,
+    "lng": 13.2372,
+    "population": 100170
   },
   {
     "name": "Andria",
-    "asciiName": "Andria"
+    "asciiName": "Andria",
+    "lat": 41.2312,
+    "lng": 16.298,
+    "population": 99784
   },
   {
     "name": "Circoiscrizione IV",
-    "asciiName": "Circoiscrizione IV"
+    "asciiName": "Circoiscrizione IV",
+    "lat": 45.0813,
+    "lng": 7.6319,
+    "population": 98787
   },
   {
     "name": "Cesena",
-    "asciiName": "Cesena"
+    "asciiName": "Cesena",
+    "lat": 44.1391,
+    "lng": 12.2432,
+    "population": 97137
   },
   {
     "name": "La Spezia",
-    "asciiName": "La Spezia"
+    "asciiName": "La Spezia",
+    "lat": 44.103,
+    "lng": 9.8238,
+    "population": 93288
   },
   {
     "name": "Barletta",
-    "asciiName": "Barletta"
+    "asciiName": "Barletta",
+    "lat": 41.3143,
+    "lng": 16.2817,
+    "population": 93279
   },
   {
     "name": "Alessandria",
-    "asciiName": "Alessandria"
+    "asciiName": "Alessandria",
+    "lat": 44.9092,
+    "lng": 8.6101,
+    "population": 92104
   },
   {
     "name": "Sassari",
-    "asciiName": "Sassari"
+    "asciiName": "Sassari",
+    "lat": 40.7259,
+    "lng": 8.5555,
+    "population": 91895
   },
   {
     "name": "Ancona",
-    "asciiName": "Ancona"
+    "asciiName": "Ancona",
+    "lat": 43.6072,
+    "lng": 13.5103,
+    "population": 89994
   },
   {
     "name": "Circoiscrizione VII",
-    "asciiName": "Circoiscrizione VII"
+    "asciiName": "Circoiscrizione VII",
+    "lat": 45.0782,
+    "lng": 7.6972,
+    "population": 89448
   },
   {
     "name": "Guidonia Montecelio",
-    "asciiName": "Guidonia Montecelio"
+    "asciiName": "Guidonia Montecelio",
+    "lat": 41.9936,
+    "lng": 12.7224,
+    "population": 89165
   },
   {
     "name": "Campo di Marte",
-    "asciiName": "Campo di Marte"
+    "asciiName": "Campo di Marte",
+    "lat": 43.7769,
+    "lng": 11.2771,
+    "population": 88588
   },
   {
     "name": "Brindisi",
-    "asciiName": "Brindisi"
+    "asciiName": "Brindisi",
+    "lat": 40.6322,
+    "lng": 17.9361,
+    "population": 87141
   },
   {
     "name": "Treviso",
-    "asciiName": "Treviso"
+    "asciiName": "Treviso",
+    "lat": 45.6667,
+    "lng": 12.2416,
+    "population": 85760
   },
   {
     "name": "Torre del Greco",
-    "asciiName": "Torre del Greco"
+    "asciiName": "Torre del Greco",
+    "lat": 40.7893,
+    "lng": 14.3681,
+    "population": 85332
   },
   {
     "name": "Lido di Ostia",
-    "asciiName": "Lido di Ostia"
+    "asciiName": "Lido di Ostia",
+    "lat": 41.7321,
+    "lng": 12.2765,
+    "population": 85301
   },
   {
     "name": "Como",
-    "asciiName": "Como"
+    "asciiName": "Como",
+    "lat": 45.8082,
+    "lng": 9.0832,
+    "population": 84808
   },
   {
     "name": "Busto Arsizio",
-    "asciiName": "Busto Arsizio"
+    "asciiName": "Busto Arsizio",
+    "lat": 45.6113,
+    "lng": 8.8491,
+    "population": 83405
   },
   {
     "name": "Sesto San Giovanni",
-    "asciiName": "Sesto San Giovanni"
+    "asciiName": "Sesto San Giovanni",
+    "lat": 45.5333,
+    "lng": 9.2259,
+    "population": 81822
   },
   {
     "name": "Lucca",
-    "asciiName": "Lucca"
+    "asciiName": "Lucca",
+    "lat": 43.8437,
+    "lng": 10.5045,
+    "population": 81748
   },
   {
     "name": "Pozzuoli",
-    "asciiName": "Pozzuoli"
+    "asciiName": "Pozzuoli",
+    "lat": 40.8439,
+    "lng": 14.0952,
+    "population": 81231
   },
   {
     "name": "Ravenna",
-    "asciiName": "Ravenna"
+    "asciiName": "Ravenna",
+    "lat": 44.4134,
+    "lng": 12.2012,
+    "population": 80868
   },
   {
     "name": "Lecce",
-    "asciiName": "Lecce"
+    "asciiName": "Lecce",
+    "lat": 40.3548,
+    "lng": 18.1724,
+    "population": 80695
   },
   {
     "name": "Varese",
-    "asciiName": "Varese"
+    "asciiName": "Varese",
+    "lat": 45.8206,
+    "lng": 8.8251,
+    "population": 80588
   },
   {
     "name": "Giugliano in Campania",
-    "asciiName": "Giugliano in Campania"
+    "asciiName": "Giugliano in Campania",
+    "lat": 40.9285,
+    "lng": 14.202,
+    "population": 80269
   },
   {
     "name": "Catanzaro",
-    "asciiName": "Catanzaro"
+    "asciiName": "Catanzaro",
+    "lat": 38.8825,
+    "lng": 16.6009,
+    "population": 78970
   },
   {
     "name": "Circoiscrizione I",
-    "asciiName": "Circoiscrizione I"
+    "asciiName": "Circoiscrizione I",
+    "lat": 45.0664,
+    "lng": 7.6868,
+    "population": 78523
   },
   {
     "name": "Marsala",
-    "asciiName": "Marsala"
+    "asciiName": "Marsala",
+    "lat": 37.7992,
+    "lng": 12.4367,
+    "population": 77915
   },
   {
     "name": "Pesaro",
-    "asciiName": "Pesaro"
+    "asciiName": "Pesaro",
+    "lat": 43.9092,
+    "lng": 12.9164,
+    "population": 77241
   },
   {
     "name": "Fuorigrotta",
-    "asciiName": "Fuorigrotta"
+    "asciiName": "Fuorigrotta",
+    "lat": 40.8333,
+    "lng": 14.2,
+    "population": 76521
   },
   {
     "name": "Latina",
-    "asciiName": "Latina"
+    "asciiName": "Latina",
+    "lat": 41.4661,
+    "lng": 12.9043,
+    "population": 76305
   }
 ]

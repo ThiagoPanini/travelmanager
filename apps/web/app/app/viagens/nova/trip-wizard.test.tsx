@@ -9,9 +9,9 @@ vi.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
 vi.mock("@/lib/geo/cities", () => ({
   searchCities: vi.fn(async (_country: string, query: string) => {
     const all = [
-      { name: "Roma", asciiName: "Roma" },
-      { name: "Florença", asciiName: "Florenca" },
-      { name: "Veneza", asciiName: "Veneza" },
+      { name: "Roma", asciiName: "Roma", lat: 41.9, lng: 12.5, population: 2318895 },
+      { name: "Florença", asciiName: "Florenca", lat: 43.77, lng: 11.25, population: 349296 },
+      { name: "Veneza", asciiName: "Veneza", lat: 45.44, lng: 12.34, population: 261905 },
     ];
     if (!query) return all;
     const q = query.toLowerCase();

@@ -1,322 +1,562 @@
 [
   {
     "name": "Luanda",
-    "asciiName": "Luanda"
+    "asciiName": "Luanda",
+    "lat": -8.8368,
+    "lng": 13.2343,
+    "population": 2776168
   },
   {
     "name": "Mulenvos",
-    "asciiName": "Mulenvos"
+    "asciiName": "Mulenvos",
+    "lat": -8.8669,
+    "lng": 13.3344,
+    "population": 882014
   },
   {
     "name": "Viana",
-    "asciiName": "Viana"
+    "asciiName": "Viana",
+    "lat": -8.9055,
+    "lng": 13.375,
+    "population": 865863
   },
   {
     "name": "Kikolo",
-    "asciiName": "Kikolo"
+    "asciiName": "Kikolo",
+    "lat": -8.7815,
+    "lng": 13.3338,
+    "population": 728205
   },
   {
     "name": "Maianga",
-    "asciiName": "Maianga"
+    "asciiName": "Maianga",
+    "lat": -8.8469,
+    "lng": 13.237,
+    "population": 727681
   },
   {
     "name": "Camama",
-    "asciiName": "Camama"
+    "asciiName": "Camama",
+    "lat": -8.9361,
+    "lng": 13.2652,
+    "population": 667094
   },
   {
     "name": "Golfe",
-    "asciiName": "Golfe"
+    "asciiName": "Golfe",
+    "lat": -8.8664,
+    "lng": 13.2617,
+    "population": 655796
   },
   {
     "name": "Calumbo",
-    "asciiName": "Calumbo"
+    "asciiName": "Calumbo",
+    "lat": -9.1469,
+    "lng": 13.4194,
+    "population": 652270
   },
   {
     "name": "Hoji ya Henda",
-    "asciiName": "Hoji ya Henda"
+    "asciiName": "Hoji ya Henda",
+    "lat": -8.8052,
+    "lng": 13.2897,
+    "population": 642050
   },
   {
     "name": "Lubango",
-    "asciiName": "Lubango"
+    "asciiName": "Lubango",
+    "lat": -14.9172,
+    "lng": 13.4925,
+    "population": 600751
   },
   {
     "name": "Huambo",
-    "asciiName": "Huambo"
+    "asciiName": "Huambo",
+    "lat": -12.7761,
+    "lng": 15.7392,
+    "population": 595304
   },
   {
     "name": "Benguela",
-    "asciiName": "Benguela"
+    "asciiName": "Benguela",
+    "lat": -12.5767,
+    "lng": 13.4027,
+    "population": 555124
   },
   {
     "name": "Cabinda",
-    "asciiName": "Cabinda"
+    "asciiName": "Cabinda",
+    "lat": -5.562,
+    "lng": 12.1948,
+    "population": 550000
   },
   {
     "name": "Talatona",
-    "asciiName": "Talatona"
+    "asciiName": "Talatona",
+    "lat": -8.9178,
+    "lng": 13.1856,
+    "population": 500000
   },
   {
     "name": "Nova Vida",
-    "asciiName": "Nova Vida"
+    "asciiName": "Nova Vida",
+    "lat": -8.9055,
+    "lng": 13.2221,
+    "population": 464985
   },
   {
     "name": "Malanje",
-    "asciiName": "Malanje"
+    "asciiName": "Malanje",
+    "lat": -9.5401,
+    "lng": 16.341,
+    "population": 455000
   },
   {
     "name": "Kima Kieza",
-    "asciiName": "Kima Kieza"
+    "asciiName": "Kima Kieza",
+    "lat": -8.8341,
+    "lng": 13.2952,
+    "population": 428855
   },
   {
     "name": "Cazenga",
-    "asciiName": "Cazenga"
+    "asciiName": "Cazenga",
+    "lat": -8.838,
+    "lng": 13.284,
+    "population": 394170
   },
   {
     "name": "Lobito",
-    "asciiName": "Lobito"
+    "asciiName": "Lobito",
+    "lat": -12.3644,
+    "lng": 13.536,
+    "population": 393079
   },
   {
     "name": "Saurimo",
-    "asciiName": "Saurimo"
+    "asciiName": "Saurimo",
+    "lat": -9.6608,
+    "lng": 20.3916,
+    "population": 393000
   },
   {
     "name": "Samba",
-    "asciiName": "Samba"
+    "asciiName": "Samba",
+    "lat": -8.88,
+    "lng": 13.1962,
+    "population": 364986
   },
   {
     "name": "Cuíto",
-    "asciiName": "Cuito"
+    "asciiName": "Cuito",
+    "lat": -12.3833,
+    "lng": 16.9333,
+    "population": 355423
   },
   {
     "name": "Ramiros",
-    "asciiName": "Ramiros"
+    "asciiName": "Ramiros",
+    "lat": -9.0626,
+    "lng": 13.0456,
+    "population": 323576
   },
   {
     "name": "Uíge",
-    "asciiName": "Uige"
+    "asciiName": "Uige",
+    "lat": -7.6087,
+    "lng": 15.0613,
+    "population": 322531
   },
   {
     "name": "Luena",
-    "asciiName": "Luena"
+    "asciiName": "Luena",
+    "lat": -11.7833,
+    "lng": 19.9167,
+    "population": 273675
   },
   {
     "name": "Vila Flor",
-    "asciiName": "Vila Flor"
+    "asciiName": "Vila Flor",
+    "lat": -8.9801,
+    "lng": 13.3078,
+    "population": 256066
   },
   {
     "name": "Mossamedes",
-    "asciiName": "Mossamedes"
+    "asciiName": "Mossamedes",
+    "lat": -15.1961,
+    "lng": 12.1522,
+    "population": 255000
   },
   {
     "name": "Menongue",
-    "asciiName": "Menongue"
+    "asciiName": "Menongue",
+    "lat": -14.6585,
+    "lng": 17.691,
+    "population": 251178
   },
   {
     "name": "Chitato",
-    "asciiName": "Chitato"
+    "asciiName": "Chitato",
+    "lat": -7.3,
+    "lng": 20.7333,
+    "population": 246880
   },
   {
     "name": "Navegantes",
-    "asciiName": "Navegantes"
+    "asciiName": "Navegantes",
+    "lat": -12.59,
+    "lng": 13.3912,
+    "population": 240075
   },
   {
     "name": "Kilamba",
-    "asciiName": "Kilamba"
+    "asciiName": "Kilamba",
+    "lat": -8.8486,
+    "lng": 13.275,
+    "population": 237528
   },
   {
     "name": "Soyo",
-    "asciiName": "Soyo"
+    "asciiName": "Soyo",
+    "lat": -6.1349,
+    "lng": 12.3689,
+    "population": 221555
   },
   {
     "name": "Sumbe",
-    "asciiName": "Sumbe"
+    "asciiName": "Sumbe",
+    "lat": -11.206,
+    "lng": 13.8437,
+    "population": 205832
   },
   {
     "name": "Zango",
-    "asciiName": "Zango"
+    "asciiName": "Zango",
+    "lat": -9.0121,
+    "lng": 13.3844,
+    "population": 198538
   },
   {
     "name": "Benfica",
-    "asciiName": "Benfica"
+    "asciiName": "Benfica",
+    "lat": -8.9443,
+    "lng": 13.1643,
+    "population": 191828
   },
   {
     "name": "Rangel",
-    "asciiName": "Rangel"
+    "asciiName": "Rangel",
+    "lat": -8.8264,
+    "lng": 13.2629,
+    "population": 190569
   },
   {
     "name": "Sambizanga",
-    "asciiName": "Sambizanga"
+    "asciiName": "Sambizanga",
+    "lat": -8.7888,
+    "lng": 13.2751,
+    "population": 177808
   },
   {
     "name": "Dundo",
-    "asciiName": "Dundo"
+    "asciiName": "Dundo",
+    "lat": -7.3664,
+    "lng": 20.8156,
+    "population": 177604
   },
   {
     "name": "Bocoio",
-    "asciiName": "Bocoio"
+    "asciiName": "Bocoio",
+    "lat": -12.4702,
+    "lng": 14.1369,
+    "population": 164685
   },
   {
     "name": "N'dalatando",
-    "asciiName": "N'dalatando"
+    "asciiName": "N'dalatando",
+    "lat": -9.2978,
+    "lng": 14.9116,
+    "population": 161584
   },
   {
     "name": "Panguíla",
-    "asciiName": "Panguila"
+    "asciiName": "Panguila",
+    "lat": -8.6933,
+    "lng": 13.4491,
+    "population": 158068
   },
   {
     "name": "Mbanza Kongo",
-    "asciiName": "Mbanza Kongo"
+    "asciiName": "Mbanza Kongo",
+    "lat": -6.2667,
+    "lng": 14.2383,
+    "population": 148000
   },
   {
     "name": "Cacuaco",
-    "asciiName": "Cacuaco"
+    "asciiName": "Cacuaco",
+    "lat": -8.7798,
+    "lng": 13.3748,
+    "population": 146867
   },
   {
     "name": "Ingombota",
-    "asciiName": "Ingombota"
+    "asciiName": "Ingombota",
+    "lat": -8.8181,
+    "lng": 13.2289,
+    "population": 144911
   },
   {
     "name": "Caála",
-    "asciiName": "Caala"
+    "asciiName": "Caala",
+    "lat": -12.8525,
+    "lng": 15.5606,
+    "population": 130000
   },
   {
     "name": "Ondjiva",
-    "asciiName": "Ondjiva"
+    "asciiName": "Ondjiva",
+    "lat": -17.0667,
+    "lng": 15.7333,
+    "population": 121537
   },
   {
     "name": "Catchiungo",
-    "asciiName": "Catchiungo"
+    "asciiName": "Catchiungo",
+    "lat": -12.566,
+    "lng": 16.2259,
+    "population": 120677
   },
   {
     "name": "Gabela",
-    "asciiName": "Gabela"
+    "asciiName": "Gabela",
+    "lat": -10.8515,
+    "lng": 14.3799,
+    "population": 116903
   },
   {
     "name": "Lucapa",
-    "asciiName": "Lucapa"
+    "asciiName": "Lucapa",
+    "lat": -8.4191,
+    "lng": 20.7447,
+    "population": 110000
   },
   {
     "name": "Balombo",
-    "asciiName": "Balombo"
+    "asciiName": "Balombo",
+    "lat": -12.3543,
+    "lng": 14.7723,
+    "population": 108965
   },
   {
     "name": "Baía Farta",
-    "asciiName": "Baia Farta"
+    "asciiName": "Baia Farta",
+    "lat": -12.6042,
+    "lng": 13.1967,
+    "population": 107841
   },
   {
     "name": "Catumbela",
-    "asciiName": "Catumbela"
+    "asciiName": "Catumbela",
+    "lat": -12.43,
+    "lng": 13.5468,
+    "population": 95034
   },
   {
     "name": "Negage",
-    "asciiName": "Negage"
+    "asciiName": "Negage",
+    "lat": -7.7594,
+    "lng": 15.2722,
+    "population": 92950
   },
   {
     "name": "Longonjo",
-    "asciiName": "Longonjo"
+    "asciiName": "Longonjo",
+    "lat": -12.9079,
+    "lng": 15.2485,
+    "population": 92103
   },
   {
     "name": "Porto Amboim",
-    "asciiName": "Porto Amboim"
+    "asciiName": "Porto Amboim",
+    "lat": -10.7325,
+    "lng": 13.7684,
+    "population": 91605
   },
   {
     "name": "Cubal",
-    "asciiName": "Cubal"
+    "asciiName": "Cubal",
+    "lat": -13.0386,
+    "lng": 14.2455,
+    "population": 90367
   },
   {
     "name": "Cela",
-    "asciiName": "Cela"
+    "asciiName": "Cela",
+    "lat": -11.4217,
+    "lng": 15.1235,
+    "population": 90000
   },
   {
     "name": "Cafunfo",
-    "asciiName": "Cafunfo"
+    "asciiName": "Cafunfo",
+    "lat": -8.7672,
+    "lng": 17.9957,
+    "population": 90000
   },
   {
     "name": "Quissecula",
-    "asciiName": "Quissecula"
+    "asciiName": "Quissecula",
+    "lat": -11.3922,
+    "lng": 15.092,
+    "population": 90000
   },
   {
     "name": "Ecunna",
-    "asciiName": "Ecunna"
+    "asciiName": "Ecunna",
+    "lat": -12.6789,
+    "lng": 15.5056,
+    "population": 82541
   },
   {
     "name": "Matala",
-    "asciiName": "Matala"
+    "asciiName": "Matala",
+    "lat": -14.7327,
+    "lng": 15.0348,
+    "population": 78000
   },
   {
     "name": "Barra do Dande",
-    "asciiName": "Barra do Dande"
+    "asciiName": "Barra do Dande",
+    "lat": -8.4717,
+    "lng": 13.3701,
+    "population": 75000
   },
   {
     "name": "Bailundo",
-    "asciiName": "Bailundo"
+    "asciiName": "Bailundo",
+    "lat": -9.575,
+    "lng": 15.9944,
+    "population": 70481
   },
   {
     "name": "Cahama",
-    "asciiName": "Cahama"
+    "asciiName": "Cahama",
+    "lat": -16.2856,
+    "lng": 14.3096,
+    "population": 70061
   },
   {
     "name": "Luquembo",
-    "asciiName": "Luquembo"
+    "asciiName": "Luquembo",
+    "lat": -10.7391,
+    "lng": 17.7177,
+    "population": 69420
   },
   {
     "name": "Gama",
-    "asciiName": "Gama"
+    "asciiName": "Gama",
+    "lat": -8.5675,
+    "lng": 13.4764,
+    "population": 66202
   },
   {
     "name": "Camucuio",
-    "asciiName": "Camucuio"
+    "asciiName": "Camucuio",
+    "lat": -14.1138,
+    "lng": 13.2406,
+    "population": 66112
   },
   {
     "name": "Ganda",
-    "asciiName": "Ganda"
+    "asciiName": "Ganda",
+    "lat": -13.0159,
+    "lng": 14.635,
+    "population": 65000
   },
   {
     "name": "Dondo",
-    "asciiName": "Dondo"
+    "asciiName": "Dondo",
+    "lat": -9.6846,
+    "lng": 14.4279,
+    "population": 64643
   },
   {
     "name": "Dondo",
-    "asciiName": "Dondo"
+    "asciiName": "Dondo",
+    "lat": -9.05,
+    "lng": 15.3167,
+    "population": 64643
   },
   {
     "name": "Nzagi",
-    "asciiName": "Nzagi"
+    "asciiName": "Nzagi",
+    "lat": -8.3855,
+    "lng": 15.3013,
+    "population": 60000
   },
   {
     "name": "Camacupa",
-    "asciiName": "Camacupa"
+    "asciiName": "Camacupa",
+    "lat": -12.0167,
+    "lng": 17.4833,
+    "population": 59000
   },
   {
     "name": "Luau",
-    "asciiName": "Luau"
+    "asciiName": "Luau",
+    "lat": -10.7073,
+    "lng": 22.2247,
+    "population": 55432
   },
   {
     "name": "Cuango-Luzamba",
-    "asciiName": "Cuango-Luzamba"
+    "asciiName": "Cuango-Luzamba",
+    "lat": -9.1458,
+    "lng": 18.0445,
+    "population": 55000
   },
   {
     "name": "Caxito",
-    "asciiName": "Caxito"
+    "asciiName": "Caxito",
+    "lat": -8.5785,
+    "lng": 13.6643,
+    "population": 55000
   },
   {
     "name": "Cangandala",
-    "asciiName": "Cangandala"
+    "asciiName": "Cangandala",
+    "lat": -9.7833,
+    "lng": 16.4333,
+    "population": 52220
   },
   {
     "name": "Andulo",
-    "asciiName": "Andulo"
+    "asciiName": "Andulo",
+    "lat": -11.4868,
+    "lng": 16.6966,
+    "population": 50000
   },
   {
     "name": "Ucu Seles",
-    "asciiName": "Ucu Seles"
+    "asciiName": "Ucu Seles",
+    "lat": -11.4124,
+    "lng": 14.3066,
+    "population": 47421
   },
   {
     "name": "Tômbua",
-    "asciiName": "Tombua"
+    "asciiName": "Tombua",
+    "lat": -15.8039,
+    "lng": 11.8448,
+    "population": 46573
   },
   {
     "name": "Calulo",
-    "asciiName": "Calulo"
+    "asciiName": "Calulo",
+    "lat": -10.0005,
+    "lng": 14.8952,
+    "population": 44000
   }
 ]

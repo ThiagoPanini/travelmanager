@@ -1,174 +1,303 @@
 [
   {
     "name": "Dublin",
-    "asciiName": "Dublin"
+    "asciiName": "Dublin",
+    "lat": 53.3331,
+    "lng": -6.2489,
+    "population": 1024027
   },
   {
     "name": "South Dublin",
-    "asciiName": "South Dublin"
+    "asciiName": "South Dublin",
+    "lat": 53.2903,
+    "lng": -6.3415,
+    "population": 301075
   },
   {
     "name": "Cork",
-    "asciiName": "Cork"
+    "asciiName": "Cork",
+    "lat": 51.898,
+    "lng": -8.4706,
+    "population": 224004
   },
   {
     "name": "Limerick",
-    "asciiName": "Limerick"
+    "asciiName": "Limerick",
+    "lat": 52.6647,
+    "lng": -8.6231,
+    "population": 102287
   },
   {
     "name": "Galway",
-    "asciiName": "Galway"
+    "asciiName": "Galway",
+    "lat": 53.2725,
+    "lng": -9.0509,
+    "population": 85910
   },
   {
     "name": "Tallaght",
-    "asciiName": "Tallaght"
+    "asciiName": "Tallaght",
+    "lat": 53.2859,
+    "lng": -6.3734,
+    "population": 81022
   },
   {
     "name": "Waterford",
-    "asciiName": "Waterford"
+    "asciiName": "Waterford",
+    "lat": 52.2583,
+    "lng": -7.1119,
+    "population": 60079
   },
   {
     "name": "Drogheda",
-    "asciiName": "Drogheda"
+    "asciiName": "Drogheda",
+    "lat": 53.7189,
+    "lng": -6.3478,
+    "population": 44135
   },
   {
     "name": "Dundalk",
-    "asciiName": "Dundalk"
+    "asciiName": "Dundalk",
+    "lat": 54,
+    "lng": -6.4167,
+    "population": 43112
   },
   {
     "name": "Swords",
-    "asciiName": "Swords"
+    "asciiName": "Swords",
+    "lat": 53.4597,
+    "lng": -6.2181,
+    "population": 40776
   },
   {
     "name": "Navan",
-    "asciiName": "Navan"
+    "asciiName": "Navan",
+    "lat": 53.6528,
+    "lng": -6.6814,
+    "population": 33886
   },
   {
     "name": "Bray",
-    "asciiName": "Bray"
+    "asciiName": "Bray",
+    "lat": 53.2028,
+    "lng": -6.0983,
+    "population": 33512
   },
   {
     "name": "Dún Laoghaire",
-    "asciiName": "Dun Laoghaire"
+    "asciiName": "Dun Laoghaire",
+    "lat": 53.294,
+    "lng": -6.1359,
+    "population": 31239
   },
   {
     "name": "Ennis",
-    "asciiName": "Ennis"
+    "asciiName": "Ennis",
+    "lat": 52.8436,
+    "lng": -8.9864,
+    "population": 27923
   },
   {
     "name": "Carlow",
-    "asciiName": "Carlow"
+    "asciiName": "Carlow",
+    "lat": 52.8408,
+    "lng": -6.9261,
+    "population": 27351
   },
   {
     "name": "Douglas",
-    "asciiName": "Douglas"
+    "asciiName": "Douglas",
+    "lat": 51.8744,
+    "lng": -8.435,
+    "population": 26883
   },
   {
     "name": "Tralee",
-    "asciiName": "Tralee"
+    "asciiName": "Tralee",
+    "lat": 52.2704,
+    "lng": -9.7026,
+    "population": 26079
   },
   {
     "name": "Portlaoise",
-    "asciiName": "Portlaoise"
+    "asciiName": "Portlaoise",
+    "lat": 53.0344,
+    "lng": -7.2998,
+    "population": 23494
   },
   {
     "name": "Athlone",
-    "asciiName": "Athlone"
+    "asciiName": "Athlone",
+    "lat": 53.4228,
+    "lng": -7.9372,
+    "population": 22869
   },
   {
     "name": "Droichead Nua",
-    "asciiName": "Droichead Nua"
+    "asciiName": "Droichead Nua",
+    "lat": 53.1819,
+    "lng": -6.7967,
+    "population": 22742
   },
   {
     "name": "An Muileann gCearr",
-    "asciiName": "An Muileann gCearr"
+    "asciiName": "An Muileann gCearr",
+    "lat": 53.5247,
+    "lng": -7.3385,
+    "population": 22667
   },
   {
     "name": "Letterkenny",
-    "asciiName": "Letterkenny"
+    "asciiName": "Letterkenny",
+    "lat": 54.95,
+    "lng": -7.7333,
+    "population": 22549
   },
   {
     "name": "Sandyford",
-    "asciiName": "Sandyford"
+    "asciiName": "Sandyford",
+    "lat": 53.2747,
+    "lng": -6.2253,
+    "population": 22288
   },
   {
     "name": "Greystones",
-    "asciiName": "Greystones"
+    "asciiName": "Greystones",
+    "lat": 53.1408,
+    "lng": -6.0631,
+    "population": 22009
   },
   {
     "name": "Balbriggan",
-    "asciiName": "Balbriggan"
+    "asciiName": "Balbriggan",
+    "lat": 53.6085,
+    "lng": -6.1831,
+    "population": 21722
   },
   {
     "name": "Kilkenny",
-    "asciiName": "Kilkenny"
+    "asciiName": "Kilkenny",
+    "lat": 52.6542,
+    "lng": -7.2522,
+    "population": 21589
   },
   {
     "name": "Wexford",
-    "asciiName": "Wexford"
+    "asciiName": "Wexford",
+    "lat": 52.3342,
+    "lng": -6.4575,
+    "population": 21524
   },
   {
     "name": "Naas",
-    "asciiName": "Naas"
+    "asciiName": "Naas",
+    "lat": 53.2158,
+    "lng": -6.6669,
+    "population": 20713
   },
   {
     "name": "Sligo",
-    "asciiName": "Sligo"
+    "asciiName": "Sligo",
+    "lat": 54.2697,
+    "lng": -8.4694,
+    "population": 20608
   },
   {
     "name": "Celbridge",
-    "asciiName": "Celbridge"
+    "asciiName": "Celbridge",
+    "lat": 53.3417,
+    "lng": -6.5442,
+    "population": 20288
   },
   {
     "name": "Finglas",
-    "asciiName": "Finglas"
+    "asciiName": "Finglas",
+    "lat": 53.3892,
+    "lng": -6.2969,
+    "population": 19768
   },
   {
     "name": "Ballincollig",
-    "asciiName": "Ballincollig"
+    "asciiName": "Ballincollig",
+    "lat": 51.8833,
+    "lng": -8.5833,
+    "population": 18621
   },
   {
     "name": "Cluain Meala",
-    "asciiName": "Cluain Meala"
+    "asciiName": "Cluain Meala",
+    "lat": 52.355,
+    "lng": -7.7039,
+    "population": 18369
   },
   {
     "name": "Carrigaline",
-    "asciiName": "Carrigaline"
+    "asciiName": "Carrigaline",
+    "lat": 51.8117,
+    "lng": -8.3986,
+    "population": 18239
   },
   {
     "name": "Templeogue",
-    "asciiName": "Templeogue"
+    "asciiName": "Templeogue",
+    "lat": 53.2953,
+    "lng": -6.3089,
+    "population": 18076
   },
   {
     "name": "Rathfarnham",
-    "asciiName": "Rathfarnham"
+    "asciiName": "Rathfarnham",
+    "lat": 53.3006,
+    "lng": -6.2828,
+    "population": 17333
   },
   {
     "name": "Maynooth",
-    "asciiName": "Maynooth"
+    "asciiName": "Maynooth",
+    "lat": 53.385,
+    "lng": -6.5936,
+    "population": 17259
   },
   {
     "name": "Malahide",
-    "asciiName": "Malahide"
+    "asciiName": "Malahide",
+    "lat": 53.4508,
+    "lng": -6.1544,
+    "population": 16550
   },
   {
     "name": "Blanchardstown",
-    "asciiName": "Blanchardstown"
+    "asciiName": "Blanchardstown",
+    "lat": 53.3881,
+    "lng": -6.3756,
+    "population": 16511
   },
   {
     "name": "Tullamore",
-    "asciiName": "Tullamore"
+    "asciiName": "Tullamore",
+    "lat": 53.2739,
+    "lng": -7.4889,
+    "population": 15598
   },
   {
     "name": "Leixlip",
-    "asciiName": "Leixlip"
+    "asciiName": "Leixlip",
+    "lat": 53.3658,
+    "lng": -6.4956,
+    "population": 15504
   },
   {
     "name": "Donaghmede",
-    "asciiName": "Donaghmede"
+    "asciiName": "Donaghmede",
+    "lat": 53.3985,
+    "lng": -6.1618,
+    "population": 15299
   },
   {
     "name": "Lucan",
-    "asciiName": "Lucan"
+    "asciiName": "Lucan",
+    "lat": 53.3574,
+    "lng": -6.4486,
+    "population": 15269
   }
 ]

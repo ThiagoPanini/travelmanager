@@ -1,322 +1,562 @@
 [
   {
     "name": "São Paulo",
-    "asciiName": "Sao Paulo"
+    "asciiName": "Sao Paulo",
+    "lat": -23.5475,
+    "lng": -46.6361,
+    "population": 12400232
   },
   {
     "name": "Rio de Janeiro",
-    "asciiName": "Rio de Janeiro"
+    "asciiName": "Rio de Janeiro",
+    "lat": -22.9064,
+    "lng": -43.1822,
+    "population": 6747815
   },
   {
     "name": "Belo Horizonte",
-    "asciiName": "Belo Horizonte"
+    "asciiName": "Belo Horizonte",
+    "lat": -19.9208,
+    "lng": -43.9378,
+    "population": 2721564
   },
   {
     "name": "Salvador",
-    "asciiName": "Salvador"
+    "asciiName": "Salvador",
+    "lat": -12.9756,
+    "lng": -38.491,
+    "population": 2711840
   },
   {
     "name": "Fortaleza",
-    "asciiName": "Fortaleza"
+    "asciiName": "Fortaleza",
+    "lat": -3.7172,
+    "lng": -38.5431,
+    "population": 2400000
   },
   {
     "name": "Manaus",
-    "asciiName": "Manaus"
+    "asciiName": "Manaus",
+    "lat": -3.1019,
+    "lng": -60.025,
+    "population": 2219580
   },
   {
     "name": "Brasília",
-    "asciiName": "Brasilia"
+    "asciiName": "Brasilia",
+    "lat": -15.7797,
+    "lng": -47.9297,
+    "population": 2207718
   },
   {
     "name": "Curitiba",
-    "asciiName": "Curitiba"
+    "asciiName": "Curitiba",
+    "lat": -25.4278,
+    "lng": -49.2731,
+    "population": 1948626
   },
   {
     "name": "Recife",
-    "asciiName": "Recife"
+    "asciiName": "Recife",
+    "lat": -8.0539,
+    "lng": -34.8811,
+    "population": 1653461
   },
   {
     "name": "Goiânia",
-    "asciiName": "Goiania"
+    "asciiName": "Goiania",
+    "lat": -16.6786,
+    "lng": -49.2539,
+    "population": 1536097
   },
   {
     "name": "Belém",
-    "asciiName": "Belem"
+    "asciiName": "Belem",
+    "lat": -1.4558,
+    "lng": -48.5044,
+    "population": 1499641
   },
   {
     "name": "Porto Alegre",
-    "asciiName": "Porto Alegre"
+    "asciiName": "Porto Alegre",
+    "lat": -30.0328,
+    "lng": -51.2302,
+    "population": 1488252
   },
   {
     "name": "Guarulhos",
-    "asciiName": "Guarulhos"
+    "asciiName": "Guarulhos",
+    "lat": -23.4628,
+    "lng": -46.5333,
+    "population": 1169577
   },
   {
     "name": "Maceió",
-    "asciiName": "Maceio"
+    "asciiName": "Maceio",
+    "lat": -9.6658,
+    "lng": -35.7353,
+    "population": 1031597
   },
   {
     "name": "Campinas",
-    "asciiName": "Campinas"
+    "asciiName": "Campinas",
+    "lat": -22.9056,
+    "lng": -47.0608,
+    "population": 1031554
   },
   {
     "name": "São Luís",
-    "asciiName": "Sao Luis"
+    "asciiName": "Sao Luis",
+    "lat": -2.5297,
+    "lng": -44.3028,
+    "population": 917237
   },
   {
     "name": "Campo Grande",
-    "asciiName": "Campo Grande"
+    "asciiName": "Campo Grande",
+    "lat": -20.4428,
+    "lng": -54.6464,
+    "population": 906092
   },
   {
     "name": "Natal",
-    "asciiName": "Natal"
+    "asciiName": "Natal",
+    "lat": -5.795,
+    "lng": -35.2094,
+    "population": 896708
   },
   {
     "name": "Teresina",
-    "asciiName": "Teresina"
+    "asciiName": "Teresina",
+    "lat": -5.0892,
+    "lng": -42.8019,
+    "population": 871126
   },
   {
     "name": "Nova Iguaçu",
-    "asciiName": "Nova Iguacu"
+    "asciiName": "Nova Iguacu",
+    "lat": -22.7592,
+    "lng": -43.4511,
+    "population": 823302
   },
   {
     "name": "Duque de Caxias",
-    "asciiName": "Duque de Caxias"
+    "asciiName": "Duque de Caxias",
+    "lat": -22.7856,
+    "lng": -43.3117,
+    "population": 818329
   },
   {
     "name": "João Pessoa",
-    "asciiName": "Joao Pessoa"
+    "asciiName": "Joao Pessoa",
+    "lat": -7.115,
+    "lng": -34.8631,
+    "population": 817511
   },
   {
     "name": "São Bernardo do Campo",
-    "asciiName": "Sao Bernardo do Campo"
+    "asciiName": "Sao Bernardo do Campo",
+    "lat": -23.6939,
+    "lng": -46.565,
+    "population": 743372
   },
   {
     "name": "São José dos Campos",
-    "asciiName": "Sao Jose dos Campos"
+    "asciiName": "Sao Jose dos Campos",
+    "lat": -23.1794,
+    "lng": -45.8869,
+    "population": 729737
   },
   {
     "name": "Osasco",
-    "asciiName": "Osasco"
+    "asciiName": "Osasco",
+    "lat": -23.5325,
+    "lng": -46.7917,
+    "population": 728615
   },
   {
     "name": "Ribeirão Preto",
-    "asciiName": "Ribeirao Preto"
+    "asciiName": "Ribeirao Preto",
+    "lat": -21.1775,
+    "lng": -47.8103,
+    "population": 711825
   },
   {
     "name": "Sorocaba",
-    "asciiName": "Sorocaba"
+    "asciiName": "Sorocaba",
+    "lat": -23.5017,
+    "lng": -47.4581,
+    "population": 687357
   },
   {
     "name": "Aracaju",
-    "asciiName": "Aracaju"
+    "asciiName": "Aracaju",
+    "lat": -10.9111,
+    "lng": -37.0717,
+    "population": 664908
   },
   {
     "name": "Santo André",
-    "asciiName": "Santo Andre"
+    "asciiName": "Santo Andre",
+    "lat": -23.6639,
+    "lng": -46.5383,
+    "population": 662373
   },
   {
     "name": "Jaboatão dos Guararapes",
-    "asciiName": "Jaboatao dos Guararapes"
+    "asciiName": "Jaboatao dos Guararapes",
+    "lat": -8.1128,
+    "lng": -35.0147,
+    "population": 644037
   },
   {
     "name": "Contagem",
-    "asciiName": "Contagem"
+    "asciiName": "Contagem",
+    "lat": -19.9317,
+    "lng": -44.0536,
+    "population": 627123
   },
   {
     "name": "Feira de Santana",
-    "asciiName": "Feira de Santana"
+    "asciiName": "Feira de Santana",
+    "lat": -12.2667,
+    "lng": -38.9667,
+    "population": 619609
   },
   {
     "name": "Cuiabá",
-    "asciiName": "Cuiaba"
+    "asciiName": "Cuiaba",
+    "lat": -15.5961,
+    "lng": -56.0967,
+    "population": 618124
   },
   {
     "name": "Londrina",
-    "asciiName": "Londrina"
+    "asciiName": "Londrina",
+    "lat": -23.3103,
+    "lng": -51.1628,
+    "population": 588125
   },
   {
     "name": "Juiz de Fora",
-    "asciiName": "Juiz de Fora"
+    "asciiName": "Juiz de Fora",
+    "lat": -21.7642,
+    "lng": -43.3503,
+    "population": 573285
   },
   {
     "name": "Uberlândia",
-    "asciiName": "Uberlandia"
+    "asciiName": "Uberlandia",
+    "lat": -18.9186,
+    "lng": -48.2772,
+    "population": 563536
   },
   {
     "name": "Porto Velho",
-    "asciiName": "Porto Velho"
+    "asciiName": "Porto Velho",
+    "lat": -8.7619,
+    "lng": -63.9039,
+    "population": 548952
   },
   {
     "name": "Serra",
-    "asciiName": "Serra"
+    "asciiName": "Serra",
+    "lat": -20.1286,
+    "lng": -40.3078,
+    "population": 520653
   },
   {
     "name": "Macapá",
-    "asciiName": "Macapa"
+    "asciiName": "Macapa",
+    "lat": 0.0389,
+    "lng": -51.0664,
+    "population": 512902
   },
   {
     "name": "Campos dos Goytacazes",
-    "asciiName": "Campos dos Goytacazes"
+    "asciiName": "Campos dos Goytacazes",
+    "lat": -21.7523,
+    "lng": -41.3304,
+    "population": 511168
   },
   {
     "name": "Aparecida de Goiânia",
-    "asciiName": "Aparecida de Goiania"
+    "asciiName": "Aparecida de Goiania",
+    "lat": -16.8233,
+    "lng": -49.2439,
+    "population": 510770
   },
   {
     "name": "Florianópolis",
-    "asciiName": "Florianopolis"
+    "asciiName": "Florianopolis",
+    "lat": -27.5967,
+    "lng": -48.5492,
+    "population": 508826
   },
   {
     "name": "São José do Rio Preto",
-    "asciiName": "Sao Jose do Rio Preto"
+    "asciiName": "Sao Jose do Rio Preto",
+    "lat": -20.8197,
+    "lng": -49.3794,
+    "population": 480393
   },
   {
     "name": "Mauá",
-    "asciiName": "Maua"
+    "asciiName": "Maua",
+    "lat": -23.6678,
+    "lng": -46.4614,
+    "population": 477552
   },
   {
     "name": "São João de Meriti",
-    "asciiName": "Sao Joao de Meriti"
+    "asciiName": "Sao Joao de Meriti",
+    "lat": -22.8039,
+    "lng": -43.3722,
+    "population": 466536
   },
   {
     "name": "Belford Roxo",
-    "asciiName": "Belford Roxo"
+    "asciiName": "Belford Roxo",
+    "lat": -22.7642,
+    "lng": -43.3994,
+    "population": 466096
   },
   {
     "name": "Joinville",
-    "asciiName": "Joinville"
+    "asciiName": "Joinville",
+    "lat": -26.3044,
+    "lng": -48.8456,
+    "population": 461304
   },
   {
     "name": "Niterói",
-    "asciiName": "Niteroi"
+    "asciiName": "Niteroi",
+    "lat": -22.8833,
+    "lng": -43.1036,
+    "population": 456456
   },
   {
     "name": "Jundiaí",
-    "asciiName": "Jundiai"
+    "asciiName": "Jundiai",
+    "lat": -23.1864,
+    "lng": -46.8842,
+    "population": 443221
   },
   {
     "name": "Ananindeua",
-    "asciiName": "Ananindeua"
+    "asciiName": "Ananindeua",
+    "lat": -1.3656,
+    "lng": -48.3722,
+    "population": 433956
   },
   {
     "name": "Santos",
-    "asciiName": "Santos"
+    "asciiName": "Santos",
+    "lat": -23.9608,
+    "lng": -46.3336,
+    "population": 433656
   },
   {
     "name": "Boa Vista",
-    "asciiName": "Boa Vista"
+    "asciiName": "Boa Vista",
+    "lat": 2.8197,
+    "lng": -60.6733,
+    "population": 419652
   },
   {
     "name": "Rio Branco",
-    "asciiName": "Rio Branco"
+    "asciiName": "Rio Branco",
+    "lat": -9.9747,
+    "lng": -67.81,
+    "population": 419452
   },
   {
     "name": "Montes Claros",
-    "asciiName": "Montes Claros"
+    "asciiName": "Montes Claros",
+    "lat": -16.735,
+    "lng": -43.8617,
+    "population": 414240
   },
   {
     "name": "Piracicaba",
-    "asciiName": "Piracicaba"
+    "asciiName": "Piracicaba",
+    "lat": -22.7253,
+    "lng": -47.6492,
+    "population": 407252
   },
   {
     "name": "Caruaru",
-    "asciiName": "Caruaru"
+    "asciiName": "Caruaru",
+    "lat": -8.2833,
+    "lng": -35.9761,
+    "population": 402290
   },
   {
     "name": "Vila Velha",
-    "asciiName": "Vila Velha"
+    "asciiName": "Vila Velha",
+    "lat": -20.3297,
+    "lng": -40.2925,
+    "population": 394930
   },
   {
     "name": "Diadema",
-    "asciiName": "Diadema"
+    "asciiName": "Diadema",
+    "lat": -23.6861,
+    "lng": -46.6228,
+    "population": 393237
   },
   {
     "name": "Carapicuíba",
-    "asciiName": "Carapicuiba"
+    "asciiName": "Carapicuiba",
+    "lat": -23.5227,
+    "lng": -46.835,
+    "population": 386984
   },
   {
     "name": "Petrolina",
-    "asciiName": "Petrolina"
+    "asciiName": "Petrolina",
+    "lat": -9.3986,
+    "lng": -40.5008,
+    "population": 386791
   },
   {
     "name": "Grajaú",
-    "asciiName": "Grajau"
+    "asciiName": "Grajau",
+    "lat": -23.7698,
+    "lng": -46.6711,
+    "population": 384873
   },
   {
     "name": "Betim",
-    "asciiName": "Betim"
+    "asciiName": "Betim",
+    "lat": -19.9678,
+    "lng": -44.1983,
+    "population": 384000
   },
   {
     "name": "Caxias do Sul",
-    "asciiName": "Caxias do Sul"
+    "asciiName": "Caxias do Sul",
+    "lat": -29.1681,
+    "lng": -51.1794,
+    "population": 381270
   },
   {
     "name": "Bauru",
-    "asciiName": "Bauru"
+    "asciiName": "Bauru",
+    "lat": -22.3147,
+    "lng": -49.0606,
+    "population": 379297
   },
   {
     "name": "Itaquaquecetuba",
-    "asciiName": "Itaquaquecetuba"
+    "asciiName": "Itaquaquecetuba",
+    "lat": -23.4861,
+    "lng": -46.3483,
+    "population": 369275
   },
   {
     "name": "Olinda",
-    "asciiName": "Olinda"
+    "asciiName": "Olinda",
+    "lat": -8.0089,
+    "lng": -34.8553,
+    "population": 366754
   },
   {
     "name": "Blumenau",
-    "asciiName": "Blumenau"
+    "asciiName": "Blumenau",
+    "lat": -26.9194,
+    "lng": -49.0661,
+    "population": 361855
   },
   {
     "name": "Franca",
-    "asciiName": "Franca"
+    "asciiName": "Franca",
+    "lat": -20.5386,
+    "lng": -47.4008,
+    "population": 358539
   },
   {
     "name": "Caucaia",
-    "asciiName": "Caucaia"
+    "asciiName": "Caucaia",
+    "lat": -3.7361,
+    "lng": -38.6531,
+    "population": 355679
   },
   {
     "name": "Cariacica",
-    "asciiName": "Cariacica"
+    "asciiName": "Cariacica",
+    "lat": -20.2639,
+    "lng": -40.42,
+    "population": 353491
   },
   {
     "name": "Praia Grande",
-    "asciiName": "Praia Grande"
+    "asciiName": "Praia Grande",
+    "lat": -24.0058,
+    "lng": -46.4028,
+    "population": 349935
   },
   {
     "name": "Campina Grande",
-    "asciiName": "Campina Grande"
+    "asciiName": "Campina Grande",
+    "lat": -7.2306,
+    "lng": -35.8811,
+    "population": 348936
   },
   {
     "name": "Paulista",
-    "asciiName": "Paulista"
+    "asciiName": "Paulista",
+    "lat": -7.9408,
+    "lng": -34.8731,
+    "population": 342167
   },
   {
     "name": "Uberaba",
-    "asciiName": "Uberaba"
+    "asciiName": "Uberaba",
+    "lat": -19.7483,
+    "lng": -47.9319,
+    "population": 337836
   },
   {
     "name": "São Vicente",
-    "asciiName": "Sao Vicente"
+    "asciiName": "Sao Vicente",
+    "lat": -23.9631,
+    "lng": -46.3919,
+    "population": 329911
   },
   {
     "name": "Ribeirão das Neves",
-    "asciiName": "Ribeirao das Neves"
+    "asciiName": "Ribeirao das Neves",
+    "lat": -19.7669,
+    "lng": -44.0867,
+    "population": 329794
   },
   {
     "name": "São José dos Pinhais",
-    "asciiName": "Sao Jose dos Pinhais"
+    "asciiName": "Sao Jose dos Pinhais",
+    "lat": -25.5302,
+    "lng": -49.2084,
+    "population": 329628
   },
   {
     "name": "Canoas",
-    "asciiName": "Canoas"
+    "asciiName": "Canoas",
+    "lat": -29.9178,
+    "lng": -51.1836,
+    "population": 328291
   },
   {
     "name": "Mogi das Cruzes",
-    "asciiName": "Mogi das Cruzes"
+    "asciiName": "Mogi das Cruzes",
+    "lat": -23.5228,
+    "lng": -46.1883,
+    "population": 325746
   },
   {
     "name": "Guarujá",
-    "asciiName": "Guaruja"
+    "asciiName": "Guaruja",
+    "lat": -23.9931,
+    "lng": -46.2564,
+    "population": 322750
   }
 ]

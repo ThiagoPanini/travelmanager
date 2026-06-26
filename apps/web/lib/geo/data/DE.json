@@ -1,322 +1,562 @@
 [
   {
     "name": "Berlin",
-    "asciiName": "Berlin"
+    "asciiName": "Berlin",
+    "lat": 52.5244,
+    "lng": 13.4105,
+    "population": 3426354
   },
   {
     "name": "Hamburg",
-    "asciiName": "Hamburg"
+    "asciiName": "Hamburg",
+    "lat": 53.5507,
+    "lng": 9.993,
+    "population": 1973896
   },
   {
     "name": "Munich",
-    "asciiName": "Munich"
+    "asciiName": "Munich",
+    "lat": 48.1374,
+    "lng": 11.5755,
+    "population": 1505005
   },
   {
     "name": "Köln",
-    "asciiName": "Koeln"
+    "asciiName": "Koeln",
+    "lat": 50.9333,
+    "lng": 6.95,
+    "population": 1024621
   },
   {
     "name": "Frankfurt am Main",
-    "asciiName": "Frankfurt am Main"
+    "asciiName": "Frankfurt am Main",
+    "lat": 50.1155,
+    "lng": 8.6842,
+    "population": 650000
   },
   {
     "name": "Düsseldorf",
-    "asciiName": "Duesseldorf"
+    "asciiName": "Duesseldorf",
+    "lat": 51.2232,
+    "lng": 6.7793,
+    "population": 618685
   },
   {
     "name": "Stuttgart",
-    "asciiName": "Stuttgart"
+    "asciiName": "Stuttgart",
+    "lat": 48.7823,
+    "lng": 9.177,
+    "population": 612663
   },
   {
     "name": "Essen",
-    "asciiName": "Essen"
+    "asciiName": "Essen",
+    "lat": 51.4566,
+    "lng": 7.0123,
+    "population": 593085
   },
   {
     "name": "Dortmund",
-    "asciiName": "Dortmund"
+    "asciiName": "Dortmund",
+    "lat": 51.5149,
+    "lng": 7.466,
+    "population": 588462
   },
   {
     "name": "Dresden",
-    "asciiName": "Dresden"
+    "asciiName": "Dresden",
+    "lat": 51.0509,
+    "lng": 13.7383,
+    "population": 564904
   },
   {
     "name": "Bremen",
-    "asciiName": "Bremen"
+    "asciiName": "Bremen",
+    "lat": 53.0758,
+    "lng": 8.8072,
+    "population": 546501
   },
   {
     "name": "Nuremberg",
-    "asciiName": "Nuremberg"
+    "asciiName": "Nuremberg",
+    "lat": 49.4542,
+    "lng": 11.0775,
+    "population": 515543
   },
   {
     "name": "Hannover",
-    "asciiName": "Hannover"
+    "asciiName": "Hannover",
+    "lat": 52.3705,
+    "lng": 9.7332,
+    "population": 515140
   },
   {
     "name": "Leipzig",
-    "asciiName": "Leipzig"
+    "asciiName": "Leipzig",
+    "lat": 51.3396,
+    "lng": 12.3713,
+    "population": 504971
   },
   {
     "name": "Duisburg",
-    "asciiName": "Duisburg"
+    "asciiName": "Duisburg",
+    "lat": 51.4325,
+    "lng": 6.7652,
+    "population": 504358
   },
   {
     "name": "Wandsbek",
-    "asciiName": "Wandsbek"
+    "asciiName": "Wandsbek",
+    "lat": 53.5833,
+    "lng": 10.0831,
+    "population": 411422
   },
   {
     "name": "Bochum",
-    "asciiName": "Bochum"
+    "asciiName": "Bochum",
+    "lat": 51.4817,
+    "lng": 7.2165,
+    "population": 385729
   },
   {
     "name": "Wuppertal",
-    "asciiName": "Wuppertal"
+    "asciiName": "Wuppertal",
+    "lat": 51.2563,
+    "lng": 7.1482,
+    "population": 360797
   },
   {
     "name": "Bielefeld",
-    "asciiName": "Bielefeld"
+    "asciiName": "Bielefeld",
+    "lat": 52.0333,
+    "lng": 8.5333,
+    "population": 331906
   },
   {
     "name": "Bonn",
-    "asciiName": "Bonn"
+    "asciiName": "Bonn",
+    "lat": 50.7344,
+    "lng": 7.0955,
+    "population": 330579
   },
   {
     "name": "Hamburg-Nord",
-    "asciiName": "Hamburg-Nord"
+    "asciiName": "Hamburg-Nord",
+    "lat": 53.5894,
+    "lng": 9.984,
+    "population": 315514
   },
   {
     "name": "Münster",
-    "asciiName": "Muenster"
+    "asciiName": "Muenster",
+    "lat": 51.9624,
+    "lng": 7.6257,
+    "population": 308258
   },
   {
     "name": "Mannheim",
-    "asciiName": "Mannheim"
+    "asciiName": "Mannheim",
+    "lat": 49.4891,
+    "lng": 8.4669,
+    "population": 307960
   },
   {
     "name": "Hamburg-Mitte",
-    "asciiName": "Hamburg-Mitte"
+    "asciiName": "Hamburg-Mitte",
+    "lat": 53.55,
+    "lng": 10.0167,
+    "population": 301231
   },
   {
     "name": "Augsburg",
-    "asciiName": "Augsburg"
+    "asciiName": "Augsburg",
+    "lat": 48.3715,
+    "lng": 10.8985,
+    "population": 301105
   },
   {
     "name": "Wiesbaden",
-    "asciiName": "Wiesbaden"
+    "asciiName": "Wiesbaden",
+    "lat": 50.086,
+    "lng": 8.2444,
+    "population": 288850
   },
   {
     "name": "Marienthal",
-    "asciiName": "Marienthal"
+    "asciiName": "Marienthal",
+    "lat": 53.5667,
+    "lng": 10.0833,
+    "population": 287101
   },
   {
     "name": "Karlsruhe",
-    "asciiName": "Karlsruhe"
+    "asciiName": "Karlsruhe",
+    "lat": 49.0094,
+    "lng": 8.4044,
+    "population": 283799
   },
   {
     "name": "Gelsenkirchen",
-    "asciiName": "Gelsenkirchen"
+    "asciiName": "Gelsenkirchen",
+    "lat": 51.5051,
+    "lng": 7.0965,
+    "population": 270028
   },
   {
     "name": "Eimsbüttel",
-    "asciiName": "Eimsbuettel"
+    "asciiName": "Eimsbuettel",
+    "lat": 53.5742,
+    "lng": 9.9568,
+    "population": 269118
   },
   {
     "name": "Aachen",
-    "asciiName": "Aachen"
+    "asciiName": "Aachen",
+    "lat": 50.7766,
+    "lng": 6.0834,
+    "population": 265208
   },
   {
     "name": "Mönchengladbach",
-    "asciiName": "Moenchengladbach"
+    "asciiName": "Moenchengladbach",
+    "lat": 51.1854,
+    "lng": 6.4417,
+    "population": 261742
   },
   {
     "name": "Kiel",
-    "asciiName": "Kiel"
+    "asciiName": "Kiel",
+    "lat": 54.3213,
+    "lng": 10.1349,
+    "population": 252668
   },
   {
     "name": "Altona",
-    "asciiName": "Altona"
+    "asciiName": "Altona",
+    "lat": 53.55,
+    "lng": 9.9333,
+    "population": 250192
   },
   {
     "name": "Chemnitz",
-    "asciiName": "Chemnitz"
+    "asciiName": "Chemnitz",
+    "lat": 50.8357,
+    "lng": 12.9292,
+    "population": 247220
   },
   {
     "name": "Braunschweig",
-    "asciiName": "Braunschweig"
+    "asciiName": "Braunschweig",
+    "lat": 52.2659,
+    "lng": 10.5267,
+    "population": 244715
   },
   {
     "name": "Magdeburg",
-    "asciiName": "Magdeburg"
+    "asciiName": "Magdeburg",
+    "lat": 52.1313,
+    "lng": 11.6319,
+    "population": 244329
   },
   {
     "name": "Krefeld",
-    "asciiName": "Krefeld"
+    "asciiName": "Krefeld",
+    "lat": 51.3365,
+    "lng": 6.5538,
+    "population": 237984
   },
   {
     "name": "Halle (Saale)",
-    "asciiName": "Halle (Saale)"
+    "asciiName": "Halle (Saale)",
+    "lat": 51.4816,
+    "lng": 11.9795,
+    "population": 237865
   },
   {
     "name": "Freiburg",
-    "asciiName": "Freiburg"
+    "asciiName": "Freiburg",
+    "lat": 47.9959,
+    "lng": 7.8522,
+    "population": 237460
   },
   {
     "name": "Neue Neustadt",
-    "asciiName": "Neue Neustadt"
+    "asciiName": "Neue Neustadt",
+    "lat": 52.15,
+    "lng": 11.6333,
+    "population": 226851
   },
   {
     "name": "Mainz",
-    "asciiName": "Mainz"
+    "asciiName": "Mainz",
+    "lat": 49.9819,
+    "lng": 8.2801,
+    "population": 222889
   },
   {
     "name": "Oberhausen",
-    "asciiName": "Oberhausen"
+    "asciiName": "Oberhausen",
+    "lat": 51.4781,
+    "lng": 6.8625,
+    "population": 219176
   },
   {
     "name": "Erfurt",
-    "asciiName": "Erfurt"
+    "asciiName": "Erfurt",
+    "lat": 50.9773,
+    "lng": 11.0354,
+    "population": 218793
   },
   {
     "name": "Lübeck",
-    "asciiName": "Luebeck"
+    "asciiName": "Luebeck",
+    "lat": 53.8689,
+    "lng": 10.6873,
+    "population": 212207
   },
   {
     "name": "Hagen",
-    "asciiName": "Hagen"
+    "asciiName": "Hagen",
+    "lat": 51.3608,
+    "lng": 7.4717,
+    "population": 198972
   },
   {
     "name": "Rostock",
-    "asciiName": "Rostock"
+    "asciiName": "Rostock",
+    "lat": 54.0887,
+    "lng": 12.1405,
+    "population": 198293
   },
   {
     "name": "Kassel",
-    "asciiName": "Kassel"
+    "asciiName": "Kassel",
+    "lat": 51.3167,
+    "lng": 9.5,
+    "population": 197230
   },
   {
     "name": "Potsdam",
-    "asciiName": "Potsdam"
+    "asciiName": "Potsdam",
+    "lat": 52.3989,
+    "lng": 13.0657,
+    "population": 184754
   },
   {
     "name": "Saarbrücken",
-    "asciiName": "Saarbruecken"
+    "asciiName": "Saarbruecken",
+    "lat": 49.2326,
+    "lng": 7.0098,
+    "population": 182971
   },
   {
     "name": "Hamm",
-    "asciiName": "Hamm"
+    "asciiName": "Hamm",
+    "lat": 51.6803,
+    "lng": 7.8209,
+    "population": 178967
   },
   {
     "name": "Mülheim",
-    "asciiName": "Muelheim"
+    "asciiName": "Muelheim",
+    "lat": 51.4322,
+    "lng": 6.8797,
+    "population": 173050
   },
   {
     "name": "Herne",
-    "asciiName": "Herne"
+    "asciiName": "Herne",
+    "lat": 51.5388,
+    "lng": 7.2257,
+    "population": 172108
   },
   {
     "name": "Harburg",
-    "asciiName": "Harburg"
+    "asciiName": "Harburg",
+    "lat": 53.4606,
+    "lng": 9.9839,
+    "population": 169221
   },
   {
     "name": "Darmstadt",
-    "asciiName": "Darmstadt"
+    "asciiName": "Darmstadt",
+    "lat": 49.8717,
+    "lng": 8.6503,
+    "population": 167029
   },
   {
     "name": "Osnabrück",
-    "asciiName": "Osnabrueck"
+    "asciiName": "Osnabrueck",
+    "lat": 52.2726,
+    "lng": 8.0498,
+    "population": 166462
   },
   {
     "name": "Neukölln",
-    "asciiName": "Neukoelln"
+    "asciiName": "Neukoelln",
+    "lat": 52.4772,
+    "lng": 13.4313,
+    "population": 164636
   },
   {
     "name": "Solingen",
-    "asciiName": "Solingen"
+    "asciiName": "Solingen",
+    "lat": 51.1734,
+    "lng": 7.0845,
+    "population": 164359
   },
   {
     "name": "Ludwigshafen am Rhein",
-    "asciiName": "Ludwigshafen am Rhein"
+    "asciiName": "Ludwigshafen am Rhein",
+    "lat": 49.4812,
+    "lng": 8.4464,
+    "population": 163196
   },
   {
     "name": "Leverkusen",
-    "asciiName": "Leverkusen"
+    "asciiName": "Leverkusen",
+    "lat": 51.0303,
+    "lng": 6.9843,
+    "population": 162738
   },
   {
     "name": "Oldenburg",
-    "asciiName": "Oldenburg"
+    "asciiName": "Oldenburg",
+    "lat": 53.1404,
+    "lng": 8.2148,
+    "population": 159218
   },
   {
     "name": "Kreuzberg",
-    "asciiName": "Kreuzberg"
+    "asciiName": "Kreuzberg",
+    "lat": 52.4997,
+    "lng": 13.4034,
+    "population": 153135
   },
   {
     "name": "Neuss",
-    "asciiName": "Neuss"
+    "asciiName": "Neuss",
+    "lat": 51.1981,
+    "lng": 6.685,
+    "population": 152457
   },
   {
     "name": "Regensburg",
-    "asciiName": "Regensburg"
+    "asciiName": "Regensburg",
+    "lat": 49.0151,
+    "lng": 12.1016,
+    "population": 151389
   },
   {
     "name": "Prenzlauer Berg",
-    "asciiName": "Prenzlauer Berg Bezirk"
+    "asciiName": "Prenzlauer Berg Bezirk",
+    "lat": 52.5388,
+    "lng": 13.4244,
+    "population": 148878
   },
   {
     "name": "Heidelberg",
-    "asciiName": "Heidelberg"
+    "asciiName": "Heidelberg",
+    "lat": 49.4077,
+    "lng": 8.6908,
+    "population": 143345
   },
   {
     "name": "Paderborn",
-    "asciiName": "Paderborn"
+    "asciiName": "Paderborn",
+    "lat": 51.7191,
+    "lng": 8.7544,
+    "population": 142161
   },
   {
     "name": "Würzburg",
-    "asciiName": "Wuerzburg"
+    "asciiName": "Wuerzburg",
+    "lat": 49.7939,
+    "lng": 9.9512,
+    "population": 133731
   },
   {
     "name": "Fürth",
-    "asciiName": "Fuerth"
+    "asciiName": "Fuerth",
+    "lat": 49.4759,
+    "lng": 10.9886,
+    "population": 132036
   },
   {
     "name": "Charlottenburg",
-    "asciiName": "Charlottenburg"
+    "asciiName": "Charlottenburg",
+    "lat": 52.5167,
+    "lng": 13.2833,
+    "population": 129359
   },
   {
     "name": "Wolfsburg",
-    "asciiName": "Wolfsburg"
+    "asciiName": "Wolfsburg",
+    "lat": 52.4245,
+    "lng": 10.7815,
+    "population": 123064
   },
   {
     "name": "Schöneberg",
-    "asciiName": "Schoeneberg"
+    "asciiName": "Schoeneberg",
+    "lat": 52.498,
+    "lng": 13.3443,
+    "population": 122658
   },
   {
     "name": "Recklinghausen",
-    "asciiName": "Recklinghausen"
+    "asciiName": "Recklinghausen",
+    "lat": 51.6138,
+    "lng": 7.1974,
+    "population": 122438
   },
   {
     "name": "Göttingen",
-    "asciiName": "Goettingen"
+    "asciiName": "Goettingen",
+    "lat": 51.5344,
+    "lng": 9.9323,
+    "population": 122149
   },
   {
     "name": "Heilbronn",
-    "asciiName": "Heilbronn"
+    "asciiName": "Heilbronn",
+    "lat": 49.14,
+    "lng": 9.2205,
+    "population": 120733
   },
   {
     "name": "Ingolstadt",
-    "asciiName": "Ingolstadt"
+    "asciiName": "Ingolstadt",
+    "lat": 48.7651,
+    "lng": 11.4237,
+    "population": 120658
   },
   {
     "name": "Ulm",
-    "asciiName": "Ulm"
+    "asciiName": "Ulm",
+    "lat": 48.3984,
+    "lng": 9.9916,
+    "population": 120451
   },
   {
     "name": "Bottrop",
-    "asciiName": "Bottrop"
+    "asciiName": "Bottrop",
+    "lat": 51.5239,
+    "lng": 6.9285,
+    "population": 119909
   },
   {
     "name": "Bergedorf",
-    "asciiName": "Bergedorf"
+    "asciiName": "Bergedorf",
+    "lat": 53.4846,
+    "lng": 10.229,
+    "population": 119665
   },
   {
     "name": "Pforzheim",
-    "asciiName": "Pforzheim"
+    "asciiName": "Pforzheim",
+    "lat": 48.8844,
+    "lng": 8.6989,
+    "population": 119313
   }
 ]

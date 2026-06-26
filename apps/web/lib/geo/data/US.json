@@ -1,322 +1,562 @@
 [
   {
     "name": "New York City",
-    "asciiName": "New York City"
+    "asciiName": "New York City",
+    "lat": 40.7143,
+    "lng": -74.006,
+    "population": 8804190
   },
   {
     "name": "Los Angeles",
-    "asciiName": "Los Angeles"
+    "asciiName": "Los Angeles",
+    "lat": 34.0522,
+    "lng": -118.2437,
+    "population": 3820914
   },
   {
     "name": "Brooklyn",
-    "asciiName": "Brooklyn"
+    "asciiName": "Brooklyn",
+    "lat": 40.6501,
+    "lng": -73.9496,
+    "population": 2736074
   },
   {
     "name": "Chicago",
-    "asciiName": "Chicago"
+    "asciiName": "Chicago",
+    "lat": 41.85,
+    "lng": -87.65,
+    "population": 2664452
   },
   {
     "name": "Queens",
-    "asciiName": "Queens"
+    "asciiName": "Queens",
+    "lat": 40.6815,
+    "lng": -73.8365,
+    "population": 2316841
   },
   {
     "name": "Houston",
-    "asciiName": "Houston"
+    "asciiName": "Houston",
+    "lat": 29.7633,
+    "lng": -95.3633,
+    "population": 2314157
   },
   {
     "name": "Phoenix",
-    "asciiName": "Phoenix"
+    "asciiName": "Phoenix",
+    "lat": 33.4484,
+    "lng": -112.074,
+    "population": 1650070
   },
   {
     "name": "Philadelphia",
-    "asciiName": "Philadelphia"
+    "asciiName": "Philadelphia",
+    "lat": 39.9524,
+    "lng": -75.1636,
+    "population": 1573916
   },
   {
     "name": "San Antonio",
-    "asciiName": "San Antonio"
+    "asciiName": "San Antonio",
+    "lat": 29.4241,
+    "lng": -98.4936,
+    "population": 1526656
   },
   {
     "name": "Manhattan",
-    "asciiName": "Manhattan"
+    "asciiName": "Manhattan",
+    "lat": 40.7834,
+    "lng": -73.9662,
+    "population": 1487536
   },
   {
     "name": "San Diego",
-    "asciiName": "San Diego"
+    "asciiName": "San Diego",
+    "lat": 32.7157,
+    "lng": -117.1647,
+    "population": 1404452
   },
   {
     "name": "The Bronx",
-    "asciiName": "The Bronx"
+    "asciiName": "The Bronx",
+    "lat": 40.8499,
+    "lng": -73.8664,
+    "population": 1385108
   },
   {
     "name": "Dallas",
-    "asciiName": "Dallas"
+    "asciiName": "Dallas",
+    "lat": 32.7831,
+    "lng": -96.8067,
+    "population": 1326087
   },
   {
     "name": "Jacksonville",
-    "asciiName": "Jacksonville"
+    "asciiName": "Jacksonville",
+    "lat": 30.3322,
+    "lng": -81.6556,
+    "population": 1009833
   },
   {
     "name": "Fort Worth",
-    "asciiName": "Fort Worth"
+    "asciiName": "Fort Worth",
+    "lat": 32.7254,
+    "lng": -97.3208,
+    "population": 1008106
   },
   {
     "name": "San Jose",
-    "asciiName": "San Jose"
+    "asciiName": "San Jose",
+    "lat": 37.3394,
+    "lng": -121.895,
+    "population": 997368
   },
   {
     "name": "Austin",
-    "asciiName": "Austin"
+    "asciiName": "Austin",
+    "lat": 30.2672,
+    "lng": -97.7431,
+    "population": 974447
   },
   {
     "name": "Columbus",
-    "asciiName": "Columbus"
+    "asciiName": "Columbus",
+    "lat": 39.9612,
+    "lng": -82.9988,
+    "population": 913175
   },
   {
     "name": "Charlotte",
-    "asciiName": "Charlotte"
+    "asciiName": "Charlotte",
+    "lat": 35.2271,
+    "lng": -80.8431,
+    "population": 911311
   },
   {
     "name": "Indianapolis",
-    "asciiName": "Indianapolis"
+    "asciiName": "Indianapolis",
+    "lat": 39.7684,
+    "lng": -86.158,
+    "population": 887642
   },
   {
     "name": "San Francisco",
-    "asciiName": "San Francisco"
+    "asciiName": "San Francisco",
+    "lat": 37.7749,
+    "lng": -122.4194,
+    "population": 827526
   },
   {
     "name": "Seattle",
-    "asciiName": "Seattle"
+    "asciiName": "Seattle",
+    "lat": 47.6062,
+    "lng": -122.3321,
+    "population": 780995
   },
   {
     "name": "Denver",
-    "asciiName": "Denver"
+    "asciiName": "Denver",
+    "lat": 39.7392,
+    "lng": -104.9847,
+    "population": 729019
   },
   {
     "name": "Washington",
-    "asciiName": "Washington"
+    "asciiName": "Washington",
+    "lat": 38.8951,
+    "lng": -77.0364,
+    "population": 689545
   },
   {
     "name": "Nashville",
-    "asciiName": "Nashville"
+    "asciiName": "Nashville",
+    "lat": 36.1659,
+    "lng": -86.7844,
+    "population": 689447
   },
   {
     "name": "Oklahoma City",
-    "asciiName": "Oklahoma City"
+    "asciiName": "Oklahoma City",
+    "lat": 35.4676,
+    "lng": -97.5164,
+    "population": 681054
   },
   {
     "name": "El Paso",
-    "asciiName": "El Paso"
+    "asciiName": "El Paso",
+    "lat": 31.7587,
+    "lng": -106.4869,
+    "population": 678815
   },
   {
     "name": "Boston",
-    "asciiName": "Boston"
+    "asciiName": "Boston",
+    "lat": 42.3584,
+    "lng": -71.0598,
+    "population": 653833
   },
   {
     "name": "Portland",
-    "asciiName": "Portland"
+    "asciiName": "Portland",
+    "lat": 45.5234,
+    "lng": -122.6762,
+    "population": 652503
   },
   {
     "name": "Detroit",
-    "asciiName": "Detroit"
+    "asciiName": "Detroit",
+    "lat": 42.3314,
+    "lng": -83.0457,
+    "population": 645705
   },
   {
     "name": "Las Vegas",
-    "asciiName": "Las Vegas"
+    "asciiName": "Las Vegas",
+    "lat": 36.175,
+    "lng": -115.1372,
+    "population": 641903
   },
   {
     "name": "New South Memphis",
-    "asciiName": "New South Memphis"
+    "asciiName": "New South Memphis",
+    "lat": 35.0868,
+    "lng": -90.0568,
+    "population": 641608
   },
   {
     "name": "Memphis",
-    "asciiName": "Memphis"
+    "asciiName": "Memphis",
+    "lat": 35.1495,
+    "lng": -90.049,
+    "population": 633104
   },
   {
     "name": "Louisville",
-    "asciiName": "Louisville"
+    "asciiName": "Louisville",
+    "lat": 38.2542,
+    "lng": -85.7594,
+    "population": 624444
   },
   {
     "name": "Baltimore",
-    "asciiName": "Baltimore"
+    "asciiName": "Baltimore",
+    "lat": 39.2904,
+    "lng": -76.6122,
+    "population": 585708
   },
   {
     "name": "South Boston",
-    "asciiName": "South Boston"
+    "asciiName": "South Boston",
+    "lat": 42.3334,
+    "lng": -71.0495,
+    "population": 571281
   },
   {
     "name": "Albuquerque",
-    "asciiName": "Albuquerque"
+    "asciiName": "Albuquerque",
+    "lat": 35.0845,
+    "lng": -106.6511,
+    "population": 564559
   },
   {
     "name": "Milwaukee",
-    "asciiName": "Milwaukee"
+    "asciiName": "Milwaukee",
+    "lat": 43.0389,
+    "lng": -87.9065,
+    "population": 563531
   },
   {
     "name": "Tucson",
-    "asciiName": "Tucson"
+    "asciiName": "Tucson",
+    "lat": 32.2217,
+    "lng": -110.9265,
+    "population": 542629
   },
   {
     "name": "Fresno",
-    "asciiName": "Fresno"
+    "asciiName": "Fresno",
+    "lat": 36.7477,
+    "lng": -119.7724,
+    "population": 542107
   },
   {
     "name": "Sacramento",
-    "asciiName": "Sacramento"
+    "asciiName": "Sacramento",
+    "lat": 38.5816,
+    "lng": -121.4944,
+    "population": 524943
   },
   {
     "name": "Atlanta",
-    "asciiName": "Atlanta"
+    "asciiName": "Atlanta",
+    "lat": 33.749,
+    "lng": -84.388,
+    "population": 510823
   },
   {
     "name": "Miami",
-    "asciiName": "Miami"
+    "asciiName": "Miami",
+    "lat": 25.7743,
+    "lng": -80.1937,
+    "population": 487014
   },
   {
     "name": "Omaha",
-    "asciiName": "Omaha"
+    "asciiName": "Omaha",
+    "lat": 41.2563,
+    "lng": -95.9404,
+    "population": 486051
   },
   {
     "name": "Raleigh",
-    "asciiName": "Raleigh"
+    "asciiName": "Raleigh",
+    "lat": 35.7721,
+    "lng": -78.6386,
+    "population": 482295
   },
   {
     "name": "Kansas City",
-    "asciiName": "Kansas City"
+    "asciiName": "Kansas City",
+    "lat": 39.0997,
+    "lng": -94.5786,
+    "population": 475378
   },
   {
     "name": "Long Beach",
-    "asciiName": "Long Beach"
+    "asciiName": "Long Beach",
+    "lat": 33.767,
+    "lng": -118.1892,
+    "population": 474140
   },
   {
     "name": "Mesa",
-    "asciiName": "Mesa"
+    "asciiName": "Mesa",
+    "lat": 33.4223,
+    "lng": -111.8226,
+    "population": 471825
   },
   {
     "name": "Staten Island",
-    "asciiName": "Staten Island"
+    "asciiName": "Staten Island",
+    "lat": 40.5623,
+    "lng": -74.1399,
+    "population": 468730
   },
   {
     "name": "Colorado Springs",
-    "asciiName": "Colorado Springs"
+    "asciiName": "Colorado Springs",
+    "lat": 38.8339,
+    "lng": -104.8214,
+    "population": 456568
   },
   {
     "name": "Virginia Beach",
-    "asciiName": "Virginia Beach"
+    "asciiName": "Virginia Beach",
+    "lat": 36.8529,
+    "lng": -75.978,
+    "population": 454808
   },
   {
     "name": "Oakland",
-    "asciiName": "Oakland"
+    "asciiName": "Oakland",
+    "lat": 37.8044,
+    "lng": -122.2708,
+    "population": 419267
   },
   {
     "name": "Tampa",
-    "asciiName": "Tampa"
+    "asciiName": "Tampa",
+    "lat": 27.9475,
+    "lng": -82.4584,
+    "population": 414547
   },
   {
     "name": "Tulsa",
-    "asciiName": "Tulsa"
+    "asciiName": "Tulsa",
+    "lat": 36.154,
+    "lng": -95.9928,
+    "population": 413066
   },
   {
     "name": "Minneapolis",
-    "asciiName": "Minneapolis"
+    "asciiName": "Minneapolis",
+    "lat": 44.98,
+    "lng": -93.2638,
+    "population": 410939
   },
   {
     "name": "Wichita",
-    "asciiName": "Wichita"
+    "asciiName": "Wichita",
+    "lat": 37.6922,
+    "lng": -97.3375,
+    "population": 396119
   },
   {
     "name": "Arlington",
-    "asciiName": "Arlington"
+    "asciiName": "Arlington",
+    "lat": 32.7357,
+    "lng": -97.1081,
+    "population": 388125
   },
   {
     "name": "Bakersfield",
-    "asciiName": "Bakersfield"
+    "asciiName": "Bakersfield",
+    "lat": 35.3733,
+    "lng": -119.0187,
+    "population": 373640
   },
   {
     "name": "Cleveland",
-    "asciiName": "Cleveland"
+    "asciiName": "Cleveland",
+    "lat": 41.4995,
+    "lng": -81.6954,
+    "population": 365379
   },
   {
     "name": "New Orleans",
-    "asciiName": "New Orleans"
+    "asciiName": "New Orleans",
+    "lat": 29.9547,
+    "lng": -90.0751,
+    "population": 362701
   },
   {
     "name": "Aurora",
-    "asciiName": "Aurora"
+    "asciiName": "Aurora",
+    "lat": 39.7294,
+    "lng": -104.8319,
+    "population": 359407
   },
   {
     "name": "Honolulu",
-    "asciiName": "Honolulu"
+    "asciiName": "Honolulu",
+    "lat": 21.3069,
+    "lng": -157.8583,
+    "population": 350964
   },
   {
     "name": "Anaheim",
-    "asciiName": "Anaheim"
+    "asciiName": "Anaheim",
+    "lat": 33.8353,
+    "lng": -117.9145,
+    "population": 350742
   },
   {
     "name": "West Raleigh",
-    "asciiName": "West Raleigh"
+    "asciiName": "West Raleigh",
+    "lat": 35.7868,
+    "lng": -78.6639,
+    "population": 338759
   },
   {
     "name": "Orlando",
-    "asciiName": "Orlando"
+    "asciiName": "Orlando",
+    "lat": 28.5383,
+    "lng": -81.3792,
+    "population": 334854
   },
   {
     "name": "Lexington",
-    "asciiName": "Lexington"
+    "asciiName": "Lexington",
+    "lat": 37.9887,
+    "lng": -84.4777,
+    "population": 320347
   },
   {
     "name": "Riverside",
-    "asciiName": "Riverside"
+    "asciiName": "Riverside",
+    "lat": 33.9534,
+    "lng": -117.3962,
+    "population": 317261
   },
   {
     "name": "Corpus Christi",
-    "asciiName": "Corpus Christi"
+    "asciiName": "Corpus Christi",
+    "lat": 27.8006,
+    "lng": -97.3964,
+    "population": 316239
   },
   {
     "name": "Lexington-Fayette",
-    "asciiName": "Lexington-Fayette"
+    "asciiName": "Lexington-Fayette",
+    "lat": 38.0498,
+    "lng": -84.4585,
+    "population": 314488
   },
   {
     "name": "Cincinnati",
-    "asciiName": "Cincinnati"
+    "asciiName": "Cincinnati",
+    "lat": 39.1271,
+    "lng": -84.5144,
+    "population": 311097
   },
   {
     "name": "Santa Ana",
-    "asciiName": "Santa Ana"
+    "asciiName": "Santa Ana",
+    "lat": 33.7456,
+    "lng": -117.8678,
+    "population": 310227
   },
   {
     "name": "Stockton",
-    "asciiName": "Stockton"
+    "asciiName": "Stockton",
+    "lat": 37.9577,
+    "lng": -121.2908,
+    "population": 305658
   },
   {
     "name": "Pittsburgh",
-    "asciiName": "Pittsburgh"
+    "asciiName": "Pittsburgh",
+    "lat": 40.4406,
+    "lng": -79.9959,
+    "population": 304391
   },
   {
     "name": "Saint Paul",
-    "asciiName": "Saint Paul"
+    "asciiName": "Saint Paul",
+    "lat": 44.9444,
+    "lng": -93.0933,
+    "population": 303176
   },
   {
     "name": "Lincoln",
-    "asciiName": "Lincoln"
+    "asciiName": "Lincoln",
+    "lat": 40.8,
+    "lng": -96.667,
+    "population": 294757
   },
   {
     "name": "Anchorage",
-    "asciiName": "Anchorage"
+    "asciiName": "Anchorage",
+    "lat": 61.2181,
+    "lng": -149.9003,
+    "population": 289600
   },
   {
     "name": "Meads",
-    "asciiName": "Meads"
+    "asciiName": "Meads",
+    "lat": 38.4126,
+    "lng": -82.709,
+    "population": 288649
   },
   {
     "name": "Henderson",
-    "asciiName": "Henderson"
+    "asciiName": "Henderson",
+    "lat": 36.0397,
+    "lng": -114.9819,
+    "population": 285667
   },
   {
     "name": "Greensboro",
-    "asciiName": "Greensboro"
+    "asciiName": "Greensboro",
+    "lat": 36.0726,
+    "lng": -79.792,
+    "population": 285342
   },
   {
     "name": "Plano",
-    "asciiName": "Plano"
+    "asciiName": "Plano",
+    "lat": 33.0198,
+    "lng": -96.6989,
+    "population": 283558
   }
 ]

@@ -1,322 +1,562 @@
 [
   {
     "name": "Rotterdam",
-    "asciiName": "Rotterdam"
+    "asciiName": "Rotterdam",
+    "lat": 51.9225,
+    "lng": 4.4792,
+    "population": 868135
   },
   {
     "name": "Amsterdam",
-    "asciiName": "Amsterdam"
+    "asciiName": "Amsterdam",
+    "lat": 52.374,
+    "lng": 4.8897,
+    "population": 741636
   },
   {
     "name": "The Hague",
-    "asciiName": "The Hague"
+    "asciiName": "The Hague",
+    "lat": 52.0767,
+    "lng": 4.2986,
+    "population": 474292
   },
   {
     "name": "Utrecht",
-    "asciiName": "Utrecht"
+    "asciiName": "Utrecht",
+    "lat": 52.0908,
+    "lng": 5.1222,
+    "population": 376435
   },
   {
     "name": "Groningen",
-    "asciiName": "Groningen"
+    "asciiName": "Groningen",
+    "lat": 53.2192,
+    "lng": 6.5667,
+    "population": 244807
   },
   {
     "name": "Eindhoven",
-    "asciiName": "Eindhoven"
+    "asciiName": "Eindhoven",
+    "lat": 51.4408,
+    "lng": 5.4778,
+    "population": 235691
   },
   {
     "name": "Tilburg",
-    "asciiName": "Tilburg"
+    "asciiName": "Tilburg",
+    "lat": 51.5555,
+    "lng": 5.0913,
+    "population": 221947
   },
   {
     "name": "Breda",
-    "asciiName": "Breda"
+    "asciiName": "Breda",
+    "lat": 51.5866,
+    "lng": 4.776,
+    "population": 184126
   },
   {
     "name": "Nijmegen",
-    "asciiName": "Nijmegen"
+    "asciiName": "Nijmegen",
+    "lat": 51.8425,
+    "lng": 5.8528,
+    "population": 177359
   },
   {
     "name": "Almere Stad",
-    "asciiName": "Almere Stad"
+    "asciiName": "Almere Stad",
+    "lat": 52.3703,
+    "lng": 5.2141,
+    "population": 176432
   },
   {
     "name": "Haarlem",
-    "asciiName": "Haarlem"
+    "asciiName": "Haarlem",
+    "lat": 52.3808,
+    "lng": 4.6368,
+    "population": 162543
   },
   {
     "name": "Arnhem",
-    "asciiName": "Arnhem"
+    "asciiName": "Arnhem",
+    "lat": 51.98,
+    "lng": 5.9111,
+    "population": 162424
   },
   {
     "name": "'s-Hertogenbosch",
-    "asciiName": "'s-Hertogenbosch"
+    "asciiName": "'s-Hertogenbosch",
+    "lat": 51.6992,
+    "lng": 5.3042,
+    "population": 160783
   },
   {
     "name": "Enschede",
-    "asciiName": "Enschede"
+    "asciiName": "Enschede",
+    "lat": 52.2183,
+    "lng": 6.8958,
+    "population": 153655
   },
   {
     "name": "Zaanstad",
-    "asciiName": "Zaanstad"
+    "asciiName": "Zaanstad",
+    "lat": 52.4531,
+    "lng": 4.8136,
+    "population": 140085
   },
   {
     "name": "Amersfoort",
-    "asciiName": "Amersfoort"
+    "asciiName": "Amersfoort",
+    "lat": 52.155,
+    "lng": 5.3875,
+    "population": 139914
   },
   {
     "name": "Apeldoorn",
-    "asciiName": "Apeldoorn"
+    "asciiName": "Apeldoorn",
+    "lat": 52.21,
+    "lng": 5.9694,
+    "population": 136670
   },
   {
     "name": "Hoofddorp",
-    "asciiName": "Hoofddorp"
+    "asciiName": "Hoofddorp",
+    "lat": 52.3025,
+    "lng": 4.6889,
+    "population": 132734
   },
   {
     "name": "Zwolle",
-    "asciiName": "Zwolle"
+    "asciiName": "Zwolle",
+    "lat": 52.5125,
+    "lng": 6.0944,
+    "population": 129840
   },
   {
     "name": "Leeuwarden",
-    "asciiName": "Leeuwarden"
+    "asciiName": "Leeuwarden",
+    "lat": 53.2027,
+    "lng": 5.8097,
+    "population": 124481
   },
   {
     "name": "Maastricht",
-    "asciiName": "Maastricht"
+    "asciiName": "Maastricht",
+    "lat": 50.8483,
+    "lng": 5.6889,
+    "population": 122378
   },
   {
     "name": "Leiden",
-    "asciiName": "Leiden"
+    "asciiName": "Leiden",
+    "lat": 52.1583,
+    "lng": 4.4931,
+    "population": 119713
   },
   {
     "name": "Dordrecht",
-    "asciiName": "Dordrecht"
+    "asciiName": "Dordrecht",
+    "lat": 51.81,
+    "lng": 4.6736,
+    "population": 119260
   },
   {
     "name": "Zoetermeer",
-    "asciiName": "Zoetermeer"
+    "asciiName": "Zoetermeer",
+    "lat": 52.0575,
+    "lng": 4.4931,
+    "population": 115845
   },
   {
     "name": "Venlo",
-    "asciiName": "Venlo"
+    "asciiName": "Venlo",
+    "lat": 51.37,
+    "lng": 6.1681,
+    "population": 101988
   },
   {
     "name": "Deventer",
-    "asciiName": "Deventer"
+    "asciiName": "Deventer",
+    "lat": 52.255,
+    "lng": 6.1639,
+    "population": 97331
   },
   {
     "name": "Delft",
-    "asciiName": "Delft"
+    "asciiName": "Delft",
+    "lat": 52.0067,
+    "lng": 4.3556,
+    "population": 95060
   },
   {
     "name": "Alkmaar",
-    "asciiName": "Alkmaar"
+    "asciiName": "Alkmaar",
+    "lat": 52.6317,
+    "lng": 4.7486,
+    "population": 94853
   },
   {
     "name": "Heerlen",
-    "asciiName": "Heerlen"
+    "asciiName": "Heerlen",
+    "lat": 50.8837,
+    "lng": 5.9815,
+    "population": 93084
   },
   {
     "name": "Amsterdam-Zuidoost",
-    "asciiName": "Amsterdam-Zuidoost"
+    "asciiName": "Amsterdam-Zuidoost",
+    "lat": 52.3075,
+    "lng": 4.9722,
+    "population": 84811
   },
   {
     "name": "Hilversum",
-    "asciiName": "Hilversum"
+    "asciiName": "Hilversum",
+    "lat": 52.2233,
+    "lng": 5.1764,
+    "population": 83640
   },
   {
     "name": "Hengelo",
-    "asciiName": "Hengelo"
+    "asciiName": "Hengelo",
+    "lat": 52.2658,
+    "lng": 6.7931,
+    "population": 82311
   },
   {
     "name": "Purmerend",
-    "asciiName": "Purmerend"
+    "asciiName": "Purmerend",
+    "lat": 52.505,
+    "lng": 4.9597,
+    "population": 80117
   },
   {
     "name": "Lelystad",
-    "asciiName": "Lelystad"
+    "asciiName": "Lelystad",
+    "lat": 52.5083,
+    "lng": 5.475,
+    "population": 79811
   },
   {
     "name": "Amstelveen",
-    "asciiName": "Amstelveen"
+    "asciiName": "Amstelveen",
+    "lat": 52.3008,
+    "lng": 4.8639,
+    "population": 79639
   },
   {
     "name": "Roosendaal",
-    "asciiName": "Roosendaal"
+    "asciiName": "Roosendaal",
+    "lat": 51.5308,
+    "lng": 4.4653,
+    "population": 77725
   },
   {
     "name": "Oss",
-    "asciiName": "Oss"
+    "asciiName": "Oss",
+    "lat": 51.765,
+    "lng": 5.5181,
+    "population": 76430
   },
   {
     "name": "Schiedam",
-    "asciiName": "Schiedam"
+    "asciiName": "Schiedam",
+    "lat": 51.9192,
+    "lng": 4.3889,
+    "population": 75438
   },
   {
     "name": "Spijkenisse",
-    "asciiName": "Spijkenisse"
+    "asciiName": "Spijkenisse",
+    "lat": 51.845,
+    "lng": 4.3292,
+    "population": 74988
   },
   {
     "name": "Helmond",
-    "asciiName": "Helmond"
+    "asciiName": "Helmond",
+    "lat": 51.4817,
+    "lng": 5.6611,
+    "population": 74740
   },
   {
     "name": "Vlaardingen",
-    "asciiName": "Vlaardingen"
+    "asciiName": "Vlaardingen",
+    "lat": 51.9125,
+    "lng": 4.3417,
+    "population": 73798
   },
   {
     "name": "Almelo",
-    "asciiName": "Almelo"
+    "asciiName": "Almelo",
+    "lat": 52.3567,
+    "lng": 6.6625,
+    "population": 72725
   },
   {
     "name": "Gouda",
-    "asciiName": "Gouda"
+    "asciiName": "Gouda",
+    "lat": 52.0167,
+    "lng": 4.7083,
+    "population": 71952
   },
   {
     "name": "Zaandam",
-    "asciiName": "Zaandam"
+    "asciiName": "Zaandam",
+    "lat": 52.4385,
+    "lng": 4.8264,
+    "population": 71708
   },
   {
     "name": "Alphen aan den Rijn",
-    "asciiName": "Alphen aan den Rijn"
+    "asciiName": "Alphen aan den Rijn",
+    "lat": 52.1292,
+    "lng": 4.6555,
+    "population": 70251
   },
   {
     "name": "Hoorn",
-    "asciiName": "Hoorn"
+    "asciiName": "Hoorn",
+    "lat": 52.6425,
+    "lng": 5.0597,
+    "population": 68852
   },
   {
     "name": "Assen",
-    "asciiName": "Assen"
+    "asciiName": "Assen",
+    "lat": 52.9967,
+    "lng": 6.5625,
+    "population": 68836
   },
   {
     "name": "Velsen-Zuid",
-    "asciiName": "Velsen-Zuid"
+    "asciiName": "Velsen-Zuid",
+    "lat": 52.46,
+    "lng": 4.65,
+    "population": 67758
   },
   {
     "name": "Ede",
-    "asciiName": "Ede"
+    "asciiName": "Ede",
+    "lat": 52.0333,
+    "lng": 5.6583,
+    "population": 67670
   },
   {
     "name": "Bergen op Zoom",
-    "asciiName": "Bergen op Zoom"
+    "asciiName": "Bergen op Zoom",
+    "lat": 51.495,
+    "lng": 4.2917,
+    "population": 66256
   },
   {
     "name": "Capelle aan den IJssel",
-    "asciiName": "Capelle aan den IJssel"
+    "asciiName": "Capelle aan den IJssel",
+    "lat": 51.9292,
+    "lng": 4.5778,
+    "population": 65255
   },
   {
     "name": "Nieuwegein",
-    "asciiName": "Nieuwegein"
+    "asciiName": "Nieuwegein",
+    "lat": 52.0292,
+    "lng": 5.0806,
+    "population": 61489
   },
   {
     "name": "Veenendaal",
-    "asciiName": "Veenendaal"
+    "asciiName": "Veenendaal",
+    "lat": 52.0286,
+    "lng": 5.5589,
+    "population": 61271
   },
   {
     "name": "Zeist",
-    "asciiName": "Zeist"
+    "asciiName": "Zeist",
+    "lat": 52.09,
+    "lng": 5.2333,
+    "population": 60949
   },
   {
     "name": "Den Helder",
-    "asciiName": "Den Helder"
+    "asciiName": "Den Helder",
+    "lat": 52.9599,
+    "lng": 4.7593,
+    "population": 59569
   },
   {
     "name": "Hardenberg",
-    "asciiName": "Hardenberg"
+    "asciiName": "Hardenberg",
+    "lat": 52.5758,
+    "lng": 6.6194,
+    "population": 57909
   },
   {
     "name": "Emmen",
-    "asciiName": "Emmen"
+    "asciiName": "Emmen",
+    "lat": 52.7792,
+    "lng": 6.9069,
+    "population": 57010
   },
   {
     "name": "Oosterhout",
-    "asciiName": "Oosterhout"
+    "asciiName": "Oosterhout",
+    "lat": 51.645,
+    "lng": 4.8597,
+    "population": 53107
   },
   {
     "name": "Doetinchem",
-    "asciiName": "Doetinchem"
+    "asciiName": "Doetinchem",
+    "lat": 51.965,
+    "lng": 6.2889,
+    "population": 49906
   },
   {
     "name": "Kerkrade",
-    "asciiName": "Kerkrade"
+    "asciiName": "Kerkrade",
+    "lat": 50.8658,
+    "lng": 6.0625,
+    "population": 49777
   },
   {
     "name": "Leidsche Rijn",
-    "asciiName": "Leidsche Rijn"
+    "asciiName": "Leidsche Rijn",
+    "lat": 52.095,
+    "lng": 5.0461,
+    "population": 49307
   },
   {
     "name": "Kampen",
-    "asciiName": "Kampen"
+    "asciiName": "Kampen",
+    "lat": 52.555,
+    "lng": 5.9111,
+    "population": 48980
   },
   {
     "name": "Weert",
-    "asciiName": "Weert"
+    "asciiName": "Weert",
+    "lat": 51.2517,
+    "lng": 5.7069,
+    "population": 48662
   },
   {
     "name": "Woerden",
-    "asciiName": "Woerden"
+    "asciiName": "Woerden",
+    "lat": 52.085,
+    "lng": 4.8833,
+    "population": 48431
   },
   {
     "name": "Sittard",
-    "asciiName": "Sittard"
+    "asciiName": "Sittard",
+    "lat": 50.9983,
+    "lng": 5.8694,
+    "population": 48400
   },
   {
     "name": "Heerhugowaard",
-    "asciiName": "Heerhugowaard"
+    "asciiName": "Heerhugowaard",
+    "lat": 52.6714,
+    "lng": 4.8486,
+    "population": 47580
   },
   {
     "name": "Rijswijk",
-    "asciiName": "Rijswijk"
+    "asciiName": "Rijswijk",
+    "lat": 52.0363,
+    "lng": 4.325,
+    "population": 47299
   },
   {
     "name": "Middelburg",
-    "asciiName": "Middelburg"
+    "asciiName": "Middelburg",
+    "lat": 51.5,
+    "lng": 3.6139,
+    "population": 46485
   },
   {
     "name": "Emmeloord",
-    "asciiName": "Emmeloord"
+    "asciiName": "Emmeloord",
+    "lat": 52.7108,
+    "lng": 5.7486,
+    "population": 46409
   },
   {
     "name": "Zwijndrecht",
-    "asciiName": "Zwijndrecht"
+    "asciiName": "Zwijndrecht",
+    "lat": 51.8175,
+    "lng": 4.6333,
+    "population": 45696
   },
   {
     "name": "Waalwijk",
-    "asciiName": "Waalwijk"
+    "asciiName": "Waalwijk",
+    "lat": 51.6825,
+    "lng": 5.0708,
+    "population": 45610
   },
   {
     "name": "Vlissingen",
-    "asciiName": "Vlissingen"
+    "asciiName": "Vlissingen",
+    "lat": 51.4425,
+    "lng": 3.5736,
+    "population": 45273
   },
   {
     "name": "Ridderkerk",
-    "asciiName": "Ridderkerk"
+    "asciiName": "Ridderkerk",
+    "lat": 51.8725,
+    "lng": 4.6028,
+    "population": 45189
   },
   {
     "name": "Drachten",
-    "asciiName": "Drachten"
+    "asciiName": "Drachten",
+    "lat": 53.1125,
+    "lng": 6.0989,
+    "population": 45186
   },
   {
     "name": "Soest",
-    "asciiName": "Soest"
+    "asciiName": "Soest",
+    "lat": 52.1733,
+    "lng": 5.2917,
+    "population": 45021
   },
   {
     "name": "Roermond",
-    "asciiName": "Roermond"
+    "asciiName": "Roermond",
+    "lat": 51.1942,
+    "lng": 5.9875,
+    "population": 44975
   },
   {
     "name": "Heerenveen",
-    "asciiName": "Heerenveen"
+    "asciiName": "Heerenveen",
+    "lat": 52.9593,
+    "lng": 5.9185,
+    "population": 43094
   },
   {
     "name": "Medemblik",
-    "asciiName": "Medemblik"
+    "asciiName": "Medemblik",
+    "lat": 52.7717,
+    "lng": 5.1056,
+    "population": 41500
   },
   {
     "name": "Huizen",
-    "asciiName": "Huizen"
+    "asciiName": "Huizen",
+    "lat": 52.2992,
+    "lng": 5.2417,
+    "population": 41273
   },
   {
     "name": "Tiel",
-    "asciiName": "Tiel"
+    "asciiName": "Tiel",
+    "lat": 51.8867,
+    "lng": 5.4292,
+    "population": 40702
   }
 ]

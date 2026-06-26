@@ -1,322 +1,562 @@
 [
   {
     "name": "Mexico City",
-    "asciiName": "Mexico City"
+    "asciiName": "Mexico City",
+    "lat": 19.4285,
+    "lng": -99.1277,
+    "population": 12294193
   },
   {
     "name": "Tijuana",
-    "asciiName": "Tijuana"
+    "asciiName": "Tijuana",
+    "lat": 32.5027,
+    "lng": -117.0037,
+    "population": 1922523
   },
   {
     "name": "Iztapalapa",
-    "asciiName": "Iztapalapa"
+    "asciiName": "Iztapalapa",
+    "lat": 19.3553,
+    "lng": -99.0622,
+    "population": 1835486
   },
   {
     "name": "Puebla",
-    "asciiName": "Puebla"
+    "asciiName": "Puebla",
+    "lat": 19.0478,
+    "lng": -98.2072,
+    "population": 1692181
   },
   {
     "name": "Ecatepec de Morelos",
-    "asciiName": "Ecatepec de Morelos"
+    "asciiName": "Ecatepec de Morelos",
+    "lat": 19.6049,
+    "lng": -99.0606,
+    "population": 1645352
   },
   {
     "name": "Santiago de Querétaro",
-    "asciiName": "Santiago de Queretaro"
+    "asciiName": "Santiago de Queretaro",
+    "lat": 20.5881,
+    "lng": -100.3881,
+    "population": 1594212
   },
   {
     "name": "León de los Aldama",
-    "asciiName": "Leon de los Aldama"
+    "asciiName": "Leon de los Aldama",
+    "lat": 21.1218,
+    "lng": -101.6825,
+    "population": 1579803
   },
   {
     "name": "Ciudad Juárez",
-    "asciiName": "Ciudad Juarez"
+    "asciiName": "Ciudad Juarez",
+    "lat": 31.7202,
+    "lng": -106.4608,
+    "population": 1512450
   },
   {
     "name": "Zapopan",
-    "asciiName": "Zapopan"
+    "asciiName": "Zapopan",
+    "lat": 20.7211,
+    "lng": -103.3874,
+    "population": 1476491
   },
   {
     "name": "Guadalajara",
-    "asciiName": "Guadalajara"
+    "asciiName": "Guadalajara",
+    "lat": 20.6774,
+    "lng": -103.3475,
+    "population": 1385629
   },
   {
     "name": "Mérida",
-    "asciiName": "Merida"
+    "asciiName": "Merida",
+    "lat": 20.967,
+    "lng": -89.6232,
+    "population": 1201000
   },
   {
     "name": "Gustavo Adolfo Madero",
-    "asciiName": "Gustavo Adolfo Madero"
+    "asciiName": "Gustavo Adolfo Madero",
+    "lat": 19.4939,
+    "lng": -99.1107,
+    "population": 1185772
   },
   {
     "name": "Monterrey",
-    "asciiName": "Monterrey"
+    "asciiName": "Monterrey",
+    "lat": 25.6843,
+    "lng": -100.3172,
+    "population": 1135512
   },
   {
     "name": "Ciudad Nezahualcoyotl",
-    "asciiName": "Ciudad Nezahualcoyotl"
+    "asciiName": "Ciudad Nezahualcoyotl",
+    "lat": 19.4006,
+    "lng": -99.0148,
+    "population": 1077208
   },
   {
     "name": "Mexicali",
-    "asciiName": "Mexicali"
+    "asciiName": "Mexicali",
+    "lat": 32.6278,
+    "lng": -115.4545,
+    "population": 1032686
   },
   {
     "name": "Chihuahua",
-    "asciiName": "Chihuahua"
+    "asciiName": "Chihuahua",
+    "lat": 28.6353,
+    "lng": -106.0889,
+    "population": 925762
   },
   {
     "name": "Cancún",
-    "asciiName": "Cancun"
+    "asciiName": "Cancun",
+    "lat": 21.1743,
+    "lng": -86.8466,
+    "population": 888797
   },
   {
     "name": "Naucalpan de Juárez",
-    "asciiName": "Naucalpan de Juarez"
+    "asciiName": "Naucalpan de Juarez",
+    "lat": 19.4785,
+    "lng": -99.2396,
+    "population": 834434
   },
   {
     "name": "Hermosillo",
-    "asciiName": "Hermosillo"
+    "asciiName": "Hermosillo",
+    "lat": 29.0887,
+    "lng": -110.9668,
+    "population": 812229
   },
   {
     "name": "Culiacán",
-    "asciiName": "Culiacan"
+    "asciiName": "Culiacan",
+    "lat": 24.8021,
+    "lng": -107.3942,
+    "population": 808416
   },
   {
     "name": "Morelia",
-    "asciiName": "Morelia"
+    "asciiName": "Morelia",
+    "lat": 19.7008,
+    "lng": -101.1844,
+    "population": 743275
   },
   {
     "name": "Torreón",
-    "asciiName": "Torreon"
+    "asciiName": "Torreon",
+    "lat": 25.5439,
+    "lng": -103.419,
+    "population": 735340
   },
   {
     "name": "Álvaro Obregón",
-    "asciiName": "Alvaro Obregon"
+    "asciiName": "Alvaro Obregon",
+    "lat": 19.3587,
+    "lng": -99.2033,
+    "population": 726664
   },
   {
     "name": "San Luis Potosí",
-    "asciiName": "San Luis Potosi"
+    "asciiName": "San Luis Potosi",
+    "lat": 22.1523,
+    "lng": -100.9713,
+    "population": 722772
   },
   {
     "name": "Aguascalientes",
-    "asciiName": "Aguascalientes"
+    "asciiName": "Aguascalientes",
+    "lat": 21.8826,
+    "lng": -102.2843,
+    "population": 722250
   },
   {
     "name": "Saltillo",
-    "asciiName": "Saltillo"
+    "asciiName": "Saltillo",
+    "lat": 25.426,
+    "lng": -100.9796,
+    "population": 709671
   },
   {
     "name": "Guadalupe",
-    "asciiName": "Guadalupe"
+    "asciiName": "Guadalupe",
+    "lat": 25.6766,
+    "lng": -100.2591,
+    "population": 673616
   },
   {
     "name": "Acapulco de Juárez",
-    "asciiName": "Acapulco de Juarez"
+    "asciiName": "Acapulco de Juarez",
+    "lat": 16.8494,
+    "lng": -99.9089,
+    "population": 658609
   },
   {
     "name": "Tlalnepantla",
-    "asciiName": "Tlalnepantla"
+    "asciiName": "Tlalnepantla",
+    "lat": 19.5401,
+    "lng": -99.1954,
+    "population": 653410
   },
   {
     "name": "Tlaquepaque",
-    "asciiName": "Tlaquepaque"
+    "asciiName": "Tlaquepaque",
+    "lat": 20.6412,
+    "lng": -103.2934,
+    "population": 650123
   },
   {
     "name": "Coyoacán",
-    "asciiName": "Coyoacan"
+    "asciiName": "Coyoacan",
+    "lat": 19.3467,
+    "lng": -99.1617,
+    "population": 614447
   },
   {
     "name": "Tuxtla",
-    "asciiName": "Tuxtla"
+    "asciiName": "Tuxtla",
+    "lat": 16.7536,
+    "lng": -93.1158,
+    "population": 604147
   },
   {
     "name": "Reynosa",
-    "asciiName": "Reynosa"
+    "asciiName": "Reynosa",
+    "lat": 26.0801,
+    "lng": -98.2846,
+    "population": 589466
   },
   {
     "name": "Tlalpan",
-    "asciiName": "Tlalpan"
+    "asciiName": "Tlalpan",
+    "lat": 19.2951,
+    "lng": -99.1621,
+    "population": 574577
   },
   {
     "name": "Cuautitlán Izcalli",
-    "asciiName": "Cuautitlan Izcalli"
+    "asciiName": "Cuautitlan Izcalli",
+    "lat": 19.6439,
+    "lng": -99.216,
+    "population": 555163
   },
   {
     "name": "Cuauhtémoc",
-    "asciiName": "Cuauhtemoc"
+    "asciiName": "Cuauhtemoc",
+    "lat": 19.4451,
+    "lng": -99.1461,
+    "population": 531831
   },
   {
     "name": "Victoria de Durango",
-    "asciiName": "Victoria de Durango"
+    "asciiName": "Victoria de Durango",
+    "lat": 24.0203,
+    "lng": -104.6576,
+    "population": 518709
   },
   {
     "name": "Heroica Matamoros",
-    "asciiName": "Heroica Matamoros"
+    "asciiName": "Heroica Matamoros",
+    "lat": 25.8797,
+    "lng": -97.5042,
+    "population": 510739
   },
   {
     "name": "Toluca",
-    "asciiName": "Toluca"
+    "asciiName": "Toluca",
+    "lat": 19.2879,
+    "lng": -99.6532,
+    "population": 489333
   },
   {
     "name": "Ciudad López Mateos",
-    "asciiName": "Ciudad Lopez Mateos"
+    "asciiName": "Ciudad Lopez Mateos",
+    "lat": 19.5579,
+    "lng": -99.2567,
+    "population": 489160
   },
   {
     "name": "Ciudad Apodaca",
-    "asciiName": "Ciudad Apodaca"
+    "asciiName": "Ciudad Apodaca",
+    "lat": 25.7814,
+    "lng": -100.1891,
+    "population": 467157
   },
   {
     "name": "Ciudad General Escobedo",
-    "asciiName": "Ciudad General Escobedo"
+    "asciiName": "Ciudad General Escobedo",
+    "lat": 25.7966,
+    "lng": -100.3177,
+    "population": 454967
   },
   {
     "name": "Ensenada",
-    "asciiName": "Ensenada"
+    "asciiName": "Ensenada",
+    "lat": 31.8715,
+    "lng": -116.6007,
+    "population": 443807
   },
   {
     "name": "Xochimilco",
-    "asciiName": "Xochimilco"
+    "asciiName": "Xochimilco",
+    "lat": 19.2547,
+    "lng": -99.1036,
+    "population": 442178
   },
   {
     "name": "Venustiano Carranza",
-    "asciiName": "Venustiano Carranza"
+    "asciiName": "Venustiano Carranza",
+    "lat": 19.4436,
+    "lng": -99.105,
+    "population": 430978
   },
   {
     "name": "Veracruz",
-    "asciiName": "Veracruz"
+    "asciiName": "Veracruz",
+    "lat": 19.181,
+    "lng": -96.1429,
+    "population": 428323
   },
   {
     "name": "Xalapa de Enríquez",
-    "asciiName": "Xalapa de Enriquez"
+    "asciiName": "Xalapa de Enriquez",
+    "lat": 19.5312,
+    "lng": -96.9159,
+    "population": 424755
   },
   {
     "name": "Nuevo Laredo",
-    "asciiName": "Nuevo Laredo"
+    "asciiName": "Nuevo Laredo",
+    "lat": 27.4763,
+    "lng": -99.5164,
+    "population": 416055
   },
   {
     "name": "Azcapotzalco",
-    "asciiName": "Azcapotzalco"
+    "asciiName": "Azcapotzalco",
+    "lat": 19.487,
+    "lng": -99.1859,
+    "population": 414711
   },
   {
     "name": "San Nicolás de los Garza",
-    "asciiName": "San Nicolas de los Garza"
+    "asciiName": "San Nicolas de los Garza",
+    "lat": 25.7417,
+    "lng": -100.3022,
+    "population": 412199
   },
   {
     "name": "Tonalá",
-    "asciiName": "Tonala"
+    "asciiName": "Tonala",
+    "lat": 20.6226,
+    "lng": -103.2417,
+    "population": 408759
   },
   {
     "name": "Ojo de Agua",
-    "asciiName": "Ojo de Agua"
+    "asciiName": "Ojo de Agua",
+    "lat": 19.6803,
+    "lng": -99.01,
+    "population": 386290
   },
   {
     "name": "Benito Juárez",
-    "asciiName": "Benito Juarez"
+    "asciiName": "Benito Juarez",
+    "lat": 19.3727,
+    "lng": -99.1564,
+    "population": 385439
   },
   {
     "name": "Xico",
-    "asciiName": "Xico"
+    "asciiName": "Xico",
+    "lat": 19.2703,
+    "lng": -98.9509,
+    "population": 384327
   },
   {
     "name": "Iztacalco",
-    "asciiName": "Iztacalco"
+    "asciiName": "Iztacalco",
+    "lat": 19.3953,
+    "lng": -99.0978,
+    "population": 384326
   },
   {
     "name": "Mazatlán",
-    "asciiName": "Mazatlan"
+    "asciiName": "Mazatlan",
+    "lat": 23.2216,
+    "lng": -106.4188,
+    "population": 381583
   },
   {
     "name": "Irapuato",
-    "asciiName": "Irapuato"
+    "asciiName": "Irapuato",
+    "lat": 20.671,
+    "lng": -101.3558,
+    "population": 380941
   },
   {
     "name": "Miguel Hidalgo",
-    "asciiName": "Miguel Hidalgo"
+    "asciiName": "Miguel Hidalgo",
+    "lat": 19.4341,
+    "lng": -99.2002,
+    "population": 372889
   },
   {
     "name": "Benito Juarez",
-    "asciiName": "Benito Juarez"
+    "asciiName": "Benito Juarez",
+    "lat": 19.3984,
+    "lng": -99.1577,
+    "population": 355017
   },
   {
     "name": "Tapachula",
-    "asciiName": "Tapachula"
+    "asciiName": "Tapachula",
+    "lat": 14.9054,
+    "lng": -92.2589,
+    "population": 353706
   },
   {
     "name": "Villahermosa",
-    "asciiName": "Villahermosa"
+    "asciiName": "Villahermosa",
+    "lat": 17.9862,
+    "lng": -92.9393,
+    "population": 353577
   },
   {
     "name": "Celaya",
-    "asciiName": "Celaya"
+    "asciiName": "Celaya",
+    "lat": 20.5218,
+    "lng": -100.814,
+    "population": 340387
   },
   {
     "name": "Cuernavaca",
-    "asciiName": "Cuernavaca"
+    "asciiName": "Cuernavaca",
+    "lat": 18.9261,
+    "lng": -99.2307,
+    "population": 338650
   },
   {
     "name": "Tepic",
-    "asciiName": "Tepic"
+    "asciiName": "Tepic",
+    "lat": 21.5073,
+    "lng": -104.8933,
+    "population": 332863
   },
   {
     "name": "Ciudad Victoria",
-    "asciiName": "Ciudad Victoria"
+    "asciiName": "Ciudad Victoria",
+    "lat": 23.7406,
+    "lng": -99.1436,
+    "population": 332100
   },
   {
     "name": "Soledad de Graciano Sánchez",
-    "asciiName": "Soledad de Graciano Sanchez"
+    "asciiName": "Soledad de Graciano Sanchez",
+    "lat": 22.1891,
+    "lng": -100.9379,
+    "population": 332072
   },
   {
     "name": "Ciudad Obregón",
-    "asciiName": "Ciudad Obregon"
+    "asciiName": "Ciudad Obregon",
+    "lat": 27.4864,
+    "lng": -109.9408,
+    "population": 329404
   },
   {
     "name": "Ixtapaluca",
-    "asciiName": "Ixtapaluca"
+    "asciiName": "Ixtapaluca",
+    "lat": 19.3156,
+    "lng": -98.8828,
+    "population": 322271
   },
   {
     "name": "Coatzacoalcos",
-    "asciiName": "Coatzacoalcos"
+    "asciiName": "Coatzacoalcos",
+    "lat": 18.1491,
+    "lng": -94.4447,
+    "population": 310698
   },
   {
     "name": "Tampico",
-    "asciiName": "Tampico"
+    "asciiName": "Tampico",
+    "lat": 22.2852,
+    "lng": -97.8778,
+    "population": 309003
   },
   {
     "name": "Ciudad Benito Juárez",
-    "asciiName": "Ciudad Benito Juarez"
+    "asciiName": "Ciudad Benito Juarez",
+    "lat": 25.6466,
+    "lng": -100.0914,
+    "population": 308285
   },
   {
     "name": "Tláhuac",
-    "asciiName": "Tlahuac"
+    "asciiName": "Tlahuac",
+    "lat": 19.2869,
+    "lng": -99.0051,
+    "population": 305076
   },
   {
     "name": "Santa Catarina",
-    "asciiName": "Santa Catarina"
+    "asciiName": "Santa Catarina",
+    "lat": 25.6733,
+    "lng": -100.4581,
+    "population": 304052
   },
   {
     "name": "Uruapan",
-    "asciiName": "Uruapan"
+    "asciiName": "Uruapan",
+    "lat": 19.4168,
+    "lng": -102.0584,
+    "population": 299523
   },
   {
     "name": "Cholula",
-    "asciiName": "Cholula"
+    "asciiName": "Cholula",
+    "lat": 19.0641,
+    "lng": -98.3035,
+    "population": 292881
   },
   {
     "name": "Nicolás Romero",
-    "asciiName": "Nicolas Romero"
+    "asciiName": "Nicolas Romero",
+    "lat": 19.6418,
+    "lng": -99.3068,
+    "population": 281799
   },
   {
     "name": "Zumpango",
-    "asciiName": "Zumpango"
+    "asciiName": "Zumpango",
+    "lat": 19.7967,
+    "lng": -99.0995,
+    "population": 280455
   },
   {
     "name": "Coacalco",
-    "asciiName": "Coacalco"
+    "asciiName": "Coacalco",
+    "lat": 19.6292,
+    "lng": -99.1069,
+    "population": 277959
   },
   {
     "name": "Nogales",
-    "asciiName": "Nogales"
+    "asciiName": "Nogales",
+    "lat": 31.3086,
+    "lng": -110.9422,
+    "population": 264782
   },
   {
     "name": "Gómez Palacio",
-    "asciiName": "Gomez Palacio"
+    "asciiName": "Gomez Palacio",
+    "lat": 25.5687,
+    "lng": -103.4996,
+    "population": 257352
   }
 ]

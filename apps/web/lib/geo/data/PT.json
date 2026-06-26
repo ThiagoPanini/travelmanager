@@ -1,322 +1,562 @@
 [
   {
     "name": "Lisbon",
-    "asciiName": "Lisbon"
+    "asciiName": "Lisbon",
+    "lat": 38.7251,
+    "lng": -9.1498,
+    "population": 517802
   },
   {
     "name": "Porto",
-    "asciiName": "Porto"
+    "asciiName": "Porto",
+    "lat": 41.1485,
+    "lng": -8.611,
+    "population": 252687
   },
   {
     "name": "Braga",
-    "asciiName": "Braga"
+    "asciiName": "Braga",
+    "lat": 41.5514,
+    "lng": -8.4231,
+    "population": 193324
   },
   {
     "name": "Amadora",
-    "asciiName": "Amadora"
+    "asciiName": "Amadora",
+    "lat": 38.7538,
+    "lng": -9.2308,
+    "population": 178858
   },
   {
     "name": "Coimbra",
-    "asciiName": "Coimbra"
+    "asciiName": "Coimbra",
+    "lat": 40.2069,
+    "lng": -8.42,
+    "population": 140796
   },
   {
     "name": "Leiria",
-    "asciiName": "Leiria"
+    "asciiName": "Leiria",
+    "lat": 39.7436,
+    "lng": -8.807,
+    "population": 128640
   },
   {
     "name": "Setúbal",
-    "asciiName": "Setubal"
+    "asciiName": "Setubal",
+    "lat": 38.5244,
+    "lng": -8.8882,
+    "population": 118166
   },
   {
     "name": "Funchal",
-    "asciiName": "Funchal"
+    "asciiName": "Funchal",
+    "lat": 32.6657,
+    "lng": -16.9255,
+    "population": 105795
   },
   {
     "name": "Viseu",
-    "asciiName": "Viseu"
+    "asciiName": "Viseu",
+    "lat": 40.6617,
+    "lng": -7.909,
+    "population": 103502
   },
   {
     "name": "Queluz",
-    "asciiName": "Queluz"
+    "asciiName": "Queluz",
+    "lat": 38.7566,
+    "lng": -9.2545,
+    "population": 103399
   },
   {
     "name": "Cacém",
-    "asciiName": "Cacem"
+    "asciiName": "Cacem",
+    "lat": 38.767,
+    "lng": -9.2979,
+    "population": 93982
   },
   {
     "name": "Aveiro",
-    "asciiName": "Aveiro"
+    "asciiName": "Aveiro",
+    "lat": 40.6458,
+    "lng": -8.6464,
+    "population": 80880
   },
   {
     "name": "Vila Nova de Gaia",
-    "asciiName": "Vila Nova de Gaia"
+    "asciiName": "Vila Nova de Gaia",
+    "lat": 41.124,
+    "lng": -8.6124,
+    "population": 70811
   },
   {
     "name": "Faro",
-    "asciiName": "Faro"
+    "asciiName": "Faro",
+    "lat": 37.0187,
+    "lng": -7.9272,
+    "population": 70347
   },
   {
     "name": "Algueirão",
-    "asciiName": "Algueirao"
+    "asciiName": "Algueirao",
+    "lat": 38.7976,
+    "lng": -9.3437,
+    "population": 66250
   },
   {
     "name": "Loures",
-    "asciiName": "Loures"
+    "asciiName": "Loures",
+    "lat": 38.8309,
+    "lng": -9.1684,
+    "population": 66231
   },
   {
     "name": "Felgueiras",
-    "asciiName": "Felgueiras"
+    "asciiName": "Felgueiras",
+    "lat": 41.3681,
+    "lng": -8.194,
+    "population": 58065
   },
   {
     "name": "Rio de Mouro",
-    "asciiName": "Rio de Mouro"
+    "asciiName": "Rio de Mouro",
+    "lat": 38.7661,
+    "lng": -9.328,
+    "population": 54695
   },
   {
     "name": "Odivelas",
-    "asciiName": "Odivelas"
+    "asciiName": "Odivelas",
+    "lat": 38.7927,
+    "lng": -9.1838,
+    "population": 54624
   },
   {
     "name": "Évora",
-    "asciiName": "Evora"
+    "asciiName": "Evora",
+    "lat": 38.5659,
+    "lng": -7.904,
+    "population": 53591
   },
   {
     "name": "Amora",
-    "asciiName": "Amora"
+    "asciiName": "Amora",
+    "lat": 38.6296,
+    "lng": -9.1156,
+    "population": 52577
   },
   {
     "name": "Corroios",
-    "asciiName": "Corroios"
+    "asciiName": "Corroios",
+    "lat": 38.64,
+    "lng": -9.1508,
+    "population": 52520
   },
   {
     "name": "Barreiro",
-    "asciiName": "Barreiro"
+    "asciiName": "Barreiro",
+    "lat": 38.6631,
+    "lng": -9.0724,
+    "population": 51280
   },
   {
     "name": "Monsanto",
-    "asciiName": "Monsanto"
+    "asciiName": "Monsanto",
+    "lat": 39.462,
+    "lng": -8.7118,
+    "population": 50000
   },
   {
     "name": "Rio Tinto",
-    "asciiName": "Rio Tinto"
+    "asciiName": "Rio Tinto",
+    "lat": 41.1787,
+    "lng": -8.5595,
+    "population": 49966
   },
   {
     "name": "São Domingos de Rana",
-    "asciiName": "Sao Domingos de Rana"
+    "asciiName": "Sao Domingos de Rana",
+    "lat": 38.7019,
+    "lng": -9.3408,
+    "population": 46718
   },
   {
     "name": "Figueira da Foz",
-    "asciiName": "Figueira da Foz"
+    "asciiName": "Figueira da Foz",
+    "lat": 40.1509,
+    "lng": -8.8618,
+    "population": 46600
   },
   {
     "name": "Lumiar",
-    "asciiName": "Lumiar"
+    "asciiName": "Lumiar",
+    "lat": 38.7748,
+    "lng": -9.156,
+    "population": 46334
   },
   {
     "name": "Paranhos",
-    "asciiName": "Paranhos"
+    "asciiName": "Paranhos",
+    "lat": 41.1729,
+    "lng": -8.5993,
+    "population": 45883
   },
   {
     "name": "Ponte de Lima",
-    "asciiName": "Ponte de Lima"
+    "asciiName": "Ponte de Lima",
+    "lat": 41.7672,
+    "lng": -8.5839,
+    "population": 44667
   },
   {
     "name": "Olival",
-    "asciiName": "Olival"
+    "asciiName": "Olival",
+    "lat": 38.7708,
+    "lng": -9.2501,
+    "population": 42961
   },
   {
     "name": "Santo António dos Olivais",
-    "asciiName": "Santo Antonio dos Olivais"
+    "asciiName": "Santo Antonio dos Olivais",
+    "lat": 40.2181,
+    "lng": -8.4052,
+    "population": 41150
   },
   {
     "name": "Sesimbra",
-    "asciiName": "Sesimbra"
+    "asciiName": "Sesimbra",
+    "lat": 38.4445,
+    "lng": -9.1015,
+    "population": 41134
   },
   {
     "name": "Guimarães",
-    "asciiName": "Guimaraes"
+    "asciiName": "Guimaraes",
+    "lat": 41.4444,
+    "lng": -8.2962,
+    "population": 40604
   },
   {
     "name": "Guarda",
-    "asciiName": "Guarda"
+    "asciiName": "Guarda",
+    "lat": 40.5375,
+    "lng": -7.2663,
+    "population": 40126
   },
   {
     "name": "Ermesinde",
-    "asciiName": "Ermesinde"
+    "asciiName": "Ermesinde",
+    "lat": 41.2165,
+    "lng": -8.5532,
+    "population": 39420
   },
   {
     "name": "Santo Ovídio",
-    "asciiName": "Santo Ovidio"
+    "asciiName": "Santo Ovidio",
+    "lat": 41.1138,
+    "lng": -8.6023,
+    "population": 38544
   },
   {
     "name": "Portimão",
-    "asciiName": "Portimao"
+    "asciiName": "Portimao",
+    "lat": 37.1386,
+    "lng": -8.5378,
+    "population": 38487
   },
   {
     "name": "Damaia",
-    "asciiName": "Damaia"
+    "asciiName": "Damaia",
+    "lat": 38.7514,
+    "lng": -9.2123,
+    "population": 37607
   },
   {
     "name": "Cidade Universitária",
-    "asciiName": "Cidade Universitaria"
+    "asciiName": "Cidade Universitaria",
+    "lat": 38.752,
+    "lng": -9.1592,
+    "population": 37000
   },
   {
     "name": "Benfica",
-    "asciiName": "Benfica"
+    "asciiName": "Benfica",
+    "lat": 38.7509,
+    "lng": -9.2028,
+    "population": 36985
   },
   {
     "name": "Cascais",
-    "asciiName": "Cascais"
+    "asciiName": "Cascais",
+    "lat": 38.6968,
+    "lng": -9.4215,
+    "population": 36436
   },
   {
     "name": "Maia",
-    "asciiName": "Maia"
+    "asciiName": "Maia",
+    "lat": 41.2357,
+    "lng": -8.6199,
+    "population": 36426
   },
   {
     "name": "Viana do Castelo",
-    "asciiName": "Viana do Castelo"
+    "asciiName": "Viana do Castelo",
+    "lat": 41.6932,
+    "lng": -8.8329,
+    "population": 36148
   },
   {
     "name": "Marvila",
-    "asciiName": "Marvila"
+    "asciiName": "Marvila",
+    "lat": 38.7398,
+    "lng": -9.1016,
+    "population": 35463
   },
   {
     "name": "Bragança",
-    "asciiName": "Braganca"
+    "asciiName": "Braganca",
+    "lat": 41.8072,
+    "lng": -6.759,
+    "population": 35341
   },
   {
     "name": "Oeiras",
-    "asciiName": "Oeiras"
+    "asciiName": "Oeiras",
+    "lat": 38.691,
+    "lng": -9.3108,
+    "population": 35000
   },
   {
     "name": "Beja",
-    "asciiName": "Beja"
+    "asciiName": "Beja",
+    "lat": 38.0147,
+    "lng": -7.8628,
+    "population": 34760
   },
   {
     "name": "Esposende",
-    "asciiName": "Esposende"
+    "asciiName": "Esposende",
+    "lat": 41.5361,
+    "lng": -8.782,
+    "population": 34625
   },
   {
     "name": "Afurada de Baixo",
-    "asciiName": "Afurada de Baixo"
+    "asciiName": "Afurada de Baixo",
+    "lat": 41.1439,
+    "lng": -8.6464,
+    "population": 34332
   },
   {
     "name": "Almada",
-    "asciiName": "Almada"
+    "asciiName": "Almada",
+    "lat": 38.679,
+    "lng": -9.1569,
+    "population": 34008
   },
   {
     "name": "Olivais",
-    "asciiName": "Olivais"
+    "asciiName": "Olivais",
+    "lat": 38.7699,
+    "lng": -9.1067,
+    "population": 33788
   },
   {
     "name": "Lagos",
-    "asciiName": "Lagos"
+    "asciiName": "Lagos",
+    "lat": 37.102,
+    "lng": -8.6742,
+    "population": 33494
   },
   {
     "name": "Castelo Branco",
-    "asciiName": "Castelo Branco"
+    "asciiName": "Castelo Branco",
+    "lat": 39.8236,
+    "lng": -7.491,
+    "population": 33479
   },
   {
     "name": "Alcabideche",
-    "asciiName": "Alcabideche"
+    "asciiName": "Alcabideche",
+    "lat": 38.7337,
+    "lng": -9.4093,
+    "population": 33315
   },
   {
     "name": "Bairro Novo",
-    "asciiName": "Bairro Novo"
+    "asciiName": "Bairro Novo",
+    "lat": 41.5432,
+    "lng": -8.4072,
+    "population": 32876
   },
   {
     "name": "Espinho",
-    "asciiName": "Espinho"
+    "asciiName": "Espinho",
+    "lat": 41.0076,
+    "lng": -8.6412,
+    "population": 32786
   },
   {
     "name": "Câmara de Lobos",
-    "asciiName": "Camara de Lobos"
+    "asciiName": "Camara de Lobos",
+    "lat": 32.6504,
+    "lng": -16.9772,
+    "population": 32209
   },
   {
     "name": "Alvalade",
-    "asciiName": "Alvalade"
+    "asciiName": "Alvalade",
+    "lat": 38.7533,
+    "lng": -9.144,
+    "population": 31813
   },
   {
     "name": "Arrentela",
-    "asciiName": "Arrentela"
+    "asciiName": "Arrentela",
+    "lat": 38.625,
+    "lng": -9.1015,
+    "population": 30156
   },
   {
     "name": "Montijo",
-    "asciiName": "Montijo"
+    "asciiName": "Montijo",
+    "lat": 38.7068,
+    "lng": -8.9739,
+    "population": 30011
   },
   {
     "name": "Charneca de Caparica",
-    "asciiName": "Charneca de Caparica"
+    "asciiName": "Charneca de Caparica",
+    "lat": 38.6203,
+    "lng": -9.1943,
+    "population": 29763
   },
   {
     "name": "Campanhã",
-    "asciiName": "Campanha"
+    "asciiName": "Campanha",
+    "lat": 41.1571,
+    "lng": -8.5747,
+    "population": 29666
   },
   {
     "name": "Santarém",
-    "asciiName": "Santarem"
+    "asciiName": "Santarem",
+    "lat": 39.2338,
+    "lng": -8.6862,
+    "population": 29385
   },
   {
     "name": "Olhão",
-    "asciiName": "Olhao"
+    "asciiName": "Olhao",
+    "lat": 37.0286,
+    "lng": -7.8411,
+    "population": 29239
   },
   {
     "name": "Aldoar",
-    "asciiName": "Aldoar"
+    "asciiName": "Aldoar",
+    "lat": 41.1671,
+    "lng": -8.6691,
+    "population": 29085
   },
   {
     "name": "Póvoa de Varzim",
-    "asciiName": "Povoa de Varzim"
+    "asciiName": "Povoa de Varzim",
+    "lat": 41.3834,
+    "lng": -8.7636,
+    "population": 29044
   },
   {
     "name": "Senhora da Hora",
-    "asciiName": "Senhora da Hora"
+    "asciiName": "Senhora da Hora",
+    "lat": 41.1864,
+    "lng": -8.6517,
+    "population": 28930
   },
   {
     "name": "Marinha Grande",
-    "asciiName": "Marinha Grande"
+    "asciiName": "Marinha Grande",
+    "lat": 39.7477,
+    "lng": -8.9323,
+    "population": 28916
   },
   {
     "name": "Póvoa de Santa Iria",
-    "asciiName": "Povoa de Santa Iria"
+    "asciiName": "Povoa de Santa Iria",
+    "lat": 38.861,
+    "lng": -9.0645,
+    "population": 28901
   },
   {
     "name": "Sequeira",
-    "asciiName": "Sequeira"
+    "asciiName": "Sequeira",
+    "lat": 40.5536,
+    "lng": -7.2259,
+    "population": 28502
   },
   {
     "name": "Massamá",
-    "asciiName": "Massama"
+    "asciiName": "Massama",
+    "lat": 38.7528,
+    "lng": -9.2811,
+    "population": 28112
   },
   {
     "name": "Matosinhos",
-    "asciiName": "Matosinhos"
+    "asciiName": "Matosinhos",
+    "lat": 41.1821,
+    "lng": -8.6891,
+    "population": 28070
   },
   {
     "name": "Gondomar",
-    "asciiName": "Gondomar"
+    "asciiName": "Gondomar",
+    "lat": 41.1445,
+    "lng": -8.5322,
+    "population": 27691
   },
   {
     "name": "Águas Santas",
-    "asciiName": "Aguas Santas"
+    "asciiName": "Aguas Santas",
+    "lat": 41.2102,
+    "lng": -8.576,
+    "population": 27686
   },
   {
     "name": "Vila do Conde",
-    "asciiName": "Vila do Conde"
+    "asciiName": "Vila do Conde",
+    "lat": 41.3533,
+    "lng": -8.7452,
+    "population": 27642
   },
   {
     "name": "Caldas da Rainha",
-    "asciiName": "Caldas da Rainha"
+    "asciiName": "Caldas da Rainha",
+    "lat": 39.4033,
+    "lng": -9.1384,
+    "population": 27378
   },
   {
     "name": "Alfornelos",
-    "asciiName": "Alfornelos"
+    "asciiName": "Alfornelos",
+    "lat": 38.761,
+    "lng": -9.2051,
+    "population": 27093
   },
   {
     "name": "São Martinho",
-    "asciiName": "Sao Martinho"
+    "asciiName": "Sao Martinho",
+    "lat": 32.6448,
+    "lng": -16.9384,
+    "population": 26482
   },
   {
     "name": "Canidelo",
-    "asciiName": "Canidelo"
+    "asciiName": "Canidelo",
+    "lat": 41.1231,
+    "lng": -8.6465,
+    "population": 26431
   }
 ]
