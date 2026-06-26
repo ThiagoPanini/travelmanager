@@ -597,11 +597,28 @@
 }
 
 .nodeCity {
-  font-size: 16px;
+  font-family: var(--font-display), sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  text-transform: uppercase;
   color: var(--text-bright);
 }
 
+.nodeCountry {
+  overflow: hidden;
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--text-faint);
+}
+
 .nodeTag {
+  flex-shrink: 0;
   font-family: var(--font-mono), monospace;
   font-size: 10px;
   letter-spacing: 0.06em;
@@ -624,7 +641,7 @@
   width: 28px;
   height: 28px;
   flex-shrink: 0;
-  border: none;
+  border: var(--border-hairline) solid var(--line);
   border-radius: var(--radius-circle);
   background: transparent;
   color: var(--text-faint);

@@ -18,6 +18,21 @@ vi.mock("@/lib/geo/cities", () => ({
     const q = query.toLowerCase();
     return all.filter((c) => c.asciiName.toLowerCase().includes(q));
   }),
+  searchCitiesGlobal: vi.fn(async (query: string) => {
+    const all = [
+      {
+        name: "Florença",
+        asciiName: "Florenca",
+        country: "IT",
+        lat: 43.77,
+        lng: 11.25,
+        population: 349296,
+      },
+    ];
+    if (!query) return all;
+    const q = query.toLowerCase();
+    return all.filter((c) => c.asciiName.toLowerCase().includes(q));
+  }),
 }));
 
 import { TripWizard } from "./trip-wizard";
@@ -88,24 +103,41 @@ describe("TripWizard — navegação e paradas", () => {
     expect(screen.getByText(/1 cidade na rota/i)).toBeInTheDocument();
   });
 
-  it("inserir uma parada pelo + aumenta o contador de cidades", async () => {
+  it("inserir uma parada busca só a cidade e infere o país", async () => {
     render(<TripWizard origin={origin} />);
     await pickDestino("Roma");
     advance();
 
     fireEvent.click(screen.getAllByRole("button", { name: /adicionar parada neste ponto/i })[0]);
 
-    const pais = screen.getByLabelText("País");
-    fireEvent.focus(pais);
-    fireEvent.change(pais, { target: { value: "Itál" } });
-    fireEvent.mouseDown(await screen.findByRole("option", { name: "Itália" }));
-
-    const cidade = screen.getByLabelText("Cidade");
+    expect(screen.queryByLabelText("País")).not.toBeInTheDocument();
+    const cidade = screen.getByLabelText("Cidade da parada");
     fireEvent.focus(cidade);
     fireEvent.change(cidade, { target: { value: "flo" } });
-    fireEvent.mouseDown(await screen.findByRole("option", { name: "Florença" }));
+    fireEvent.mouseDown(await screen.findByRole("option", { name: "Florença · Itália" }));
 
     expect(screen.getByText(/2 cidades na rota/i)).toBeInTheDocument();
+    expect(screen.getAllByText("Florença").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Itália").length).toBeGreaterThan(0);
+  });
+
+  it("cidade fora do índice continua adicionável como texto livre", async () => {
+    render(<TripWizard origin={origin} />);
+    await pickDestino("Roma");
+    advance();
+
+    fireEvent.click(screen.getAllByRole("button", { name: /adicionar parada neste ponto/i })[0]);
+    const cidade = screen.getByLabelText("Cidade da parada");
+    fireEvent.focus(cidade);
+    fireEvent.change(cidade, { target: { value: "Xique-Xique" } });
+    fireEvent.mouseDown(
+      await screen.findByRole("option", {
+        name: /minha cidade não está na lista/i,
+      }),
+    );
+
+    expect(screen.getAllByText("Xique-Xique").length).toBeGreaterThan(0);
+    expect(screen.getByText("País a definir")).toBeInTheDocument();
   });
 });
 

@@ -72,6 +72,8 @@ Status pills usam sempre cor **e** borda real (`pill()` por tom: success / warni
 
 `apps/web/app/app/viagens/nova/route-map.tsx` mantém uma instância client-only de jsVectorMap nos passos 1–2. O estado inicial mostra o globo; a escolha do país anima o zoom e aplica contorno terracota tracejado; a escolha da cidade anima novo foco e posiciona pinos HTML pela projeção `coordsToPoint`. No passo 2, a origem textual do Perfil é procurada de forma best-effort no recorte GeoNames do país e só entra no mapa quando há casamento exato normalizado; essa coordenada não é persistida. O painel tem altura fixa por `--map-panel-height`, e SSR, jsdom ou falha de carregamento mantêm a rota vertical como fallback.
 
+No passo 2, os cards da trilha vertical exibem ponto por papel, cidade em Saira uppercase, país em mono e papel à direita. O destino do passo 1 continua no seletor gated país→cidade; novas Paradas usam `GlobalCityPicker`, que consulta o índice build-time `_all.json`, mostra `Cidade · País` e infere país/coordenadas da escolha. Texto livre continua permitido e produz Parada sem país/coordenadas, que permanece visível na trilha e vira fantasma no mapa.
+
 ## Acessibilidade do que existe
 
 - **Idioma**: `html lang="pt-BR"`.

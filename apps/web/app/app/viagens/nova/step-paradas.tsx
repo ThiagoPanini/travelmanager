@@ -2,8 +2,9 @@
 
 import { Plus, X } from "lucide-react";
 import { type Dispatch, Fragment, useState } from "react";
+import { COUNTRIES } from "@/lib/countries";
 import { getDestination, type TripDraftAction } from "@/lib/trips/draft";
-import { CityPicker } from "./city-picker";
+import { GlobalCityPicker } from "./global-city-picker";
 import { RouteAside } from "./route-aside";
 import styles from "./wizard.module.css";
 import type { StepProps } from "./wizard-types";
@@ -12,11 +13,13 @@ import { originLabel } from "./wizard-types";
 /** Cartão de cidade na trilha (display-only — sem editar/reordenar; só remover). */
 function NodeCard({
   city,
+  country,
   tag,
   variant,
   onRemove,
 }: {
   city: string;
+  country: string | null;
   tag: string;
   variant: "origin" | "stop" | "dest";
   onRemove?: () => void;
@@ -27,8 +30,11 @@ function NodeCard({
       <span className={`${styles.nodeDot} ${styles[`nodeDot_${variant}`]}`} aria-hidden="true" />
       <span className={styles.nodeBody}>
         <span className={styles.nodeCity}>{label}</span>
-        <span className={`${styles.nodeTag} ${styles[`nodeTag_${variant}`]}`}>{tag}</span>
+        <span className={styles.nodeCountry}>
+          {COUNTRIES.find((item) => item.code === country)?.name ?? "País a definir"}
+        </span>
       </span>
+      <span className={`${styles.nodeTag} ${styles[`nodeTag_${variant}`]}`}>{tag}</span>
       {onRemove ? (
         <button
           type="button"
@@ -57,8 +63,6 @@ function Gap({
   onClose: () => void;
   dispatch: Dispatch<TripDraftAction>;
 }) {
-  const [country, setCountry] = useState<string | null>(null);
-
   if (!open) {
     return (
       <div className={styles.gap}>
@@ -82,18 +86,12 @@ function Gap({
       <div className={styles.gapPanel}>
         <span className={styles.gapPanelLabel}>Adicionar parada neste ponto</span>
         <div className={styles.gapPanelFields}>
-          <CityPicker
-            country={country}
-            city=""
-            onCountry={setCountry}
-            onCity={(value, coords) => {
-              // O combobox emite "" a cada tecla (limpa seleção); só encaixa a parada
-              // numa escolha real (opção do dataset ou texto livre via escape hatch).
-              if (!value.trim()) return;
+          <GlobalCityPicker
+            onCity={(city, country, coords) => {
               dispatch({
                 type: "insertStop",
                 index,
-                city: value,
+                city,
                 country,
                 lat: coords?.lat ?? null,
                 lng: coords?.lng ?? null,
@@ -137,7 +135,12 @@ export function StepParadas({ draft, dispatch, origin }: StepProps) {
         </header>
 
         <div className={styles.journey}>
-          <NodeCard city={originLabel(origin)} tag="Origem · você" variant="origin" />
+          <NodeCard
+            city={originLabel(origin)}
+            country={origin.country}
+            tag="Origem · você"
+            variant="origin"
+          />
           {draft.stops.map((stop, i) => {
             const isDest = i === draft.stops.length - 1;
             return (
@@ -151,7 +154,8 @@ export function StepParadas({ draft, dispatch, origin }: StepProps) {
                 />
                 <NodeCard
                   city={stop.city}
-                  tag={isDest ? "Destino final" : `Parada ${i}`}
+                  country={stop.country}
+                  tag={isDest ? "Destino final" : `Parada ${i + 1}`}
                   variant={isDest ? "dest" : "stop"}
                   onRemove={
                     isDest ? undefined : () => dispatch({ type: "removeStop", id: stop.id })

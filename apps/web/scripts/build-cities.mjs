@@ -13,6 +13,9 @@
  *   1. baixe e descompacte https://download.geonames.org/export/dump/cities15000.zip
  *   2. node apps/web/scripts/build-cities.mjs <caminho/para/cities15000.txt>
  *
+ * Para regenerar só o índice global a partir dos recortes versionados:
+ *   node apps/web/scripts/build-cities.mjs --index-only
+ *
  * GeoNames attribution: This product uses data from the GeoNames geographical
  * database (https://www.geonames.org), licensed under CC-BY 4.0.
  */
@@ -55,8 +58,24 @@ const dataDir = resolve(here, "../lib/geo/data");
 
 const source = process.argv[2];
 if (!source) {
-  console.error("uso: node build-cities.mjs <caminho/para/cities15000.txt>");
+  console.error("uso: node build-cities.mjs <caminho/para/cities15000.txt|--index-only>");
   process.exit(1);
+}
+
+/** Junta os recortes versionados num índice global, com country code carimbado. */
+function buildGlobalIndex() {
+  const cities = COUNTRIES.flatMap((country) => {
+    const entries = JSON.parse(readFileSync(resolve(dataDir, `${country}.json`), "utf8"));
+    return entries.map((city) => ({ ...city, country }));
+  }).sort((a, b) => b.population - a.population);
+
+  writeFileSync(resolve(dataDir, "_all.json"), `${JSON.stringify(cities, null, 2)}\n`);
+  console.log(`_all: ${cities.length} cidades`);
+}
+
+if (source === "--index-only") {
+  buildGlobalIndex();
+  process.exit(0);
 }
 
 /** Arredonda coordenada a 4 casas (~11 m) — precisão de sobra pra mapa esquemático. */
@@ -91,3 +110,5 @@ for (const cc of COUNTRIES) {
   writeFileSync(resolve(dataDir, `${cc}.json`), out);
   console.log(`${cc}: ${cities.length} cidades`);
 }
+
+buildGlobalIndex();
