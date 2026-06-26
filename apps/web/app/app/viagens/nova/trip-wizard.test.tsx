@@ -141,6 +141,60 @@ describe("TripWizard — navegação e paradas", () => {
   });
 });
 
+describe("TripWizard — translados (passo 3)", () => {
+  it("mostra trilha horizontal e define um trajeto como em discussão pelo card do modal", async () => {
+    // given: rota direta da origem ao destino
+    render(<TripWizard origin={origin} />);
+    await pickDestino("Roma");
+    advance(); // -> 2
+    advance(); // -> 3
+
+    // when: abre o anel entre as cidades
+    const trail = screen.getByRole("region", { name: /trilha de translados/i });
+    fireEvent.click(
+      within(trail).getByRole("button", {
+        name: /definir translado de são paulo para roma/i,
+      }),
+    );
+
+    // then: modal oferece "Em discussão" como card e fecha ao aplicá-lo
+    const dialog = screen.getByRole("dialog");
+    expect(within(dialog).getByRole("button", { name: /em discussão/i })).toBeInTheDocument();
+    expect(
+      within(dialog).getByRole("button", { name: /fechar modal de translado/i }),
+    ).toBeInTheDocument();
+    expect(within(dialog).queryByRole("button", { name: "Fechar" })).not.toBeInTheDocument();
+    fireEvent.click(within(dialog).getByRole("button", { name: /em discussão/i }));
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(within(trail).getByText("Em discussão")).toBeInTheDocument();
+  });
+
+  it("aplica texto livre pelo botão inline e mantém o aviso só neste passo", async () => {
+    // given: modal do único trajeto aberto
+    render(<TripWizard origin={origin} />);
+    await pickDestino("Roma");
+    advance(); // -> 2
+    advance(); // -> 3
+    expect(screen.getByText(/translados são propostas, não compras/i)).toBeInTheDocument();
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: /definir translado de são paulo para roma/i,
+      }),
+    );
+
+    // when: informa e aplica outro tipo
+    fireEvent.change(screen.getByLabelText(/outro tipo/i), { target: { value: "Balsa" } });
+    fireEvent.click(screen.getByRole("button", { name: "Aplicar" }));
+
+    // then: trilha mostra proposta e resumo não repete o aviso
+    expect(screen.getByText("Balsa")).toBeInTheDocument();
+    advance(); // -> 4
+    advance(); // -> 5
+    advance(); // -> 6
+    expect(screen.queryByText(/translados são propostas, não compras/i)).not.toBeInTheDocument();
+  });
+});
+
 describe("TripWizard — tripulação (passo 5)", () => {
   it("adiciona convite cego com toggle de papel", async () => {
     render(<TripWizard origin={origin} />);

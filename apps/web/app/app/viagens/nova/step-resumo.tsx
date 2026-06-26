@@ -14,8 +14,7 @@ const ROLE_LABEL = { member: "Membro", organizer: "Organizador" } as const;
 /**
  * Passo 6 — Resumo (boarding-pass). Recap read-only com "editar" por seção (linka pro
  * passo certo preservando o rascunho). Faixa-itinerário horizontal como herói + "em
- * números" + lista de trajetos com ícone. Legenda honesta: translados são propostas,
- * cada pessoa pesquisa e decide a sua. O Confirmar (POST atômico) mora no rodapé.
+ * números" + lista de trajetos com ícone. O Confirmar (POST atômico) mora no rodapé.
  */
 export function StepResumo({ draft, dispatch, origin }: StepProps) {
   const dest = getDestination(draft);
@@ -125,10 +124,6 @@ export function StepResumo({ draft, dispatch, origin }: StepProps) {
               </li>
             ))}
           </ul>
-          <p className={styles.legend}>
-            Translados são propostas, não compras. Cada pessoa pesquisa e decide a sua depois — o
-            app só alinha o grupo.
-          </p>
         </section>
 
         <section className={styles.section}>

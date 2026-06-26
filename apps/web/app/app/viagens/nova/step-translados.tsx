@@ -1,73 +1,35 @@
 "use client";
 
-import { Fragment, useState } from "react";
-import type { TransferDraft } from "@/lib/trips/draft";
-import { isTransferDefined, transferLabel } from "@/lib/trips/transfers";
-import { TransferIcon } from "./transfer-icons";
+import { useState } from "react";
+import { isTransferDefined } from "@/lib/trips/transfers";
 import { TransferModal } from "./transfer-modal";
+import { TransferTrail, type TransferTrailLeg } from "./transfer-trail";
 import styles from "./wizard.module.css";
 import type { StepProps } from "./wizard-types";
 import { originLabel } from "./wizard-types";
 
-/** Qual conector está com o modal aberto. */
-type OpenLeg = { type: "entry" } | { type: "stop"; id: string; index: number } | null;
-
 /**
- * Passo 3 — Translados (intenção; ADR-0009). Entre cada par de cidades há um **anel**
- * clicável: cinza tracejado quando indefinido, terracota preenchido quando há proposta.
+ * Passo 3 — Translados (intenção; ADR-0009). Trilha horizontal com um **anel** clicável
+ * entre cada par de cidades: tracejado quando indefinido, terracota quando há proposta.
  * O 1º salto é a ida pessoal do criador (entry_transfer, "sua ida · por pessoa", conta
  * no total). A 1ª parada não tem salto compartilhado — quem chega nela é a ponta pessoal.
  */
 export function StepTranslados({ draft, dispatch, origin }: StepProps) {
-  const [open, setOpen] = useState<OpenLeg>(null);
+  const [open, setOpen] = useState<TransferTrailLeg | null>(null);
   const { stops } = draft;
   const total = stops.length; // 1 ida pessoal + (stops.length - 1) saltos compartilhados
   const defined =
     (isTransferDefined(draft.entryTransfer) ? 1 : 0) +
     stops.slice(1).filter((s) => isTransferDefined(s.desiredTransfer)).length;
 
-  function Connector({
-    transfer,
-    info,
-    personal,
-    onOpen,
-  }: {
-    transfer: TransferDraft | null;
-    info: string;
-    personal?: boolean;
-    onOpen: () => void;
-  }) {
-    const isDefined = isTransferDefined(transfer);
-    return (
-      <div className={styles.legConn}>
-        <button
-          type="button"
-          className={`${styles.legRing} ${isDefined ? styles.legRingDefined : ""} ${
-            personal ? styles.legRingPersonal : ""
-          }`}
-          onClick={onOpen}
-        >
-          <TransferIcon transfer={transfer} size={20} />
-        </button>
-        <span className={styles.legInfo}>
-          <span className={styles.legMode}>
-            {isDefined ? transferLabel(transfer) : "Definir translado"}
-          </span>
-          <span className={styles.legTrajeto}>{info}</span>
-        </span>
-      </div>
-    );
-  }
-
   return (
-    <div className={styles.single}>
+    <div className={styles.transferStep}>
       <header className={styles.sectionHead}>
         <p className={styles.eyebrow}>Passo 03 · Translados</p>
         <h1 className={styles.title}>Como vencer cada salto?</h1>
         <p className={styles.lede}>
-          Proponha um translado por trajeto — é só uma sugestão pra semear a conversa. Cada pessoa
-          pesquisa e decide a sua depois. Sua ida (de casa até a 1ª parada) é pessoal e conta no
-          total.
+          Proponha como vencer cada trajeto. Sua ida de casa até a primeira Parada é pessoal; os
+          demais saltos são compartilhados pelo grupo.
         </p>
       </header>
 
@@ -83,55 +45,16 @@ export function StepTranslados({ draft, dispatch, origin }: StepProps) {
         </span>
       </div>
 
-      <div className={styles.legPanel}>
-        <div className={styles.legNode}>
-          <span className={`${styles.legDot} ${styles.legDotOrigin}`} aria-hidden="true" />
-          <span className={styles.legNodeBody}>
-            <span className={styles.legNodeTag}>Origem · você</span>
-            <span className={styles.legNodeCity}>{originLabel(origin)}</span>
-          </span>
-        </div>
+      <TransferTrail
+        origin={origin}
+        stops={stops}
+        entryTransfer={draft.entryTransfer}
+        onOpen={setOpen}
+      />
 
-        {stops.map((stop, i) => {
-          const isDest = i === stops.length - 1;
-          const personal = i === 0;
-          const transfer = personal ? draft.entryTransfer : stop.desiredTransfer;
-          const fromCity = personal ? originLabel(origin) : stops[i - 1].city.trim() || "Parada";
-          const toCity = stop.city.trim() || (isDest ? "Destino" : `Parada ${i + 1}`);
-          return (
-            <Fragment key={stop.id}>
-              <Connector
-                transfer={transfer}
-                info={
-                  personal
-                    ? `Trajeto ${i + 1} de ${total} · sua ida · por pessoa`
-                    : `Trajeto ${i + 1} de ${total} · ${fromCity} → ${toCity}`
-                }
-                personal={personal}
-                onOpen={() =>
-                  setOpen(personal ? { type: "entry" } : { type: "stop", id: stop.id, index: i })
-                }
-              />
-              <div className={styles.legNode}>
-                <span
-                  className={`${styles.legDot} ${isDest ? styles.legDotDest : ""}`}
-                  aria-hidden="true"
-                />
-                <span className={styles.legNodeBody}>
-                  <span className={styles.legNodeTag}>
-                    {isDest ? "Destino final" : `Parada ${i + 1}`}
-                  </span>
-                  <span
-                    className={`${styles.legNodeCity} ${stop.city.trim() ? "" : styles.cityMuted}`}
-                  >
-                    {toCity}
-                  </span>
-                </span>
-              </div>
-            </Fragment>
-          );
-        })}
-      </div>
+      <p className={styles.transferNotice}>
+        Translados são propostas, não compras. Cada pessoa pesquisa e decide a sua depois.
+      </p>
 
       {open ? (
         <TransferModal
