@@ -1,6 +1,6 @@
 "use client";
 
-import { CircleHelp } from "lucide-react";
+import { CircleHelp, X } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
 import type { TransferDraft } from "@/lib/trips/draft";
 import { TRANSFER_TYPES } from "@/lib/trips/transfers";
@@ -20,7 +20,7 @@ type TransferModalProps = {
 /**
  * Modal de translado (passo 3 — ADR-0009). Grade de tipos concretos + "outro" (texto
  * livre) + "em discussão". Copy honesta: o que é cotável vira Pesquisa de preço
- * depois; a pé / carro próprio são só conectores. Fecha no Esc e no clique fora.
+ * depois; a pé / carro próprio são só conectores. Fecha no Esc e no X do cabeçalho.
  */
 export function TransferModal({
   legLabel,
@@ -76,7 +76,7 @@ export function TransferModal({
 
   return (
     <div className={styles.overlay}>
-      <button type="button" className={styles.backdrop} aria-label="Fechar" onClick={onClose} />
+      <div className={styles.backdrop} aria-hidden="true" />
       <div
         ref={modalRef}
         className={styles.modal}
@@ -84,11 +84,19 @@ export function TransferModal({
         aria-modal="true"
         aria-labelledby={titleId}
       >
-        <div>
-          <p className={styles.modalKicker}>{legLabel}</p>
+        <div className={styles.modalHead}>
+          <button
+            type="button"
+            className={styles.modalClose}
+            aria-label="Fechar modal de translado"
+            onClick={onClose}
+          >
+            <X size={16} strokeWidth={1.5} aria-hidden="true" />
+          </button>
           <h2 className={styles.modalTitle} id={titleId}>
             {endpoints}
           </h2>
+          <p className={styles.modalKicker}>{legLabel}</p>
         </div>
 
         <div className={styles.grid}>
@@ -108,11 +116,22 @@ export function TransferModal({
               </span>
             </button>
           ))}
+          <button
+            type="button"
+            className={`${styles.typeBtn} ${current?.kind === "undecided" ? styles.typeBtnActive : ""}`}
+            onClick={() => onSelect({ kind: "undecided" })}
+          >
+            <span className={styles.typeGlyph} aria-hidden="true">
+              <CircleHelp size={22} strokeWidth={1.5} />
+            </span>
+            <span className={styles.typeName}>Em discussão</span>
+            <span className={styles.typeNote}>decidir depois</span>
+          </button>
         </div>
 
         <label className={styles.field}>
           <span className={styles.label}>+ outro tipo</span>
-          <div className={styles.inviteForm}>
+          <div className={styles.otherTypeRow}>
             <input
               type="text"
               className={styles.input}
@@ -122,27 +141,14 @@ export function TransferModal({
             />
             <button
               type="button"
-              className={styles.secondary}
+              className={styles.otherApply}
               disabled={!otherText.trim()}
               onClick={() => onSelect({ kind: "other", otherText: otherText.trim() })}
             >
-              Usar
+              Aplicar
             </button>
           </div>
         </label>
-
-        <div className={styles.modalActions}>
-          <button
-            type="button"
-            className={styles.ghostWide}
-            onClick={() => onSelect({ kind: "undecided" })}
-          >
-            <CircleHelp size={16} strokeWidth={1.5} aria-hidden="true" /> Ainda em discussão
-          </button>
-          <button type="button" className={styles.ghostWide} onClick={onClose}>
-            Fechar
-          </button>
-        </div>
       </div>
     </div>
   );

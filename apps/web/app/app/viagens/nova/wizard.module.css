@@ -170,13 +170,21 @@
 }
 
 .split,
-.single {
+.single,
+.transferStep {
   margin: 0 auto;
   padding: 40px var(--wiz-gutter) 56px;
 }
 
 .single {
   max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.transferStep {
+  max-width: var(--max-width-wide);
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -772,77 +780,117 @@
   white-space: nowrap;
 }
 
-.legPanel {
-  display: flex;
-  flex-direction: column;
-  padding: 22px;
+.transferTrailViewport {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 6px;
   border: var(--border-hairline) solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--bg-inset);
+  scrollbar-color: var(--line-strong) transparent;
+  scrollbar-width: thin;
 }
 
-.legNode {
+.transferTrail {
+  width: max-content;
+  min-width: 100%;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
-  border: var(--border-hairline) solid var(--line);
-  border-radius: var(--radius-card);
-  background: var(--surface);
+  justify-content: center;
+  padding: 24px 20px 18px;
 }
 
-.legDot {
-  width: 10px;
-  height: 10px;
+.transferNode {
+  width: 112px;
   flex-shrink: 0;
-  border-radius: var(--radius-circle);
-  background: var(--line-strong);
-}
-
-.legDotOrigin {
-  background: var(--success);
-}
-
-.legDotDest {
-  background: var(--accent);
-}
-
-.legNodeBody {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
 }
 
-.legNodeTag {
+.transferNodeKicker,
+.transferNodeCountry {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
-  letter-spacing: 0.06em;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
   text-transform: uppercase;
   color: var(--text-faint);
 }
 
-.legNodeCity {
-  font-size: 15px;
+.transferNodeCore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+.transferNodeDot {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  border: var(--border-outline) solid var(--line-strong);
+  border-radius: var(--radius-circle);
+  background: var(--fill-subtle);
+}
+
+.transferNodeDot_origin {
+  border-color: var(--success);
+  background: var(--success);
+}
+
+.transferNodeDot_dest {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.transferNodeCity {
+  overflow: hidden;
+  font-family: var(--font-display), sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
   color: var(--text-bright);
 }
 
-.cityMuted {
-  color: var(--text-faint);
+.transferLink {
+  width: 112px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
 }
 
-.legConn {
+.transferLinkTop {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 10px 0 10px 14px;
+  gap: 4px;
+}
+
+.transferLine {
+  width: 26px;
+  height: 1.5px;
+  background: var(--line-dashed);
+}
+
+.transferLineDefined {
+  background: var(--accent);
 }
 
 .legRing {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 46px;
-  height: 46px;
+  width: 44px;
+  height: 44px;
   flex-shrink: 0;
   border: 1.5px dashed var(--line-strong);
   border-radius: var(--radius-circle);
@@ -867,27 +915,25 @@
   color: var(--accent);
 }
 
-.legRingPersonal {
-  box-shadow: 0 0 0 4px rgba(223, 106, 77, 0.06);
-}
-
-.legInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.legMode {
-  font-size: 14px;
-  color: var(--text-body);
-}
-
-.legTrajeto {
+.transferLinkLabel {
+  max-width: 110px;
+  overflow: hidden;
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 9px;
   letter-spacing: 0.06em;
+  text-overflow: ellipsis;
   text-transform: uppercase;
+  white-space: nowrap;
   color: var(--text-faint);
+}
+
+.transferNotice {
+  padding: 13px 15px;
+  border-left: var(--border-accent-edge) solid var(--accent);
+  background: var(--fill-subtle);
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 /* ---- Faixa-itinerário horizontal (passos 4 e 6) ---- */
@@ -1414,14 +1460,6 @@
   color: var(--text-muted);
 }
 
-.legend {
-  padding-top: 10px;
-  border-top: var(--border-hairline) solid var(--line-muted);
-  font-size: 12px;
-  line-height: 1.5;
-  color: var(--text-faint);
-}
-
 /* ---- Modal de translado ---- */
 
 .overlay {
@@ -1467,8 +1505,37 @@
   color: var(--text-muted);
 }
 
+.modalHead {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 42px;
+}
+
 .modalTitle {
   font-size: 24px;
+}
+
+.modalClose {
+  position: absolute;
+  top: -5px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: var(--border-hairline) solid var(--line);
+  border-radius: var(--radius-circle);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.modalClose:hover {
+  border-color: var(--line-strong);
+  color: var(--text-bright);
 }
 
 .grid {
@@ -1520,22 +1587,25 @@
   color: var(--text-faint);
 }
 
-.modalActions {
+.otherTypeRow {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  align-items: stretch;
+  gap: 8px;
 }
 
-.ghostWide {
-  flex: 1;
+.otherTypeRow .input {
+  min-width: 0;
+}
+
+.otherApply {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
-  padding: 10px;
+  flex-shrink: 0;
+  padding: 0 16px;
   border: var(--border-hairline) solid var(--line);
   border-radius: var(--radius-btn);
-  background: transparent;
+  background: var(--surface);
   font-family: var(--font-mono), monospace;
   font-size: 11px;
   letter-spacing: 0.06em;
@@ -1547,9 +1617,14 @@
     color 0.15s;
 }
 
-.ghostWide:hover {
+.otherApply:hover {
   border-color: var(--line-strong);
   color: var(--text-bright);
+}
+
+.otherApply:disabled {
+  opacity: 0.45;
+  cursor: default;
 }
 
 /* ---- Rodapé fixo ---- */

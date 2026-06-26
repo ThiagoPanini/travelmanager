@@ -74,6 +74,10 @@ Status pills usam sempre cor **e** borda real (`pill()` por tom: success / warni
 
 No passo 2, os cards da trilha vertical exibem ponto por papel, cidade em Saira uppercase, país em mono e papel à direita. O destino do passo 1 continua no seletor gated país→cidade; novas Paradas usam `GlobalCityPicker`, que consulta o índice build-time `_all.json`, mostra `Cidade · País` e infere país/coordenadas da escolha. Texto livre continua permitido e produz Parada sem país/coordenadas, que permanece visível na trilha e vira fantasma no mapa.
 
+## Trilha de translados da criação
+
+`apps/web/app/app/viagens/nova/transfer-trail.tsx` apresenta o passo 3 como faixa horizontal de origem → Paradas → destino. Cada nó combina kicker de papel, ponto semântico, cidade em Saira e país em mono; os anéis clicáveis de 44px ficam entre nós, tracejados quando indefinidos e sólidos em terracota quando há proposta. A faixa usa overflow horizontal para itinerários longos. O modal oferece os tipos concretos e “Em discussão” na mesma grade, texto livre com “Aplicar” inline e fechamento visual apenas pelo X do cabeçalho; o aviso de que translados são propostas, não compras, vive neste passo e não no resumo.
+
 ## Acessibilidade do que existe
 
 - **Idioma**: `html lang="pt-BR"`.
