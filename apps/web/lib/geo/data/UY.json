@@ -1,126 +1,219 @@
 [
   {
     "name": "Montevideo",
-    "asciiName": "Montevideo"
+    "asciiName": "Montevideo",
+    "lat": -34.9033,
+    "lng": -56.1882,
+    "population": 1270737
   },
   {
     "name": "Salto",
-    "asciiName": "Salto"
+    "asciiName": "Salto",
+    "lat": -31.3881,
+    "lng": -57.9598,
+    "population": 114084
   },
   {
     "name": "Maldonado",
-    "asciiName": "Maldonado"
+    "asciiName": "Maldonado",
+    "lat": -34.8979,
+    "lng": -54.9502,
+    "population": 102000
   },
   {
     "name": "Rivera",
-    "asciiName": "Rivera"
+    "asciiName": "Rivera",
+    "lat": -30.9053,
+    "lng": -55.5508,
+    "population": 84775
   },
   {
     "name": "Paysandú",
-    "asciiName": "Paysandu"
+    "asciiName": "Paysandu",
+    "lat": -32.3171,
+    "lng": -58.0807,
+    "population": 81550
   },
   {
     "name": "Las Piedras",
-    "asciiName": "Las Piedras"
+    "asciiName": "Las Piedras",
+    "lat": -34.7302,
+    "lng": -56.2191,
+    "population": 69682
   },
   {
     "name": "Tacuarembó",
-    "asciiName": "Tacuarembo"
+    "asciiName": "Tacuarembo",
+    "lat": -31.7188,
+    "lng": -55.9792,
+    "population": 60586
   },
   {
     "name": "Melo",
-    "asciiName": "Melo"
+    "asciiName": "Melo",
+    "lat": -32.3682,
+    "lng": -54.1641,
+    "population": 56013
   },
   {
     "name": "Artigas",
-    "asciiName": "Artigas"
+    "asciiName": "Artigas",
+    "lat": -30.4043,
+    "lng": -56.4693,
+    "population": 43897
   },
   {
     "name": "Mercedes",
-    "asciiName": "Mercedes"
+    "asciiName": "Mercedes",
+    "lat": -33.2524,
+    "lng": -58.0305,
+    "population": 43543
   },
   {
     "name": "Durazno",
-    "asciiName": "Durazno"
+    "asciiName": "Durazno",
+    "lat": -33.3806,
+    "lng": -56.5231,
+    "population": 40279
   },
   {
     "name": "Minas",
-    "asciiName": "Minas"
+    "asciiName": "Minas",
+    "lat": -34.3759,
+    "lng": -55.2377,
+    "population": 38645
   },
   {
     "name": "Florida",
-    "asciiName": "Florida"
+    "asciiName": "Florida",
+    "lat": -34.1003,
+    "lng": -56.2148,
+    "population": 36471
   },
   {
     "name": "San José de Mayo",
-    "asciiName": "San Jose de Mayo"
+    "asciiName": "San Jose de Mayo",
+    "lat": -34.339,
+    "lng": -56.7134,
+    "population": 35883
   },
   {
     "name": "Colonia del Sacramento",
-    "asciiName": "Colonia del Sacramento"
+    "asciiName": "Colonia del Sacramento",
+    "lat": -34.4626,
+    "lng": -57.8398,
+    "population": 32164
   },
   {
     "name": "Barros Blancos",
-    "asciiName": "Barros Blancos"
+    "asciiName": "Barros Blancos",
+    "lat": -34.7524,
+    "lng": -56.0026,
+    "population": 31650
   },
   {
     "name": "San Carlos",
-    "asciiName": "San Carlos"
+    "asciiName": "San Carlos",
+    "lat": -34.7912,
+    "lng": -54.9182,
+    "population": 27471
   },
   {
     "name": "Rocha",
-    "asciiName": "Rocha"
+    "asciiName": "Rocha",
+    "lat": -34.4799,
+    "lng": -54.3306,
+    "population": 26784
   },
   {
     "name": "Fray Bentos",
-    "asciiName": "Fray Bentos"
+    "asciiName": "Fray Bentos",
+    "lat": -33.1165,
+    "lng": -58.3107,
+    "population": 26297
   },
   {
     "name": "Treinta y Tres",
-    "asciiName": "Treinta y Tres"
+    "asciiName": "Treinta y Tres",
+    "lat": -33.231,
+    "lng": -54.3858,
+    "population": 25890
   },
   {
     "name": "Canelones",
-    "asciiName": "Canelones"
+    "asciiName": "Canelones",
+    "lat": -34.5238,
+    "lng": -56.2821,
+    "population": 24185
   },
   {
     "name": "Pando",
-    "asciiName": "Pando"
+    "asciiName": "Pando",
+    "lat": -34.7172,
+    "lng": -55.9584,
+    "population": 24047
   },
   {
     "name": "Trinidad",
-    "asciiName": "Trinidad"
+    "asciiName": "Trinidad",
+    "lat": -33.5165,
+    "lng": -56.8996,
+    "population": 22897
   },
   {
     "name": "La Paz",
-    "asciiName": "La Paz"
+    "asciiName": "La Paz",
+    "lat": -34.7603,
+    "lng": -56.2259,
+    "population": 19913
   },
   {
     "name": "Carmelo",
-    "asciiName": "Carmelo"
+    "asciiName": "Carmelo",
+    "lat": -34.0002,
+    "lng": -58.284,
+    "population": 18041
   },
   {
     "name": "Delta del Tigre",
-    "asciiName": "Delta del Tigre"
+    "asciiName": "Delta del Tigre",
+    "lat": -34.7649,
+    "lng": -56.3645,
+    "population": 17973
   },
   {
     "name": "Dolores",
-    "asciiName": "Dolores"
+    "asciiName": "Dolores",
+    "lat": -33.5301,
+    "lng": -58.217,
+    "population": 17174
   },
   {
     "name": "Young",
-    "asciiName": "Young"
+    "asciiName": "Young",
+    "lat": -32.6984,
+    "lng": -57.6269,
+    "population": 16756
   },
   {
     "name": "Santa Lucía",
-    "asciiName": "Santa Lucia"
+    "asciiName": "Santa Lucia",
+    "lat": -34.4533,
+    "lng": -56.3906,
+    "population": 16438
   },
   {
     "name": "Progreso",
-    "asciiName": "Progreso"
+    "asciiName": "Progreso",
+    "lat": -34.6674,
+    "lng": -56.2176,
+    "population": 16244
   },
   {
     "name": "Paso de Carrasco",
-    "asciiName": "Paso de Carrasco"
+    "asciiName": "Paso de Carrasco",
+    "lat": -34.8603,
+    "lng": -56.0522,
+    "population": 15393
   }
 ]

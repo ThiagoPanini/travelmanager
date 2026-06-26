@@ -368,6 +368,31 @@
   flex-direction: column;
 }
 
+/* Mapa esquemático (ADR-0010): preenche o painel abaixo da legenda; o fallback
+   (rota vertical) define a altura quando o mapa não está ativo (SSR/jsdom/erro). */
+.mapWrap {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 260px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--bg-canvas);
+}
+
+.mapCanvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.mapFallback {
+  position: relative;
+}
+
+.mapFallbackHidden {
+  display: none;
+}
+
 .asideNode {
   display: flex;
   align-items: center;

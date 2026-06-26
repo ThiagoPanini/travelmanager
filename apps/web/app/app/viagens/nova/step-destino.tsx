@@ -38,8 +38,14 @@ export function StepDestino({ draft, dispatch, origin }: StepProps) {
             country={dest.country}
             city={dest.city}
             onCountry={(code) => dispatch({ type: "setDestination", city: "", country: code })}
-            onCity={(value) =>
-              dispatch({ type: "setDestination", city: value, country: dest.country })
+            onCity={(value, coords) =>
+              dispatch({
+                type: "setDestination",
+                city: value,
+                country: dest.country,
+                lat: coords?.lat ?? null,
+                lng: coords?.lng ?? null,
+              })
             }
             countryLabel="País do destino"
             cityLabel="Cidade do destino"

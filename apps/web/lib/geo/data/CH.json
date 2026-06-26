@@ -1,322 +1,562 @@
 [
   {
     "name": "Zürich",
-    "asciiName": "Zuerich"
+    "asciiName": "Zuerich",
+    "lat": 47.3667,
+    "lng": 8.55,
+    "population": 415367
   },
   {
     "name": "Geneva",
-    "asciiName": "Geneva"
+    "asciiName": "Geneva",
+    "lat": 46.2022,
+    "lng": 6.1457,
+    "population": 201741
   },
   {
     "name": "Basel",
-    "asciiName": "Basel"
+    "asciiName": "Basel",
+    "lat": 47.5584,
+    "lng": 7.5733,
+    "population": 177595
   },
   {
     "name": "Lausanne",
-    "asciiName": "Lausanne"
+    "asciiName": "Lausanne",
+    "lat": 46.516,
+    "lng": 6.6328,
+    "population": 139111
   },
   {
     "name": "Bern",
-    "asciiName": "Bern"
+    "asciiName": "Bern",
+    "lat": 46.9481,
+    "lng": 7.4474,
+    "population": 121631
   },
   {
     "name": "Winterthur",
-    "asciiName": "Winterthur"
+    "asciiName": "Winterthur",
+    "lat": 47.5056,
+    "lng": 8.7241,
+    "population": 111840
   },
   {
     "name": "Luzern",
-    "asciiName": "Luzern"
+    "asciiName": "Luzern",
+    "lat": 47.0505,
+    "lng": 8.3064,
+    "population": 81691
   },
   {
     "name": "Sankt Gallen",
-    "asciiName": "Sankt Gallen"
+    "asciiName": "Sankt Gallen",
+    "lat": 47.4239,
+    "lng": 9.3748,
+    "population": 75833
   },
   {
     "name": "Lugano",
-    "asciiName": "Lugano"
+    "asciiName": "Lugano",
+    "lat": 46.0101,
+    "lng": 8.96,
+    "population": 63185
   },
   {
     "name": "Biel/Bienne",
-    "asciiName": "Biel/Bienne"
+    "asciiName": "Biel/Bienne",
+    "lat": 47.1371,
+    "lng": 7.2461,
+    "population": 55120
   },
   {
     "name": "Zürich (Kreis 11)",
-    "asciiName": "Zuerich (Kreis 11)"
+    "asciiName": "Zuerich (Kreis 11)",
+    "lat": 47.4233,
+    "lng": 8.5217,
+    "population": 54260
   },
   {
     "name": "Zürich (Kreis 3)",
-    "asciiName": "Zuerich (Kreis 3)"
+    "asciiName": "Zuerich (Kreis 3)",
+    "lat": 47.3579,
+    "lng": 8.503,
+    "population": 46018
   },
   {
     "name": "Zürich (Kreis 9)",
-    "asciiName": "Zuerich (Kreis 9)"
+    "asciiName": "Zuerich (Kreis 9)",
+    "lat": 47.3825,
+    "lng": 8.4799,
+    "population": 44878
   },
   {
     "name": "Thun",
-    "asciiName": "Thun"
+    "asciiName": "Thun",
+    "lat": 46.7512,
+    "lng": 7.6217,
+    "population": 43723
   },
   {
     "name": "Bellinzona",
-    "asciiName": "Bellinzona"
+    "asciiName": "Bellinzona",
+    "lat": 46.1928,
+    "lng": 9.017,
+    "population": 43220
   },
   {
     "name": "Köniz",
-    "asciiName": "Koeniz"
+    "asciiName": "Koeniz",
+    "lat": 46.9244,
+    "lng": 7.4146,
+    "population": 41784
   },
   {
     "name": "Fribourg",
-    "asciiName": "Fribourg"
+    "asciiName": "Fribourg",
+    "lat": 46.8024,
+    "lng": 7.1513,
+    "population": 38365
   },
   {
     "name": "La Chaux-de-Fonds",
-    "asciiName": "La Chaux-de-Fonds"
+    "asciiName": "La Chaux-de-Fonds",
+    "lat": 47.0999,
+    "lng": 6.8259,
+    "population": 37942
   },
   {
     "name": "Schaffhausen",
-    "asciiName": "Schaffhausen"
+    "asciiName": "Schaffhausen",
+    "lat": 47.6973,
+    "lng": 8.6349,
+    "population": 36587
   },
   {
     "name": "Zürich (Kreis 10)",
-    "asciiName": "Zuerich (Kreis 10)"
+    "asciiName": "Zuerich (Kreis 10)",
+    "lat": 47.4077,
+    "lng": 8.5005,
+    "population": 36216
   },
   {
     "name": "Chur",
-    "asciiName": "Chur"
+    "asciiName": "Chur",
+    "lat": 46.8499,
+    "lng": 9.5329,
+    "population": 35373
   },
   {
     "name": "Rapperswil",
-    "asciiName": "Rapperswil"
+    "asciiName": "Rapperswil",
+    "lat": 47.2256,
+    "lng": 8.8223,
+    "population": 34776
   },
   {
     "name": "Uster",
-    "asciiName": "Uster"
+    "asciiName": "Uster",
+    "lat": 47.3471,
+    "lng": 8.7209,
+    "population": 34715
   },
   {
     "name": "Sitten",
-    "asciiName": "Sitten"
+    "asciiName": "Sitten",
+    "lat": 46.2274,
+    "lng": 7.3556,
+    "population": 34708
   },
   {
     "name": "Zürich (Kreis 7)",
-    "asciiName": "Zuerich (Kreis 7)"
+    "asciiName": "Zuerich (Kreis 7)",
+    "lat": 47.3733,
+    "lng": 8.5804,
+    "population": 33820
   },
   {
     "name": "Neuchâtel",
-    "asciiName": "Neuchatel"
+    "asciiName": "Neuchatel",
+    "lat": 46.9918,
+    "lng": 6.931,
+    "population": 33475
   },
   {
     "name": "Emmen",
-    "asciiName": "Emmen"
+    "asciiName": "Emmen",
+    "lat": 47.0782,
+    "lng": 8.2733,
+    "population": 30926
   },
   {
     "name": "Zug",
-    "asciiName": "Zug"
+    "asciiName": "Zug",
+    "lat": 47.1724,
+    "lng": 8.5175,
+    "population": 30542
   },
   {
     "name": "Yverdon-les-Bains",
-    "asciiName": "Yverdon-les-Bains"
+    "asciiName": "Yverdon-les-Bains",
+    "lat": 46.7785,
+    "lng": 6.6412,
+    "population": 30157
   },
   {
     "name": "Vernier",
-    "asciiName": "Vernier"
+    "asciiName": "Vernier",
+    "lat": 46.217,
+    "lng": 6.085,
+    "population": 30086
   },
   {
     "name": "Zürich (Kreis 6)",
-    "asciiName": "Zuerich (Kreis 6)"
+    "asciiName": "Zuerich (Kreis 6)",
+    "lat": 47.3922,
+    "lng": 8.5438,
+    "population": 29951
   },
   {
     "name": "Zürich (Kreis 2)",
-    "asciiName": "Zuerich (Kreis 2)"
+    "asciiName": "Zuerich (Kreis 2)",
+    "lat": 47.3376,
+    "lng": 8.5211,
+    "population": 29215
   },
   {
     "name": "Zürich (Kreis 9) / Altstetten",
-    "asciiName": "Zuerich (Kreis 9) / Altstetten"
+    "asciiName": "Zuerich (Kreis 9) / Altstetten",
+    "lat": 47.3895,
+    "lng": 8.4853,
+    "population": 28307
   },
   {
     "name": "Zürich (Kreis 12)",
-    "asciiName": "Zuerich (Kreis 12)"
+    "asciiName": "Zuerich (Kreis 12)",
+    "lat": 47.4037,
+    "lng": 8.5761,
+    "population": 28189
   },
   {
     "name": "Lancy",
-    "asciiName": "Lancy"
+    "asciiName": "Lancy",
+    "lat": 46.1898,
+    "lng": 6.1144,
+    "population": 27291
   },
   {
     "name": "Zürich (Kreis 4) / Aussersihl",
-    "asciiName": "Zuerich (Kreis 4) / Aussersihl"
+    "asciiName": "Zuerich (Kreis 4) / Aussersihl",
+    "lat": 47.3775,
+    "lng": 8.5213,
+    "population": 27273
   },
   {
     "name": "Montreux",
-    "asciiName": "Montreux"
+    "asciiName": "Montreux",
+    "lat": 46.433,
+    "lng": 6.9114,
+    "population": 25984
   },
   {
     "name": "Frauenfeld",
-    "asciiName": "Frauenfeld"
+    "asciiName": "Frauenfeld",
+    "lat": 47.5578,
+    "lng": 8.8989,
+    "population": 25607
   },
   {
     "name": "Kriens",
-    "asciiName": "Kriens"
+    "asciiName": "Kriens",
+    "lat": 47.0311,
+    "lng": 8.2855,
+    "population": 25010
   },
   {
     "name": "Wetzikon",
-    "asciiName": "Wetzikon"
+    "asciiName": "Wetzikon",
+    "lat": 47.3264,
+    "lng": 8.7978,
+    "population": 24764
   },
   {
     "name": "Wil",
-    "asciiName": "Wil"
+    "asciiName": "Wil",
+    "lat": 47.4615,
+    "lng": 9.0455,
+    "population": 23955
   },
   {
     "name": "Bulle",
-    "asciiName": "Bulle"
+    "asciiName": "Bulle",
+    "lat": 46.618,
+    "lng": 7.0569,
+    "population": 23438
   },
   {
     "name": "Horgen",
-    "asciiName": "Horgen"
+    "asciiName": "Horgen",
+    "lat": 47.2598,
+    "lng": 8.5978,
+    "population": 22662
   },
   {
     "name": "Kreuzlingen",
-    "asciiName": "Kreuzlingen"
+    "asciiName": "Kreuzlingen",
+    "lat": 47.6505,
+    "lng": 9.175,
+    "population": 21997
   },
   {
     "name": "Opfikon",
-    "asciiName": "Opfikon"
+    "asciiName": "Opfikon",
+    "lat": 47.4317,
+    "lng": 8.5759,
+    "population": 21554
   },
   {
     "name": "Aarau",
-    "asciiName": "Aarau"
+    "asciiName": "Aarau",
+    "lat": 47.3925,
+    "lng": 8.0442,
+    "population": 21503
   },
   {
     "name": "Zürich (Kreis 3) / Sihlfeld",
-    "asciiName": "Zuerich (Kreis 3) / Sihlfeld"
+    "asciiName": "Zuerich (Kreis 3) / Sihlfeld",
+    "lat": 47.3738,
+    "lng": 8.5116,
+    "population": 20977
   },
   {
     "name": "Renens",
-    "asciiName": "Renens"
+    "asciiName": "Renens",
+    "lat": 46.5399,
+    "lng": 6.5881,
+    "population": 20927
   },
   {
     "name": "Dietikon",
-    "asciiName": "Dietikon"
+    "asciiName": "Dietikon",
+    "lat": 47.4016,
+    "lng": 8.4002,
+    "population": 20893
   },
   {
     "name": "Baar",
-    "asciiName": "Baar"
+    "asciiName": "Baar",
+    "lat": 47.1963,
+    "lng": 8.5295,
+    "population": 20546
   },
   {
     "name": "Bülach",
-    "asciiName": "Buelach"
+    "asciiName": "Buelach",
+    "lat": 47.522,
+    "lng": 8.5405,
+    "population": 20443
   },
   {
     "name": "Zürich (Kreis 6) / Unterstrass",
-    "asciiName": "Zuerich (Kreis 6) / Unterstrass"
+    "asciiName": "Zuerich (Kreis 6) / Unterstrass",
+    "lat": 47.3953,
+    "lng": 8.5372,
+    "population": 20045
   },
   {
     "name": "Riehen",
-    "asciiName": "Riehen"
+    "asciiName": "Riehen",
+    "lat": 47.5788,
+    "lng": 7.6468,
+    "population": 20000
   },
   {
     "name": "Vevey",
-    "asciiName": "Vevey"
+    "asciiName": "Vevey",
+    "lat": 46.463,
+    "lng": 6.8435,
+    "population": 19891
   },
   {
     "name": "Dübendorf",
-    "asciiName": "Dubendorf"
+    "asciiName": "Dubendorf",
+    "lat": 47.3972,
+    "lng": 8.6187,
+    "population": 19882
   },
   {
     "name": "Meyrin",
-    "asciiName": "Meyrin"
+    "asciiName": "Meyrin",
+    "lat": 46.2342,
+    "lng": 6.0803,
+    "population": 19772
   },
   {
     "name": "Carouge",
-    "asciiName": "Carouge"
+    "asciiName": "Carouge",
+    "lat": 46.181,
+    "lng": 6.1392,
+    "population": 19344
   },
   {
     "name": "Baden",
-    "asciiName": "Baden"
+    "asciiName": "Baden",
+    "lat": 47.4733,
+    "lng": 8.3059,
+    "population": 19340
   },
   {
     "name": "Reinach",
-    "asciiName": "Reinach"
+    "asciiName": "Reinach",
+    "lat": 47.497,
+    "lng": 7.5917,
+    "population": 19216
   },
   {
     "name": "Olten",
-    "asciiName": "Olten"
+    "asciiName": "Olten",
+    "lat": 47.35,
+    "lng": 7.9033,
+    "population": 18362
   },
   {
     "name": "Martigny-Ville",
-    "asciiName": "Martigny-Ville"
+    "asciiName": "Martigny-Ville",
+    "lat": 46.1028,
+    "lng": 7.0725,
+    "population": 18301
   },
   {
     "name": "Wettingen",
-    "asciiName": "Wettingen"
+    "asciiName": "Wettingen",
+    "lat": 47.4661,
+    "lng": 8.3266,
+    "population": 18191
   },
   {
     "name": "Allschwil",
-    "asciiName": "Allschwil"
+    "asciiName": "Allschwil",
+    "lat": 47.5507,
+    "lng": 7.536,
+    "population": 18189
   },
   {
     "name": "Zürich (Kreis 11) / Oerlikon",
-    "asciiName": "Zuerich (Kreis 11) / Oerlikon"
+    "asciiName": "Zuerich (Kreis 11) / Oerlikon",
+    "lat": 47.4082,
+    "lng": 8.5426,
+    "population": 17922
   },
   {
     "name": "Zürich (Kreis 11) / Seebach",
-    "asciiName": "Zuerich (Kreis 11) / Seebach"
+    "asciiName": "Zuerich (Kreis 11) / Seebach",
+    "lat": 47.4218,
+    "lng": 8.5478,
+    "population": 17851
   },
   {
     "name": "Monthey",
-    "asciiName": "Monthey"
+    "asciiName": "Monthey",
+    "lat": 46.2545,
+    "lng": 6.9541,
+    "population": 17777
   },
   {
     "name": "Jona",
-    "asciiName": "Jona"
+    "asciiName": "Jona",
+    "lat": 47.2298,
+    "lng": 8.8388,
+    "population": 17655
   },
   {
     "name": "Onex",
-    "asciiName": "Onex"
+    "asciiName": "Onex",
+    "lat": 46.184,
+    "lng": 6.1024,
+    "population": 17302
   },
   {
     "name": "Zürich (Kreis 11) / Affoltern",
-    "asciiName": "Zuerich (Kreis 11) / Affoltern"
+    "asciiName": "Zuerich (Kreis 11) / Affoltern",
+    "lat": 47.4181,
+    "lng": 8.5122,
+    "population": 17241
   },
   {
     "name": "Zürich (Kreis 10) / Höngg",
-    "asciiName": "Zuerich (Kreis 10) / Hoengg"
+    "asciiName": "Zuerich (Kreis 10) / Hoengg",
+    "lat": 47.4031,
+    "lng": 8.4971,
+    "population": 17117
   },
   {
     "name": "Gossau",
-    "asciiName": "Gossau"
+    "asciiName": "Gossau",
+    "lat": 47.4155,
+    "lng": 9.2548,
+    "population": 17043
   },
   {
     "name": "Muttenz",
-    "asciiName": "Muttenz"
+    "asciiName": "Muttenz",
+    "lat": 47.5227,
+    "lng": 7.6451,
+    "population": 16927
   },
   {
     "name": "Nyon",
-    "asciiName": "Nyon"
+    "asciiName": "Nyon",
+    "lat": 46.3832,
+    "lng": 6.2396,
+    "population": 16797
   },
   {
     "name": "Sierre",
-    "asciiName": "Sierre"
+    "asciiName": "Sierre",
+    "lat": 46.2919,
+    "lng": 7.5356,
+    "population": 16790
   },
   {
     "name": "Solothurn",
-    "asciiName": "Solothurn"
+    "asciiName": "Solothurn",
+    "lat": 47.2079,
+    "lng": 7.5371,
+    "population": 16777
   },
   {
     "name": "Cham",
-    "asciiName": "Cham"
+    "asciiName": "Cham",
+    "lat": 47.1821,
+    "lng": 8.4636,
+    "population": 16719
   },
   {
     "name": "Zürich (Kreis 9) / Albisrieden",
-    "asciiName": "Zuerich (Kreis 9) / Albisrieden"
+    "asciiName": "Zuerich (Kreis 9) / Albisrieden",
+    "lat": 47.374,
+    "lng": 8.4901,
+    "population": 16480
   },
   {
     "name": "Burgdorf",
-    "asciiName": "Burgdorf"
+    "asciiName": "Burgdorf",
+    "lat": 47.059,
+    "lng": 7.6279,
+    "population": 16420
   },
   {
     "name": "Oberwinterthur (Kreis 2)",
-    "asciiName": "Oberwinterthur (Kreis 2)"
+    "asciiName": "Oberwinterthur (Kreis 2)",
+    "lat": 47.5169,
+    "lng": 8.7686,
+    "population": 16356
   },
   {
     "name": "Kloten",
-    "asciiName": "Kloten"
+    "asciiName": "Kloten",
+    "lat": 47.4515,
+    "lng": 8.5849,
+    "population": 16289
   }
 ]

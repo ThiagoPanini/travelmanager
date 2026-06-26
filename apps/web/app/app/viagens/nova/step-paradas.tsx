@@ -86,11 +86,18 @@ function Gap({
             country={country}
             city=""
             onCountry={setCountry}
-            onCity={(value) => {
+            onCity={(value, coords) => {
               // O combobox emite "" a cada tecla (limpa seleção); só encaixa a parada
               // numa escolha real (opção do dataset ou texto livre via escape hatch).
               if (!value.trim()) return;
-              dispatch({ type: "insertStop", index, city: value, country });
+              dispatch({
+                type: "insertStop",
+                index,
+                city: value,
+                country,
+                lat: coords?.lat ?? null,
+                lng: coords?.lng ?? null,
+              });
               onClose();
             }}
           />

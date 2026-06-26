@@ -1,322 +1,562 @@
 [
   {
     "name": "Tokyo",
-    "asciiName": "Tokyo"
+    "asciiName": "Tokyo",
+    "lat": 35.6895,
+    "lng": 139.6917,
+    "population": 9733276
   },
   {
     "name": "Yokohama",
-    "asciiName": "Yokohama"
+    "asciiName": "Yokohama",
+    "lat": 35.4333,
+    "lng": 139.65,
+    "population": 3777491
   },
   {
     "name": "Osaka",
-    "asciiName": "Osaka"
+    "asciiName": "Osaka",
+    "lat": 34.6938,
+    "lng": 135.5011,
+    "population": 2753862
   },
   {
     "name": "Nagoya",
-    "asciiName": "Nagoya"
+    "asciiName": "Nagoya",
+    "lat": 35.1815,
+    "lng": 136.9064,
+    "population": 2332176
   },
   {
     "name": "Sapporo",
-    "asciiName": "Sapporo"
+    "asciiName": "Sapporo",
+    "lat": 43.0667,
+    "lng": 141.35,
+    "population": 1973832
   },
   {
     "name": "Fukuoka",
-    "asciiName": "Fukuoka"
+    "asciiName": "Fukuoka",
+    "lat": 33.6,
+    "lng": 130.4167,
+    "population": 1612392
   },
   {
     "name": "Kawasaki",
-    "asciiName": "Kawasaki"
+    "asciiName": "Kawasaki",
+    "lat": 35.5206,
+    "lng": 139.7172,
+    "population": 1538262
   },
   {
     "name": "Kobe",
-    "asciiName": "Kobe"
+    "asciiName": "Kobe",
+    "lat": 34.6913,
+    "lng": 135.183,
+    "population": 1525152
   },
   {
     "name": "Kyoto",
-    "asciiName": "Kyoto"
+    "asciiName": "Kyoto",
+    "lat": 35.0211,
+    "lng": 135.7539,
+    "population": 1463723
   },
   {
     "name": "Saitama",
-    "asciiName": "Saitama"
+    "asciiName": "Saitama",
+    "lat": 35.9081,
+    "lng": 139.6566,
+    "population": 1324854
   },
   {
     "name": "Hiroshima",
-    "asciiName": "Hiroshima"
+    "asciiName": "Hiroshima",
+    "lat": 34.4,
+    "lng": 132.45,
+    "population": 1200754
   },
   {
     "name": "Sendai",
-    "asciiName": "Sendai"
+    "asciiName": "Sendai",
+    "lat": 38.2667,
+    "lng": 140.8667,
+    "population": 1096704
   },
   {
     "name": "Chiba",
-    "asciiName": "Chiba"
+    "asciiName": "Chiba",
+    "lat": 35.6,
+    "lng": 140.1167,
+    "population": 979768
   },
   {
     "name": "Kitakyushu",
-    "asciiName": "Kitakyushu"
+    "asciiName": "Kitakyushu",
+    "lat": 33.8518,
+    "lng": 130.8503,
+    "population": 940978
   },
   {
     "name": "Setagaya",
-    "asciiName": "Setagaya"
+    "asciiName": "Setagaya",
+    "lat": 35.6419,
+    "lng": 139.6472,
+    "population": 940071
   },
   {
     "name": "Sakai",
-    "asciiName": "Sakai"
+    "asciiName": "Sakai",
+    "lat": 34.5822,
+    "lng": 135.4665,
+    "population": 826161
   },
   {
     "name": "Niigata",
-    "asciiName": "Niigata"
+    "asciiName": "Niigata",
+    "lat": 37.9226,
+    "lng": 139.0413,
+    "population": 797591
   },
   {
     "name": "Hamamatsu",
-    "asciiName": "Hamamatsu"
+    "asciiName": "Hamamatsu",
+    "lat": 34.7,
+    "lng": 137.7333,
+    "population": 791707
   },
   {
     "name": "Ōta",
-    "asciiName": "Ota"
+    "asciiName": "Ota",
+    "lat": 35.5613,
+    "lng": 139.7161,
+    "population": 748081
   },
   {
     "name": "Kumamoto",
-    "asciiName": "Kumamoto"
+    "asciiName": "Kumamoto",
+    "lat": 32.8059,
+    "lng": 130.6918,
+    "population": 738907
   },
   {
     "name": "Aihara",
-    "asciiName": "Aihara"
+    "asciiName": "Aihara",
+    "lat": 35.6,
+    "lng": 139.3167,
+    "population": 725493
   },
   {
     "name": "Okayama",
-    "asciiName": "Okayama"
+    "asciiName": "Okayama",
+    "lat": 34.65,
+    "lng": 133.9333,
+    "population": 724691
   },
   {
     "name": "Sagamihara",
-    "asciiName": "Sagamihara"
+    "asciiName": "Sagamihara",
+    "lat": 35.5671,
+    "lng": 139.2417,
+    "population": 720780
   },
   {
     "name": "Edogawe",
-    "asciiName": "Edogawe"
+    "asciiName": "Edogawe",
+    "lat": 35.6923,
+    "lng": 139.8731,
+    "population": 697932
   },
   {
     "name": "Adachi",
-    "asciiName": "Adachi"
+    "asciiName": "Adachi",
+    "lat": 35.7632,
+    "lng": 139.8076,
+    "population": 695043
   },
   {
     "name": "Shizuoka",
-    "asciiName": "Shizuoka"
+    "asciiName": "Shizuoka",
+    "lat": 34.9833,
+    "lng": 138.3833,
+    "population": 693389
   },
   {
     "name": "Honchō",
-    "asciiName": "Honcho"
+    "asciiName": "Honcho",
+    "lat": 35.7013,
+    "lng": 139.9865,
+    "population": 644668
   },
   {
     "name": "Kawaguchi",
-    "asciiName": "Kawaguchi"
+    "asciiName": "Kawaguchi",
+    "lat": 35.8052,
+    "lng": 139.7107,
+    "population": 607373
   },
   {
     "name": "Kagoshima",
-    "asciiName": "Kagoshima"
+    "asciiName": "Kagoshima",
+    "lat": 31.5667,
+    "lng": 130.55,
+    "population": 595049
   },
   {
     "name": "Suginami",
-    "asciiName": "Suginami"
+    "asciiName": "Suginami",
+    "lat": 36.2013,
+    "lng": 140.2841,
+    "population": 588354
   },
   {
     "name": "Itabashi",
-    "asciiName": "Itabashi"
+    "asciiName": "Itabashi",
+    "lat": 35.7489,
+    "lng": 139.715,
+    "population": 584483
   },
   {
     "name": "Hachiōji",
-    "asciiName": "Hachioji"
+    "asciiName": "Hachioji",
+    "lat": 35.6558,
+    "lng": 139.3239,
+    "population": 579355
   },
   {
     "name": "Kotō",
-    "asciiName": "Koto"
+    "asciiName": "Koto",
+    "lat": 32.7786,
+    "lng": 130.7454,
+    "population": 543730
   },
   {
     "name": "Himeji",
-    "asciiName": "Himeji"
+    "asciiName": "Himeji",
+    "lat": 34.8167,
+    "lng": 134.7,
+    "population": 530495
   },
   {
     "name": "Utsunomiya",
-    "asciiName": "Utsunomiya"
+    "asciiName": "Utsunomiya",
+    "lat": 36.5667,
+    "lng": 139.8833,
+    "population": 518757
   },
   {
     "name": "Matsuyama",
-    "asciiName": "Matsuyama"
+    "asciiName": "Matsuyama",
+    "lat": 33.8392,
+    "lng": 132.7657,
+    "population": 511192
   },
   {
     "name": "Matsudo",
-    "asciiName": "Matsudo"
+    "asciiName": "Matsudo",
+    "lat": 35.78,
+    "lng": 139.9014,
+    "population": 498575
   },
   {
     "name": "Ichikawa",
-    "asciiName": "Ichikawa"
+    "asciiName": "Ichikawa",
+    "lat": 35.7341,
+    "lng": 139.9065,
+    "population": 496676
   },
   {
     "name": "Higashiosaka",
-    "asciiName": "Higashiosaka"
+    "asciiName": "Higashiosaka",
+    "lat": 34.6667,
+    "lng": 135.5833,
+    "population": 493940
   },
   {
     "name": "Nishinomiya",
-    "asciiName": "Nishinomiya"
+    "asciiName": "Nishinomiya",
+    "lat": 34.7156,
+    "lng": 135.332,
+    "population": 485587
   },
   {
     "name": "Kurashiki",
-    "asciiName": "Kurashiki"
+    "asciiName": "Kurashiki",
+    "lat": 34.5833,
+    "lng": 133.7667,
+    "population": 483576
   },
   {
     "name": "Ōita",
-    "asciiName": "Oita"
+    "asciiName": "Oita",
+    "lat": 33.2333,
+    "lng": 131.6,
+    "population": 477715
   },
   {
     "name": "Fukuyama",
-    "asciiName": "Fukuyama"
+    "asciiName": "Fukuyama",
+    "lat": 34.4833,
+    "lng": 133.3667,
+    "population": 468812
   },
   {
     "name": "Kanazawa",
-    "asciiName": "Kanazawa"
+    "asciiName": "Kanazawa",
+    "lat": 36.6,
+    "lng": 136.6167,
+    "population": 466029
   },
   {
     "name": "Amagasaki",
-    "asciiName": "Amagasaki"
+    "asciiName": "Amagasaki",
+    "lat": 34.7167,
+    "lng": 135.4167,
+    "population": 459593
   },
   {
     "name": "Katsushika",
-    "asciiName": "Katsushika"
+    "asciiName": "Katsushika",
+    "lat": 35.7333,
+    "lng": 139.85,
+    "population": 453093
   },
   {
     "name": "Fujisawa",
-    "asciiName": "Fujisawa"
+    "asciiName": "Fujisawa",
+    "lat": 35.3493,
+    "lng": 139.4767,
+    "population": 439728
   },
   {
     "name": "Kashiwa",
-    "asciiName": "Kashiwa"
+    "asciiName": "Kashiwa",
+    "lat": 35.8622,
+    "lng": 139.9773,
+    "population": 433436
   },
   {
     "name": "Machida",
-    "asciiName": "Machida"
+    "asciiName": "Machida",
+    "lat": 35.5403,
+    "lng": 139.4508,
+    "population": 431079
   },
   {
     "name": "Toyota",
-    "asciiName": "Toyota"
+    "asciiName": "Toyota",
+    "lat": 35.0833,
+    "lng": 137.15,
+    "population": 426162
   },
   {
     "name": "Shinagawa",
-    "asciiName": "Shinagawa"
+    "asciiName": "Shinagawa",
+    "lat": 33.6363,
+    "lng": 133.0057,
+    "population": 422488
   },
   {
     "name": "Takamatsu",
-    "asciiName": "Takamatsu"
+    "asciiName": "Takamatsu",
+    "lat": 34.3333,
+    "lng": 134.05,
+    "population": 418994
   },
   {
     "name": "Toyama",
-    "asciiName": "Toyama"
+    "asciiName": "Toyama",
+    "lat": 36.7,
+    "lng": 137.2167,
+    "population": 415844
   },
   {
     "name": "Yokosuka",
-    "asciiName": "Yokosuka"
+    "asciiName": "Yokosuka",
+    "lat": 35.2836,
+    "lng": 139.6672,
+    "population": 409478
   },
   {
     "name": "Nagasaki",
-    "asciiName": "Nagasaki"
+    "asciiName": "Nagasaki",
+    "lat": 32.75,
+    "lng": 129.8833,
+    "population": 409118
   },
   {
     "name": "Hirakata",
-    "asciiName": "Hirakata"
+    "asciiName": "Hirakata",
+    "lat": 34.8135,
+    "lng": 135.6491,
+    "population": 406331
   },
   {
     "name": "Gifu",
-    "asciiName": "Gifu"
+    "asciiName": "Gifu",
+    "lat": 35.4229,
+    "lng": 136.7604,
+    "population": 402557
   },
   {
     "name": "Toyonaka",
-    "asciiName": "Toyonaka"
+    "asciiName": "Toyonaka",
+    "lat": 34.7824,
+    "lng": 135.4693,
+    "population": 401558
   },
   {
     "name": "Miyazaki",
-    "asciiName": "Miyazaki"
+    "asciiName": "Miyazaki",
+    "lat": 31.9167,
+    "lng": 131.4167,
+    "population": 401339
   },
   {
     "name": "Suita",
-    "asciiName": "Suita"
+    "asciiName": "Suita",
+    "lat": 34.7614,
+    "lng": 135.5157,
+    "population": 385567
   },
   {
     "name": "Okazaki",
-    "asciiName": "Okazaki"
+    "asciiName": "Okazaki",
+    "lat": 34.95,
+    "lng": 137.1667,
+    "population": 384654
   },
   {
     "name": "Ichinomiya",
-    "asciiName": "Ichinomiya"
+    "asciiName": "Ichinomiya",
+    "lat": 35.3,
+    "lng": 136.8,
+    "population": 380073
   },
   {
     "name": "Toyohashi",
-    "asciiName": "Toyohashi"
+    "asciiName": "Toyohashi",
+    "lat": 34.7667,
+    "lng": 137.3833,
+    "population": 377453
   },
   {
     "name": "Minato",
-    "asciiName": "Minato"
+    "asciiName": "Minato",
+    "lat": 34.2152,
+    "lng": 135.1501,
+    "population": 375339
   },
   {
     "name": "Takasaki",
-    "asciiName": "Takasaki"
+    "asciiName": "Takasaki",
+    "lat": 36.3333,
+    "lng": 139.0167,
+    "population": 372973
   },
   {
     "name": "Nagano",
-    "asciiName": "Nagano"
+    "asciiName": "Nagano",
+    "lat": 36.65,
+    "lng": 138.1833,
+    "population": 372760
   },
   {
     "name": "Nara-shi",
-    "asciiName": "Nara-shi"
+    "asciiName": "Nara-shi",
+    "lat": 34.685,
+    "lng": 135.8048,
+    "population": 367353
   },
   {
     "name": "Iwaki",
-    "asciiName": "Iwaki"
+    "asciiName": "Iwaki",
+    "lat": 37.05,
+    "lng": 140.8833,
+    "population": 357309
   },
   {
     "name": "Wakayama",
-    "asciiName": "Wakayama"
+    "asciiName": "Wakayama",
+    "lat": 34.2333,
+    "lng": 135.1667,
+    "population": 356729
   },
   {
     "name": "Kawagoe",
-    "asciiName": "Kawagoe"
+    "asciiName": "Kawagoe",
+    "lat": 35.9086,
+    "lng": 139.4853,
+    "population": 354571
   },
   {
     "name": "Takatsuki",
-    "asciiName": "Takatsuki"
+    "asciiName": "Takatsuki",
+    "lat": 34.8483,
+    "lng": 135.6168,
+    "population": 354468
   },
   {
     "name": "Shinjuku",
-    "asciiName": "Shinjuku"
+    "asciiName": "Shinjuku",
+    "lat": 35.6912,
+    "lng": 139.7085,
+    "population": 349385
   },
   {
     "name": "Koshigaya",
-    "asciiName": "Koshigaya"
+    "asciiName": "Koshigaya",
+    "lat": 35.8904,
+    "lng": 139.7892,
+    "population": 345353
   },
   {
     "name": "Ōtsu",
-    "asciiName": "Otsu"
+    "asciiName": "Otsu",
+    "lat": 35,
+    "lng": 135.8667,
+    "population": 345070
   },
   {
     "name": "Nakano",
-    "asciiName": "Nakano"
+    "asciiName": "Nakano",
+    "lat": 35.7045,
+    "lng": 139.6695,
+    "population": 344880
   },
   {
     "name": "Tokorozawa",
-    "asciiName": "Tokorozawa"
+    "asciiName": "Tokorozawa",
+    "lat": 35.7992,
+    "lng": 139.469,
+    "population": 344194
   },
   {
     "name": "Asahikawa",
-    "asciiName": "Asahikawa"
+    "asciiName": "Asahikawa",
+    "lat": 43.7706,
+    "lng": 142.3649,
+    "population": 333530
   },
   {
     "name": "Maebashi",
-    "asciiName": "Maebashi"
+    "asciiName": "Maebashi",
+    "lat": 36.4,
+    "lng": 139.0833,
+    "population": 332149
   },
   {
     "name": "Kita",
-    "asciiName": "Kita"
+    "asciiName": "Kita",
+    "lat": 35.7526,
+    "lng": 139.7335,
+    "population": 332140
   },
   {
     "name": "Kochi",
-    "asciiName": "Kochi"
+    "asciiName": "Kochi",
+    "lat": 33.55,
+    "lng": 133.5333,
+    "population": 332059
   }
 ]

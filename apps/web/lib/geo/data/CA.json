@@ -1,322 +1,562 @@
 [
   {
     "name": "Toronto",
-    "asciiName": "Toronto"
+    "asciiName": "Toronto",
+    "lat": 43.7064,
+    "lng": -79.3986,
+    "population": 2794356
   },
   {
     "name": "Montréal",
-    "asciiName": "Montreal"
+    "asciiName": "Montreal",
+    "lat": 45.5088,
+    "lng": -73.5878,
+    "population": 1762949
   },
   {
     "name": "Calgary",
-    "asciiName": "Calgary"
+    "asciiName": "Calgary",
+    "lat": 51.0501,
+    "lng": -114.0853,
+    "population": 1306784
   },
   {
     "name": "Ottawa",
-    "asciiName": "Ottawa"
+    "asciiName": "Ottawa",
+    "lat": 45.4112,
+    "lng": -75.6981,
+    "population": 1017449
   },
   {
     "name": "Edmonton",
-    "asciiName": "Edmonton"
+    "asciiName": "Edmonton",
+    "lat": 53.5501,
+    "lng": -113.4687,
+    "population": 1010899
   },
   {
     "name": "Winnipeg",
-    "asciiName": "Winnipeg"
+    "asciiName": "Winnipeg",
+    "lat": 49.8844,
+    "lng": -97.147,
+    "population": 749607
   },
   {
     "name": "Mississauga",
-    "asciiName": "Mississauga"
+    "asciiName": "Mississauga",
+    "lat": 43.5789,
+    "lng": -79.6583,
+    "population": 717961
   },
   {
     "name": "Vancouver",
-    "asciiName": "Vancouver"
+    "asciiName": "Vancouver",
+    "lat": 49.2497,
+    "lng": -123.1193,
+    "population": 662248
   },
   {
     "name": "Brampton",
-    "asciiName": "Brampton"
+    "asciiName": "Brampton",
+    "lat": 43.6834,
+    "lng": -79.7663,
+    "population": 656480
   },
   {
     "name": "Hamilton",
-    "asciiName": "Hamilton"
+    "asciiName": "Hamilton",
+    "lat": 43.2501,
+    "lng": -79.8496,
+    "population": 569353
   },
   {
     "name": "Surrey",
-    "asciiName": "Surrey"
+    "asciiName": "Surrey",
+    "lat": 49.1064,
+    "lng": -122.8251,
+    "population": 568322
   },
   {
     "name": "Québec",
-    "asciiName": "Quebec"
+    "asciiName": "Quebec",
+    "lat": 46.8123,
+    "lng": -71.2145,
+    "population": 531902
   },
   {
     "name": "Halifax",
-    "asciiName": "Halifax"
+    "asciiName": "Halifax",
+    "lat": 44.6427,
+    "lng": -63.5769,
+    "population": 471559
   },
   {
     "name": "Laval",
-    "asciiName": "Laval"
+    "asciiName": "Laval",
+    "lat": 45.57,
+    "lng": -73.692,
+    "population": 438366
   },
   {
     "name": "London",
-    "asciiName": "London"
+    "asciiName": "London",
+    "lat": 42.9834,
+    "lng": -81.233,
+    "population": 422324
   },
   {
     "name": "Etobicoke",
-    "asciiName": "Etobicoke"
+    "asciiName": "Etobicoke",
+    "lat": 43.6442,
+    "lng": -79.5698,
+    "population": 365000
   },
   {
     "name": "Markham",
-    "asciiName": "Markham"
+    "asciiName": "Markham",
+    "lat": 43.8668,
+    "lng": -79.2663,
+    "population": 338503
   },
   {
     "name": "Vaughan",
-    "asciiName": "Vaughan"
+    "asciiName": "Vaughan",
+    "lat": 43.8361,
+    "lng": -79.4983,
+    "population": 323103
   },
   {
     "name": "Gatineau",
-    "asciiName": "Gatineau"
+    "asciiName": "Gatineau",
+    "lat": 45.4772,
+    "lng": -75.7016,
+    "population": 300045
   },
   {
     "name": "Victoria",
-    "asciiName": "Victoria"
+    "asciiName": "Victoria",
+    "lat": 48.4359,
+    "lng": -123.3515,
+    "population": 289625
   },
   {
     "name": "Saskatoon",
-    "asciiName": "Saskatoon"
+    "asciiName": "Saskatoon",
+    "lat": 52.1324,
+    "lng": -106.6689,
+    "population": 266141
   },
   {
     "name": "Kitchener",
-    "asciiName": "Kitchener"
+    "asciiName": "Kitchener",
+    "lat": 43.4254,
+    "lng": -80.5112,
+    "population": 256885
   },
   {
     "name": "Burnaby",
-    "asciiName": "Burnaby"
+    "asciiName": "Burnaby",
+    "lat": 49.2664,
+    "lng": -122.9526,
+    "population": 249125
   },
   {
     "name": "Windsor",
-    "asciiName": "Windsor"
+    "asciiName": "Windsor",
+    "lat": 42.3001,
+    "lng": -83.0165,
+    "population": 229660
   },
   {
     "name": "Longueuil",
-    "asciiName": "Longueuil"
+    "asciiName": "Longueuil",
+    "lat": 45.5152,
+    "lng": -73.4682,
+    "population": 229330
   },
   {
     "name": "Regina",
-    "asciiName": "Regina"
+    "asciiName": "Regina",
+    "lat": 50.4501,
+    "lng": -104.6178,
+    "population": 226404
   },
   {
     "name": "Oakville",
-    "asciiName": "Oakville"
+    "asciiName": "Oakville",
+    "lat": 43.4501,
+    "lng": -79.6829,
+    "population": 213759
   },
   {
     "name": "Richmond",
-    "asciiName": "Richmond"
+    "asciiName": "Richmond",
+    "lat": 49.17,
+    "lng": -123.1368,
+    "population": 209937
   },
   {
     "name": "Richmond Hill",
-    "asciiName": "Richmond Hill"
+    "asciiName": "Richmond Hill",
+    "lat": 43.8711,
+    "lng": -79.4373,
+    "population": 202022
   },
   {
     "name": "Burlington",
-    "asciiName": "Burlington"
+    "asciiName": "Burlington",
+    "lat": 43.3862,
+    "lng": -79.8371,
+    "population": 186948
   },
   {
     "name": "Nepean",
-    "asciiName": "Nepean"
+    "asciiName": "Nepean",
+    "lat": 45.3362,
+    "lng": -75.7225,
+    "population": 180000
   },
   {
     "name": "Oshawa",
-    "asciiName": "Oshawa"
+    "asciiName": "Oshawa",
+    "lat": 43.9001,
+    "lng": -78.8496,
+    "population": 175383
   },
   {
     "name": "Greater Sudbury",
-    "asciiName": "Greater Sudbury"
+    "asciiName": "Greater Sudbury",
+    "lat": 46.49,
+    "lng": -80.99,
+    "population": 166004
   },
   {
     "name": "Newton",
-    "asciiName": "Newton"
+    "asciiName": "Newton",
+    "lat": 49.1333,
+    "lng": -122.85,
+    "population": 159390
   },
   {
     "name": "Gloucester",
-    "asciiName": "Gloucester"
+    "asciiName": "Gloucester",
+    "lat": 45.35,
+    "lng": -75.6333,
+    "population": 150012
   },
   {
     "name": "Saguenay",
-    "asciiName": "Saguenay"
+    "asciiName": "Saguenay",
+    "lat": 48.4168,
+    "lng": -71.0657,
+    "population": 148886
   },
   {
     "name": "Coquitlam",
-    "asciiName": "Coquitlam"
+    "asciiName": "Coquitlam",
+    "lat": 49.2846,
+    "lng": -122.7822,
+    "population": 148625
   },
   {
     "name": "Barrie",
-    "asciiName": "Barrie"
+    "asciiName": "Barrie",
+    "lat": 44.4001,
+    "lng": -79.6663,
+    "population": 147829
   },
   {
     "name": "Rosemont–La Petite-Patrie",
-    "asciiName": "Rosemont-La Petite-Patrie"
+    "asciiName": "Rosemont-La Petite-Patrie",
+    "lat": 45.5366,
+    "lng": -73.6069,
+    "population": 146501
   },
   {
     "name": "Villeray–Saint-Michel–Parc-Extension",
-    "asciiName": "Villeray-Saint-Michel-Parc-Extension"
+    "asciiName": "Villeray-Saint-Michel-Parc-Extension",
+    "lat": 45.5587,
+    "lng": -73.6053,
+    "population": 144814
   },
   {
     "name": "Kelowna",
-    "asciiName": "Kelowna"
+    "asciiName": "Kelowna",
+    "lat": 49.8831,
+    "lng": -119.4857,
+    "population": 144576
   },
   {
     "name": "Trois-Rivières",
-    "asciiName": "Trois-Rivieres"
+    "asciiName": "Trois-Rivieres",
+    "lat": 46.3451,
+    "lng": -72.5477,
+    "population": 144472
   },
   {
     "name": "Guelph",
-    "asciiName": "Guelph"
+    "asciiName": "Guelph",
+    "lat": 43.5459,
+    "lng": -80.256,
+    "population": 143740
   },
   {
     "name": "Lévis",
-    "asciiName": "Levis"
+    "asciiName": "Levis",
+    "lat": 46.8033,
+    "lng": -71.1779,
+    "population": 143414
   },
   {
     "name": "Mercier–Hochelaga-Maisonneuve",
-    "asciiName": "Mercier-Hochelaga-Maisonneuve"
+    "asciiName": "Mercier-Hochelaga-Maisonneuve",
+    "lat": 45.5719,
+    "lng": -73.5463,
+    "population": 142753
   },
   {
     "name": "Abbotsford",
-    "asciiName": "Abbotsford"
+    "asciiName": "Abbotsford",
+    "lat": 49.058,
+    "lng": -122.2526,
+    "population": 141397
   },
   {
     "name": "Whitby",
-    "asciiName": "Whitby"
+    "asciiName": "Whitby",
+    "lat": 43.8834,
+    "lng": -78.9329,
+    "population": 138501
   },
   {
     "name": "St. Catharines",
-    "asciiName": "St. Catharines"
+    "asciiName": "St. Catharines",
+    "lat": 43.1713,
+    "lng": -79.2427,
+    "population": 136803
   },
   {
     "name": "Ahuntsic-Cartierville",
-    "asciiName": "Ahuntsic-Cartierville"
+    "asciiName": "Ahuntsic-Cartierville",
+    "lat": 45.5667,
+    "lng": -73.6667,
+    "population": 135336
   },
   {
     "name": "Le Vieux-Longueuil",
-    "asciiName": "Le Vieux-Longueuil"
+    "asciiName": "Le Vieux-Longueuil",
+    "lat": 45.5372,
+    "lng": -73.5077,
+    "population": 135218
   },
   {
     "name": "Milton",
-    "asciiName": "Milton"
+    "asciiName": "Milton",
+    "lat": 43.5168,
+    "lng": -79.8829,
+    "population": 132979
   },
   {
     "name": "Langley",
-    "asciiName": "Langley"
+    "asciiName": "Langley",
+    "lat": 49.1011,
+    "lng": -122.6588,
+    "population": 132603
   },
   {
     "name": "Kingston",
-    "asciiName": "Kingston"
+    "asciiName": "Kingston",
+    "lat": 44.2298,
+    "lng": -76.481,
+    "population": 132485
   },
   {
     "name": "Cambridge",
-    "asciiName": "Cambridge"
+    "asciiName": "Cambridge",
+    "lat": 43.3601,
+    "lng": -80.3127,
+    "population": 129920
   },
   {
     "name": "Sherbrooke",
-    "asciiName": "Sherbrooke"
+    "asciiName": "Sherbrooke",
+    "lat": 45.4001,
+    "lng": -71.8991,
+    "population": 129447
   },
   {
     "name": "Orléans",
-    "asciiName": "Orleans"
+    "asciiName": "Orleans",
+    "lat": 45.4573,
+    "lng": -75.5043,
+    "population": 125937
   },
   {
     "name": "Ottawa South",
-    "asciiName": "Ottawa South"
+    "asciiName": "Ottawa South",
+    "lat": 45.3921,
+    "lng": -75.6873,
+    "population": 125090
   },
   {
     "name": "Saint-Louis-de-Terrebonne",
-    "asciiName": "Saint-Louis-de-Terrebonne"
+    "asciiName": "Saint-Louis-de-Terrebonne",
+    "lat": 45.702,
+    "lng": -73.7867,
+    "population": 119944
   },
   {
     "name": "Ajax",
-    "asciiName": "Ajax"
+    "asciiName": "Ajax",
+    "lat": 43.8501,
+    "lng": -79.0329,
+    "population": 119677
   },
   {
     "name": "Saanich",
-    "asciiName": "Saanich"
+    "asciiName": "Saanich",
+    "lat": 48.5496,
+    "lng": -123.3693,
+    "population": 117735
   },
   {
     "name": "Rivière-des-Prairies–Pointe-aux-Trembles",
-    "asciiName": "Riviere-des-Prairies-Pointe-aux-Trembles"
+    "asciiName": "Riviere-des-Prairies-Pointe-aux-Trembles",
+    "lat": 45.6406,
+    "lng": -73.5846,
+    "population": 113868
   },
   {
     "name": "Terrebonne",
-    "asciiName": "Terrebonne"
+    "asciiName": "Terrebonne",
+    "lat": 45.7,
+    "lng": -73.6473,
+    "population": 111575
   },
   {
     "name": "Sainte-Foy",
-    "asciiName": "Sainte-Foy"
+    "asciiName": "Sainte-Foy",
+    "lat": 46.7814,
+    "lng": -71.2922,
+    "population": 111300
   },
   {
     "name": "St. John's",
-    "asciiName": "St. John's"
+    "asciiName": "St. John's",
+    "lat": 47.5649,
+    "lng": -52.7093,
+    "population": 110525
   },
   {
     "name": "Thunder Bay",
-    "asciiName": "Thunder Bay"
+    "asciiName": "Thunder Bay",
+    "lat": 48.382,
+    "lng": -89.2502,
+    "population": 108843
   },
   {
     "name": "La Cité-Limoilou",
-    "asciiName": "La Cite-Limoilou"
+    "asciiName": "La Cite-Limoilou",
+    "lat": 46.8289,
+    "lng": -71.2264,
+    "population": 108415
   },
   {
     "name": "Sydney",
-    "asciiName": "Sydney"
+    "asciiName": "Sydney",
+    "lat": 46.1351,
+    "lng": -60.1831,
+    "population": 105968
   },
   {
     "name": "Le Plateau-Mont-Royal",
-    "asciiName": "Le Plateau-Mont-Royal"
+    "asciiName": "Le Plateau-Mont-Royal",
+    "lat": 45.5283,
+    "lng": -73.5808,
+    "population": 105813
   },
   {
     "name": "Waterloo",
-    "asciiName": "Waterloo"
+    "asciiName": "Waterloo",
+    "lat": 43.4668,
+    "lng": -80.5164,
+    "population": 104986
   },
   {
     "name": "Ville-Marie",
-    "asciiName": "Ville-Marie"
+    "asciiName": "Ville-Marie",
+    "lat": 45.499,
+    "lng": -73.5705,
+    "population": 104944
   },
   {
     "name": "Brantford",
-    "asciiName": "Brantford"
+    "asciiName": "Brantford",
+    "lat": 43.1334,
+    "lng": -80.2664,
+    "population": 104688
   },
   {
     "name": "Kamloops",
-    "asciiName": "Kamloops"
+    "asciiName": "Kamloops",
+    "lat": 50.6665,
+    "lng": -120.3192,
+    "population": 104460
   },
   {
     "name": "Lethbridge",
-    "asciiName": "Lethbridge"
+    "asciiName": "Lethbridge",
+    "lat": 49.7,
+    "lng": -112.8186,
+    "population": 103197
   },
   {
     "name": "Whalley",
-    "asciiName": "Whalley"
+    "asciiName": "Whalley",
+    "lat": 49.1792,
+    "lng": -122.8667,
+    "population": 102555
   },
   {
     "name": "Delta",
-    "asciiName": "Delta"
+    "asciiName": "Delta",
+    "lat": 49.0892,
+    "lng": -123.0532,
+    "population": 101668
   },
   {
     "name": "Chilliwack",
-    "asciiName": "Chilliwack"
+    "asciiName": "Chilliwack",
+    "lat": 49.1664,
+    "lng": -121.9526,
+    "population": 101491
   },
   {
     "name": "Dartmouth",
-    "asciiName": "Dartmouth"
+    "asciiName": "Dartmouth",
+    "lat": 44.6713,
+    "lng": -63.5772,
+    "population": 101343
   },
   {
     "name": "Red Deer",
-    "asciiName": "Red Deer"
+    "asciiName": "Red Deer",
+    "lat": 52.2668,
+    "lng": -113.802,
+    "population": 100844
   },
   {
     "name": "Niagara Falls",
-    "asciiName": "Niagara Falls"
+    "asciiName": "Niagara Falls",
+    "lat": 43.1001,
+    "lng": -79.0663,
+    "population": 99818
   },
   {
     "name": "Saint-Laurent",
-    "asciiName": "Saint-Laurent"
+    "asciiName": "Saint-Laurent",
+    "lat": 45.5001,
+    "lng": -73.6659,
+    "population": 98828
   }
 ]

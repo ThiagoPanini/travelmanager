@@ -97,6 +97,40 @@ describe("tripDraftReducer — destino", () => {
     expect(getDestination(draft).city).toBe("Roma");
     expect(draft.stops).toHaveLength(2);
   });
+
+  it("'setDestination' guarda coords client-only quando vêm do dataset", () => {
+    // when: cidade escolhida do dataset traz lat/lng
+    const draft = run({
+      type: "setDestination",
+      city: "Roma",
+      country: "IT",
+      lat: 41.9,
+      lng: 12.5,
+    });
+    // then
+    expect(getDestination(draft).lat).toBe(41.9);
+    expect(getDestination(draft).lng).toBe(12.5);
+  });
+
+  it("'setDestination' zera coords quando a cidade é texto livre (sem lat/lng)", () => {
+    // given: destino com coords
+    const withCoords = run({
+      type: "setDestination",
+      city: "Roma",
+      country: "IT",
+      lat: 41.9,
+      lng: 12.5,
+    });
+    // when: re-grava por texto livre (sem coords)
+    const next = tripDraftReducer(withCoords, {
+      type: "setDestination",
+      city: "Vilarejo Secreto",
+      country: "IT",
+    });
+    // then
+    expect(getDestination(next).lat).toBeNull();
+    expect(getDestination(next).lng).toBeNull();
+  });
 });
 
 describe("tripDraftReducer — paradas (rota)", () => {
@@ -139,6 +173,23 @@ describe("tripDraftReducer — paradas (rota)", () => {
     expect(getDestination(next).city).toBe("Roma");
     expect(next.stops[0].desiredTransfer).toBeNull();
     expect(next.stops[1].desiredTransfer).toEqual({ kind: "undecided" });
+  });
+
+  it("'insertStop' guarda coords client-only da parada", () => {
+    // given: destino "Roma"
+    const draft = run({ type: "setDestination", city: "Roma", country: "IT" });
+    // when: insere Florença com coords do dataset
+    const next = tripDraftReducer(draft, {
+      type: "insertStop",
+      index: 0,
+      city: "Florença",
+      country: "IT",
+      lat: 43.77,
+      lng: 11.25,
+    });
+    // then
+    expect(getMiddleStops(next)[0].lat).toBe(43.77);
+    expect(getMiddleStops(next)[0].lng).toBe(11.25);
   });
 
   it("'insertStop' nunca encaixa depois do destino (índice clampado)", () => {
@@ -389,8 +440,18 @@ describe("tripDraftReducer — reset e replace", () => {
           country: null,
           arrivalDate: null,
           desiredTransfer: { kind: "plane" },
+          lat: null,
+          lng: null,
         },
-        { id: "b", city: "B", country: null, arrivalDate: null, desiredTransfer: null },
+        {
+          id: "b",
+          city: "B",
+          country: null,
+          arrivalDate: null,
+          desiredTransfer: null,
+          lat: null,
+          lng: null,
+        },
       ],
       invitations: [],
     };
@@ -454,6 +515,25 @@ describe("draftToPayload", () => {
     expect(payload.invitations).toEqual([{ email: "ana@x.com", role: "organizer" }]);
   });
 
+  it("não serializa coords — lat/lng são client-only (contrato congelado, ADR-0011)", () => {
+    // given: destino e parada com coords do dataset
+    const draft = run(
+      { type: "setName", name: "Toscana" },
+      { type: "setDestination", city: "Roma", country: "IT", lat: 41.9, lng: 12.5 },
+      { type: "insertStop", index: 0, city: "Florença", country: "IT", lat: 43.77, lng: 11.25 },
+    );
+    // when
+    const payload = draftToPayload(draft);
+    // then: nenhuma parada carrega lat/lng — só as chaves do contrato
+    for (const stop of payload.stops) {
+      expect(Object.keys(stop).sort()).toEqual(
+        ["arrival_date", "city", "country", "desired_transfer"].sort(),
+      );
+      expect("lat" in stop).toBe(false);
+      expect("lng" in stop).toBe(false);
+    }
+  });
+
   it("força stops[0].desired_transfer a null mesmo se o rascunho trouxer outro valor", () => {
     // given: rascunho cru via replace (índice 0 com avião)
     const raw: TripDraft = {
@@ -469,8 +549,18 @@ describe("draftToPayload", () => {
           country: null,
           arrivalDate: null,
           desiredTransfer: { kind: "plane" },
+          lat: null,
+          lng: null,
         },
-        { id: "b", city: "B", country: null, arrivalDate: null, desiredTransfer: { kind: "bus" } },
+        {
+          id: "b",
+          city: "B",
+          country: null,
+          arrivalDate: null,
+          desiredTransfer: { kind: "bus" },
+          lat: null,
+          lng: null,
+        },
       ],
       invitations: [],
     };

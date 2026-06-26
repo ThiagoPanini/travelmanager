@@ -1,322 +1,562 @@
 [
   {
     "name": "London",
-    "asciiName": "London"
+    "asciiName": "London",
+    "lat": 51.5085,
+    "lng": -0.1257,
+    "population": 8961989
   },
   {
     "name": "Birmingham",
-    "asciiName": "Birmingham"
+    "asciiName": "Birmingham",
+    "lat": 52.4814,
+    "lng": -1.8998,
+    "population": 1157603
   },
   {
     "name": "Glasgow",
-    "asciiName": "Glasgow"
+    "asciiName": "Glasgow",
+    "lat": 55.8652,
+    "lng": -4.2576,
+    "population": 626410
   },
   {
     "name": "Manchester",
-    "asciiName": "Manchester"
+    "asciiName": "Manchester",
+    "lat": 53.481,
+    "lng": -2.2374,
+    "population": 568996
   },
   {
     "name": "Sheffield",
-    "asciiName": "Sheffield"
+    "asciiName": "Sheffield",
+    "lat": 53.383,
+    "lng": -1.4659,
+    "population": 556500
   },
   {
     "name": "Leeds",
-    "asciiName": "Leeds"
+    "asciiName": "Leeds",
+    "lat": 53.7965,
+    "lng": -1.5478,
+    "population": 536280
   },
   {
     "name": "Edinburgh",
-    "asciiName": "Edinburgh"
+    "asciiName": "Edinburgh",
+    "lat": 55.9521,
+    "lng": -3.1965,
+    "population": 514990
   },
   {
     "name": "Liverpool",
-    "asciiName": "Liverpool"
+    "asciiName": "Liverpool",
+    "lat": 53.4106,
+    "lng": -2.9779,
+    "population": 496770
   },
   {
     "name": "Bristol",
-    "asciiName": "Bristol"
+    "asciiName": "Bristol",
+    "lat": 51.4552,
+    "lng": -2.5966,
+    "population": 479024
   },
   {
     "name": "Cardiff",
-    "asciiName": "Cardiff"
+    "asciiName": "Cardiff",
+    "lat": 51.48,
+    "lng": -3.18,
+    "population": 372089
   },
   {
     "name": "Leicester",
-    "asciiName": "Leicester"
+    "asciiName": "Leicester",
+    "lat": 52.6386,
+    "lng": -1.1317,
+    "population": 368600
   },
   {
     "name": "Bradford",
-    "asciiName": "Bradford"
+    "asciiName": "Bradford",
+    "lat": 53.7939,
+    "lng": -1.7521,
+    "population": 366187
   },
   {
     "name": "Belfast",
-    "asciiName": "Belfast"
+    "asciiName": "Belfast",
+    "lat": 54.5968,
+    "lng": -5.9254,
+    "population": 348005
   },
   {
     "name": "Coventry",
-    "asciiName": "Coventry"
+    "asciiName": "Coventry",
+    "lat": 52.4066,
+    "lng": -1.5122,
+    "population": 345324
   },
   {
     "name": "Brent",
-    "asciiName": "Brent"
+    "asciiName": "Brent",
+    "lat": 51.5531,
+    "lng": -0.3023,
+    "population": 329100
   },
   {
     "name": "Birkenhead",
-    "asciiName": "Birkenhead"
+    "asciiName": "Birkenhead",
+    "lat": 53.3934,
+    "lng": -3.0148,
+    "population": 325264
   },
   {
     "name": "Nottingham",
-    "asciiName": "Nottingham"
+    "asciiName": "Nottingham",
+    "lat": 52.9536,
+    "lng": -1.1505,
+    "population": 323632
   },
   {
     "name": "Islington",
-    "asciiName": "Islington"
+    "asciiName": "Islington",
+    "lat": 51.5362,
+    "lng": -0.103,
+    "population": 319143
   },
   {
     "name": "Reading",
-    "asciiName": "Reading"
+    "asciiName": "Reading",
+    "lat": 51.4563,
+    "lng": -0.9711,
+    "population": 318014
   },
   {
     "name": "Kingston upon Hull",
-    "asciiName": "Kingston upon Hull"
+    "asciiName": "Kingston upon Hull",
+    "lat": 53.7446,
+    "lng": -0.3352,
+    "population": 314018
   },
   {
     "name": "Preston",
-    "asciiName": "Preston"
+    "asciiName": "Preston",
+    "lat": 53.7628,
+    "lng": -2.7045,
+    "population": 313332
   },
   {
     "name": "Swansea",
-    "asciiName": "Swansea"
+    "asciiName": "Swansea",
+    "lat": 51.6208,
+    "lng": -3.9432,
+    "population": 300352
   },
   {
     "name": "Newcastle upon Tyne",
-    "asciiName": "Newcastle upon Tyne"
+    "asciiName": "Newcastle upon Tyne",
+    "lat": 54.9733,
+    "lng": -1.614,
+    "population": 300125
   },
   {
     "name": "Southend-on-Sea",
-    "asciiName": "Southend-on-Sea"
+    "asciiName": "Southend-on-Sea",
+    "lat": 51.5378,
+    "lng": 0.7143,
+    "population": 295310
   },
   {
     "name": "Brighton",
-    "asciiName": "Brighton"
+    "asciiName": "Brighton",
+    "lat": 50.8284,
+    "lng": -0.1395,
+    "population": 283870
   },
   {
     "name": "Derby",
-    "asciiName": "Derby"
+    "asciiName": "Derby",
+    "lat": 52.9228,
+    "lng": -1.4766,
+    "population": 270468
   },
   {
     "name": "Southampton",
-    "asciiName": "Southampton"
+    "asciiName": "Southampton",
+    "lat": 50.904,
+    "lng": -1.4043,
+    "population": 269781
   },
   {
     "name": "Wolverhampton",
-    "asciiName": "Wolverhampton"
+    "asciiName": "Wolverhampton",
+    "lat": 52.5855,
+    "lng": -2.123,
+    "population": 263700
   },
   {
     "name": "Plymouth",
-    "asciiName": "Plymouth"
+    "asciiName": "Plymouth",
+    "lat": 50.3715,
+    "lng": -4.143,
+    "population": 260203
   },
   {
     "name": "Stoke-on-Trent",
-    "asciiName": "Stoke-on-Trent"
+    "asciiName": "Stoke-on-Trent",
+    "lat": 53.0042,
+    "lng": -2.1854,
+    "population": 258366
   },
   {
     "name": "Milton Keynes",
-    "asciiName": "Milton Keynes"
+    "asciiName": "Milton Keynes",
+    "lat": 52.0417,
+    "lng": -0.7558,
+    "population": 256385
   },
   {
     "name": "City of Westminster",
-    "asciiName": "City of Westminster"
+    "asciiName": "City of Westminster",
+    "lat": 51.4975,
+    "lng": -0.1357,
+    "population": 247614
   },
   {
     "name": "Northampton",
-    "asciiName": "Northampton"
+    "asciiName": "Northampton",
+    "lat": 52.25,
+    "lng": -0.8833,
+    "population": 245899
   },
   {
     "name": "Oldham",
-    "asciiName": "Oldham"
+    "asciiName": "Oldham",
+    "lat": 53.5405,
+    "lng": -2.1183,
+    "population": 237110
   },
   {
     "name": "Bexley",
-    "asciiName": "Bexley"
+    "asciiName": "Bexley",
+    "lat": 51.4416,
+    "lng": 0.1487,
+    "population": 228000
   },
   {
     "name": "Luton",
-    "asciiName": "Luton"
+    "asciiName": "Luton",
+    "lat": 51.8797,
+    "lng": -0.4175,
+    "population": 225262
   },
   {
     "name": "Barking",
-    "asciiName": "Barking"
+    "asciiName": "Barking",
+    "lat": 51.5333,
+    "lng": 0.0833,
+    "population": 218534
   },
   {
     "name": "Archway",
-    "asciiName": "Archway"
+    "asciiName": "Archway",
+    "lat": 51.5673,
+    "lng": -0.1341,
+    "population": 215667
   },
   {
     "name": "Portsmouth",
-    "asciiName": "Portsmouth"
+    "asciiName": "Portsmouth",
+    "lat": 50.799,
+    "lng": -1.0912,
+    "population": 208100
   },
   {
     "name": "Swindon",
-    "asciiName": "Swindon"
+    "asciiName": "Swindon",
+    "lat": 51.558,
+    "lng": -1.7812,
+    "population": 201669
   },
   {
     "name": "Dudley",
-    "asciiName": "Dudley"
+    "asciiName": "Dudley",
+    "lat": 52.5,
+    "lng": -2.0833,
+    "population": 199059
   },
   {
     "name": "Aberdeen",
-    "asciiName": "Aberdeen"
+    "asciiName": "Aberdeen",
+    "lat": 57.1437,
+    "lng": -2.0981,
+    "population": 198590
   },
   {
     "name": "Sutton",
-    "asciiName": "Sutton"
+    "asciiName": "Sutton",
+    "lat": 51.35,
+    "lng": -0.2,
+    "population": 187600
   },
   {
     "name": "St Helens",
-    "asciiName": "St Helens"
+    "asciiName": "St Helens",
+    "lat": 53.45,
+    "lng": -2.7333,
+    "population": 183200
   },
   {
     "name": "Ipswich",
-    "asciiName": "Ipswich"
+    "asciiName": "Ipswich",
+    "lat": 52.0592,
+    "lng": 1.1555,
+    "population": 178835
   },
   {
     "name": "Wigan",
-    "asciiName": "Wigan"
+    "asciiName": "Wigan",
+    "lat": 53.543,
+    "lng": -2.6371,
+    "population": 175405
   },
   {
     "name": "Croydon",
-    "asciiName": "Croydon"
+    "asciiName": "Croydon",
+    "lat": 51.3833,
+    "lng": -0.1,
+    "population": 173314
   },
   {
     "name": "Warrington",
-    "asciiName": "Warrington"
+    "asciiName": "Warrington",
+    "lat": 53.3925,
+    "lng": -2.5802,
+    "population": 172330
   },
   {
     "name": "Walsall",
-    "asciiName": "Walsall"
+    "asciiName": "Walsall",
+    "lat": 52.5853,
+    "lng": -1.984,
+    "population": 172141
   },
   {
     "name": "Mansfield",
-    "asciiName": "Mansfield"
+    "asciiName": "Mansfield",
+    "lat": 53.1333,
+    "lng": -1.2,
+    "population": 171958
   },
   {
     "name": "Sunderland",
-    "asciiName": "Sunderland"
+    "asciiName": "Sunderland",
+    "lat": 54.9047,
+    "lng": -1.3822,
+    "population": 170134
   },
   {
     "name": "Ilford",
-    "asciiName": "Ilford"
+    "asciiName": "Ilford",
+    "lat": 51.5577,
+    "lng": 0.0728,
+    "population": 168168
   },
   {
     "name": "Slough",
-    "asciiName": "Slough"
+    "asciiName": "Slough",
+    "lat": 51.5095,
+    "lng": -0.5954,
+    "population": 164793
   },
   {
     "name": "Bournemouth",
-    "asciiName": "Bournemouth"
+    "asciiName": "Bournemouth",
+    "lat": 50.7205,
+    "lng": -1.8795,
+    "population": 163600
   },
   {
     "name": "Peterborough",
-    "asciiName": "Peterborough"
+    "asciiName": "Peterborough",
+    "lat": 52.5736,
+    "lng": -0.2478,
+    "population": 163379
   },
   {
     "name": "Oxford",
-    "asciiName": "Oxford"
+    "asciiName": "Oxford",
+    "lat": 51.7522,
+    "lng": -1.256,
+    "population": 162100
   },
   {
     "name": "Newport",
-    "asciiName": "Newport"
+    "asciiName": "Newport",
+    "lat": 51.5877,
+    "lng": -2.9983,
+    "population": 161506
   },
   {
     "name": "Enfield Town",
-    "asciiName": "Enfield Town"
+    "asciiName": "Enfield Town",
+    "lat": 51.6515,
+    "lng": -0.085,
+    "population": 156858
   },
   {
     "name": "York",
-    "asciiName": "York"
+    "asciiName": "York",
+    "lat": 53.9576,
+    "lng": -1.0827,
+    "population": 156135
   },
   {
     "name": "Telford",
-    "asciiName": "Telford"
+    "asciiName": "Telford",
+    "lat": 52.6766,
+    "lng": -2.4493,
+    "population": 155570
   },
   {
     "name": "Poole",
-    "asciiName": "Poole"
+    "asciiName": "Poole",
+    "lat": 50.7143,
+    "lng": -1.9846,
+    "population": 151500
   },
   {
     "name": "Burnley",
-    "asciiName": "Burnley"
+    "asciiName": "Burnley",
+    "lat": 53.8,
+    "lng": -2.2333,
+    "population": 149422
   },
   {
     "name": "Harrow",
-    "asciiName": "Harrow"
+    "asciiName": "Harrow",
+    "lat": 51.5784,
+    "lng": -0.3321,
+    "population": 149246
   },
   {
     "name": "Huddersfield",
-    "asciiName": "Huddersfield"
+    "asciiName": "Huddersfield",
+    "lat": 53.649,
+    "lng": -1.7842,
+    "population": 149017
   },
   {
     "name": "Dundee",
-    "asciiName": "Dundee"
+    "asciiName": "Dundee",
+    "lat": 56.4691,
+    "lng": -2.9749,
+    "population": 148210
   },
   {
     "name": "Blackburn",
-    "asciiName": "Blackburn"
+    "asciiName": "Blackburn",
+    "lat": 53.75,
+    "lng": -2.4833,
+    "population": 146521
   },
   {
     "name": "Cambridge",
-    "asciiName": "Cambridge"
+    "asciiName": "Cambridge",
+    "lat": 52.2,
+    "lng": 0.1167,
+    "population": 145674
   },
   {
     "name": "Blackpool",
-    "asciiName": "Blackpool"
+    "asciiName": "Blackpool",
+    "lat": 53.8167,
+    "lng": -3.05,
+    "population": 145007
   },
   {
     "name": "Basildon",
-    "asciiName": "Basildon"
+    "asciiName": "Basildon",
+    "lat": 51.5684,
+    "lng": 0.4578,
+    "population": 144859
   },
   {
     "name": "Norwich",
-    "asciiName": "Norwich"
+    "asciiName": "Norwich",
+    "lat": 52.6278,
+    "lng": 1.2983,
+    "population": 143135
   },
   {
     "name": "Middlesbrough",
-    "asciiName": "Middlesbrough"
+    "asciiName": "Middlesbrough",
+    "lat": 54.5762,
+    "lng": -1.2348,
+    "population": 142707
   },
   {
     "name": "Bolton",
-    "asciiName": "Bolton"
+    "asciiName": "Bolton",
+    "lat": 53.5833,
+    "lng": -2.4333,
+    "population": 141331
   },
   {
     "name": "Stockport",
-    "asciiName": "Stockport"
+    "asciiName": "Stockport",
+    "lat": 53.4098,
+    "lng": -2.1576,
+    "population": 139052
   },
   {
     "name": "High Wycombe",
-    "asciiName": "High Wycombe"
+    "asciiName": "High Wycombe",
+    "lat": 51.6291,
+    "lng": -0.7493,
+    "population": 133204
   },
   {
     "name": "Gloucester",
-    "asciiName": "Gloucester"
+    "asciiName": "Gloucester",
+    "lat": 51.8657,
+    "lng": -2.2431,
+    "population": 132416
   },
   {
     "name": "Exeter",
-    "asciiName": "Exeter"
+    "asciiName": "Exeter",
+    "lat": 50.7236,
+    "lng": -3.5275,
+    "population": 130709
   },
   {
     "name": "Colchester",
-    "asciiName": "Colchester"
+    "asciiName": "Colchester",
+    "lat": 51.8892,
+    "lng": 0.9042,
+    "population": 130245
   },
   {
     "name": "Tottenham",
-    "asciiName": "Tottenham"
+    "asciiName": "Tottenham",
+    "lat": 51.6037,
+    "lng": -0.0679,
+    "population": 130000
   },
   {
     "name": "Salford",
-    "asciiName": "Salford"
+    "asciiName": "Salford",
+    "lat": 53.4877,
+    "lng": -2.2904,
+    "population": 129794
   },
   {
     "name": "Newcastle under Lyme",
-    "asciiName": "Newcastle under Lyme"
+    "asciiName": "Newcastle under Lyme",
+    "lat": 53,
+    "lng": -2.2333,
+    "population": 127727
   }
 ]

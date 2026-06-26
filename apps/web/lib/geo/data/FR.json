@@ -1,322 +1,562 @@
 [
   {
     "name": "Paris",
-    "asciiName": "Paris"
+    "asciiName": "Paris",
+    "lat": 48.8534,
+    "lng": 2.3488,
+    "population": 2138551
   },
   {
     "name": "Marseille",
-    "asciiName": "Marseille"
+    "asciiName": "Marseille",
+    "lat": 43.297,
+    "lng": 5.3811,
+    "population": 877215
   },
   {
     "name": "Lyon",
-    "asciiName": "Lyon"
+    "asciiName": "Lyon",
+    "lat": 45.7491,
+    "lng": 4.8479,
+    "population": 520774
   },
   {
     "name": "Toulouse",
-    "asciiName": "Toulouse"
+    "asciiName": "Toulouse",
+    "lat": 43.6043,
+    "lng": 1.4437,
+    "population": 511684
   },
   {
     "name": "Nice",
-    "asciiName": "Nice"
+    "asciiName": "Nice",
+    "lat": 43.7031,
+    "lng": 7.2661,
+    "population": 342669
   },
   {
     "name": "Nantes",
-    "asciiName": "Nantes"
+    "asciiName": "Nantes",
+    "lat": 47.2173,
+    "lng": -1.5534,
+    "population": 325070
   },
   {
     "name": "Marne La Vallée",
-    "asciiName": "Marne La Vallee"
+    "asciiName": "Marne La Vallee",
+    "lat": 48.8358,
+    "lng": 2.6424,
+    "population": 318325
   },
   {
     "name": "Strasbourg",
-    "asciiName": "Strasbourg"
+    "asciiName": "Strasbourg",
+    "lat": 48.5839,
+    "lng": 7.7455,
+    "population": 274845
   },
   {
     "name": "Bordeaux",
-    "asciiName": "Bordeaux"
+    "asciiName": "Bordeaux",
+    "lat": 44.8412,
+    "lng": -0.5805,
+    "population": 265328
   },
   {
     "name": "Montpellier",
-    "asciiName": "Montpellier"
+    "asciiName": "Montpellier",
+    "lat": 43.6109,
+    "lng": 3.8764,
+    "population": 248252
   },
   {
     "name": "Lille",
-    "asciiName": "Lille"
+    "asciiName": "Lille",
+    "lat": 50.6339,
+    "lng": 3.0551,
+    "population": 238695
   },
   {
     "name": "Paris 15 Vaugirard",
-    "asciiName": "Paris 15 Vaugirard"
+    "asciiName": "Paris 15 Vaugirard",
+    "lat": 48.8412,
+    "lng": 2.3003,
+    "population": 229713
   },
   {
     "name": "Rennes",
-    "asciiName": "Rennes"
+    "asciiName": "Rennes",
+    "lat": 48.1111,
+    "lng": -1.6743,
+    "population": 227830
   },
   {
     "name": "Reims",
-    "asciiName": "Reims"
+    "asciiName": "Reims",
+    "lat": 49.2653,
+    "lng": 4.0285,
+    "population": 196565
   },
   {
     "name": "Le Havre",
-    "asciiName": "Le Havre"
+    "asciiName": "Le Havre",
+    "lat": 49.4935,
+    "lng": 0.1079,
+    "population": 185972
   },
   {
     "name": "Paris 20 Ménilmontant",
-    "asciiName": "Paris 20 Menilmontant"
+    "asciiName": "Paris 20 Menilmontant",
+    "lat": 48.8646,
+    "lng": 2.3984,
+    "population": 185140
   },
   {
     "name": "Cergy-Pontoise",
-    "asciiName": "Cergy-Pontoise"
+    "asciiName": "Cergy-Pontoise",
+    "lat": 49.0389,
+    "lng": 2.0781,
+    "population": 183430
   },
   {
     "name": "Paris 18 Buttes-Montmartre",
-    "asciiName": "Paris 18 Buttes-Montmartre"
+    "asciiName": "Paris 18 Buttes-Montmartre",
+    "lat": 48.8925,
+    "lng": 2.3444,
+    "population": 183127
   },
   {
     "name": "Paris 13 Gobelins",
-    "asciiName": "Paris 13 Gobelins"
+    "asciiName": "Paris 13 Gobelins",
+    "lat": 48.8322,
+    "lng": 2.3561,
+    "population": 181271
   },
   {
     "name": "Paris 19 Buttes-Chaumont",
-    "asciiName": "Paris 19 Buttes-Chaumont"
+    "asciiName": "Paris 19 Buttes-Chaumont",
+    "lat": 48.8817,
+    "lng": 2.3822,
+    "population": 178691
   },
   {
     "name": "Paris 13e Arrondissement",
-    "asciiName": "Paris 13e Arrondissement"
+    "asciiName": "Paris 13e Arrondissement",
+    "lat": 48.8262,
+    "lng": 2.3599,
+    "population": 177833
   },
   {
     "name": "Saint-Étienne",
-    "asciiName": "Saint-Etienne"
+    "asciiName": "Saint-Etienne",
+    "lat": 45.4339,
+    "lng": 4.39,
+    "population": 176280
   },
   {
     "name": "Toulon",
-    "asciiName": "Toulon"
+    "asciiName": "Toulon",
+    "lat": 43.1244,
+    "lng": 5.9284,
+    "population": 168701
   },
   {
     "name": "Angers",
-    "asciiName": "Angers"
+    "asciiName": "Angers",
+    "lat": 47.4716,
+    "lng": -0.552,
+    "population": 168279
   },
   {
     "name": "Dijon",
-    "asciiName": "Dijon"
+    "asciiName": "Dijon",
+    "lat": 47.3134,
+    "lng": 5.0139,
+    "population": 159941
   },
   {
     "name": "Paris 16 Passy",
-    "asciiName": "Paris 16 Passy"
+    "asciiName": "Paris 16 Passy",
+    "lat": 48.8637,
+    "lng": 2.2769,
+    "population": 159386
   },
   {
     "name": "Paris 17 Batignolles-Monceau",
-    "asciiName": "Paris 17 Batignolles-Monceau"
+    "asciiName": "Paris 17 Batignolles-Monceau",
+    "lat": 48.8835,
+    "lng": 2.3219,
+    "population": 159212
   },
   {
     "name": "Grenoble",
-    "asciiName": "Grenoble"
+    "asciiName": "Grenoble",
+    "lat": 45.1787,
+    "lng": 5.7148,
+    "population": 158552
   },
   {
     "name": "Nîmes",
-    "asciiName": "Nimes"
+    "asciiName": "Nimes",
+    "lat": 43.8367,
+    "lng": 4.3579,
+    "population": 148236
   },
   {
     "name": "Clermont-Ferrand",
-    "asciiName": "Clermont-Ferrand"
+    "asciiName": "Clermont-Ferrand",
+    "lat": 45.7797,
+    "lng": 3.0868,
+    "population": 147865
   },
   {
     "name": "Aix-en-Provence",
-    "asciiName": "Aix-en-Provence"
+    "asciiName": "Aix-en-Provence",
+    "lat": 43.5283,
+    "lng": 5.4497,
+    "population": 146821
   },
   {
     "name": "Saint-Quentin-en-Yvelines",
-    "asciiName": "Saint-Quentin-en-Yvelines"
+    "asciiName": "Saint-Quentin-en-Yvelines",
+    "lat": 48.7719,
+    "lng": 2.0189,
+    "population": 146598
   },
   {
     "name": "Brest",
-    "asciiName": "Brest"
+    "asciiName": "Brest",
+    "lat": 48.3903,
+    "lng": -4.4863,
+    "population": 144899
   },
   {
     "name": "Le Mans",
-    "asciiName": "Le Mans"
+    "asciiName": "Le Mans",
+    "lat": 48.0021,
+    "lng": 0.2025,
+    "population": 144515
   },
   {
     "name": "Paris 11e Arrondissement",
-    "asciiName": "Paris 11e Arrondissement"
+    "asciiName": "Paris 11e Arrondissement",
+    "lat": 48.8583,
+    "lng": 2.3795,
+    "population": 144292
   },
   {
     "name": "Amiens",
-    "asciiName": "Amiens"
+    "asciiName": "Amiens",
+    "lat": 49.9,
+    "lng": 2.3,
+    "population": 143086
   },
   {
     "name": "Tours",
-    "asciiName": "Tours"
+    "asciiName": "Tours",
+    "lat": 47.3948,
+    "lng": 0.704,
+    "population": 141621
   },
   {
     "name": "Limoges",
-    "asciiName": "Limoges"
+    "asciiName": "Limoges",
+    "lat": 45.8336,
+    "lng": 1.2476,
+    "population": 141176
   },
   {
     "name": "Paris 12e Arrondissement",
-    "asciiName": "Paris 12e Arrondissement"
+    "asciiName": "Paris 12e Arrondissement",
+    "lat": 48.8352,
+    "lng": 2.4351,
+    "population": 140311
   },
   {
     "name": "Paris 11 Popincourt",
-    "asciiName": "Paris 11 Popincourt"
+    "asciiName": "Paris 11 Popincourt",
+    "lat": 48.8574,
+    "lng": 2.3795,
+    "population": 138170
   },
   {
     "name": "Paris 12 Reuilly",
-    "asciiName": "Paris 12 Reuilly"
+    "asciiName": "Paris 12 Reuilly",
+    "lat": 48.8412,
+    "lng": 2.3876,
+    "population": 138024
   },
   {
     "name": "Paris 14 Observatoire",
-    "asciiName": "Paris 14 Observatoire"
+    "asciiName": "Paris 14 Observatoire",
+    "lat": 48.8331,
+    "lng": 2.3264,
+    "population": 136455
   },
   {
     "name": "Villeurbanne",
-    "asciiName": "Villeurbanne"
+    "asciiName": "Villeurbanne",
+    "lat": 45.766,
+    "lng": 4.8795,
+    "population": 131445
   },
   {
     "name": "Besançon",
-    "asciiName": "Besancon"
+    "asciiName": "Besancon",
+    "lat": 47.2488,
+    "lng": 6.0182,
+    "population": 128426
   },
   {
     "name": "Metz",
-    "asciiName": "Metz"
+    "asciiName": "Metz",
+    "lat": 49.1191,
+    "lng": 6.1727,
+    "population": 123914
   },
   {
     "name": "Orléans",
-    "asciiName": "Orleans"
+    "asciiName": "Orleans",
+    "lat": 47.9025,
+    "lng": 1.9041,
+    "population": 116344
   },
   {
     "name": "Rouen",
-    "asciiName": "Rouen"
+    "asciiName": "Rouen",
+    "lat": 49.4431,
+    "lng": 1.0993,
+    "population": 116331
   },
   {
     "name": "Mulhouse",
-    "asciiName": "Mulhouse"
+    "asciiName": "Mulhouse",
+    "lat": 47.752,
+    "lng": 7.3287,
+    "population": 111430
   },
   {
     "name": "Montreuil",
-    "asciiName": "Montreuil"
+    "asciiName": "Montreuil",
+    "lat": 48.8642,
+    "lng": 2.4432,
+    "population": 111240
   },
   {
     "name": "Perpignan",
-    "asciiName": "Perpignan"
+    "asciiName": "Perpignan",
+    "lat": 42.6976,
+    "lng": 2.8954,
+    "population": 110706
   },
   {
     "name": "Caen",
-    "asciiName": "Caen"
+    "asciiName": "Caen",
+    "lat": 49.1859,
+    "lng": -0.3591,
+    "population": 110624
   },
   {
     "name": "Boulogne-Billancourt",
-    "asciiName": "Boulogne-Billancourt"
+    "asciiName": "Boulogne-Billancourt",
+    "lat": 48.8355,
+    "lng": 2.2413,
+    "population": 108782
   },
   {
     "name": "Nancy",
-    "asciiName": "Nancy"
+    "asciiName": "Nancy",
+    "lat": 48.6844,
+    "lng": 6.185,
+    "population": 105058
   },
   {
     "name": "Lyon 03",
-    "asciiName": "Lyon 03"
+    "asciiName": "Lyon 03",
+    "lat": 45.7612,
+    "lng": 4.8518,
+    "population": 102725
   },
   {
     "name": "Argenteuil",
-    "asciiName": "Argenteuil"
+    "asciiName": "Argenteuil",
+    "lat": 48.9479,
+    "lng": 2.2474,
+    "population": 101475
   },
   {
     "name": "Roubaix",
-    "asciiName": "Roubaix"
+    "asciiName": "Roubaix",
+    "lat": 50.6942,
+    "lng": 3.1746,
+    "population": 99507
   },
   {
     "name": "Tourcoing",
-    "asciiName": "Tourcoing"
+    "asciiName": "Tourcoing",
+    "lat": 50.7239,
+    "lng": 3.1612,
+    "population": 99160
   },
   {
     "name": "Saint-Denis",
-    "asciiName": "Saint-Denis"
+    "asciiName": "Saint-Denis",
+    "lat": 48.9356,
+    "lng": 2.3539,
+    "population": 96128
   },
   {
     "name": "Avignon",
-    "asciiName": "Avignon"
+    "asciiName": "Avignon",
+    "lat": 43.9483,
+    "lng": 4.8089,
+    "population": 89769
   },
   {
     "name": "Marseille 13",
-    "asciiName": "Marseille 13"
+    "asciiName": "Marseille 13",
+    "lat": 43.3186,
+    "lng": 5.4084,
+    "population": 89316
   },
   {
     "name": "Asnières-sur-Seine",
-    "asciiName": "Asnieres-sur-Seine"
+    "asciiName": "Asnieres-sur-Seine",
+    "lat": 48.9167,
+    "lng": 2.2833,
+    "population": 86742
   },
   {
     "name": "Nanterre",
-    "asciiName": "Nanterre"
+    "asciiName": "Nanterre",
+    "lat": 48.892,
+    "lng": 2.2068,
+    "population": 86719
   },
   {
     "name": "Dunkirk",
-    "asciiName": "Dunkirk"
+    "asciiName": "Dunkirk",
+    "lat": 51.0344,
+    "lng": 2.3768,
+    "population": 86263
   },
   {
     "name": "Lyon 08",
-    "asciiName": "Lyon 08"
+    "asciiName": "Lyon 08",
+    "lat": 45.7363,
+    "lng": 4.8687,
+    "population": 86154
   },
   {
     "name": "Poitiers",
-    "asciiName": "Poitiers"
+    "asciiName": "Poitiers",
+    "lat": 46.5826,
+    "lng": 0.3435,
+    "population": 85960
   },
   {
     "name": "Versailles",
-    "asciiName": "Versailles"
+    "asciiName": "Versailles",
+    "lat": 48.8036,
+    "lng": 2.1342,
+    "population": 85416
   },
   {
     "name": "Courbevoie",
-    "asciiName": "Courbevoie"
+    "asciiName": "Courbevoie",
+    "lat": 48.8967,
+    "lng": 2.2567,
+    "population": 85158
   },
   {
     "name": "Créteil",
-    "asciiName": "Creteil"
+    "asciiName": "Creteil",
+    "lat": 48.7927,
+    "lng": 2.4657,
+    "population": 84833
   },
   {
     "name": "Paris 10 Entrepôt",
-    "asciiName": "Paris 10 Entrepot"
+    "asciiName": "Paris 10 Entrepot",
+    "lat": 48.8709,
+    "lng": 2.3561,
+    "population": 83873
   },
   {
     "name": "Paris 10e Arrondissement",
-    "asciiName": "Paris 10e Arrondissement"
+    "asciiName": "Paris 10e Arrondissement",
+    "lat": 48.8767,
+    "lng": 2.359,
+    "population": 83459
   },
   {
     "name": "Pau",
-    "asciiName": "Pau"
+    "asciiName": "Pau",
+    "lat": 43.3112,
+    "lng": -0.3558,
+    "population": 82697
   },
   {
     "name": "Lyon 07",
-    "asciiName": "Lyon 07"
+    "asciiName": "Lyon 07",
+    "lat": 45.7453,
+    "lng": 4.842,
+    "population": 82573
   },
   {
     "name": "Colombes",
-    "asciiName": "Colombes"
+    "asciiName": "Colombes",
+    "lat": 48.9188,
+    "lng": 2.254,
+    "population": 82300
   },
   {
     "name": "Vitry-sur-Seine",
-    "asciiName": "Vitry-sur-Seine"
+    "asciiName": "Vitry-sur-Seine",
+    "lat": 48.7872,
+    "lng": 2.4033,
+    "population": 81001
   },
   {
     "name": "Aulnay-sous-Bois",
-    "asciiName": "Aulnay-sous-Bois"
+    "asciiName": "Aulnay-sous-Bois",
+    "lat": 48.9381,
+    "lng": 2.494,
+    "population": 80615
   },
   {
     "name": "Marseille 08",
-    "asciiName": "Marseille 08"
+    "asciiName": "Marseille 08",
+    "lat": 43.2708,
+    "lng": 5.3821,
+    "population": 78837
   },
   {
     "name": "Marseille 15",
-    "asciiName": "Marseille 15"
+    "asciiName": "Marseille 15",
+    "lat": 43.3722,
+    "lng": 5.3539,
+    "population": 77770
   },
   {
     "name": "Marseille 09",
-    "asciiName": "Marseille 09"
+    "asciiName": "Marseille 09",
+    "lat": 43.2543,
+    "lng": 5.4057,
+    "population": 76868
   },
   {
     "name": "La Rochelle",
-    "asciiName": "La Rochelle"
+    "asciiName": "La Rochelle",
+    "lat": 46.1631,
+    "lng": -1.1522,
+    "population": 76810
   },
   {
     "name": "Champigny-sur-Marne",
-    "asciiName": "Champigny-sur-Marne"
+    "asciiName": "Champigny-sur-Marne",
+    "lat": 48.8164,
+    "lng": 2.4937,
+    "population": 76726
   }
 ]

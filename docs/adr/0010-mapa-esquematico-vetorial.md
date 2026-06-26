@@ -1,6 +1,6 @@
 # 0010 — Mapa esquemático vetorial na criação (geografia estilizada, sem tiles)
 
-**Status:** Aceito · emenda o [ADR-0001](0001-criterio-e-fronteira-da-v1.md)
+**Status:** Aceito · **implementado** (PR do mapa, fecha #226) · emenda o [ADR-0001](0001-criterio-e-fronteira-da-v1.md)
 
 ## Contexto
 
@@ -29,3 +29,14 @@ A criação usa um **mapa esquemático vetorial** — não um mapa real:
 - Ativo GeoJSON no bundle (simplificado, lazy na etapa) — peso aceitável; cortável junto com o mapa se a fatia pesar.
 
 Prototipado e validado pelo dono (passo 01 · destino). Linguagem em [`../../CONTEXT.md`](../../CONTEXT.md); critério da v1 em [ADR-0001](0001-criterio-e-fronteira-da-v1.md).
+
+## Emenda — implementação (PR do mapa, fecha #226)
+
+O mapa saiu do papel no overhaul visual da criação. O **mecanismo** ficou em **jsVectorMap** (1.7, world map vetorial pronto), e não em GeoJSON desenhado à mão — mas a decisão acima é honrada à risca: polígonos de país vetoriais, **sem tiles, sem API externa, sem secret, sem custo**, na paleta Noturno (terra `--line-muted`, mar `--bg-canvas`, marcadores `--accent`). Notas da realização:
+
+- **Costura library-agnostic `<RouteMap>`** (`focus` país/coords/escala · `nodes` · `edges` · `fallback`). A UI fala nesse contrato; jsVectorMap fica isolado atrás dele e pode ser trocado (Fase 5: endpoint `/geo`) sem tocar os passos.
+- **Carregamento client-only**: a lib + o mapa-mundi + o CSS entram por `import()` dinâmico **dentro do effect**, só quando o container tem layout (`clientWidth > 0`) — em SSR e em jsdom isso é 0, então nada da lib é baixado ali. Vira **lazy chunk** (~34 KB lib + ~100 KB world), buscado só quando há cidade com coords. Falha de carga → fallback.
+- **Fallback honesto = a rota vertical** (origem → paradas → destino, com ícone de modo por salto). É o que aparece sem coords, em SSR/jsdom, ou se a lib falhar — nunca uma moldura de mapa vazia.
+- **Coords são client-only (reforça o [ADR-0011](0011-modelo-de-dados-criacao-de-viagem.md)):** os 23 recortes `lib/geo/data/*.json` foram regerados do GeoNames `cities15000` com `lat`/`lng`/`population` (script versionado `apps/web/scripts/build-cities.mjs`, top-80 por população/país). `lat`/`lng` entram no `StopDraft` mas **nunca** em `draftToPayload` — teste de contrato garante.
+- **Foco**: uma cidade plotada → zoom na coordenada (escala ~5); várias → mundo inteiro (mostra todos os marcadores). A **origem vem do Perfil como texto, sem coords** → não é plotada (nada de coordenada falsa); aparece só no fallback.
+- **Adiado de propósito** (cabe no "faz bem-feito ou adia"): realce **tracejado-terracota da fronteira** do país selecionado e **pulse** do marcador. O foco-zoom + marcadores + arcos de rota entregam o momento geográfico no padrão Noturno; o realce de região fica para um polimento futuro.

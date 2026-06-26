@@ -12,6 +12,10 @@
 export type CityEntry = {
   name: string;
   asciiName: string;
+  /** Coordenadas GeoNames (client-only — alimentam o mapa vetorial; ADR-0010/0011). */
+  lat: number;
+  lng: number;
+  population: number;
 };
 
 // Mapa de loaders — bundler analisa estaticamente cada import().

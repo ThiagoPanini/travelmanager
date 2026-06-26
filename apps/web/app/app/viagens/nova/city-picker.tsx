@@ -3,7 +3,10 @@
 import { useEffect, useState } from "react";
 import { Combobox, type ComboboxOption } from "@/components/combobox";
 import { COUNTRIES } from "@/lib/countries";
-import { searchCities } from "@/lib/geo/cities";
+import { type CityEntry, searchCities } from "@/lib/geo/cities";
+
+/** Coordenadas de uma cidade escolhida do dataset (null em texto livre). */
+export type CityCoords = { lat: number; lng: number } | null;
 
 const COUNTRY_OPTIONS: ComboboxOption[] = COUNTRIES.map((c) => ({ value: c.code, label: c.name }));
 
@@ -18,8 +21,8 @@ type CityPickerProps = {
   city: string;
   /** Escolheu/limpou país (o pai deve resetar a cidade). */
   onCountry: (code: string | null) => void;
-  /** Escolheu uma cidade (opção do dataset ou texto livre via escape hatch). */
-  onCity: (city: string) => void;
+  /** Escolheu uma cidade — coords só quando vem do dataset (texto livre → null). */
+  onCity: (city: string, coords: CityCoords) => void;
   countryLabel?: string;
   cityLabel?: string;
   countryPlaceholder?: string;
@@ -45,7 +48,8 @@ export function CityPicker({
   const [countryInput, setCountryInput] = useState(() => countryName(country));
   const [countryOptions, setCountryOptions] = useState<ComboboxOption[]>(COUNTRY_OPTIONS);
   const [cityInput, setCityInput] = useState(() => city);
-  const [cityOptions, setCityOptions] = useState<ComboboxOption[]>([]);
+  const [cityEntries, setCityEntries] = useState<CityEntry[]>([]);
+  const cityOptions: ComboboxOption[] = cityEntries.map((c) => ({ value: c.name, label: c.name }));
 
   useEffect(() => {
     const q = countryInput.toLowerCase();
@@ -54,13 +58,13 @@ export function CityPicker({
 
   useEffect(() => {
     if (!country) {
-      setCityOptions([]);
+      setCityEntries([]);
       return;
     }
     let cancelled = false;
     searchCities(country, cityInput).then((results) => {
       if (cancelled) return;
-      setCityOptions(results.map((c) => ({ value: c.name, label: c.name })));
+      setCityEntries(results);
     });
     return () => {
       cancelled = true;
@@ -70,6 +74,12 @@ export function CityPicker({
   function handleCountry(code: string) {
     onCountry(code || null);
     setCityInput("");
+  }
+
+  // Recupera coords ao escolher uma opção do dataset; texto livre vem sem coords.
+  function handleCity(value: string) {
+    const entry = cityEntries.find((c) => c.name === value);
+    onCity(value, entry ? { lat: entry.lat, lng: entry.lng } : null);
   }
 
   return (
@@ -87,7 +97,7 @@ export function CityPicker({
         label={cityLabel}
         options={cityOptions}
         value={city}
-        onChange={onCity}
+        onChange={handleCity}
         inputValue={cityInput}
         onInputChange={setCityInput}
         placeholder={country ? cityPlaceholder : "Escolha o país primeiro"}

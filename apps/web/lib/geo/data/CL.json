@@ -1,322 +1,562 @@
 [
   {
     "name": "Santiago",
-    "asciiName": "Santiago"
+    "asciiName": "Santiago",
+    "lat": -33.4569,
+    "lng": -70.6483,
+    "population": 4837295
   },
   {
     "name": "Puente Alto",
-    "asciiName": "Puente Alto"
+    "asciiName": "Puente Alto",
+    "lat": -33.6117,
+    "lng": -70.5758,
+    "population": 568106
   },
   {
     "name": "Maipú",
-    "asciiName": "Maipu"
+    "asciiName": "Maipu",
+    "lat": -33.5142,
+    "lng": -70.7651,
+    "population": 503635
   },
   {
     "name": "Antofagasta",
-    "asciiName": "Antofagasta"
+    "asciiName": "Antofagasta",
+    "lat": -23.6509,
+    "lng": -70.3975,
+    "population": 401096
   },
   {
     "name": "Viña del Mar",
-    "asciiName": "Vina del Mar"
+    "asciiName": "Vina del Mar",
+    "lat": -33.0246,
+    "lng": -71.5518,
+    "population": 334248
   },
   {
     "name": "Valparaíso",
-    "asciiName": "Valparaiso"
+    "asciiName": "Valparaiso",
+    "lat": -33.036,
+    "lng": -71.6296,
+    "population": 282448
   },
   {
     "name": "Ñuñoa",
-    "asciiName": "Nunoa"
+    "asciiName": "Nunoa",
+    "lat": -33.4473,
+    "lng": -70.5828,
+    "population": 255823
   },
   {
     "name": "San Bernardo",
-    "asciiName": "San Bernardo"
+    "asciiName": "San Bernardo",
+    "lat": -33.5922,
+    "lng": -70.6996,
+    "population": 249858
   },
   {
     "name": "Puerto Montt",
-    "asciiName": "Puerto Montt"
+    "asciiName": "Puerto Montt",
+    "lat": -41.4693,
+    "lng": -72.9424,
+    "population": 245902
   },
   {
     "name": "Arica",
-    "asciiName": "Arica"
+    "asciiName": "Arica",
+    "lat": -18.4755,
+    "lng": -70.3006,
+    "population": 241653
   },
   {
     "name": "Peñalolén",
-    "asciiName": "Penalolen"
+    "asciiName": "Penalolen",
+    "lat": -33.4684,
+    "lng": -70.5341,
+    "population": 241599
   },
   {
     "name": "Temuco",
-    "asciiName": "Temuco"
+    "asciiName": "Temuco",
+    "lat": -38.7363,
+    "lng": -72.5974,
+    "population": 238129
   },
   {
     "name": "Concepción",
-    "asciiName": "Concepcion"
+    "asciiName": "Concepcion",
+    "lat": -36.827,
+    "lng": -73.0498,
+    "population": 223574
   },
   {
     "name": "Rancagua",
-    "asciiName": "Rancagua"
+    "asciiName": "Rancagua",
+    "lat": -34.1691,
+    "lng": -70.7405,
+    "population": 212695
   },
   {
     "name": "Quilicura",
-    "asciiName": "Quilicura"
+    "asciiName": "Quilicura",
+    "lat": -33.368,
+    "lng": -70.7139,
+    "population": 210410
   },
   {
     "name": "La Pintana",
-    "asciiName": "La Pintana"
+    "asciiName": "La Pintana",
+    "lat": -33.5833,
+    "lng": -70.6342,
+    "population": 201178
   },
   {
     "name": "Iquique",
-    "asciiName": "Iquique"
+    "asciiName": "Iquique",
+    "lat": -20.2133,
+    "lng": -70.1503,
+    "population": 199587
   },
   {
     "name": "Talca",
-    "asciiName": "Talca"
+    "asciiName": "Talca",
+    "lat": -35.4232,
+    "lng": -71.6497,
+    "population": 197479
   },
   {
     "name": "Calama",
-    "asciiName": "Calama"
+    "asciiName": "Calama",
+    "lat": -22.4567,
+    "lng": -68.9237,
+    "population": 166334
   },
   {
     "name": "Coquimbo",
-    "asciiName": "Coquimbo"
+    "asciiName": "Coquimbo",
+    "lat": -29.9533,
+    "lng": -71.3395,
+    "population": 161317
   },
   {
     "name": "La Serena",
-    "asciiName": "La Serena"
+    "asciiName": "La Serena",
+    "lat": -29.9059,
+    "lng": -71.2501,
+    "population": 154521
   },
   {
     "name": "Talcahuano",
-    "asciiName": "Talcahuano"
+    "asciiName": "Talcahuano",
+    "lat": -36.7249,
+    "lng": -73.1168,
+    "population": 150499
   },
   {
     "name": "Chillán",
-    "asciiName": "Chillan"
+    "asciiName": "Chillan",
+    "lat": -36.6066,
+    "lng": -72.1034,
+    "population": 150396
   },
   {
     "name": "Renca",
-    "asciiName": "Renca"
+    "asciiName": "Renca",
+    "lat": -33.4019,
+    "lng": -70.7062,
+    "population": 147151
   },
   {
     "name": "Colina",
-    "asciiName": "Colina"
+    "asciiName": "Colina",
+    "lat": -33.2044,
+    "lng": -70.6747,
+    "population": 146207
   },
   {
     "name": "Alto Hospicio",
-    "asciiName": "Alto Hospicio"
+    "asciiName": "Alto Hospicio",
+    "lat": -20.2687,
+    "lng": -70.1049,
+    "population": 142086
   },
   {
     "name": "Osorno",
-    "asciiName": "Osorno"
+    "asciiName": "Osorno",
+    "lat": -40.574,
+    "lng": -73.1335,
+    "population": 135773
   },
   {
     "name": "Valdivia",
-    "asciiName": "Valdivia"
+    "asciiName": "Valdivia",
+    "lat": -39.8142,
+    "lng": -73.2459,
+    "population": 133419
   },
   {
     "name": "Villa Mercedes",
-    "asciiName": "Villa Mercedes"
+    "asciiName": "Villa Mercedes",
+    "lat": -37.4042,
+    "lng": -71.9795,
+    "population": 131936
   },
   {
     "name": "Quilpué",
-    "asciiName": "Quilpue"
+    "asciiName": "Quilpue",
+    "lat": -33.0475,
+    "lng": -71.4425,
+    "population": 130263
   },
   {
     "name": "Copiapó",
-    "asciiName": "Copiapo"
+    "asciiName": "Copiapo",
+    "lat": -27.3674,
+    "lng": -70.3322,
+    "population": 129280
   },
   {
     "name": "Los Ángeles",
-    "asciiName": "Los Angeles"
+    "asciiName": "Los Angeles",
+    "lat": -37.4697,
+    "lng": -72.3537,
+    "population": 125430
   },
   {
     "name": "San Pedro de la Paz",
-    "asciiName": "San Pedro de la Paz"
+    "asciiName": "San Pedro de la Paz",
+    "lat": -36.839,
+    "lng": -73.1003,
+    "population": 121631
   },
   {
     "name": "Punta Arenas",
-    "asciiName": "Punta Arenas"
+    "asciiName": "Punta Arenas",
+    "lat": -53.1628,
+    "lng": -70.9092,
+    "population": 117430
   },
   {
     "name": "Coronel",
-    "asciiName": "Coronel"
+    "asciiName": "Coronel",
+    "lat": -37.0339,
+    "lng": -73.1402,
+    "population": 107759
   },
   {
     "name": "Lo Prado",
-    "asciiName": "Lo Prado"
+    "asciiName": "Lo Prado",
+    "lat": -33.4443,
+    "lng": -70.7255,
+    "population": 104316
   },
   {
     "name": "Curicó",
-    "asciiName": "Curico"
+    "asciiName": "Curico",
+    "lat": -34.9828,
+    "lng": -71.2394,
+    "population": 102438
   },
   {
     "name": "Lampa",
-    "asciiName": "Lampa"
+    "asciiName": "Lampa",
+    "lat": -33.2863,
+    "lng": -70.8756,
+    "population": 102234
   },
   {
     "name": "Villa Alemana",
-    "asciiName": "Villa Alemana"
+    "asciiName": "Villa Alemana",
+    "lat": -33.0482,
+    "lng": -71.3729,
+    "population": 97320
   },
   {
     "name": "San Antonio",
-    "asciiName": "San Antonio"
+    "asciiName": "San Antonio",
+    "lat": -33.5947,
+    "lng": -71.6075,
+    "population": 87675
   },
   {
     "name": "Hualpén",
-    "asciiName": "Hualpen"
+    "asciiName": "Hualpen",
+    "lat": -36.7891,
+    "lng": -73.1017,
+    "population": 86639
   },
   {
     "name": "Peñaflor",
-    "asciiName": "Penaflor"
+    "asciiName": "Penaflor",
+    "lat": -33.6063,
+    "lng": -70.8765,
+    "population": 85671
   },
   {
     "name": "Chiguayante",
-    "asciiName": "Chiguayante"
+    "asciiName": "Chiguayante",
+    "lat": -36.9256,
+    "lng": -73.0284,
+    "population": 84718
   },
   {
     "name": "Ovalle",
-    "asciiName": "Ovalle"
+    "asciiName": "Ovalle",
+    "lat": -30.6011,
+    "lng": -71.199,
+    "population": 77138
   },
   {
     "name": "Padre Las Casas",
-    "asciiName": "Padre Las Casas"
+    "asciiName": "Padre Las Casas",
+    "lat": -38.7608,
+    "lng": -72.5982,
+    "population": 72892
   },
   {
     "name": "Paine",
-    "asciiName": "Paine"
+    "asciiName": "Paine",
+    "lat": -33.808,
+    "lng": -70.7411,
+    "population": 72759
   },
   {
     "name": "Linares",
-    "asciiName": "Linares"
+    "asciiName": "Linares",
+    "lat": -35.8467,
+    "lng": -71.5931,
+    "population": 69535
   },
   {
     "name": "Quillota",
-    "asciiName": "Quillota"
+    "asciiName": "Quillota",
+    "lat": -32.8834,
+    "lng": -71.2488,
+    "population": 67779
   },
   {
     "name": "Buin",
-    "asciiName": "Buin"
+    "asciiName": "Buin",
+    "lat": -33.7326,
+    "lng": -70.7428,
+    "population": 63419
   },
   {
     "name": "Padre Hurtado",
-    "asciiName": "Padre Hurtado"
+    "asciiName": "Padre Hurtado",
+    "lat": -33.5684,
+    "lng": -70.8058,
+    "population": 63250
   },
   {
     "name": "Melipilla",
-    "asciiName": "Melipilla"
+    "asciiName": "Melipilla",
+    "lat": -33.6891,
+    "lng": -71.2153,
+    "population": 63100
   },
   {
     "name": "Los Andes",
-    "asciiName": "Los Andes"
+    "asciiName": "Los Andes",
+    "lat": -32.8337,
+    "lng": -70.5983,
+    "population": 63009
   },
   {
     "name": "San Felipe",
-    "asciiName": "San Felipe"
+    "asciiName": "San Felipe",
+    "lat": -32.7498,
+    "lng": -70.7258,
+    "population": 59294
   },
   {
     "name": "Talagante",
-    "asciiName": "Talagante"
+    "asciiName": "Talagante",
+    "lat": -33.6639,
+    "lng": -70.9273,
+    "population": 57323
   },
   {
     "name": "Tomé",
-    "asciiName": "Tome"
+    "asciiName": "Tome",
+    "lat": -36.6176,
+    "lng": -72.9559,
+    "population": 53219
   },
   {
     "name": "La Calera",
-    "asciiName": "La Calera"
+    "asciiName": "La Calera",
+    "lat": -32.7868,
+    "lng": -71.198,
+    "population": 50221
   },
   {
     "name": "Villarrica",
-    "asciiName": "Villarrica"
+    "asciiName": "Villarrica",
+    "lat": -39.2857,
+    "lng": -72.2279,
+    "population": 49184
   },
   {
     "name": "Hacienda La Calera",
-    "asciiName": "Hacienda La Calera"
+    "asciiName": "Hacienda La Calera",
+    "lat": -32.7833,
+    "lng": -71.2167,
+    "population": 49106
   },
   {
     "name": "Lota",
-    "asciiName": "Lota"
+    "asciiName": "Lota",
+    "lat": -37.0899,
+    "lng": -73.1577,
+    "population": 47339
   },
   {
     "name": "Limache",
-    "asciiName": "Limache"
+    "asciiName": "Limache",
+    "lat": -33.0133,
+    "lng": -71.2608,
+    "population": 46121
   },
   {
     "name": "Penco",
-    "asciiName": "Penco"
+    "asciiName": "Penco",
+    "lat": -36.7407,
+    "lng": -72.9953,
+    "population": 46091
   },
   {
     "name": "Coyhaique",
-    "asciiName": "Coyhaique"
+    "asciiName": "Coyhaique",
+    "lat": -45.5752,
+    "lng": -72.0662,
+    "population": 45787
   },
   {
     "name": "Vallenar",
-    "asciiName": "Vallenar"
+    "asciiName": "Vallenar",
+    "lat": -28.5762,
+    "lng": -70.7594,
+    "population": 44895
   },
   {
     "name": "Angol",
-    "asciiName": "Angol"
+    "asciiName": "Angol",
+    "lat": -37.7952,
+    "lng": -72.7164,
+    "population": 44856
   },
   {
     "name": "San Vicente de Tagua Tagua",
-    "asciiName": "San Vicente de Tagua Tagua"
+    "asciiName": "San Vicente de Tagua Tagua",
+    "lat": -34.4386,
+    "lng": -71.0775,
+    "population": 44046
   },
   {
     "name": "Machalí",
-    "asciiName": "Machali"
+    "asciiName": "Machali",
+    "lat": -34.1808,
+    "lng": -70.6493,
+    "population": 42572
   },
   {
     "name": "Concón",
-    "asciiName": "Concon"
+    "asciiName": "Concon",
+    "lat": -32.922,
+    "lng": -71.5162,
+    "population": 42152
   },
   {
     "name": "Castro",
-    "asciiName": "Castro"
+    "asciiName": "Castro",
+    "lat": -42.4721,
+    "lng": -73.7732,
+    "population": 41667
   },
   {
     "name": "Constitución",
-    "asciiName": "Constitucion"
+    "asciiName": "Constitucion",
+    "lat": -35.3332,
+    "lng": -72.4116,
+    "population": 41207
   },
   {
     "name": "Ancud",
-    "asciiName": "Ancud"
+    "asciiName": "Ancud",
+    "lat": -41.8707,
+    "lng": -73.8162,
+    "population": 40819
   },
   {
     "name": "Molina",
-    "asciiName": "Molina"
+    "asciiName": "Molina",
+    "lat": -35.1143,
+    "lng": -71.2823,
+    "population": 40329
   },
   {
     "name": "San Javier",
-    "asciiName": "San Javier"
+    "asciiName": "San Javier",
+    "lat": -35.5952,
+    "lng": -71.7292,
+    "population": 40189
   },
   {
     "name": "San Clemente",
-    "asciiName": "San Clemente"
+    "asciiName": "San Clemente",
+    "lat": -35.5378,
+    "lng": -71.487,
+    "population": 39538
   },
   {
     "name": "Placilla",
-    "asciiName": "Placilla"
+    "asciiName": "Placilla",
+    "lat": -33.1144,
+    "lng": -71.5681,
+    "population": 39344
   },
   {
     "name": "Cauquenes",
-    "asciiName": "Cauquenes"
+    "asciiName": "Cauquenes",
+    "lat": -35.9671,
+    "lng": -72.3225,
+    "population": 38522
   },
   {
     "name": "Rengo",
-    "asciiName": "Rengo"
+    "asciiName": "Rengo",
+    "lat": -34.4064,
+    "lng": -70.8583,
+    "population": 38100
   },
   {
     "name": "Puerto Varas",
-    "asciiName": "Puerto Varas"
+    "asciiName": "Puerto Varas",
+    "lat": -41.3195,
+    "lng": -72.9854,
+    "population": 37561
   },
   {
     "name": "Labranza",
-    "asciiName": "Labranza"
+    "asciiName": "Labranza",
+    "lat": -38.7652,
+    "lng": -72.753,
+    "population": 35893
   },
   {
     "name": "Santa Cruz",
-    "asciiName": "Santa Cruz"
+    "asciiName": "Santa Cruz",
+    "lat": -34.6388,
+    "lng": -71.3658,
+    "population": 34914
   },
   {
     "name": "Lautaro",
-    "asciiName": "Lautaro"
+    "asciiName": "Lautaro",
+    "lat": -38.5307,
+    "lng": -72.4365,
+    "population": 34268
   }
 ]
