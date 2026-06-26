@@ -18,6 +18,11 @@ export type CityEntry = {
   population: number;
 };
 
+/** Cidade do índice global, com país inferível pelo resultado. */
+export type GlobalCityEntry = CityEntry & {
+  country: string;
+};
+
 // Mapa de loaders — bundler analisa estaticamente cada import().
 const loaders: Partial<Record<string, () => Promise<{ default: CityEntry[] }>>> = {
   AO: () => import("./data/AO.json"),
@@ -47,6 +52,8 @@ const loaders: Partial<Record<string, () => Promise<{ default: CityEntry[] }>>> 
 
 const MAX_RESULTS = 20;
 
+const globalLoader = () => import("./data/_all.json") as Promise<{ default: GlobalCityEntry[] }>;
+
 function stripAccents(s: string): string {
   return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 }
@@ -66,6 +73,23 @@ export async function searchCities(country: string, query: string): Promise<City
   const q = stripAccents(query);
   return cities
     .filter((c) => stripAccents(c.asciiName).includes(q) || stripAccents(c.name).includes(q))
+    .slice(0, MAX_RESULTS);
+}
+
+/**
+ * Busca cidades entre todos os países suportados, informando o país de cada resultado.
+ *
+ * O índice é gerado junto dos recortes por país e ordenado por população. A busca é
+ * accent-insensitive e limitada aos mesmos 20 resultados do seletor gated.
+ */
+export async function searchCitiesGlobal(query: string): Promise<GlobalCityEntry[]> {
+  const { default: cities } = await globalLoader();
+  if (!query.trim()) return cities.slice(0, MAX_RESULTS);
+  const q = stripAccents(query);
+  return cities
+    .filter((city) => {
+      return stripAccents(city.asciiName).includes(q) || stripAccents(city.name).includes(q);
+    })
     .slice(0, MAX_RESULTS);
 }
 
