@@ -1,0 +1,33 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono), "Spline Sans Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: var(--border-hairline) solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 4px 10px;
+  color: var(--text-faint);
+}
+
+.accent {
+  color: var(--accent);
+  border-color: var(--accent-border);
+}
+
+.warning {
+  color: var(--warning);
+  border-color: var(--warning-border);
+}
+
+.success {
+  color: var(--success);
+  border-color: var(--success-border);
+}
+
+.muted {
+  color: var(--text-faint);
+  border-color: var(--line);
+}

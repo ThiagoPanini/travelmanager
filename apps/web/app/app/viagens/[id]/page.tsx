@@ -1,63 +1,38 @@
+import { CalendarDays, Ticket, Wallet } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CrewRow } from "@/components/crew-row";
+import { EmBreveCard } from "@/components/em-breve-card";
+import { ProgressStrip } from "@/components/progress-strip";
+import { TabChip } from "@/components/tab-chip";
+import { Wordmark } from "@/components/wordmark";
 import { apiFetch } from "@/lib/bff/server";
-import type { TransferKind } from "@/lib/trips/draft";
-import { isTransferDefined, transferLabel } from "@/lib/trips/transfers";
-import styles from "./backbone.module.css";
+import {
+  departureCountdown,
+  formatTripDate,
+  summarizeSharedTransfers,
+  type TripBackbone,
+} from "@/lib/trips/backbone";
+import styles from "./panel.module.css";
 
 export const metadata: Metadata = {
   title: "Viagem · travel·manager",
 };
 
-type TransferOut = { kind: TransferKind; other_text: string | null } | null;
-
-type Backbone = {
-  id: string;
-  name: string;
-  description: string | null;
-  departure_date: string | null;
-  my_role: "organizer" | "member";
-  origin: { city: string | null; country: string | null };
-  entry_transfer: TransferOut;
-  stops: {
-    id: string;
-    position: number;
-    city: string;
-    country: string | null;
-    arrival_date: string | null;
-    desired_transfer: TransferOut;
-  }[];
-  crew: {
-    members: {
-      display_name: string | null;
-      initials: string;
-      city: string | null;
-      role: "organizer" | "member";
-      is_me: boolean;
-    }[];
-    pending_invitations: { id: string; email: string; role: "organizer" | "member" }[];
-  };
-};
-
-const ROLE_LABEL = { member: "Membro", organizer: "Organizador" } as const;
-
-/** Converte o translado do payload (snake) para o rótulo da UI. */
-function label(transfer: TransferOut): string {
-  if (!transfer) return "Indefinido";
-  return transferLabel({ kind: transfer.kind, otherText: transfer.other_text ?? undefined });
-}
-
-function defined(transfer: TransferOut): boolean {
-  return isTransferDefined(transfer ? { kind: transfer.kind } : null);
-}
+/** Cascas V1 ainda não construídas (CONTEXT "Em breve"); repetem as tabs do topo no rail. */
+const SOON_SHELLS = [
+  { icon: CalendarDays, title: "Roteiro", note: "Dia a dia da viagem" },
+  { icon: Wallet, title: "Orçamento", note: "Quem paga o quê" },
+  { icon: Ticket, title: "Ingressos", note: "Atrações e reservas" },
+] as const;
 
 /**
- * Tela de backbone da Viagem (Fase 3). Server component: lê `/trips/{id}` (404 →
- * `trip_not_found`, não vaza existência — ADR-0011). Mostra rota (origem derivada do
- * Perfil de quem vê → paradas → destino), translados propostos (a ida marcada como
- * pessoal), tripulação (membros aceitos com bloco rico; convites pendentes cegos) e a
- * legenda honesta. Engrossa nas fatias seguintes.
+ * Painel da Viagem — a home de _uma_ viagem, sobre o `TripBackboneRead` (`GET /trips/{id}`,
+ * 404 → `notFound`, não vaza existência — ADR-0011). Server component honesto: só dado real.
+ * Header + tabs · herói (partida + contagem de embarque) · avanço dos translados propostos ·
+ * tripulação (papel + convites cegos só para o Organizador) · cascas "em breve". A linha do
+ * tempo dos Trajetos entra na fatia seguinte (PR B).
  */
 export default async function ViagemPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -65,123 +40,144 @@ export default async function ViagemPage({ params }: { params: Promise<{ id: str
   if (!res.ok) {
     notFound();
   }
-  const trip = (await res.json()) as Backbone;
-  const originCity = trip.origin.city?.trim() || "Sua cidade";
-  const lastIndex = trip.stops.length - 1;
+  const trip = (await res.json()) as TripBackbone;
+
+  const departureLabel = formatTripDate(trip.departure_date);
+  // Gate na data já parseada (não na string crua): eyebrow e contador concordam mesmo
+  // se um dia chegar uma data malformada (aí ambos caem em "datas a definir", sem duplicar).
+  const countdown = departureLabel ? departureCountdown(trip.departure_date, new Date()) : null;
+  const travelers = trip.crew.members.length;
+  const route = trip.stops.map((stop) => stop.city).join(" → ");
+  const progress = summarizeSharedTransfers(trip.stops);
+  const isOrganizer = trip.my_role === "organizer";
+  // Convite cego (ADR-0002): só o Organizador vê os pendentes — não vaze e-mail a membro.
+  const pending = isOrganizer ? trip.crew.pending_invitations : [];
 
   return (
     <main className={styles.screen}>
-      <header className={styles.top}>
-        <Link href="/app" className={styles.back}>
-          ← Minhas viagens
-        </Link>
-        <span className={styles.roleTag}>{ROLE_LABEL[trip.my_role]}</span>
-      </header>
+      <div className={styles.container}>
+        <header className={styles.header}>
+          <Link href="/app" className={styles.back}>
+            <span aria-hidden="true">←</span> Minhas viagens
+          </Link>
+          <div className={styles.headerBar}>
+            <Wordmark size={18} />
+            <nav className={styles.tabs} aria-label="Seções da viagem">
+              <TabChip state="active">Painel</TabChip>
+              <TabChip state="soon">Roteiro</TabChip>
+              <TabChip state="soon">Orçamento</TabChip>
+              <TabChip state="soon">Ingressos</TabChip>
+            </nav>
+          </div>
+        </header>
 
-      <div className={styles.shell}>
-        <div>
-          <p className={styles.eyebrow}>Esqueleto da viagem</p>
-          <h1 className={styles.name}>{trip.name}</h1>
-          {trip.description ? <p className={styles.description}>{trip.description}</p> : null}
+        <section className={styles.hero}>
+          <div>
+            <p className={styles.eyebrow}>
+              {departureLabel ? `parte ${departureLabel}` : "datas a definir"}
+            </p>
+            <h1 className={styles.name}>{trip.name}</h1>
+            <p className={styles.subtitle}>
+              {route} · {travelers === 1 ? "1 viajante" : `${travelers} viajantes`}
+            </p>
+          </div>
+          {countdown ? (
+            <div className={styles.count}>
+              <div className={styles.countNumber}>{countdown.number}</div>
+              <div className={styles.countCaption}>{countdown.caption}</div>
+            </div>
+          ) : null}
+        </section>
+
+        {progress.total > 0 ? (
+          <div className={styles.progress}>
+            <ProgressStrip
+              label={`${progress.proposed} de ${progress.total} ${
+                progress.total === 1 ? "trajeto compartilhado" : "trajetos compartilhados"
+              } com translado proposto`}
+              value={progress.proposed}
+              max={progress.total}
+              openLabel={progress.open > 0 ? `${progress.open} em discussão` : null}
+            />
+          </div>
+        ) : null}
+
+        <div className={styles.grid}>
+          <section>
+            <h2 className={styles.colLabel}>Linha do tempo · seus trajetos</h2>
+            <p className={styles.timelineSeed}>
+              Os Trajetos da viagem — sua ida, os saltos compartilhados e sua volta — aparecem aqui
+              em breve, cada um com o translado proposto.
+            </p>
+          </section>
+
+          <aside>
+            <section className={styles.railSection}>
+              <h2 className={styles.colLabel}>Tripulação</h2>
+              <ul className={styles.crew}>
+                {trip.crew.members.map((member, i) => {
+                  const organizes = member.role === "organizer";
+                  const name = member.display_name?.trim() || "Tripulante";
+                  return (
+                    <CrewRow
+                      // O contrato de `crew.members` não traz id; o índice (ordem estável do
+                      // backbone) desempata iniciais+papel coincidentes.
+                      key={`${member.initials}-${member.role}-${i}`}
+                      initials={member.initials}
+                      name={member.is_me ? `${name} (você)` : name}
+                      meta={member.city}
+                      status={organizes ? "organiza" : "membro"}
+                      tone={organizes ? "accent" : "muted"}
+                    />
+                  );
+                })}
+              </ul>
+
+              {pending.length > 0 ? (
+                <>
+                  <p className={styles.subLabel}>Aguardando aceite</p>
+                  <ul className={styles.crew}>
+                    {pending.map((invite) => (
+                      <CrewRow
+                        key={invite.id}
+                        initials="?"
+                        name={invite.email}
+                        status="aguardando"
+                        tone="warning"
+                        blind
+                      />
+                    ))}
+                  </ul>
+                </>
+              ) : null}
+            </section>
+
+            <section className={styles.railSection}>
+              <h2 className={styles.colLabel}>Em breve nesta viagem</h2>
+              <div className={styles.soonGroup}>
+                {SOON_SHELLS.map((shell) => (
+                  <EmBreveCard
+                    key={shell.title}
+                    icon={shell.icon}
+                    title={shell.title}
+                    note={shell.note}
+                  />
+                ))}
+              </div>
+            </section>
+          </aside>
         </div>
-
-        <section>
-          <h2 className={styles.sectionTitle}>Rota</h2>
-          <ul className={styles.trail}>
-            <li className={styles.stop}>
-              <span className={`${styles.dot} ${styles.dotOrigin}`} aria-hidden="true" />
-              <span className={styles.stopBody}>
-                <span className={`${styles.kicker} ${styles.kickerAccent}`}>Origem · Você</span>
-                <span className={styles.city}>{originCity}</span>
-                {trip.departure_date ? (
-                  <span className={styles.stopMeta}>parte {trip.departure_date}</span>
-                ) : null}
-              </span>
-            </li>
-
-            {trip.stops.map((stop, i) => {
-              const personal = i === 0;
-              const hop = personal ? trip.entry_transfer : stop.desired_transfer;
-              const isDest = i === lastIndex;
-              return (
-                <li key={stop.id} style={{ display: "contents" }}>
-                  <div className={styles.leg}>
-                    <span
-                      className={`${styles.legLine} ${defined(hop) ? styles.legLineDefined : ""}`}
-                      aria-hidden="true"
-                    />
-                    <span>
-                      <span className={styles.legLabel}>{label(hop)}</span>
-                      <span className={styles.legMeta}>
-                        {personal ? "sua ida · por pessoa" : "translado proposto"}
-                      </span>
-                    </span>
-                  </div>
-                  <div className={styles.stop}>
-                    <span
-                      className={`${styles.dot} ${isDest ? styles.dotDest : ""}`}
-                      aria-hidden="true"
-                    />
-                    <span className={styles.stopBody}>
-                      <span className={`${styles.kicker} ${isDest ? styles.kickerAccent : ""}`}>
-                        {isDest ? "Destino final" : `Parada ${i + 1}`}
-                      </span>
-                      <span className={styles.city}>{stop.city}</span>
-                      {stop.arrival_date ? (
-                        <span className={styles.stopMeta}>chega {stop.arrival_date}</span>
-                      ) : null}
-                    </span>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-
-        <section>
-          <h2 className={styles.sectionTitle}>Tripulação</h2>
-          <ul className={styles.crew}>
-            {trip.crew.members.map((member, i) => (
-              // O contrato de `crew.members` não traz id por membro; o índice (ordem
-              // estável do backbone) desempata iniciais+papel coincidentes.
-              <li key={`${member.initials}-${member.role}-${i}`} className={styles.member}>
-                <span className={styles.avatar} aria-hidden="true">
-                  {member.initials}
-                </span>
-                <span className={styles.memberInfo}>
-                  <span className={styles.memberName}>
-                    {member.display_name || "Tripulante"}
-                    {member.is_me ? " (você)" : ""}
-                  </span>
-                  {member.city ? <span className={styles.memberCity}>{member.city}</span> : null}
-                </span>
-                <span
-                  className={`${styles.badge} ${member.role === "organizer" ? styles.badgeOrganizer : ""}`}
-                >
-                  {ROLE_LABEL[member.role]}
-                </span>
-              </li>
-            ))}
-
-            {trip.crew.pending_invitations.map((invite) => (
-              <li key={invite.id} className={styles.member}>
-                <span className={`${styles.avatar} ${styles.avatarBlind}`} aria-hidden="true">
-                  ?
-                </span>
-                <span className={styles.memberInfo}>
-                  <span className={styles.memberName}>{invite.email}</span>
-                </span>
-                <span className={`${styles.badge} ${styles.badgePending}`}>Pendente</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <p className={styles.legend}>
-          Os translados são propostas, não compras — cada pessoa pesquisa e decide a sua depois. O
-          app só alinha o grupo.
-        </p>
       </div>
+
+      <nav className={styles.switcher} aria-label="Vistas da viagem">
+        <span className={`${styles.switcherItem} ${styles.switcherActive}`} aria-current="page">
+          Painel
+        </span>
+        <span className={`${styles.switcherItem} ${styles.switcherSoon}`} aria-disabled="true">
+          Rotas
+          <span className="sr-only"> (em breve)</span>
+        </span>
+      </nav>
     </main>
   );
 }

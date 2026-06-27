@@ -1,0 +1,23 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display), "Saira Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.active {
+  background: var(--accent);
+  color: var(--on-accent);
+  border: var(--border-hairline) solid var(--accent);
+}
+
+.soon {
+  color: var(--text-faint);
+  border: var(--border-hairline) dashed var(--line-dashed);
+}
