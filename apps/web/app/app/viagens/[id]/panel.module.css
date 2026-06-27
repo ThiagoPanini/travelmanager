@@ -1,0 +1,210 @@
+/* Painel da Viagem (Noturno) — home de uma viagem sobre o esqueleto real. */
+
+.screen {
+  min-height: 100vh;
+  padding-bottom: 110px; /* respiro para o switcher fixo */
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width-panel);
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+}
+
+/* ---- Header ---- */
+
+.header {
+  padding-top: 22px;
+}
+
+.back {
+  display: inline-block;
+  font-family: var(--font-mono), "Spline Sans Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 16px;
+}
+
+.back:hover {
+  color: var(--accent);
+}
+
+.headerBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+  border-bottom: var(--border-hairline) solid var(--line);
+}
+
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* ---- Herói ---- */
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 32px 0 26px;
+  border-bottom: var(--border-hairline) solid var(--line);
+}
+
+.eyebrow {
+  font-family: var(--font-mono), "Spline Sans Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+}
+
+.name {
+  font-size: clamp(40px, 7vw, 56px);
+  line-height: 0.9;
+  margin: 10px 0 6px;
+  color: var(--text-bright);
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.count {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.countNumber {
+  font-family: var(--font-display), "Saira Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 0.85;
+  color: var(--accent);
+}
+
+.countCaption {
+  font-family: var(--font-mono), "Spline Sans Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-top: 4px;
+}
+
+/* ---- Progress strip ---- */
+
+.progress {
+  padding: 18px 0;
+  border-bottom: var(--border-hairline) solid var(--line);
+}
+
+/* ---- Grid (timeline + rail) ---- */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+  padding: 32px 0 0;
+}
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.colLabel {
+  font-family: var(--font-mono), "Spline Sans Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 0 0 6px;
+}
+
+.timelineSeed {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  border-top: var(--border-hairline) solid var(--line);
+  padding: 18px 0;
+  margin: 0;
+}
+
+/* ---- Rail ---- */
+
+.railSection + .railSection {
+  margin-top: 30px;
+}
+
+.crew {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.subLabel {
+  font-family: var(--font-mono), "Spline Sans Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faintest);
+  margin: 16px 0 2px;
+}
+
+.soonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ---- Bottom switcher ---- */
+
+.switcher {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  background: var(--surface-bar);
+  border: var(--border-hairline) solid var(--line-muted);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-switcher);
+}
+
+.switcherItem {
+  padding: 8px 16px;
+  font-family: var(--font-display), "Saira Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+}
+
+.switcherActive {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.switcherSoon {
+  color: var(--text-faint);
+}

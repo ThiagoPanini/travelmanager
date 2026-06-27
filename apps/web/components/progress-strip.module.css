@@ -1,0 +1,63 @@
+.strip {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.meter {
+  flex: 1;
+  min-width: 200px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.label {
+  font-size: 13px;
+  color: var(--text-body);
+}
+
+.percent {
+  font-family: var(--font-mono), "Spline Sans Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+}
+
+.track {
+  height: 8px;
+  background: var(--fill-subtle);
+  border-radius: var(--radius-bar);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: var(--accent);
+}
+
+.open {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono), "Spline Sans Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--warning);
+  margin: 0;
+}
+
+.openDot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-circle);
+  background: var(--warning);
+  flex-shrink: 0;
+}
