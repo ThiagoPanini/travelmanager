@@ -1,3 +1,4 @@
+import logging
 from typing import Annotated
 
 from fastapi import Depends, FastAPI, Response
@@ -7,6 +8,17 @@ from travelmanager.identity import router as auth_router
 from travelmanager.shared.db import database_ready, get_engine_dep
 from travelmanager.shared.errors import install_error_handlers
 from travelmanager.trips import router as trips_router
+
+# O uvicorn só configura seus próprios loggers; o namespace travelmanager ficaria
+# mudo em runtime (INFO silenciado pelo WARNING do root). Adicionamos um handler
+# próprio para que logs de app (ex.: OTP dev) apareçam no terminal.
+_tl = logging.getLogger("travelmanager")
+_tl.setLevel(logging.INFO)
+if not _tl.handlers:
+    _h = logging.StreamHandler()
+    _h.setFormatter(logging.Formatter("%(levelname)s:%(name)s: %(message)s"))
+    _tl.addHandler(_h)
+    _tl.propagate = False
 
 app = FastAPI(title="travel·manager API")
 

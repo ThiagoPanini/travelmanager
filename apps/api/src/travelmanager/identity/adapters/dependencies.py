@@ -69,12 +69,18 @@ def provide_code_generator() -> CodeGenerator:
 def provide_email_sender() -> EmailSender:
     """Transporte de e-mail: Resend quando há `RESEND_API_KEY`, senão o dev (log).
 
-    Sem a chave, o app **não quebra** — usa o transporte dev (#190); o Resend é
-    ligado no go-live (#196).
+    Em produção (`APP_ENV=production`) a ausência da chave é erro fatal — o app não
+    pode degradar silenciosamente para logar códigos OTP em claro no servidor.
+    Sem a chave em dev, usa o transporte dev (#190); o Resend é ligado no go-live (#196).
+
+    Raises:
+        RuntimeError: Se `APP_ENV=production` e `RESEND_API_KEY` estiver ausente.
     """
     api_key = os.environ.get("RESEND_API_KEY")
     if api_key:
         return ResendEmailSender(api_key, os.environ.get("EMAIL_FROM", ""))
+    if os.environ.get("APP_ENV") == "production":
+        raise RuntimeError("RESEND_API_KEY obrigatória em produção (APP_ENV=production)")
     return DevEmailSender()
 
 

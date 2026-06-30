@@ -16,13 +16,20 @@ decisões em [`docs/adr/`](docs/adr/); sistema visual em [`docs/design/`](docs/d
 
 Pré-requisitos: Node 24 (`.node-version`), [pnpm](https://pnpm.io) 11, [uv](https://docs.astral.sh/uv/), Docker.
 
-### 1. Copiar variáveis de ambiente
+### 1. Variáveis de ambiente
+
+Cada app lê suas variáveis do próprio diretório — o `uv run` e o Next.js não leem da raiz do monorepo.
 
 ```bash
-cp .env.example .env
+cp .env.example apps/api/.env
+cp .env.example apps/web/.env.local
 ```
 
-Os valores padrão já funcionam para desenvolvimento local. `AUTH_SECRET` e `SESSION_PEPPER` podem ficar vazios — o app usa fallbacks inseguros mas funcionais.
+`SESSION_PEPPER` pode ficar vazio — a API usa um fallback de desenvolvimento. `AUTH_SECRET` é **obrigatório**: o Next-Auth v5 recusa iniciar sem ele. Gere e substitua o valor vazio em `apps/web/.env.local`:
+
+```bash
+openssl rand -base64 32   # cole o resultado em AUTH_SECRET=<valor>
+```
 
 ### 2. Banco de dados
 
@@ -34,16 +41,18 @@ docker compose up db -d
 
 ```bash
 cd apps/api
-uv run uvicorn travelmanager.main:app --reload
+uv run --env-file .env uvicorn travelmanager.main:app --reload
 ```
 
-### 4. Web (porta 3000) — novo terminal
+> **Código OTP em dev:** sem `RESEND_API_KEY` configurada, o código de 6 dígitos é impresso no log da API em vez de enviado por e-mail. Procure a linha `OTP dev para <email>: <código>` no terminal da API após solicitar o código na tela de login.
+
+### 4. Web — novo terminal
 
 ```bash
 pnpm --filter @travelmanager/web dev
 ```
 
-Abra `http://localhost:3000`. A jornada completa: landing → `/entrar` → onboarding → painel → criar viagem → painel da viagem com pesquisas de translado.
+Abra a URL impressa no terminal (por padrão `http://localhost:3000`; se a porta estiver ocupada o Next.js escolhe a próxima disponível). A jornada completa: landing → `/entrar` → onboarding → painel → criar viagem → painel da viagem com pesquisas de translado.
 
 ### Tudo via Docker (alternativa)
 
@@ -60,5 +69,5 @@ pyright + pytest; gitleaks). Rode localmente antes de subir:
 node_modules/.bin/biome check apps/web
 pnpm --filter @travelmanager/web typecheck
 pnpm --filter @travelmanager/web test
-cd apps/api && uv run ruff check . && uv run pyright && uv run pytest -m "not integration"
+cd apps/api && uv run ruff format --check . && uv run ruff check . && uv run pyright && uv run pytest -m "not integration"
 ```
